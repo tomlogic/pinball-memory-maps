@@ -1,18 +1,20 @@
 {
   "_notes": [
-    "Airborne (1996, Capcom).",
-    "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions."
+    "Breakshot Redemption 1.0 (1996, Capcom).",
+    "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions.",
+    "CPU address = 0x30000000 + even_index * 2.",
+    "Scores stored as score/10 (scale: 10). Verified against NVRAM data with real scores."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 2,
+    "version": 1,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "capcom",
     "roms": [
-      "abv106"
+      "bsv100r"
     ]
   },
   "high_scores": [
@@ -266,66 +268,6 @@
         "endian": "big",
         "length": 4,
         "scale": 10
-      }
-    },
-    {
-      "label": "Flyby King",
-      "short_label": "FB",
-      "initials": {
-        "offsets": [
-          "0x30000256",
-          "0x30000258",
-          "0x3000025A"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x30000280"
-        ],
-        "encoding": "int",
-        "length": 1
-      }
-    },
-    {
-      "label": "Loopster #1",
-      "short_label": "LP1",
-      "initials": {
-        "offsets": [
-          "0x3000025E",
-          "0x30000260",
-          "0x30000262"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x30000284"
-        ],
-        "encoding": "int",
-        "length": 1
-      }
-    },
-    {
-      "label": "Loopster #2",
-      "short_label": "LP2",
-      "initials": {
-        "offsets": [
-          "0x30000266",
-          "0x30000268",
-          "0x3000026A"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x30000288"
-        ],
-        "encoding": "int",
-        "length": 1
       }
     }
   ]

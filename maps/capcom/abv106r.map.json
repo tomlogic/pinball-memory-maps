@@ -1,18 +1,22 @@
 {
   "_notes": [
-    "Airborne (1996, Capcom).",
-    "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions."
+    "Airborne Redemption 1.6 (1996, Capcom).",
+    "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions.",
+    "CPU address = 0x30000000 + even_index * 2.",
+    "Scores stored as score/10 (scale: 10). Verified against NVRAM data with real scores.",
+    "Includes Flyby King and Loopsters one-byte mode records.",
+    "Redemption build stores Flyby King and Loopsters at the later redemption table offsets."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 2,
+    "version": 1,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "capcom",
     "roms": [
-      "abv106"
+      "abv106r"
     ]
   },
   "high_scores": [
@@ -273,16 +277,16 @@
       "short_label": "FB",
       "initials": {
         "offsets": [
-          "0x30000256",
-          "0x30000258",
-          "0x3000025A"
+          "0x300002E8",
+          "0x300002EA",
+          "0x300002EC"
         ],
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "offsets": [
-          "0x30000280"
+          "0x30000312"
         ],
         "encoding": "int",
         "length": 1
@@ -293,16 +297,16 @@
       "short_label": "LP1",
       "initials": {
         "offsets": [
-          "0x3000025E",
-          "0x30000260",
-          "0x30000262"
+          "0x300002F0",
+          "0x300002F2",
+          "0x300002F4"
         ],
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "offsets": [
-          "0x30000284"
+          "0x30000316"
         ],
         "encoding": "int",
         "length": 1
@@ -313,16 +317,16 @@
       "short_label": "LP2",
       "initials": {
         "offsets": [
-          "0x30000266",
-          "0x30000268",
-          "0x3000026A"
+          "0x300002F8",
+          "0x300002FA",
+          "0x300002FC"
         ],
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "offsets": [
-          "0x30000288"
+          "0x3000031A"
         ],
         "encoding": "int",
         "length": 1

@@ -1,18 +1,21 @@
 {
   "_notes": [
-    "Airborne (1996, Capcom).",
-    "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions."
+    "Airborne 1.5 (1996, Capcom).",
+    "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions.",
+    "CPU address = 0x30000000 + even_index * 2.",
+    "Scores stored as score/10 (scale: 10). Verified against NVRAM data with real scores.",
+    "Includes Flyby King and Loopsters one-byte mode records."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 2,
+    "version": 1,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "capcom",
     "roms": [
-      "abv106"
+      "abv105"
     ]
   },
   "high_scores": [

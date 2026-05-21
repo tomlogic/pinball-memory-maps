@@ -1,18 +1,21 @@
 {
   "_notes": [
-    "Airborne (1996, Capcom).",
-    "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions."
+    "Breakshot 1.2 (1996, Capcom).",
+    "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions.",
+    "CPU address = 0x30000000 + even_index * 2.",
+    "Scores stored as score/10 (scale: 10). Verified against NVRAM data with real scores.",
+    "Includes Cutthroat Champions table."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 2,
+    "version": 1,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "capcom",
     "roms": [
-      "abv106"
+      "bsv102"
     ]
   },
   "high_scores": [
@@ -269,63 +272,103 @@
       }
     },
     {
-      "label": "Flyby King",
-      "short_label": "FB",
+      "label": "Cutthroat Champion #1",
+      "short_label": "CT1",
       "initials": {
         "offsets": [
+          "0x3000026A",
+          "0x3000026C",
+          "0x3000026E"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x3000024A",
+          "0x3000024C",
+          "0x3000024E",
+          "0x30000250"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Cutthroat Champion #2",
+      "short_label": "CT2",
+      "initials": {
+        "offsets": [
+          "0x30000272",
+          "0x30000274",
+          "0x30000276"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x30000252",
+          "0x30000254",
           "0x30000256",
-          "0x30000258",
-          "0x3000025A"
+          "0x30000258"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Cutthroat Champion #3",
+      "short_label": "CT3",
+      "initials": {
+        "offsets": [
+          "0x3000027A",
+          "0x3000027C",
+          "0x3000027E"
         ],
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "offsets": [
-          "0x30000280"
-        ],
-        "encoding": "int",
-        "length": 1
-      }
-    },
-    {
-      "label": "Loopster #1",
-      "short_label": "LP1",
-      "initials": {
-        "offsets": [
+          "0x3000025A",
+          "0x3000025C",
           "0x3000025E",
-          "0x30000260",
-          "0x30000262"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x30000284"
+          "0x30000260"
         ],
         "encoding": "int",
-        "length": 1
+        "endian": "big",
+        "length": 4,
+        "scale": 10
       }
     },
     {
-      "label": "Loopster #2",
-      "short_label": "LP2",
+      "label": "Cutthroat Champion #4",
+      "short_label": "CT4",
       "initials": {
         "offsets": [
-          "0x30000266",
-          "0x30000268",
-          "0x3000026A"
+          "0x30000282",
+          "0x30000284",
+          "0x30000286"
         ],
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "offsets": [
-          "0x30000288"
+          "0x30000262",
+          "0x30000264",
+          "0x30000266",
+          "0x30000268"
         ],
         "encoding": "int",
-        "length": 1
+        "endian": "big",
+        "length": 4,
+        "scale": 10
       }
     }
   ]
