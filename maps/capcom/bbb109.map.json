@@ -19,83 +19,6 @@
       "bbb109"
     ]
   },
-  "display_layout": [
-    {
-      "header": "GRAND CHAMPION",
-      "section": "high_scores",
-      "index": 0,
-      "prefix": "",
-      "score_width": 14
-    },
-    {
-      "header": "CHAMPION DRINKERS",
-      "section": "high_scores",
-      "indices": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "prefix": "{rank}) ",
-      "score_width": 14
-    },
-    {
-      "header": "BUYIN BARFLIES",
-      "section": "mode_champions",
-      "indices": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "prefix": "{rank}) ",
-      "score_width": 14,
-      "buyins_conditional": true
-    },
-    {
-      "header": "BIG BANG REGULARS",
-      "section": "custom_lists",
-      "list_label": "Big Bang Regulars",
-      "indices": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "prefix": "",
-      "show_score": false
-    },
-    {
-      "header": "UNDERGROUND ELITE",
-      "section": "custom_lists",
-      "list_label": "Underground Elite",
-      "indices": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "prefix": "",
-      "score_width": 3
-    },
-    {
-      "header": "WEAK KIDNEY CLUB",
-      "section": "custom_lists",
-      "list_label": "Weak Kidney Club",
-      "indices": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "prefix": "",
-      "score_width": 3
-    }
-  ],
   "game_state": {
     "scores": [
       {
@@ -471,294 +394,280 @@
       }
     }
   ],
-  "custom_lists": [
+  "big_bang_regulars": [
     {
-      "label": "Big Bang Regulars",
-      "short_label": "BBR",
-      "entries": [
-        {
-          "label": "Big Bang Regulars #1",
-          "initials": {
-            "offsets": [
-              "0x30000190",
-              "0x30000192",
-              "0x30000194"
-            ],
-            "encoding": "ch",
-            "length": 3
-          }
-        },
-        {
-          "label": "Big Bang Regulars #2",
-          "initials": {
-            "offsets": [
-              "0x30000198",
-              "0x3000019A",
-              "0x3000019C"
-            ],
-            "encoding": "ch",
-            "length": 3
-          }
-        },
-        {
-          "label": "Big Bang Regulars #3",
-          "initials": {
-            "offsets": [
-              "0x300001A0",
-              "0x300001A2",
-              "0x300001A4"
-            ],
-            "encoding": "ch",
-            "length": 3
-          }
-        },
-        {
-          "label": "Big Bang Regulars #4",
-          "initials": {
-            "offsets": [
-              "0x300001A8",
-              "0x300001AA",
-              "0x300001AC"
-            ],
-            "encoding": "ch",
-            "length": 3
-          }
-        },
-        {
-          "label": "Big Bang Regulars #5",
-          "initials": {
-            "offsets": [
-              "0x300001B0",
-              "0x300001B2",
-              "0x300001B4"
-            ],
-            "encoding": "ch",
-            "length": 3
-          }
-        }
-      ]
+      "label": "Big Bang Regulars #1",
+      "initials": {
+        "offsets": [
+          "0x30000190",
+          "0x30000192",
+          "0x30000194"
+        ],
+        "encoding": "ch",
+        "length": 3
+      }
     },
     {
-      "label": "Underground Elite",
-      "short_label": "UE",
-      "entries": [
-        {
-          "label": "Underground Elite #1",
-          "initials": {
-            "offsets": [
-              "0x300002DE",
-              "0x300002E0",
-              "0x300002E2"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300002BC"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        },
-        {
-          "label": "Underground Elite #2",
-          "initials": {
-            "offsets": [
-              "0x300002E6",
-              "0x300002E8",
-              "0x300002EA"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300002C4"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        },
-        {
-          "label": "Underground Elite #3",
-          "initials": {
-            "offsets": [
-              "0x300002EE",
-              "0x300002F0",
-              "0x300002F2"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300002CC"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        },
-        {
-          "label": "Underground Elite #4",
-          "initials": {
-            "offsets": [
-              "0x300002F6",
-              "0x300002F8",
-              "0x300002FA"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300002D4"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        },
-        {
-          "label": "Underground Elite #5",
-          "initials": {
-            "offsets": [
-              "0x300002FE",
-              "0x30000300",
-              "0x30000302"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300002DC"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        }
-      ]
+      "label": "Big Bang Regulars #2",
+      "initials": {
+        "offsets": [
+          "0x30000198",
+          "0x3000019A",
+          "0x3000019C"
+        ],
+        "encoding": "ch",
+        "length": 3
+      }
     },
     {
-      "label": "Weak Kidney Club",
-      "short_label": "WKC",
-      "entries": [
-        {
-          "label": "Weak Kidney Club #1",
-          "initials": {
-            "offsets": [
-              "0x300018C2",
-              "0x300018C4",
-              "0x300018C6"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300018A0"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        },
-        {
-          "label": "Weak Kidney Club #2",
-          "initials": {
-            "offsets": [
-              "0x300018CA",
-              "0x300018CC",
-              "0x300018CE"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300018A8"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        },
-        {
-          "label": "Weak Kidney Club #3",
-          "initials": {
-            "offsets": [
-              "0x300018D2",
-              "0x300018D4",
-              "0x300018D6"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300018B0"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        },
-        {
-          "label": "Weak Kidney Club #4",
-          "initials": {
-            "offsets": [
-              "0x300018DA",
-              "0x300018DC",
-              "0x300018DE"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300018B8"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        },
-        {
-          "label": "Weak Kidney Club #5",
-          "initials": {
-            "offsets": [
-              "0x300018E2",
-              "0x300018E4",
-              "0x300018E6"
-            ],
-            "encoding": "ch",
-            "length": 3
-          },
-          "score": {
-            "offsets": [
-              "0x300018C0"
-            ],
-            "encoding": "int",
-            "endian": "little",
-            "length": 2,
-            "scale": 1
-          }
-        }
-      ]
+      "label": "Big Bang Regulars #3",
+      "initials": {
+        "offsets": [
+          "0x300001A0",
+          "0x300001A2",
+          "0x300001A4"
+        ],
+        "encoding": "ch",
+        "length": 3
+      }
+    },
+    {
+      "label": "Big Bang Regulars #4",
+      "initials": {
+        "offsets": [
+          "0x300001A8",
+          "0x300001AA",
+          "0x300001AC"
+        ],
+        "encoding": "ch",
+        "length": 3
+      }
+    },
+    {
+      "label": "Big Bang Regulars #5",
+      "initials": {
+        "offsets": [
+          "0x300001B0",
+          "0x300001B2",
+          "0x300001B4"
+        ],
+        "encoding": "ch",
+        "length": 3
+      }
+    }
+  ],
+  "underground_elite": [
+    {
+      "label": "Underground Elite #1",
+      "initials": {
+        "offsets": [
+          "0x300002DE",
+          "0x300002E0",
+          "0x300002E2"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300002BC"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
+    },
+    {
+      "label": "Underground Elite #2",
+      "initials": {
+        "offsets": [
+          "0x300002E6",
+          "0x300002E8",
+          "0x300002EA"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300002C4"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
+    },
+    {
+      "label": "Underground Elite #3",
+      "initials": {
+        "offsets": [
+          "0x300002EE",
+          "0x300002F0",
+          "0x300002F2"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300002CC"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
+    },
+    {
+      "label": "Underground Elite #4",
+      "initials": {
+        "offsets": [
+          "0x300002F6",
+          "0x300002F8",
+          "0x300002FA"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300002D4"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
+    },
+    {
+      "label": "Underground Elite #5",
+      "initials": {
+        "offsets": [
+          "0x300002FE",
+          "0x30000300",
+          "0x30000302"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300002DC"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
+    }
+  ],
+  "weak_kidney_club": [
+    {
+      "label": "Weak Kidney Club #1",
+      "initials": {
+        "offsets": [
+          "0x300018C2",
+          "0x300018C4",
+          "0x300018C6"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300018A0"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
+    },
+    {
+      "label": "Weak Kidney Club #2",
+      "initials": {
+        "offsets": [
+          "0x300018CA",
+          "0x300018CC",
+          "0x300018CE"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300018A8"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
+    },
+    {
+      "label": "Weak Kidney Club #3",
+      "initials": {
+        "offsets": [
+          "0x300018D2",
+          "0x300018D4",
+          "0x300018D6"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300018B0"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
+    },
+    {
+      "label": "Weak Kidney Club #4",
+      "initials": {
+        "offsets": [
+          "0x300018DA",
+          "0x300018DC",
+          "0x300018DE"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300018B8"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
+    },
+    {
+      "label": "Weak Kidney Club #5",
+      "initials": {
+        "offsets": [
+          "0x300018E2",
+          "0x300018E4",
+          "0x300018E6"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300018C0"
+        ],
+        "encoding": "int",
+        "endian": "little",
+        "length": 2,
+        "scale": 1
+      }
     }
   ]
 }
