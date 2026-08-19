@@ -1,0 +1,70 @@
+name: Update last-updated.json
+
+# Records when the map data last changed, so downstream projects that cache a
+# copy of this repository can check one small file instead of re-fetching
+# everything.  See the "Data Freshness" section of README.md.
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "**.json"
+      # Excluded so this workflow's own commit cannot retrigger it.  Pushes
+      # made with GITHUB_TOKEN do not start workflow runs either, so this is
+      # belt and braces.
+      - "!last-updated.json"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Serialize runs so two pushes in quick succession cannot race each other.
+concurrency:
+  group: last-updated
+  cancel-in-progress: false
+
+jobs:
+  update:
+    # A fork that committed this file would diverge from upstream and lose
+    # fast-forward syncing.  Manual dispatch still works, so a fork can test
+    # the workflow.
+    if: ${{ !github.event.repository.fork || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history: the timestamp comes from walking first-parent history.
+          fetch-depth: 0
+
+      - name: Regenerate and commit last-updated.json
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          set -eu
+          for attempt in 1 2 3 ; do
+              # Start from the current tip each time; a direct push to main can
+              # land between our read and our push.
+              git fetch --quiet origin main
+              git reset --quiet --hard FETCH_HEAD
+
+              tools/update-last-updated.sh
+              git add last-updated.json
+              if git diff --cached --quiet ; then
+                  echo "last-updated.json is already current."
+                  exit 0
+              fi
+
+              git commit --quiet -m "chore: update last-updated.json"
+              if git push --quiet origin HEAD:main ; then
+                  echo "Committed $(git rev-parse --short HEAD)."
+                  exit 0
+              fi
+              echo "main moved during attempt $attempt; retrying."
+          done
+          echo "::error::Could not push last-updated.json after 3 attempts."
+          exit 1
