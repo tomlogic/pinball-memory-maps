@@ -8,7 +8,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-system6-7.5K",
@@ -62,6 +62,13 @@
         false,
         false
       ]
+    },
+    "ignore_scores": {
+      "_notes": "Score memory might be high score if HSTD lamp is lit.",
+      "label": "Ignore Scores",
+      "start": "0x17",
+      "mask": "0x80",
+      "encoding": "bool"
     },
     "scores": [
       {
