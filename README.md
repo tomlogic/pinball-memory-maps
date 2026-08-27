@@ -454,6 +454,12 @@ The following should use an encoding of `bool`:
 - **free_play**: Whether the game is configured for Free Play.
 - **game_over**: Whether the game is in progress (false) or over (true).
 - **tilted**: Current player has tilted their ball.
+- **ignore_scores**: Indicates that values decoded from `game_state.scores`
+    are not considered valid at this time.  For example, some early solid
+    state machines store scores in memory mapped to the displays and will
+    overwrite a score in order to display the high score to date (HSTD).
+    Maps like Williams System 6 signal an "ignore scores" state by using
+    memory mapped to the lamp matrix to identify the HSTD lamp.
 
 ### DIP Switches
 
