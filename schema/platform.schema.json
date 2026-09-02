@@ -15,7 +15,8 @@
       "enum": [
         "big",
         "little"
-      ]
+      ],
+      "default": "big"
     },
     "memory_layout": {
       "type": "array",
@@ -83,7 +84,8 @@
             "low",
             "high",
             "both"
-          ]
+          ],
+          "default": "both"
         }
       },
       "required": [
