@@ -12,6 +12,9 @@ Usage:
 
 File format updates
 -------------------
+* v0.9:
+    - new _metadata.validation
+
 * v0.8:
     - checksum8/checksum16 objects can have a checksum property
     - new 'bool' encoding
@@ -63,6 +66,9 @@ def map_convert(pairs):
         # set minimum file format based on appearance of certain keys
         if k == '_fileformat':
             minimum_file_format(v)
+        elif k == 'validation':
+            # _metadata.validation added in v0.9
+            minimum_file_format(0.9)
         elif k == 'checksum':
             # checksum attribute for checksum8/checksum16 objects added in v0.8
             minimum_file_format(0.8)

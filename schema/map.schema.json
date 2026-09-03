@@ -12,7 +12,8 @@
       "description": "The file's format version. See Version History in README.md.",
       "enum": [
         0.7,
-        0.8
+        0.8,
+        0.9
       ]
     },
     "_metadata": {
@@ -87,15 +88,19 @@
       }
     },
     "checksum8": {
+      "description": "deprecated by _metadata.validation.checksum",
+      "deprecated": true,
       "type": "array",
       "items": {
-        "$ref": "#/$defs/checksum"
+        "$ref": "#/$defs/old_checksum"
       }
     },
     "checksum16": {
+      "description": "deprecated by _metadata.validation.checksum",
+      "deprecated": true,
       "type": "array",
       "items": {
-        "$ref": "#/$defs/checksum"
+        "$ref": "#/$defs/old_checksum"
       }
     },
     "player_state": {
@@ -178,7 +183,9 @@
           ]
         },
         "license": {
-          "type": "string"
+          "enum": [
+            "Open Data Commons Open Database License (ODbL) v1.0"
+          ]
         },
         "platform": {
           "description": "Name of a JSON file in the top-level platforms/ directory, without the .json extension.",
@@ -187,6 +194,24 @@
         "char_map": {
           "description": "Characters to use for the ch encoding instead of a straight ASCII table.",
           "type": "string"
+        },
+        "validation": {
+          "description": "Lists of memory regions validated in some way (checksum or mirroring) by the ROM.",
+          "type": "object",
+          "properties": {
+            "checksum": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/new_checksum"
+              }
+            },
+            "mirror": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/mirror"
+              }
+            }
+          }
         },
         "values": {
           "description": "Value lists that descriptors can reference by key instead of repeating the full list.",
@@ -199,6 +224,7 @@
       "required": [
         "version",
         "roms",
+        "license",
         "platform"
       ],
       "additionalProperties": false
@@ -212,6 +238,12 @@
           "boolean"
         ]
       }
+    },
+    "length": {
+      "description": "field used in descriptors and elsewhere",
+      "$ref": "#/$defs/intOrHex",
+      "minimum": 1,
+      "default": 1
     },
     "descriptor": {
       "description": "A region of memory and how to interpret it. See Descriptors in README.md.",
@@ -233,8 +265,7 @@
           "$ref": "#/$defs/intOrHex"
         },
         "length": {
-          "type": "integer",
-          "minimum": 1
+          "$ref": "#/$defs/length"
         },
         "offsets": {
           "type": "array",
@@ -296,15 +327,18 @@
           "type": "integer"
         },
         "scale": {
-          "type": "number"
+          "type": "number",
+          "default": 1
         },
         "offset": {
-          "type": "integer"
+          "type": "integer",
+          "default": 0
         },
         "mask": {
           "$ref": "#/$defs/intOrHex"
         },
         "nibble": {
+          "description": "portion of each byte to use (low/high/both 4-bit halves); defaults to value from platform file",
           "enum": [
             "low",
             "high",
@@ -312,6 +346,7 @@
           ]
         },
         "endian": {
+          "description": "big or little-endian byte ordering; defaults to value from platform file",
           "enum": [
             "big",
             "little"
@@ -319,9 +354,11 @@
         },
         "null": {
           "enum": [
+            "ignore",
             "truncate",
             "terminate"
-          ]
+          ],
+          "default": "ignore"
         },
         "units": {
           "enum": [
@@ -333,7 +370,8 @@
           "type": "string"
         },
         "invert": {
-          "type": "boolean"
+          "type": "boolean",
+          "default": false
         }
       },
       "required": [
@@ -413,7 +451,8 @@
         }
       }
     },
-    "checksum": {
+    "old_checksum": {
+      "description": "Used for top-level, deprecated checksum8 and checksum16",
       "type": "object",
       "properties": {
         "_notes": {
@@ -429,8 +468,7 @@
           "$ref": "#/$defs/intOrHex"
         },
         "length": {
-          "type": "integer",
-          "minimum": 1
+          "$ref": "#/$defs/length"
         },
         "groupings": {
           "type": "integer",
@@ -443,6 +481,81 @@
       },
       "required": [
         "start"
+      ],
+      "additionalProperties": false
+    },
+    "new_checksum": {
+      "description": "from _metadata.validation.checksum[]",
+      "type": "object",
+      "properties": {
+        "_notes": {
+          "$ref": "#/$defs/notes"
+        },
+        "label": {
+          "type": "string"
+        },
+        "start": {
+          "$ref": "#/$defs/intOrHex"
+        },
+        "end": {
+          "$ref": "#/$defs/intOrHex"
+        },
+        "length": {
+          "$ref": "#/$defs/length"
+        },
+        "bits": {
+          "description": "Size of final checksum in bits.",
+          "enum": [
+            4,
+            8,
+            16
+          ],
+          "default": 8
+        },
+        "groupings": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "checksum": {
+          "description": "Location of the checksum when it is not adjacent to the checksummed range.",
+          "$ref": "#/$defs/intOrHex"
+        },
+        "complement": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "start",
+        "complement"
+      ],
+      "additionalProperties": false
+    },
+    "mirror": {
+      "description": "from _metadata.validation.mirror[]",
+      "type": "object",
+      "properties": {
+        "_notes": {
+          "$ref": "#/$defs/notes"
+        },
+        "label": {
+          "type": "string"
+        },
+        "length": {
+          "description": "Length (in addresses) of mirrored memory region.",
+          "$ref": "#/$defs/length"
+        },
+        "addresses": {
+          "description": "Starting address for each memory region mirrored.",
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/intOrHex"
+          }
+        }
+      },
+      "required": [
+        "length",
+        "addresses"
       ],
       "additionalProperties": false
     }

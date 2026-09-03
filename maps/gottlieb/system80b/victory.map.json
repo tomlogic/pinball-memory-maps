@@ -8,9 +8,9 @@
     "Note that offsets 248 through 252 are 4-bit checksums of each of the high scores.",
     "Modified version of 80b-8digit-B-12KB.map.json with game-specific DIP switch entries."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 3,
+    "version": 4,
     "copyright": [
       "Copyright (C) 2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -27,6 +27,61 @@
       "victr12",
       "victr13"
     ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "High Score #1",
+          "bits": 4,
+          "start": "0x18B7",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18F8"
+        },
+        {
+          "label": "High Score #2",
+          "bits": 4,
+          "start": "0x18C4",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18F9"
+        },
+        {
+          "label": "High Score #3",
+          "bits": 4,
+          "start": "0x18D1",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18FA"
+        },
+        {
+          "label": "High Score #4",
+          "bits": 4,
+          "start": "0x18DE",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18FB"
+        },
+        {
+          "label": "High Score #5",
+          "bits": 4,
+          "start": "0x18EB",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18FC"
+        }
+      ],
+      "mirror": [
+        {
+          "label": "Adjustments",
+          "length": 61,
+          "addresses": [
+            "0x1800",
+            "0x183D",
+            "0x187A"
+          ]
+        }
+      ]
+    },
     "values": {
       "off_on": [
         "off",
