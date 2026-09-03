@@ -1,0 +1,207 @@
+{
+  "_notes": [
+    "Locally added -- upstream pinmame-nvram-maps has no map for Avatar.",
+    "Every address here was found by watching an automated 4-player game rather than by reading",
+    "values out of a capture: the ALP4K was driven through its own streamer, so nothing was typed in",
+    "off the display and nothing had to be trusted.",
+    "current_player and current_ball are adjacent bytes in CPU RAM at 0x000384A8 and 0x000384A9,",
+    "player low and ball high -- the shape every Stern SAM game checked uses. The player byte",
+    "completed 1->2->3 three times, once per ball; the ball byte once.",
+    "Scores are 4 bytes on 8-byte centres from 0x021109E4, the only group of four evenly spaced",
+    "values that rose monotonically through the game. Same base as 24, X-Men and twd_156c, and the",
+    "same 8-byte spacing as 24 -- but that is coincidence, not inheritance: the base and stride are",
+    "per-ROM across every SAM game measured.",
+    "player_count at 0x02110900, the one address shared by every SAM game checked.",
+    "High score records are 0x20 apart from 0x02102A38 with NUL-terminated initials at +0x00, a",
+    "4-byte score at +0x18 and a 16-bit checksum in the last two bytes of the first 30. Six records",
+    "pass that check and the seventh does not, which is what bounds the block.",
+    "The first five hold Stern's factory ladder (75M/55M/40M/30M/25M with 'G S'/'L R'/'J R'/'D T'/",
+    "'P P'). The sixth is the Final Battle Champion, read off the machine's own DMD: after game over",
+    "it cycles every champion entry, which is where a record's name comes from -- no amount of NVRAM",
+    "analysis will give it.",
+    "Only avr_200 is claimed; SAM addresses move between revisions.",
+    "Confirmed after the fact: exiting the table wrote the .nv, and the map decodes that 4-player",
+    "game as 4 players scoring 1,767,130 / 1,360,920 / 976,890 / 1,006,410, with all six checksum",
+    "regions valid. Every address here was found by behaviour and then checked against the result."
+  ],
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 3,
+    "license": "Open Data Commons Open Database License (ODbL) v1.0",
+    "copyright": [
+      "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
+    ],
+    "platform": "stern-sam",
+    "roms": [
+      "avr_200"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x000384A8"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x000384A9"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E4"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109EC"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F4"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109FC"
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "short_label": "GC",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102A38"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102A50"
+      }
+    },
+    {
+      "label": "High Score #1",
+      "short_label": "HS1",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102A58"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102A70"
+      }
+    },
+    {
+      "label": "High Score #2",
+      "short_label": "HS2",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102A78"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102A90"
+      }
+    },
+    {
+      "label": "High Score #3",
+      "short_label": "HS3",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102A98"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102AB0"
+      }
+    },
+    {
+      "label": "High Score #4",
+      "short_label": "HS4",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102AB8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102AD0"
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Final Battle Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102AD8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102AF0"
+      }
+    }
+  ],
+  "checksum16": [
+    {
+      "start": "0x02102A38",
+      "length": 30,
+      "label": "Grand Champion"
+    },
+    {
+      "start": "0x02102A58",
+      "length": 30,
+      "label": "High Score #1"
+    },
+    {
+      "start": "0x02102A78",
+      "length": 30,
+      "label": "High Score #2"
+    },
+    {
+      "start": "0x02102A98",
+      "length": 30,
+      "label": "High Score #3"
+    },
+    {
+      "start": "0x02102AB8",
+      "length": 30,
+      "label": "High Score #4"
+    },
+    {
+      "start": "0x02102AD8",
+      "length": 30,
+      "label": "Final Battle Champion"
+    }
+  ]
+}

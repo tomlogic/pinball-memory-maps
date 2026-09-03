@@ -1,0 +1,226 @@
+{
+  "_notes": [
+    "Locally added -- upstream pinmame-nvram-maps has no X-Men map as of index rev 1406.",
+    "Records are 0x20 apart, NUL-terminated initials at +0x00, a 4-byte little-endian score at",
+    "+0x18, and a 16-bit checksum in the last two bytes of the first 30 -- the same record shape",
+    "the other Stern SAM maps use. The checksum verifies on all six records and fails on the",
+    "seventh, which is what bounds the block.",
+    "Confirmed against two cabinets: one still on Stern's factory ladder (75M/55M/40M/30M/25M",
+    "with 'G S'/'L R'/'J R'/'D T'/'P P'), the other with real play on it.",
+    "The sixth record is the Combo Champion, read off the machine's own champion display.",
+    "game on 24 (same platform), where a 4-byte stride reads player 2 as zero and player 3's",
+    "score as player 2's.",
+    "over from the verified 24 layout: no 3- or 4-player game has been played on either machine, and",
+    "In-progress scores are 4 bytes on 4-byte centres, verified by a 2-player game reading",
+    "3,119,500 and 4,467,600 at 0x021109E4 and 0x021109E8. Players 3 and 4 have not been observed:",
+    "no 3- or 4-player game has been played, and those bytes still sit inside a 0xFF fill the",
+    "firmware has never written.",
+    "player_count at 0x02110900 is verified on this ROM: it reads 1 after a 1-player game and 2 after",
+    "a 2-player one, and 24 uses the same address, so that field at least is shared across SAM games.",
+    "current_ball is at 0x00030AE5, in CPU RAM rather than NVRAM, identified by how it moves rather",
+    "than what it reads: across a whole game it stepped 1->2->3 and nothing else, with the score",
+    "climbing between the steps. Five exit snapshots had failed to find it, and the one other address",
+    "that survived those (0x0002FB20) turned out to cycle 0,1,2,5,4,3,2,1,4 -- a display value.",
+    "It is not the address 24 uses, which reads 16 here, nor does it mean anything on LUCI, which",
+    "reads 0. Like the score base and stride, the ball counter is per-ROM on SAM.",
+    "volume at 0x02110250 read 60 across four earlier captures and 40 after the operator set it to 40",
+    "on a 0-63 scale -- the only byte in the 128K that changed that way, so no second capture was",
+    "needed to confirm it.",
+    "current_player is the byte immediately below the ball, at 0x00030AE4. In a 4-player game it",
+    "completed 1->2->3 three times -- once per ball, as player-up rotating through four players does --",
+    "against one completion for the ball, and the two interlock: the ball stepped at the same scores",
+    "the player cycles finished at.",
+    "The four scores of that game read 721,760 / 1,099,300 / 853,880 / 1,302,140 exactly where this map",
+    "declares them, so the 4-byte stride is measured here rather than carried over from another ROM.",
+    "Only xmn_151h is claimed: the other X-Men revisions were not checked and SAM high score",
+    "addresses move between ROM revisions."
+  ],
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 7,
+    "license": "Open Data Commons Open Database License (ODbL) v1.0",
+    "copyright": [
+      "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
+    ],
+    "platform": "stern-sam",
+    "roms": [
+      "xmn_151h"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x00030AE4"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x00030AE5"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E4"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E8"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109EC"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F0"
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "encoding": "int",
+      "start": "0x02110250",
+      "min": 0,
+      "max": 63
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "short_label": "GC",
+      "initials": {
+        "start": "0x02103000",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103018",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #1",
+      "short_label": "HS1",
+      "initials": {
+        "start": "0x02103020",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103038",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #2",
+      "short_label": "HS2",
+      "initials": {
+        "start": "0x02103040",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103058",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #3",
+      "short_label": "HS3",
+      "initials": {
+        "start": "0x02103060",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103078",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #4",
+      "short_label": "HS4",
+      "initials": {
+        "start": "0x02103080",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103098",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Combo Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x021030A0"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021030B8",
+        "suffix": " Combos"
+      }
+    }
+  ],
+  "checksum16": [
+    {
+      "start": "0x02103000",
+      "length": 30,
+      "label": "Grand Champion"
+    },
+    {
+      "start": "0x02103020",
+      "length": 30,
+      "label": "High Score #1"
+    },
+    {
+      "start": "0x02103040",
+      "length": 30,
+      "label": "High Score #2"
+    },
+    {
+      "start": "0x02103060",
+      "length": 30,
+      "label": "High Score #3"
+    },
+    {
+      "start": "0x02103080",
+      "length": 30,
+      "label": "High Score #4"
+    },
+    {
+      "start": "0x021030A0",
+      "length": 30,
+      "label": "Combo Champion"
+    }
+  ]
+}

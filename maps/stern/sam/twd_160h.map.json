@@ -1,11 +1,54 @@
 {
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 4,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "twd_160h"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x00036134"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x00036135"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A9C"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110AA4"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110AAC"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110AB4"
+      }
     ]
   },
   "high_scores": [
@@ -277,5 +320,16 @@
         "length": 4
       }
     }
+  ],
+  "_notes": [
+    "game_state added locally from a 4-player game on an ALP4K cabinet.",
+    "Scores are 4 bytes on 8-byte centres from 0x02110A9C: that game ended 2,280,980 / 805,550 /",
+    "1,226,760 / 991,480 and those landed there. Not the base twd_156c uses, which is 0x021109E4 on a",
+    "4-byte stride -- the same title at another revision, and another reminder that the score layout is",
+    "per-ROM on SAM.",
+    "current_player and current_ball are adjacent bytes in CPU RAM at 0x00036134 and 0x00036135, player",
+    "low and ball high, the shape every SAM game checked so far uses. The player byte completed 1->2->3",
+    "three times, once per ball, against one completion for the ball.",
+    "player_count at 0x02110900, the one address shared across all of them."
   ]
 }

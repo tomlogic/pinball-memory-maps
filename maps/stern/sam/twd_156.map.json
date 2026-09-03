@@ -5,18 +5,73 @@
     "Scores are 4-byte little-endian integers.",
     "Score entry: 4-byte score at start, initials (+0x08 bytes) as null-terminated ch.",
     "Stride between entries is 0x20 bytes.",
-    "Verified against NVRAM data with real scores."
+    "Verified against NVRAM data with real scores.",
+    "game_state was measured on twd_156c, a colour-hack revision, and twd_156c added to roms after",
+    "this map's existing sections were validated against its NVRAM byte for byte: every champion and",
+    "high score reads sensible initials and round default thresholds, and Last Man Standing Champion",
+    "reads 75,000,000, matching what the machine displayed at game over. The CPU RAM addresses below",
+    "were only measured on twd_156c; if plain twd_156 ever disagrees, game_state is the part to split.",
+    "Scores are 4 bytes on 4-byte centres from 0x021109E4, verified against the exit dump as",
+    "557,270 / 909,500 / 745,750 / 178,880. Stride 8 runs into the 0xFFFFFFFF fill.",
+    "current_player/current_ball came from the joint pair test, which reported two candidates here.",
+    "The exit dump separated them: 0x000329B4 reads player 4 / ball 3, the true end state, while",
+    "0x00031C2C reads 243 / 2 and is not a counter pair at all. The pair test narrows sharply but is",
+    "not always unique, so the exit dump stays part of the procedure."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 2,
+    "version": 3,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
-      "twd_156"
+      "twd_156",
+      "twd_156c"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x000329B4"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x000329B5"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E4"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E8"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109EC"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F0"
+      }
     ]
   },
   "high_scores": [

@@ -1,10 +1,26 @@
 {
   "_notes": [
-    "Compiled by Tom Collins, based on st_162h by HorsePin"
+    "Compiled by Tom Collins, based on st_162h by HorsePin",
+    "player_count added at 0x02110900, the one address shared across every Stern SAM game checked --",
+    "24, X-Men, LUCI and both Star Trek revisions, over ten captures at one, two and four players.",
+    "The declared score slots were confirmed on hardware rather than assumed: a 4-player game ending",
+    "1,236,620 / 2,197,850 / 1,137,910 / 1,714,440 read back exactly at 0x02110A0C on a 4-byte stride.",
+    "current_player and current_ball are still unmapped. Neither is retained in NVRAM after a game,",
+    "and a sweep of 0x0-0x3FFFF did not produce the adjacent pair that identified them on X-Men and",
+    "LUCI, so they are somewhere else in CPU RAM.",
+    "current_player/current_ball came from the joint pair test -- the player wrapping to 1 in the same",
+    "sample the ball steps up -- which returned exactly one hit across a full four-player game.",
+    "Unlike trn_174h and twd_156c, this ROM resets both counters to 1 at game end, so its exit dump",
+    "reads 1/1 rather than the 4/3 that confirmed those two. The single in-play hit is the evidence",
+    "here; the dump neither confirms nor contradicts it.",
+    "Scores verified against the same dump: 2,032,370 / 1,248,620 / 1,330,340 / 1,342,740 at 4-byte",
+    "centres from 0x02110A0C, where stride 8 runs into the 0xFFFFFFFF fill. The sweep independently",
+    "reproduced this map's existing score address, and rejected a CPU RAM candidate at 0x00038D9C",
+    "whose four values (~16.7M, near-identical) are the usual scaled-set false positive."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 5,
     "copyright": [
       "Copyright (C)2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -17,6 +33,21 @@
     ]
   },
   "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x00034124"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x00034125"
+    },
     "scores": [
       {
         "label": "Player 1",

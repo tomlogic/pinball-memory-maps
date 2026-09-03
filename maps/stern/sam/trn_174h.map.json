@@ -1,11 +1,54 @@
 {
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 5,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "trn_174h"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x0003817C"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x0003817D"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E4"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E8"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109EC"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F0"
+      }
     ]
   },
   "high_scores": [
@@ -79,5 +122,15 @@
         "length": 4
       }
     }
+  ],
+  "_notes": [
+    "Scores: 4 bytes on 4-byte centres from 0x021109E4. Stride 8 yields 0 and 0xFFFFFFFF.",
+    "current_player and current_ball were resolved by the joint pair test, not by reading bytes.",
+    "Independent 1->2->3 detection could not do it here: 0x00037315 topped the sweep at 680 hits",
+    "against a next-best of 130 and is not a counter at all -- 0x00037314 holds a rising 32-bit",
+    "little-endian value and 0x37315 is its second byte, reading 1, 2, 3 as it crosses 256, 512 and",
+    "768. Searching a static exit dump for an adjacent (player=4, ball=3) pair gave 40 candidates.",
+    "Requiring the two bytes to move together -- the player wrapping to 1 in the same sample the ball",
+    "steps up -- returned exactly one hit for the whole game, and it is one of those 40."
   ]
 }

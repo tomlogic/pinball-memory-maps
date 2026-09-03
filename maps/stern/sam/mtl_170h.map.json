@@ -1,0 +1,377 @@
+{
+  "_notes": [
+    "Locally added -- upstream pinmame-nvram-maps has no map for this revision.",
+    "Built from a 4-player game driven through the cabinet's own streamer.",
+    "current_player and current_ball are adjacent in CPU RAM at 0x00035A4C and 0x00035A4D, player low",
+    "and ball high. Scores are 4 bytes on 4-byte centres from 0x021109E4.",
+    "player_count at 0x02110900, the one address every SAM game shares.",
+    "Nothing here is shared with mtl_180h, the next revision up, and that is the point worth carrying:",
+    "its scores are 8 bytes apart from 0x02110A24 where these are 4 apart from 0x021109E4, and its",
+    "records are 36 bytes with the checksum at +32 where these are 32 bytes with it at +28. Same",
+    "title, one revision apart, and every layout detail differs.",
+    "Fifteen records from 0x021036D8 on a 32-byte stride, bounded by where the checksum stops",
+    "validating. The first five are the high score ladder. The remaining ten are the per-song mode",
+    "nine of ten positions if Blackened is moved from second place to last. That is suggestive of a",
+    "champions, all ten named. Their factory defaults collide -- four records hold 25,000,000 and two",
+    "hold 15,000,000 -- so the DMD alone could only pin down the four with unique values.",
+    "What resolves the rest is a second table at 0x02102510 on a 0x18 stride holding the same ten",
+    "values in the same order: the operator-settable champion thresholds. Setting five of them to",
+    "distinct figures (Battery 22M, Enter Sandman 24M, Fade To Black 27M, For Whom 26M, Blackened 16M)",
+    "named each slot in that table, and the five positions left alone still match the champion records",
+    "value for value, which is what shows the two tables share an order rather than assuming it.",
+    "That also settles the mtl_180h comparison: Blackened really is last here where it is second there,",
+    "the shift that was visible in the defaults but not provable from them.",
+    "Only mtl_170h is claimed."
+  ],
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 3,
+    "license": "Open Data Commons Open Database License (ODbL) v1.0",
+    "copyright": [
+      "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
+    ],
+    "platform": "stern-sam",
+    "roms": [
+      "mtl_170h"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x00035A4C"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x00035A4D"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E4"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E8"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109EC"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F0"
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "short_label": "GC",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x021036D8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021036F0"
+      }
+    },
+    {
+      "label": "High Score #1",
+      "short_label": "HS1",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x021036F8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103710"
+      }
+    },
+    {
+      "label": "High Score #2",
+      "short_label": "HS2",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103718"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103730"
+      }
+    },
+    {
+      "label": "High Score #3",
+      "short_label": "HS3",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103738"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103750"
+      }
+    },
+    {
+      "label": "High Score #4",
+      "short_label": "HS4",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103758"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103770"
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Combo Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103778"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103790"
+      }
+    },
+    {
+      "label": "Battery Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103798"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021037B0"
+      }
+    },
+    {
+      "label": "Enter Sandman Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x021037B8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021037D0"
+      }
+    },
+    {
+      "label": "Fade To Black Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x021037D8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021037F0"
+      }
+    },
+    {
+      "label": "For Whom The Bell Tolls Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x021037F8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103810"
+      }
+    },
+    {
+      "label": "Fuel Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103818"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103830"
+      }
+    },
+    {
+      "label": "Lady Justice Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103838"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103850"
+      }
+    },
+    {
+      "label": "Seek & Destroy Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103858"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103870"
+      }
+    },
+    {
+      "label": "The End Of The Line Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103878"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02103890"
+      }
+    },
+    {
+      "label": "Blackened Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02103898"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021038B0"
+      }
+    }
+  ],
+  "checksum16": [
+    {
+      "start": "0x021036D8",
+      "length": 30,
+      "label": "Grand Champion"
+    },
+    {
+      "start": "0x021036F8",
+      "length": 30,
+      "label": "High Score #1"
+    },
+    {
+      "start": "0x02103718",
+      "length": 30,
+      "label": "High Score #2"
+    },
+    {
+      "start": "0x02103738",
+      "length": 30,
+      "label": "High Score #3"
+    },
+    {
+      "start": "0x02103758",
+      "length": 30,
+      "label": "High Score #4"
+    },
+    {
+      "start": "0x02103778",
+      "length": 30,
+      "label": "Combo Champion"
+    },
+    {
+      "start": "0x02103798",
+      "length": 30,
+      "label": "Battery Champion"
+    },
+    {
+      "start": "0x021037B8",
+      "length": 30,
+      "label": "Enter Sandman Champion"
+    },
+    {
+      "start": "0x021037D8",
+      "length": 30,
+      "label": "Fade To Black Champion"
+    },
+    {
+      "start": "0x021037F8",
+      "length": 30,
+      "label": "For Whom The Bell Tolls Champion"
+    },
+    {
+      "start": "0x02103818",
+      "length": 30,
+      "label": "Fuel Champion"
+    },
+    {
+      "start": "0x02103838",
+      "length": 30,
+      "label": "Lady Justice Champion"
+    },
+    {
+      "start": "0x02103858",
+      "length": 30,
+      "label": "Seek & Destroy Champion"
+    },
+    {
+      "start": "0x02103878",
+      "length": 30,
+      "label": "The End Of The Line Champion"
+    },
+    {
+      "start": "0x02103898",
+      "length": 30,
+      "label": "Blackened Champion"
+    }
+  ]
+}

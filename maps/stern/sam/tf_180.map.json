@@ -1,10 +1,18 @@
 {
   "_notes": [
-    "Compiled by HorsePin"
+    "Compiled by HorsePin",
+    "current_player/current_ball from the joint pair test -- one hit across a full four-player game --",
+    "and independently confirmed by the exit dump, which reads player 4 / ball 3.",
+    "player_count at 0x02110900, the one address every Stern SAM game shares.",
+    "The map's existing score addresses were reproduced by the sweep and verified against the dump:",
+    "3,360,170 / 1,651,680 / 2,391,870 / 2,237,460, matching the machine's own game-over display.",
+    "The rejected CPU RAM candidate at 0x00031544 is the classic scaled-set false positive this",
+    "platform produces -- 732,790 / 184,370 / 18,320 / 11,450, each roughly a quarter of the one",
+    "before. Scores live in NVRAM on every SAM game measured, which is what rejects it."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 2,
+    "version": 3,
     "copyright": [
       "Copyright (C) 2022 https://github.com/horseyhorsey",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -16,6 +24,21 @@
     ]
   },
   "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x00032438"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x00032439"
+    },
     "scores": [
       {
         "label": "Player 1",
