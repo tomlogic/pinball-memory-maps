@@ -1,0 +1,202 @@
+{
+  "_notes": [
+    "Locally added -- upstream pinmame-nvram-maps has no map for Big Buck Hunter Pro.",
+    "Built from a 4-player game driven through the cabinet's own streamer; the addresses came from",
+    "watching how bytes behaved during play rather than from reading values off a display.",
+    "current_player and current_ball are adjacent in CPU RAM at 0x00031FCC and 0x00031FCD, player low",
+    "and ball high. Two other adjacent pairs also counted, at 0x02111A04 and 0x02111A0C, but both sit",
+    "in NVRAM with the player byte ABOVE the ball -- the reverse of the eight SAM games already",
+    "measured -- so they are rejected. Without that rule this ROM had three candidates and no way to",
+    "choose between them.",
+    "Scores are 4 bytes on 8-byte centres from 0x021109E4, the only group of four evenly spaced values",
+    "rising monotonically through the game.",
+    "player_count at 0x02110900, the one address every SAM game shares.",
+    "High score records are 0x20 apart from 0x02102AB8, bounded by where the 16-bit checksum stops",
+    "validating: six records pass, the seventh does not. The first five hold Stern's factory ladder.",
+    "The sixth is the Open Season Champion, read off the machine's DMD after game over -- 'LON' at",
+    "50,000,000, which is what the record decodes to.",
+    "Only bbh_170 is claimed; SAM addresses move between revisions.",
+    "Confirmed after the table exited: the map decodes that game as 4 players scoring 952,010 /",
+    "871,510 / 1,118,200 / 929,680."
+  ],
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 2,
+    "license": "Open Data Commons Open Database License (ODbL) v1.0",
+    "copyright": [
+      "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
+    ],
+    "platform": "stern-sam",
+    "roms": [
+      "bbh_170"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x00031FCC"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x00031FCD"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E4"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109EC"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F4"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109FC"
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "short_label": "GC",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102AB8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102AD0"
+      }
+    },
+    {
+      "label": "High Score #1",
+      "short_label": "HS1",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102AD8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102AF0"
+      }
+    },
+    {
+      "label": "High Score #2",
+      "short_label": "HS2",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102AF8"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102B10"
+      }
+    },
+    {
+      "label": "High Score #3",
+      "short_label": "HS3",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102B18"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102B30"
+      }
+    },
+    {
+      "label": "High Score #4",
+      "short_label": "HS4",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102B38"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102B50"
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Open Season Champion",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102B58"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102B70"
+      }
+    }
+  ],
+  "checksum16": [
+    {
+      "start": "0x02102AB8",
+      "length": 30,
+      "label": "Grand Champion"
+    },
+    {
+      "start": "0x02102AD8",
+      "length": 30,
+      "label": "High Score #1"
+    },
+    {
+      "start": "0x02102AF8",
+      "length": 30,
+      "label": "High Score #2"
+    },
+    {
+      "start": "0x02102B18",
+      "length": 30,
+      "label": "High Score #3"
+    },
+    {
+      "start": "0x02102B38",
+      "length": 30,
+      "label": "High Score #4"
+    },
+    {
+      "start": "0x02102B58",
+      "length": 30,
+      "label": "Open Season Champion"
+    }
+  ]
+}

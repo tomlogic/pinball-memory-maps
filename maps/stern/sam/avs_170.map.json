@@ -1,12 +1,55 @@
 {
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 5,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "avs_170",
       "avs_170c"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x000309FC"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x000309FD"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E4"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E8"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109EC"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F0"
+      }
     ]
   },
   "high_scores": [
@@ -80,5 +123,17 @@
         "length": 4
       }
     }
+  ],
+  "_notes": [
+    "game_state added locally, from a 4-player game played through the cabinet's streamer.",
+    "current_player and current_ball are adjacent in CPU RAM at 0x000309FC and 0x000309FD, player low",
+    "and ball high. The player byte completed 1->2->3 three times, once per ball; the ball byte once.",
+    "Scores are 4 bytes on 4-byte centres from 0x021109E4 -- the same base as 24, X-Men, twd_156c and",
+    "Avatar, but 4-byte spacing where 24 and Avatar use 8. Base and stride vary independently across",
+    "SAM and neither can be assumed from the other.",
+    "player_count at 0x02110900, the one address every SAM game shares.",
+    "Confirmed after the table exited: the map decodes that game as 4 players scoring 1,257,870 /",
+    "1,235,240 / 862,190 / 1,062,330. The DMD's 'HIGH SCORE #4  P P  25,000,000' also matches the",
+    "Fourth Place entry this map already declared."
   ]
 }

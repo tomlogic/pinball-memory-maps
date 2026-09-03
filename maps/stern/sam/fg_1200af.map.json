@@ -1,0 +1,173 @@
+{
+  "_notes": [
+    "Locally added -- upstream pinmame-nvram-maps has no map for Family Guy.",
+    "Built from a 4-player game driven through the cabinet's own streamer.",
+    "current_player and current_ball are adjacent in CPU RAM at 0x00033AEC and 0x00033AED, player low",
+    "and ball high, the shape every Stern SAM game measured uses.",
+    "Scores are 4 bytes on 8-byte centres from 0x021109E4, the only group the sweep offered.",
+    "player_count at 0x02110900, the one address every SAM game shares.",
+    "Five records from 0x02102B60 in the usual 32-byte form, bounded by where the checksum stops",
+    "validating. No mode champions: the block ends at five and the post-game DMD cycle showed the",
+    "high score ladder only.",
+    "Only fg_1200af is claimed; SAM addresses move between revisions."
+  ],
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 1,
+    "license": "Open Data Commons Open Database License (ODbL) v1.0",
+    "copyright": [
+      "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
+    ],
+    "platform": "stern-sam",
+    "roms": [
+      "fg_1200af"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x00033AEC"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x00033AED"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109E4"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109EC"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F4"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109FC"
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "short_label": "GC",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102B60"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102B78"
+      }
+    },
+    {
+      "label": "High Score #1",
+      "short_label": "HS1",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102B80"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102B98"
+      }
+    },
+    {
+      "label": "High Score #2",
+      "short_label": "HS2",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102BA0"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102BB8"
+      }
+    },
+    {
+      "label": "High Score #3",
+      "short_label": "HS3",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102BC0"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102BD8"
+      }
+    },
+    {
+      "label": "High Score #4",
+      "short_label": "HS4",
+      "initials": {
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11,
+        "start": "0x02102BE0"
+      },
+      "score": {
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02102BF8"
+      }
+    }
+  ],
+  "checksum16": [
+    {
+      "start": "0x02102B60",
+      "length": 30,
+      "label": "Grand Champion"
+    },
+    {
+      "start": "0x02102B80",
+      "length": 30,
+      "label": "High Score #1"
+    },
+    {
+      "start": "0x02102BA0",
+      "length": 30,
+      "label": "High Score #2"
+    },
+    {
+      "start": "0x02102BC0",
+      "length": 30,
+      "label": "High Score #3"
+    },
+    {
+      "start": "0x02102BE0",
+      "length": 30,
+      "label": "High Score #4"
+    }
+  ]
+}

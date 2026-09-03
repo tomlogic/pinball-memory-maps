@@ -1,11 +1,54 @@
 {
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 5,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "bdk_294"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x000348B8"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x000348B9"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F0"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x021109F8"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A00"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A08"
+      }
     ]
   },
   "high_scores": [
@@ -123,5 +166,21 @@
         "length": 4
       }
     }
+  ],
+  "_notes": [
+    "game_state added locally, from a 4-player game played through the cabinet's streamer rather than",
+    "by hand -- nothing here was read off a display and typed back.",
+    "current_player and current_ball are adjacent in CPU RAM at 0x000348B8 and 0x000348B9, player low",
+    "and ball high, the shape every Stern SAM game checked uses. The player byte completed 1->2->3",
+    "three times, once per ball; the ball byte once.",
+    "Scores are 4 bytes on 8-byte centres from 0x021109F0, the only group of four evenly spaced values",
+    "that rose monotonically through the game. A different base again -- 0x021109E4 on 24, X-Men,",
+    "twd_156c and Avatar, 0x02110A0C on Star Trek, 0x02110A24 on LUCI, 0x02110A9C on twd_160h.",
+    "player_count at 0x02110900, the one address every SAM game shares.",
+    "The DMD confirms this map's champion labels: after game over it cycled BATMOBILE HURRY-UP",
+    "Confirmed after the table exited: the map decodes that game as 2,108,050 / 2,064,720 /",
+    "1,217,240 / 1,793,870, exactly what the DMD showed, with player_count 4. All three champion",
+    "entries decode as the machine displays them -- 'K O' 10,000,000, 'M R' 25,000,000 and 'JLS'",
+    "75,000,000 -- so the labels this map already carried are right."
   ]
 }

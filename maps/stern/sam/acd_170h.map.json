@@ -1,11 +1,72 @@
 {
+  "_notes": [
+    "game_state added locally from NVRAM captured on an ALP4K cabinet either side of a 2-player game.",
+    "Scores are 4 bytes on 8-byte centres from 0x02110A24: the game ended 9,116,750 / 8,923,670 and",
+    "those landed at 0x02110A24 and 0x02110A2C, with players 3 and 4 zero and the high word of each",
+    "slot zero throughout.",
+    "This is not where the other Stern SAM maps put them -- 24 and X-Men both use 0x021109E4, which",
+    "stayed zero here through a real game. The score address is per-ROM; do not carry it across.",
+    "player_count at 0x02110900 read 1 before and 2 after, the same address 24 and X-Men use. That",
+    "field does appear to be shared across SAM.",
+    "current_player and current_ball are adjacent bytes in CPU RAM at 0x0003006C and 0x0003006D, the",
+    "same shape X-Men uses at 0x00030AE4/0x00030AE5 -- player low, ball high. Found by counting rather",
+    "than by value: over one 4-player game the player byte completed 1->2->3 three times, once per",
+    "ball, and the ball byte once, its single completion landing on the player's second cycle and the",
+    "player's last landing on 9,348,440, which was player 1's final score.",
+    "The four scores of that game, 9,348,440 / 3,377,120 / 3,152,920 / 6,529,100, read back exactly",
+    "where this map declares them, so the 8-byte stride is now confirmed on four players rather than",
+    "inferred from two."
+  ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 4,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "acd_170h"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x0003006C"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x0003006D"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A24"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A2C"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A34"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A3C"
+      }
     ]
   },
   "high_scores": [

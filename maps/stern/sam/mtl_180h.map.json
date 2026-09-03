@@ -1,11 +1,54 @@
 {
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 5,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "mtl_180h"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x000366E4"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x000366E5"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A24"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A2C"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A34"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A3C"
+      }
     ]
   },
   "high_scores": [
@@ -221,5 +264,19 @@
         "length": 4
       }
     }
+  ],
+  "_notes": [
+    "game_state added locally, from a 4-player game driven through the cabinet's streamer.",
+    "current_player and current_ball are adjacent in CPU RAM at 0x000366E4 and 0x000366E5, player low",
+    "and ball high; the player byte completed 1->2->3 once per ball and the ball byte once.",
+    "Scores are 4 bytes on 8-byte centres from 0x02110A24 -- the same base and stride LUCI uses, which",
+    "is coincidence rather than a family trait: across the SAM games measured the base takes four",
+    "different values and the stride two, independently of each other.",
+    "player_count at 0x02110900, the one address every SAM game shares.",
+    "Applies to mtl_180h only. mtl_170h is a different revision and needs its own measurement -- SAM",
+    "addresses move between revisions, and twd_156c and twd_160h differ in both score base and stride",
+    "despite being the same title.",
+    "Confirmed after the table exited: 4 players scoring 1,198,400 / 1,175,420 / 1,237,780 /",
+    "1,680,350."
   ]
 }
