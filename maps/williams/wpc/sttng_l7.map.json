@@ -6,7 +6,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 7,
+    "version": 8,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -23,6 +23,7 @@
       "sttng_l5",
       "sttng_l7",
       "sttng_l7c",
+      "sttng_la7",
       "sttng_p5",
       "sttng_p6",
       "sttng_p8",

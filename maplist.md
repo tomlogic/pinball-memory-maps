@@ -1226,6 +1226,7 @@
 * [Star Trek: The Next Generation (DX-7 LED Ghost Fix, Sound L-1)][330] _sttng_d7_
 * [Star Trek: The Next Generation (DX-7 LED Ghost Fix, Special Sound L-1)][330] _sttng_dx_
 * [Star Trek: The Next Generation (HG-7 LED Ghost Fix)][330] _sttng_h7_
+* [Star Trek: The Next Generation (LA-7, Sound L-1)][330] _sttng_la7_
 * [Star Trek: The Next Generation (LG-7 German)][330] _sttng_g7_
 * [Star Trek: The Next Generation (LX-1)][330] _sttng_l1_
 * [Star Trek: The Next Generation (LX-2)][330] _sttng_l2_
