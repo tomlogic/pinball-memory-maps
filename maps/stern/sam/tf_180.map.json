@@ -8,11 +8,37 @@
     "3,360,170 / 1,651,680 / 2,391,870 / 2,237,460, matching the machine's own game-over display.",
     "The rejected CPU RAM candidate at 0x00031544 is the classic scaled-set false positive this",
     "platform produces -- 732,790 / 184,370 / 18,320 / 11,450, each roughly a quarter of the one",
-    "before. Scores live in NVRAM on every SAM game measured, which is what rejects it."
+    "before. Scores live in NVRAM on every SAM game measured, which is what rejects it.",
+    "Free Play measured directly: toggled in the operator menu with NVRAM captured either side. The",
+    "value goes 1 -> 0 and its check byte 0xFE -> 0xFF, equal and opposite.",
+    "It is one record of the 8-byte adjustment array at 0x02102008, where each record is a 32-bit",
+    "little-endian value followed by a byte holding 0xFF minus the sum of the value's four bytes.",
+    "Writing this field requires updating that check byte, or the game discards the change on reload.",
+    "The check byte is declared with an explicit checksum address. Without one, a checksum8",
+    "record means the checksum occupies the tail of start..end, which is not this layout: here",
+    "the summed bytes and the check byte are separate fields of one record.",
+    "ball_count and max_credits are derived, not measured on this game: on every Stern SAM game",
+    "measured they sit three and one records below free_play in the adjustment array, a rule",
+    "confirmed by menu changes with distinctive values on both array layouts (st_162h and trn_174h).",
+    "At the derived addresses this game's image reads the factory defaults, 3 balls and 30 credits,",
+    "with valid check bytes. Writing either field requires updating its check byte.",
+    "game_over, tilted, credits and volume come from a 419-frame recording of live memory spanning",
+    "an operator-menu session and one four-ball game with a mid-ball tilt on ball 1. The menu session",
+    "also promoted ball_count and max_credits from derived to measured: Balls Per Game 5 -> 4 landed",
+    "at adjustment index 30 and Max Credits 9 -> 10 at index 32, as the free_play-relative rule",
+    "predicted.",
+    "0x0003246A is the status bitfield SAM games keep at ball+0x31: 1 in attract, 40 for the first",
+    "seconds of a game, 19 in play, 21 for exactly the 24 samples between the tilt and the end of",
+    "the tilted ball, during which player 1's score sat frozen at 53,210. 40 and 19 share no bit,",
+    "so game_over is 'any bit above 0x01' -- mask 0xFE inverted -- correct in all 419 frames.",
+    "tilted is bit 0x04, which no non-tilt value carries on this game.",
+    "volume at 0x02110250, set from 58 to 60 in the operator menu with its complement check byte",
+    "following; declared as checksum8. credits at 0x0211100C, the eighteenth SAM game at that",
+    "address, stepping down once at game start."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 8,
     "copyright": [
       "Copyright (C) 2022 https://github.com/horseyhorsey",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -23,11 +49,65 @@
       "tf_180"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102110",
+      "end": "0x02102113",
+      "checksum": "0x02102114"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x021020F8",
+      "end": "0x021020FB",
+      "checksum": "0x021020FC"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210B",
+      "checksum": "0x0210210C"
+    },
+    {
+      "label": "Master Volume",
+      "start": "0x02110250",
+      "end": "0x02110250",
+      "checksum": "0x02110251"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "encoding": "int",
+      "start": "0x02110250",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -38,6 +118,19 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x00032439"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x0003246A",
+      "mask": "0xFE",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x0003246A",
+      "mask": "0x04"
     },
     "scores": [
       {

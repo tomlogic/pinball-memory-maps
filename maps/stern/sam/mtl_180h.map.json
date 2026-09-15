@@ -1,18 +1,135 @@
 {
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 5,
+    "version": 10,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "mtl_180h"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102120",
+      "end": "0x02102123",
+      "checksum": "0x02102124"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210B",
+      "checksum": "0x0210210C"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102118",
+      "end": "0x0210211B",
+      "checksum": "0x0210211C"
+    }
+  ],
+  "checksum16": [
+    {
+      "label": "Grand Champion",
+      "start": "0x02103724",
+      "length": 34
+    },
+    {
+      "label": "First Place",
+      "start": "0x02103748",
+      "length": 34
+    },
+    {
+      "label": "Second Place",
+      "start": "0x0210376C",
+      "length": 34
+    },
+    {
+      "label": "Third Place",
+      "start": "0x02103790",
+      "length": 34
+    },
+    {
+      "label": "Fourth Place",
+      "start": "0x021037B4",
+      "length": 34
+    },
+    {
+      "label": "Combo Champion",
+      "start": "0x021037D8",
+      "length": 34
+    },
+    {
+      "label": "Lady Justice Champion",
+      "start": "0x021038D4",
+      "length": 34
+    },
+    {
+      "label": "Fuel Champion",
+      "start": "0x021038B0",
+      "length": 34
+    },
+    {
+      "label": "Seek & Destroy Champion",
+      "start": "0x021038F8",
+      "length": 34
+    },
+    {
+      "label": "Blackened Champion",
+      "start": "0x02103820",
+      "length": 34
+    },
+    {
+      "label": "For Whom The Bell Tolls Champion",
+      "start": "0x0210388C",
+      "length": 34
+    },
+    {
+      "label": "Fade To Black Champion",
+      "start": "0x021037FC",
+      "length": 34
+    },
+    {
+      "label": "Battery Champion",
+      "start": "0x02103868",
+      "length": 34
+    },
+    {
+      "label": "Enter Sandman Champion",
+      "start": "0x02103844",
+      "length": 34
+    },
+    {
+      "label": "The End Of The Line Champion",
+      "start": "0x0210391C",
+      "length": 34
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102120"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102118"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x02102108"
     },
     "current_player": {
       "label": "Player",
@@ -23,6 +140,28 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x000366E5"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x00036716",
+      "mask": "0x30",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "enum",
+      "start": "0x00036716",
+      "mask": "0x06",
+      "values": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ]
     },
     "scores": [
       {
@@ -277,6 +416,40 @@
     "addresses move between revisions, and twd_156c and twd_160h differ in both score base and stride",
     "despite being the same title.",
     "Confirmed after the table exited: 4 players scoring 1,198,400 / 1,175,420 / 1,237,780 /",
-    "1,680,350."
+    "1,680,350.",
+    "Free Play was not toggled on this game. Its address is derived, and the derivation is worth",
+    "stating because it is testable rather than assumed. Machine adjustments are an array of 8-byte",
+    "records from 0x02102008 -- a 32-bit little-endian value, then a byte holding 0xFF minus the sum",
+    "of the value's four bytes, padded 0xFF above. Every record in every image checked satisfies it.",
+    "Aligning this game's array against a game where Free Play was measured puts it at one of only",
+    "two positions across all twenty SAM games examined, and the value there reads 1 on a cabinet",
+    "that is in free play. The alignment was validated prospectively: on nba_802 and smanve_101 --",
+    "the two games where alignment agreement was weakest -- the address was predicted first, then",
+    "confirmed by toggling, and both were exact.",
+    "Writing this field requires updating its check byte, or the game discards the change on reload.",
+    "The check byte is declared with an explicit checksum address. Without one, a checksum8",
+    "record means the checksum occupies the tail of start..end, which is not this layout: here",
+    "the summed bytes and the check byte are separate fields of one record.",
+    "ball_count and max_credits are derived, not measured on this game: on every Stern SAM game",
+    "measured they sit three and one records below free_play in the adjustment array, a rule",
+    "confirmed by menu changes with distinctive values on both array layouts (st_162h and trn_174h).",
+    "At the derived addresses this game's image reads the factory defaults, 3 balls and 30 credits,",
+    "with valid check bytes. Writing either field requires updating its check byte.",
+    "checksum16 declared for all fifteen champion records: 36-byte records, initials at +0, score",
+    "at +0x18, little-endian checksum16 at +32 as 0xFFFF minus the sum of the first 32 bytes --",
+    "start..length 34 covers the summed bytes plus the checksum. All fifteen validate against a",
+    "captured NVRAM image. Without these, a writer updating a champion leaves the record invalid.",
+    "game_over, tilted and credits come from a 1,091-frame recording of live memory spanning an",
+    "operator-menu session and a full game with a mid-ball tilt on ball 2. The session also promoted",
+    "ball_count and max_credits from derived to measured: menu values 5 and 9 landed at adjustment",
+    "indices 32 and 34 as the free_play-relative rule predicted.",
+    "0x00036716 is the status bitfield at ball+0x31, in the same variant as the Pro (mtl_180): 1 in",
+    "attract, 42 (0x2A) at ball start, 20 (0x14) in play, 22 (0x16) for the nine samples between the",
+    "tilt and the end of the tilted ball, during which player 1's score sat frozen at 696,860. No",
+    "single bit separates play from attract or the tilt from the rest, so game_over uses mask 0x30",
+    "inverted -- correct in all 1,091 frames -- and tilted is an enum over mask 0x06 in which only",
+    "the value 6 is true, the alien_poker precedent. Same declarations as mtl_180, each verified on",
+    "its own recording.",
+    "credits at 0x0211100C, the thirteenth SAM game at that address."
   ]
 }

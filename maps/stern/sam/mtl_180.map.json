@@ -1,0 +1,452 @@
+{
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 3,
+    "license": "Open Data Commons Open Database License (ODbL) v1.0",
+    "copyright": [
+      "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
+    ],
+    "platform": "stern-sam",
+    "roms": [
+      "mtl_180"
+    ]
+  },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102120",
+      "end": "0x02102123",
+      "checksum": "0x02102124"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210B",
+      "checksum": "0x0210210C"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102118",
+      "end": "0x0210211B",
+      "checksum": "0x0210211C"
+    }
+  ],
+  "checksum16": [
+    {
+      "label": "Grand Champion",
+      "start": "0x021036A4",
+      "length": 34
+    },
+    {
+      "label": "High Score #1",
+      "start": "0x021036C8",
+      "length": 34
+    },
+    {
+      "label": "High Score #2",
+      "start": "0x021036EC",
+      "length": 34
+    },
+    {
+      "label": "High Score #3",
+      "start": "0x02103710",
+      "length": 34
+    },
+    {
+      "label": "High Score #4",
+      "start": "0x02103734",
+      "length": 34
+    },
+    {
+      "label": "Combo Champion",
+      "start": "0x02103758",
+      "length": 34
+    },
+    {
+      "label": "Battery Champion",
+      "start": "0x0210377C",
+      "length": 34
+    },
+    {
+      "label": "Blackened Champion",
+      "start": "0x021037A0",
+      "length": 34
+    },
+    {
+      "label": "Enter Sandman Champion",
+      "start": "0x021037C4",
+      "length": 34
+    },
+    {
+      "label": "Fade To Black Champion",
+      "start": "0x021037E8",
+      "length": 34
+    },
+    {
+      "label": "For Whom The Bell Tolls Champion",
+      "start": "0x0210380C",
+      "length": 34
+    },
+    {
+      "label": "Fuel Champion",
+      "start": "0x02103830",
+      "length": 34
+    },
+    {
+      "label": "Lady Justice Champion",
+      "start": "0x02103854",
+      "length": 34
+    },
+    {
+      "label": "Seek & Destroy Champion",
+      "start": "0x02103878",
+      "length": 34
+    },
+    {
+      "label": "The End Of The Line Champion",
+      "start": "0x0210389C",
+      "length": 34
+    }
+  ],
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102120"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102118"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x00030B48"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x00030B49"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x00030B7A",
+      "mask": "0x30",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "enum",
+      "start": "0x00030B7A",
+      "mask": "0x06",
+      "values": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A24"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A2C"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A34"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x02110A3C"
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "initials": {
+        "start": "0x021036A4",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021036BC",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "First Place",
+      "initials": {
+        "start": "0x021036C8",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021036E0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Second Place",
+      "initials": {
+        "start": "0x021036EC",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103704",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Third Place",
+      "initials": {
+        "start": "0x02103710",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103728",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Fourth Place",
+      "initials": {
+        "start": "0x02103734",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x0210374C",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Combo Champion",
+      "initials": {
+        "start": "0x02103758",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "counter": {
+        "start": "0x02103770",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Battery Champion",
+      "initials": {
+        "start": "0x0210377C",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103794",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Blackened Champion",
+      "initials": {
+        "start": "0x021037A0",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021037B8",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Enter Sandman Champion",
+      "initials": {
+        "start": "0x021037C4",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021037DC",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Fade To Black Champion",
+      "initials": {
+        "start": "0x021037E8",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103800",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "For Whom The Bell Tolls Champion",
+      "initials": {
+        "start": "0x0210380C",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103824",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Fuel Champion",
+      "initials": {
+        "start": "0x02103830",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103848",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Lady Justice Champion",
+      "initials": {
+        "start": "0x02103854",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x0210386C",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Seek & Destroy Champion",
+      "initials": {
+        "start": "0x02103878",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103890",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "The End Of The Line Champion",
+      "initials": {
+        "start": "0x0210389C",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021038B4",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ],
+  "_notes": [
+    "Metallica Pro 1.80. Everything here was measured from a 1,600-frame recording of live memory",
+    "spanning an operator-menu session and a full four-player game with a tilt on player 1's ball 1,",
+    "then confirmed against the machine's own displays. The Premium map (mtl_180h) was tried first:",
+    "its score slots fit this ROM exactly, its ball/player pair does not (that address reads 0 here).",
+    "current_player/current_ball came from the joint pair test -- the player wrapping to 1 in the",
+    "same sample the ball steps -- which returned exactly one candidate across four such events.",
+    "Scores: 4 bytes on 8-byte centres from 0x02110A24, the same slots the Premium uses; finals for",
+    "all four players sat frozen from game over through attract.",
+    "Adjustments are 8-byte records from 0x02102008 (32-bit value, then 0xFF minus the sum of its",
+    "bytes); Balls Per Game and Maximum Credits identified by setting them to 5 and 9 (indices 32 and",
+    "34), free_play at index 35 read 0 with a valid check byte while credits were being consumed.",
+    "credits at 0x0211100C, the twelfth SAM game at that address: rose to 7 with the coins and fell",
+    "once for each of the four players entering.",
+    "0x00030B7A is the status bitfield most SAM games keep at ball+0x31, in a variant of its own: 1",
+    "in attract, 42 (0x2A) at each ball's start, 20 (0x14) in play, 22 (0x16) for exactly the seven",
+    "samples between the tilt and the end of the tilted ball, during which player 1's score sat",
+    "frozen at 265,530. No single bit separates play from attract, so game_over uses mask 0x30",
+    "(0x10 covers 20 and 22, 0x20 covers 42) inverted -- correct in all 1,600 frames. No single bit",
+    "separates the tilt either: 22 is 0x02 and 0x04 both set, while 42 carries 0x02 and 20 carries",
+    "0x04. tilted is therefore declared as alien_poker does it, an enum over mask 0x06 in which only",
+    "the value 6 is true.",
+    "Champion records are 36 bytes with initials at +0, score at +0x18 and a little-endian checksum16",
+    "at +32 over the first 32 bytes, all 15 validating. The five high scores come first. The ten mode",
+    "champions were named from the game-over display cycle. Eight of the ten are pinned by a unique",
+    "Lady Justice Champion is ABC 2,500,000 -- confirmed against the display on a second look; the",
+    "first reading of 7,500,000 was the DMD font.",
+    "The operator menu's champion settings do NOT write the records above. They write a default-",
+    "threshold table of 8-byte adjustment records at 0x021024F8, stride 0x18, nine modes in the order",
+    "Battery, Enter Sandman, Fade To Black, For Whom The Bell Tolls, Fuel, Lady Justice, Seek &",
+    "Destroy, The End Of The Line, Blackened (Combo, a count, is elsewhere). Setting Battery to",
+    "28,000,000 and Fade To Black to 26,000,000 changed exactly those slots and their check bytes and",
+    "left every record untouched; the records take the thresholds only on a champion reset. That",
+    "table is also why the record order cannot be assumed from mtl_170h: the thresholds follow",
+    "mtl_170h's order and the records do not (Blackened is record +2).",
+    "All ten mode champions are pinned. Eight by a unique initials/score pair from the game-over",
+    "display cycle; the two ABC 25,000,000 records (+1 and +4) were settled by setting distinct",
+    "thresholds -- Battery 28,000,000, Fade To Black 26,000,000, For Whom The Bell Tolls 27,000,000",
+    "-- and running the operator menu's champion reset: +1 took 28,000,000 and +4 took 26,000,000,",
+    "with +5 (MDK) taking 27,000,000. The reset applied the thresholds to the scores and left the",
+    "initials in place."
+  ]
+}

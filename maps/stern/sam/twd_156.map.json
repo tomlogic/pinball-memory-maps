@@ -16,11 +16,48 @@
     "current_player/current_ball came from the joint pair test, which reported two candidates here.",
     "The exit dump separated them: 0x000329B4 reads player 4 / ball 3, the true end state, while",
     "0x00031C2C reads 243 / 2 and is not a counter pair at all. The pair test narrows sharply but is",
-    "not always unique, so the exit dump stays part of the procedure."
+    "not always unique, so the exit dump stays part of the procedure.",
+    "Free Play was not toggled on this game. Its address is derived, and the derivation is worth",
+    "stating because it is testable rather than assumed. Machine adjustments are an array of 8-byte",
+    "records from 0x02102008 -- a 32-bit little-endian value, then a byte holding 0xFF minus the sum",
+    "of the value's four bytes, padded 0xFF above. Every record in every image checked satisfies it.",
+    "Aligning this game's array against a game where Free Play was measured puts it at one of only",
+    "two positions across all twenty SAM games examined, and the value there reads 1 on a cabinet",
+    "that is in free play. The alignment was validated prospectively: on nba_802 and smanve_101 --",
+    "the two games where alignment agreement was weakest -- the address was predicted first, then",
+    "confirmed by toggling, and both were exact.",
+    "Writing this field requires updating its check byte, or the game discards the change on reload.",
+    "The check byte is declared with an explicit checksum address. Without one, a checksum8",
+    "record means the checksum occupies the tail of start..end, which is not this layout: here",
+    "the summed bytes and the check byte are separate fields of one record.",
+    "ball_count and max_credits are derived, not measured on this game: on every Stern SAM game",
+    "measured they sit three and one records below free_play in the adjustment array, a rule",
+    "confirmed by menu changes with distinctive values on both array layouts (st_162h and trn_174h).",
+    "At the derived addresses this game's image reads the factory defaults, 3 balls and 30 credits,",
+    "with valid check bytes. Writing either field requires updating its check byte.",
+    "game_over, credits and volume come from a 1,098-frame recording of live memory on twd_156c,",
+    "spanning an operator-menu session and a full game with a tilt on ball 1. The session also",
+    "promoted ball_count and max_credits from derived to measured: menu values 5 and 9 landed at",
+    "adjustment indices 30 and 32 as the free_play-relative rule predicted. As with game_state, these",
+    "were measured on twd_156c only.",
+    "This ROM does not keep the ball+0x31 status byte its siblings use (a constant 0 here).",
+    "game_over at 0x00035E48 is a latch: 0 through the operator menu and the game, 1 from nineteen",
+    "samples after the last score change (the end-of-ball bonus) through attract. Correct in all",
+    "1,098 frames. It reads 0 before the first game of a session, so it is not a general 'no game in",
+    "progress' flag; it is exact for end-of-game detection.",
+    "volume at 0x02110250, set from 40 to 42 in the operator menu: the byte followed 40, 41, 42 and",
+    "the check byte after it followed 215, 214, 213 -- 0xFF minus the value -- declared as checksum8.",
+    "Note the Master Volume address is not shared platform-wide: nba_802 keeps it at 0x0211024C.",
+    "credits at 0x0211100C, the fifteenth SAM game at that address.",
+    "tilted is deliberately absent. The tilt on ball 1 froze scoring from f167 to the drain at f180,",
+    "and no byte in the 64KB state block holds one value through that window and another through",
+    "normal play. The one lead, 0x00038A24, read 2 at ball start, 1 in play, 0 from the tilt to the",
+    "ball end -- then latched at 2 for balls 2 to 5 and the attract, so it is a ball-1 state the",
+    "tilt cancelled rather than a repeatable flag, and it is not declared."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 3,
+    "version": 8,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -31,11 +68,65 @@
       "twd_156c"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102110",
+      "end": "0x02102113",
+      "checksum": "0x02102114"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x021020F8",
+      "end": "0x021020FB",
+      "checksum": "0x021020FC"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210B",
+      "checksum": "0x0210210C"
+    },
+    {
+      "label": "Master Volume",
+      "start": "0x02110250",
+      "end": "0x02110250",
+      "checksum": "0x02110251"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "encoding": "int",
+      "start": "0x02110250",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -46,6 +137,11 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x000329B5"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x00035E48"
     },
     "scores": [
       {

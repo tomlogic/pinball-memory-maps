@@ -1,0 +1,394 @@
+{
+  "_notes": [
+    "Iron Man, code 1.86, the non-Vault ROM (im_186). Measured on a 286-sample live recording on the 4KP",
+    "(2026-09-15): a volume nudge in the operator menu, coins, one three-ball game with a mid-ball tilt",
+    "on ball 1, attract.",
+    "NVRAM side is identical to im_186ve: scores at 0x021109E4 stride 4, credits 0x0211100C, volume",
+    "0x02110248 with complement, the '+2 family' adjustment records (free play 35, balls 32, max credits",
+    "34) with their check bytes, and the five high-score / eight mode-champion records from 0x02102C18",
+    "and 0x02102CB8 (32-byte records, checksum16 at +28), all validating on the captured image.",
+    "The CPU side differs from both Vault ROMs: the ball is at 0x00037715 (1, 2, 3 through the game,",
+    "parked afterwards), the player at 0x00037714, and the status bitfield at ball+0x31 = 0x00037746",
+    "with the usual 1 in attract, 20 in play, 22 while tilted -- game_over is mask 0x14 inverted and",
+    "tilted bit 0x02, the tilt covering exactly the samples from the tilt to the end of ball 1 with",
+    "player 1's score frozen. On im_186 the 1.86VE addresses 0x34DB9/0x34DB8/0x34DEA read 0, 2 and 0",
+    "throughout, which is why the two 1.86 ROMs carry separate maps.",
+    "Mode champion labels are the attract order (Bogey, Iron Man, War Machine, Iron Monger, Whiplash,",
+    "Drones, Jericho, Do Or Die Multiball); the record order matches the default-threshold table."
+  ],
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2026 evilwraith <evilwraith@gmail.com>"
+    ],
+    "license": "Open Data Commons Open Database License (ODbL) v1.0",
+    "platform": "stern-sam",
+    "roms": [
+      "im_186"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Player Count",
+      "encoding": "int",
+      "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102120"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "encoding": "int",
+      "start": "0x02110248",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102118"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "current_player": {
+      "label": "Player",
+      "encoding": "int",
+      "start": "0x00037714"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "encoding": "int",
+      "start": "0x00037715"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x00037746",
+      "mask": "0x14",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x00037746",
+      "mask": "0x02"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x21109E4"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x21109E8"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x21109EC"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "int",
+        "length": 4,
+        "start": "0x21109F0"
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "short_label": "GC",
+      "initials": {
+        "start": "0x2102C18",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102C30",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #1",
+      "short_label": "#1",
+      "initials": {
+        "start": "0x2102C38",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102C50",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #2",
+      "short_label": "#2",
+      "initials": {
+        "start": "0x2102C58",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102C70",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #3",
+      "short_label": "#3",
+      "initials": {
+        "start": "0x2102C78",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102C90",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #4",
+      "short_label": "#4",
+      "initials": {
+        "start": "0x2102C98",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102CB0",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Bogey Champion",
+      "short_label": "Bogey",
+      "initials": {
+        "start": "0x2102CB8",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102CD0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Iron Man Champion",
+      "short_label": "Iron Man",
+      "initials": {
+        "start": "0x2102CD8",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102CF0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "War Machine Champion",
+      "short_label": "War Mach",
+      "initials": {
+        "start": "0x2102CF8",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102D10",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Iron Monger Champion",
+      "short_label": "Monger",
+      "initials": {
+        "start": "0x2102D18",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102D30",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Whiplash Champion",
+      "short_label": "Whiplash",
+      "initials": {
+        "start": "0x2102D38",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102D50",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Drones Champion",
+      "short_label": "Drones",
+      "initials": {
+        "start": "0x2102D58",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102D70",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Jericho Champion",
+      "short_label": "Jericho",
+      "initials": {
+        "start": "0x2102D78",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102D90",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Do Or Die Multiball Champion",
+      "short_label": "Do Or Die",
+      "initials": {
+        "start": "0x2102D98",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102DB0",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ],
+  "checksum16": [
+    {
+      "label": "Grand Champion",
+      "start": "0x2102C18",
+      "length": 30
+    },
+    {
+      "label": "High Score #1",
+      "start": "0x2102C38",
+      "length": 30
+    },
+    {
+      "label": "High Score #2",
+      "start": "0x2102C58",
+      "length": 30
+    },
+    {
+      "label": "High Score #3",
+      "start": "0x2102C78",
+      "length": 30
+    },
+    {
+      "label": "High Score #4",
+      "start": "0x2102C98",
+      "length": 30
+    },
+    {
+      "label": "Bogey Champion",
+      "start": "0x2102CB8",
+      "length": 30
+    },
+    {
+      "label": "Iron Man Champion",
+      "start": "0x2102CD8",
+      "length": 30
+    },
+    {
+      "label": "War Machine Champion",
+      "start": "0x2102CF8",
+      "length": 30
+    },
+    {
+      "label": "Iron Monger Champion",
+      "start": "0x2102D18",
+      "length": 30
+    },
+    {
+      "label": "Whiplash Champion",
+      "start": "0x2102D38",
+      "length": 30
+    },
+    {
+      "label": "Drones Champion",
+      "start": "0x2102D58",
+      "length": 30
+    },
+    {
+      "label": "Jericho Champion",
+      "start": "0x2102D78",
+      "length": 30
+    },
+    {
+      "label": "Do Or Die Multiball Champion",
+      "start": "0x2102D98",
+      "length": 30
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102120",
+      "end": "0x02102123",
+      "checksum": "0x02102124"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210B",
+      "checksum": "0x0210210C"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102118",
+      "end": "0x0210211B",
+      "checksum": "0x0210211C"
+    },
+    {
+      "label": "Master Volume",
+      "start": "0x02110248",
+      "end": "0x02110248",
+      "checksum": "0x02110249"
+    }
+  ]
+}

@@ -16,11 +16,43 @@
     "Scores verified against the same dump: 2,032,370 / 1,248,620 / 1,330,340 / 1,342,740 at 4-byte",
     "centres from 0x02110A0C, where stride 8 runs into the 0xFFFFFFFF fill. The sweep independently",
     "reproduced this map's existing score address, and rejected a CPU RAM candidate at 0x00038D9C",
-    "whose four values (~16.7M, near-identical) are the usual scaled-set false positive."
+    "whose four values (~16.7M, near-identical) are the usual scaled-set false positive.",
+    "Free Play measured directly: toggled in the operator menu with NVRAM captured either side. The",
+    "value goes 1 -> 0 and its check byte 0xFE -> 0xFF, equal and opposite.",
+    "It is one record of the 8-byte adjustment array at 0x02102008, where each record is a 32-bit",
+    "little-endian value followed by a byte holding 0xFF minus the sum of the value's four bytes.",
+    "Writing this field requires updating that check byte, or the game discards the change on reload.",
+    "The check byte is declared with an explicit checksum address. Without one, a checksum8",
+    "record means the checksum occupies the tail of start..end, which is not this layout: here",
+    "the summed bytes and the check byte are separate fields of one record.",
+    "game_over, credits, max_credits and ball_count come from a 765-frame recording of live memory",
+    "spanning an operator-menu session and a full game, captured about twice a second.",
+    "game_over at 0x0003BA3E holds exactly two values across the recording, 0 while a game runs and 1",
+    "in attract, matching the true state in all 765 frames. Note it also reads 0 while the operator",
+    "menu is open, so 'in the menu' looks like 'in a game'; that is harmless for edge detection but",
+    "it is not a general 'no game in progress' flag.",
+    "It is NOT at a fixed offset from current_ball. trn_174h keeps its equivalent 0x31 bytes past the",
+    "ball counter and encoded differently (19 in game, 1 otherwise); the byte at that offset here",
+    "takes five values and is unrelated. This field has to be measured per ROM.",
+    "ball_count and max_credits were identified by setting them to distinctive values in the operator",
+    "menu -- 5 balls and 9 credits -- so the changed records named themselves: index 32 went 3 to 5",
+    "and index 34 went 30 to 9 in the adjustment array. Both check bytes validate.",
+    "credits at 0x0211100C rose 0,1,3,4,6 as credits were added in the menu and fell to 5 when the",
+    "game started. 0x02111008 carries the fractional part (the machine showed 6.5), and 0x0211100D",
+    "moves inversely but is not a plain complement of the value, so no checksum is declared for it.",
+    "tilted at 0x0003310B, from the same recording: the machine was tilted on ball 1. The byte is set",
+    "at frame 209 and clears when ball 2 starts, and it is never set at any other point in the",
+    "recording. What confirms it is a signal not used to find it -- player 1's score rises steadily",
+    "through 88,330 and freezes on the exact frame the byte sets, staying frozen until the ball ends,",
+    "which is what a tilt does and a ball-in-play flag does not.",
+    "A single-frame blip at 204, while scoring was still rising, is a tilt warning rather than the",
+    "tilt itself.",
+    "Only one tilt was observed, so this is one event corroborated by the score rather than a repeated",
+    "pattern."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 5,
+    "version": 9,
     "copyright": [
       "Copyright (C)2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -32,11 +64,51 @@
       "st_162hc"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102120",
+      "end": "0x02102123",
+      "checksum": "0x02102124"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210B",
+      "checksum": "0x0210210C"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102118",
+      "end": "0x0210211B",
+      "checksum": "0x0210211C"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102120"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102118"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x02102108"
     },
     "current_player": {
       "label": "Player",
@@ -47,6 +119,16 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x00034125"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x0003BA3E"
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x0003310B"
     },
     "scores": [
       {

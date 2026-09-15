@@ -14,11 +14,63 @@
     "Over a 4-player game the player byte completed 1->2->3 three times at 190,100 / 421,380 / 857,000,",
     "the last being player 1's final score, and the ball byte once at 421,380, on the player's second",
     "cycle. An earlier sweep of 0x0-0x3FFFF missed both; they sit above it.",
-    "Score slots re-confirmed on that game: 857,000 / 1,775,680 / 973,300 / 728,880 at 0x02110A0C."
+    "Score slots re-confirmed on that game: 857,000 / 1,775,680 / 973,300 / 728,880 at 0x02110A0C.",
+    "Free Play was not toggled on this game. Its address is derived, and the derivation is worth",
+    "stating because it is testable rather than assumed. Machine adjustments are an array of 8-byte",
+    "records from 0x02102008 -- a 32-bit little-endian value, then a byte holding 0xFF minus the sum",
+    "of the value's four bytes, padded 0xFF above. Every record in every image checked satisfies it.",
+    "Aligning this game's array against a game where Free Play was measured puts it at one of only",
+    "two positions across all twenty SAM games examined, and the value there reads 1 on a cabinet",
+    "that is in free play. The alignment was validated prospectively: on nba_802 and smanve_101 --",
+    "the two games where alignment agreement was weakest -- the address was predicted first, then",
+    "confirmed by toggling, and both were exact.",
+    "Writing this field requires updating its check byte, or the game discards the change on reload.",
+    "The check byte is declared with an explicit checksum address. Without one, a checksum8",
+    "record means the checksum occupies the tail of start..end, which is not this layout: here",
+    "the summed bytes and the check byte are separate fields of one record.",
+    "ball_count and max_credits are derived, not measured on this game: on every Stern SAM game",
+    "measured they sit three and one records below free_play in the adjustment array, a rule",
+    "confirmed by menu changes with distinctive values on both array layouts (st_162h and trn_174h).",
+    "At the derived addresses this game's image reads the factory defaults, 3 balls and 30 credits,",
+    "with valid check bytes. Writing either field requires updating its check byte.",
+    "game_over, tilted, credits and volume come from a 1,102-frame recording of live memory on",
+    "st_161hc, spanning an operator-menu session and two full games, the first with a mid-ball tilt",
+    "on ball 1. The session also promoted ball_count and max_credits from derived to measured: menu",
+    "values 5 and 9 landed at adjustment indices 30 and 32 as the free_play-relative rule predicted.",
+    "As with game_state, measured on st_161hc only.",
+    "0x000319BA is the status bitfield most SAM games keep at ball+0x31, in the richest variant seen:",
+    "1 in attract, 122 at game start, 152/139/71/80 at ball starts, 19 in play, 21 for exactly the",
+    "eight samples between the tilt and the end of the tilted ball, during which player 1's score",
+    "sat frozen at 99,270. No bit is common to every in-play value, so game_over is declared as",
+    "'any bit above 0x01' -- mask 0xFE inverted -- correct in all 1,102 frames across both games.",
+    "The tilt bit 0x04 that works on trn_174h is unusable here (the ball-start value 71 carries it),",
+    "so tilted is an enum over mask 0x1F in which only the value 21 is true; that value occurred",
+    "in exactly the tilt window and nowhere else across both games.",
+    "volume at 0x02110250, set from 40 to 42 in the operator menu with its check byte following",
+    "215, 214, 213; declared as checksum8. credits at 0x0211100C, the seventeenth SAM game at that",
+    "address, stepping down once at each of the two game starts.",
+    "A.1 Standard Adjustments was placed by a sweep on st_161hc: every visible standard adjustment",
+    "was changed once in menu order with the memory tap running, so the order in which records",
+    "moved is the menu order. #1-#3 and #62-#64 were flipped in a separate pass. The block is the",
+    "64 eight-byte records from 0x02102008 (value dword, complement check byte, 3 pad bytes), in",
+    "the ROM's own order rather than menu order: #1-#23 mostly in sequence from record 10 (with",
+    "#13/#14 and #19/#20 swapped), #38 Free Play right after Credit Limit, the ten system settings",
+    "(#39-#43, #47, #54, #59-#61) in records 0-9, and the high-score group after #58.",
+    "A second pass measured the adjustments the sweep had hidden: with Allow High Scores back at",
+    "YES, #25-#30 and #36 moved records 53-59 in menu order and #31-#35 hold 48-52; with Replay",
+    "Type at FIXED and then DYNAMIC, #7, #8 and #6 moved records 16, 17 and 15. #9 and #10 were",
+    "not reachable (Replay Levels was 2) and are placed at 18-19 from their defaults.",
+    "Replay Type codes came from that pass by elimination: FIXED=1, DYNAMIC=2, AUTO=3, so NONE=0;",
+    "note the menu lists AUTO first, so display order is not numeric order for this ROM.",
+    "Multi-option settings are declared as int with the one value that was observed named in",
+    "special_values; the remaining option codes were not measured. YES/NO settings are bool with",
+    "NO=0, confirmed on Free Play, Allow High Scores and Replay Boost. Defaults are the values",
+    "this ROM booted with after a factory reset. #64 is not in the manual and appears on this ROM",
+    "only; 24 (twenty4_150) stops at #63. Ranges follow the Star Trek LE manual, pages 36-43."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 5,
+    "version": 12,
     "copyright": [
       "Copyright (C)2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -30,11 +82,1018 @@
       "st_161hc"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Master Volume",
+      "start": "0x02110250",
+      "end": "0x02110250",
+      "checksum": "0x02110251"
+    },
+    {
+      "label": "Std Adj #01 Replay Type",
+      "start": "0x02102058",
+      "end": "0x0210205B",
+      "checksum": "0x0210205C"
+    },
+    {
+      "label": "Std Adj #02 Replay Percentage",
+      "start": "0x02102060",
+      "end": "0x02102063",
+      "checksum": "0x02102064"
+    },
+    {
+      "label": "Std Adj #03 Replay Award",
+      "start": "0x02102068",
+      "end": "0x0210206B",
+      "checksum": "0x0210206C"
+    },
+    {
+      "label": "Std Adj #04 Replay Levels",
+      "start": "0x02102070",
+      "end": "0x02102073",
+      "checksum": "0x02102074"
+    },
+    {
+      "label": "Std Adj #05 Auto Replay Start",
+      "start": "0x02102078",
+      "end": "0x0210207B",
+      "checksum": "0x0210207C"
+    },
+    {
+      "label": "Std Adj #06 Dynamic Replay Start",
+      "start": "0x02102080",
+      "end": "0x02102083",
+      "checksum": "0x02102084"
+    },
+    {
+      "label": "Std Adj #07 Replay Level #1",
+      "start": "0x02102088",
+      "end": "0x0210208B",
+      "checksum": "0x0210208C"
+    },
+    {
+      "label": "Std Adj #08 Replay Level #2",
+      "start": "0x02102090",
+      "end": "0x02102093",
+      "checksum": "0x02102094"
+    },
+    {
+      "label": "Std Adj #09 Replay Level #3",
+      "start": "0x02102098",
+      "end": "0x0210209B",
+      "checksum": "0x0210209C"
+    },
+    {
+      "label": "Std Adj #10 Replay Level #4",
+      "start": "0x021020A0",
+      "end": "0x021020A3",
+      "checksum": "0x021020A4"
+    },
+    {
+      "label": "Std Adj #11 Replay Boost",
+      "start": "0x021020A8",
+      "end": "0x021020AB",
+      "checksum": "0x021020AC"
+    },
+    {
+      "label": "Std Adj #12 Special Limit",
+      "start": "0x021020B0",
+      "end": "0x021020B3",
+      "checksum": "0x021020B4"
+    },
+    {
+      "label": "Std Adj #13 Special Percentage",
+      "start": "0x021020C0",
+      "end": "0x021020C3",
+      "checksum": "0x021020C4"
+    },
+    {
+      "label": "Std Adj #14 Special Award",
+      "start": "0x021020B8",
+      "end": "0x021020BB",
+      "checksum": "0x021020BC"
+    },
+    {
+      "label": "Std Adj #15 Free Game Limit",
+      "start": "0x021020C8",
+      "end": "0x021020CB",
+      "checksum": "0x021020CC"
+    },
+    {
+      "label": "Std Adj #16 Extra Ball Limit",
+      "start": "0x021020D0",
+      "end": "0x021020D3",
+      "checksum": "0x021020D4"
+    },
+    {
+      "label": "Std Adj #17 Extra Ball Percentage",
+      "start": "0x021020D8",
+      "end": "0x021020DB",
+      "checksum": "0x021020DC"
+    },
+    {
+      "label": "Std Adj #18 Game Pricing",
+      "start": "0x021020E0",
+      "end": "0x021020E3",
+      "checksum": "0x021020E4"
+    },
+    {
+      "label": "Std Adj #19 Match Percentage",
+      "start": "0x021020F0",
+      "end": "0x021020F3",
+      "checksum": "0x021020F4"
+    },
+    {
+      "label": "Std Adj #20 Match Award",
+      "start": "0x021020E8",
+      "end": "0x021020EB",
+      "checksum": "0x021020EC"
+    },
+    {
+      "label": "Std Adj #21 Balls Per Game",
+      "start": "0x021020F8",
+      "end": "0x021020FB",
+      "checksum": "0x021020FC"
+    },
+    {
+      "label": "Std Adj #22 Tilt Warnings",
+      "start": "0x02102100",
+      "end": "0x02102103",
+      "checksum": "0x02102104"
+    },
+    {
+      "label": "Std Adj #23 Credit Limit",
+      "start": "0x02102108",
+      "end": "0x0210210B",
+      "checksum": "0x0210210C"
+    },
+    {
+      "label": "Std Adj #24 Allow High Scores",
+      "start": "0x02102180",
+      "end": "0x02102183",
+      "checksum": "0x02102184"
+    },
+    {
+      "label": "Std Adj #25 High Score Award",
+      "start": "0x021021B0",
+      "end": "0x021021B3",
+      "checksum": "0x021021B4"
+    },
+    {
+      "label": "Std Adj #26 Grand Champion Awards",
+      "start": "0x021021B8",
+      "end": "0x021021BB",
+      "checksum": "0x021021BC"
+    },
+    {
+      "label": "Std Adj #27 High Score #1 Awards",
+      "start": "0x021021C0",
+      "end": "0x021021C3",
+      "checksum": "0x021021C4"
+    },
+    {
+      "label": "Std Adj #28 High Score #2 Awards",
+      "start": "0x021021C8",
+      "end": "0x021021CB",
+      "checksum": "0x021021CC"
+    },
+    {
+      "label": "Std Adj #29 High Score #3 Awards",
+      "start": "0x021021D0",
+      "end": "0x021021D3",
+      "checksum": "0x021021D4"
+    },
+    {
+      "label": "Std Adj #30 High Score #4 Awards",
+      "start": "0x021021D8",
+      "end": "0x021021DB",
+      "checksum": "0x021021DC"
+    },
+    {
+      "label": "Std Adj #31 Grand Champion Score",
+      "start": "0x02102188",
+      "end": "0x0210218B",
+      "checksum": "0x0210218C"
+    },
+    {
+      "label": "Std Adj #32 High Score #1",
+      "start": "0x02102190",
+      "end": "0x02102193",
+      "checksum": "0x02102194"
+    },
+    {
+      "label": "Std Adj #33 High Score #2",
+      "start": "0x02102198",
+      "end": "0x0210219B",
+      "checksum": "0x0210219C"
+    },
+    {
+      "label": "Std Adj #34 High Score #3",
+      "start": "0x021021A0",
+      "end": "0x021021A3",
+      "checksum": "0x021021A4"
+    },
+    {
+      "label": "Std Adj #35 High Score #4",
+      "start": "0x021021A8",
+      "end": "0x021021AB",
+      "checksum": "0x021021AC"
+    },
+    {
+      "label": "Std Adj #36 HSTD Initials",
+      "start": "0x021021E0",
+      "end": "0x021021E3",
+      "checksum": "0x021021E4"
+    },
+    {
+      "label": "Std Adj #37 HSTD Reset Count",
+      "start": "0x021021E8",
+      "end": "0x021021EB",
+      "checksum": "0x021021EC"
+    },
+    {
+      "label": "Std Adj #38 Free Play",
+      "start": "0x02102110",
+      "end": "0x02102113",
+      "checksum": "0x02102114"
+    },
+    {
+      "label": "Std Adj #39 Language",
+      "start": "0x02102050",
+      "end": "0x02102053",
+      "checksum": "0x02102054"
+    },
+    {
+      "label": "Std Adj #40 Player Language Select",
+      "start": "0x02102038",
+      "end": "0x0210203B",
+      "checksum": "0x0210203C"
+    },
+    {
+      "label": "Std Adj #41 Custom Message",
+      "start": "0x02102010",
+      "end": "0x02102013",
+      "checksum": "0x02102014"
+    },
+    {
+      "label": "Std Adj #42 Flash Lamp Power",
+      "start": "0x02102028",
+      "end": "0x0210202B",
+      "checksum": "0x0210202C"
+    },
+    {
+      "label": "Std Adj #43 Coil Pulse Power",
+      "start": "0x02102008",
+      "end": "0x0210200B",
+      "checksum": "0x0210200C"
+    },
+    {
+      "label": "Std Adj #44 Knocker Volume",
+      "start": "0x02102118",
+      "end": "0x0210211B",
+      "checksum": "0x0210211C"
+    },
+    {
+      "label": "Std Adj #45 Game Restart",
+      "start": "0x02102120",
+      "end": "0x02102123",
+      "checksum": "0x02102124"
+    },
+    {
+      "label": "Std Adj #46 Bill Validator",
+      "start": "0x02102128",
+      "end": "0x0210212B",
+      "checksum": "0x0210212C"
+    },
+    {
+      "label": "Std Adj #47 Music Volume",
+      "start": "0x02102048",
+      "end": "0x0210204B",
+      "checksum": "0x0210204C"
+    },
+    {
+      "label": "Std Adj #48 Ball Save Time",
+      "start": "0x02102130",
+      "end": "0x02102133",
+      "checksum": "0x02102134"
+    },
+    {
+      "label": "Std Adj #49 Timed Plunger",
+      "start": "0x02102138",
+      "end": "0x0210213B",
+      "checksum": "0x0210213C"
+    },
+    {
+      "label": "Std Adj #50 Flipper Ball Launch",
+      "start": "0x02102140",
+      "end": "0x02102143",
+      "checksum": "0x02102144"
+    },
+    {
+      "label": "Std Adj #51 Coindoor Ball Saver",
+      "start": "0x02102148",
+      "end": "0x0210214B",
+      "checksum": "0x0210214C"
+    },
+    {
+      "label": "Std Adj #52 Competition Mode",
+      "start": "0x02102150",
+      "end": "0x02102153",
+      "checksum": "0x02102154"
+    },
+    {
+      "label": "Std Adj #53 Consolation Ball",
+      "start": "0x02102158",
+      "end": "0x0210215B",
+      "checksum": "0x0210215C"
+    },
+    {
+      "label": "Std Adj #54 Fast Boot",
+      "start": "0x02102020",
+      "end": "0x02102023",
+      "checksum": "0x02102024"
+    },
+    {
+      "label": "Std Adj #55 Q24 Option",
+      "start": "0x02102160",
+      "end": "0x02102163",
+      "checksum": "0x02102164"
+    },
+    {
+      "label": "Std Adj #56 Ticket Dispenser",
+      "start": "0x02102168",
+      "end": "0x0210216B",
+      "checksum": "0x0210216C"
+    },
+    {
+      "label": "Std Adj #57 Player Competition",
+      "start": "0x02102170",
+      "end": "0x02102173",
+      "checksum": "0x02102174"
+    },
+    {
+      "label": "Std Adj #58 Team Scores",
+      "start": "0x02102178",
+      "end": "0x0210217B",
+      "checksum": "0x0210217C"
+    },
+    {
+      "label": "Std Adj #59 Location ID",
+      "start": "0x02102040",
+      "end": "0x02102043",
+      "checksum": "0x02102044"
+    },
+    {
+      "label": "Std Adj #60 Game ID",
+      "start": "0x02102030",
+      "end": "0x02102033",
+      "checksum": "0x02102034"
+    },
+    {
+      "label": "Std Adj #61 Time Format",
+      "start": "0x02102018",
+      "end": "0x0210201B",
+      "checksum": "0x0210201C"
+    },
+    {
+      "label": "Std Adj #62 Coin Input Delay",
+      "start": "0x021021F0",
+      "end": "0x021021F3",
+      "checksum": "0x021021F4"
+    },
+    {
+      "label": "Std Adj #63 Lost Ball Recovery",
+      "start": "0x021021F8",
+      "end": "0x021021FB",
+      "checksum": "0x021021FC"
+    },
+    {
+      "label": "Std Adj #64 Coin Door Disable Tilt",
+      "start": "0x02102200",
+      "end": "0x02102203",
+      "checksum": "0x02102204"
+    }
+  ],
+  "adjustments": {
+    "A.1 Standard Adjustments": {
+      "01": {
+        "label": "Replay Type",
+        "start": "0x02102058",
+        "encoding": "enum",
+        "values": [
+          "NONE",
+          "FIXED",
+          "DYNAMIC",
+          "AUTO"
+        ],
+        "default": 3
+      },
+      "02": {
+        "label": "Replay Percentage",
+        "start": "0x02102060",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 50,
+        "default": 10,
+        "suffix": "%"
+      },
+      "03": {
+        "label": "Replay Award",
+        "start": "0x02102068",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 3,
+        "default": 0,
+        "special_values": {
+          "0": "CREDIT"
+        }
+      },
+      "04": {
+        "label": "Replay Levels",
+        "start": "0x02102070",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 4,
+        "default": 1
+      },
+      "05": {
+        "label": "Auto Replay Start",
+        "start": "0x02102078",
+        "encoding": "int",
+        "length": 4,
+        "min": 5000000,
+        "max": 150000000,
+        "default": 20000000
+      },
+      "06": {
+        "label": "Dynamic Replay Start",
+        "start": "0x02102080",
+        "encoding": "int",
+        "length": 4,
+        "min": 5000000,
+        "max": 150000000,
+        "default": 60000000
+      },
+      "07": {
+        "label": "Replay Level #1",
+        "start": "0x02102088",
+        "encoding": "int",
+        "length": 4,
+        "min": 5000000,
+        "max": 150000000,
+        "default": 15000000
+      },
+      "08": {
+        "label": "Replay Level #2",
+        "start": "0x02102090",
+        "encoding": "int",
+        "length": 4,
+        "min": 5000000,
+        "max": 150000000,
+        "default": 30000000
+      },
+      "09": {
+        "label": "Replay Level #3",
+        "start": "0x02102098",
+        "encoding": "int",
+        "length": 4,
+        "min": 5000000,
+        "max": 150000000,
+        "default": 45000000
+      },
+      "10": {
+        "label": "Replay Level #4",
+        "start": "0x021020A0",
+        "encoding": "int",
+        "length": 4,
+        "min": 5000000,
+        "max": 150000000,
+        "default": 60000000
+      },
+      "11": {
+        "label": "Replay Boost",
+        "start": "0x021020A8",
+        "encoding": "bool",
+        "default": 1
+      },
+      "12": {
+        "label": "Special Limit",
+        "start": "0x021020B0",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 5,
+        "default": 1
+      },
+      "13": {
+        "label": "Special Percentage",
+        "start": "0x021020C0",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 50,
+        "default": 10,
+        "suffix": "%"
+      },
+      "14": {
+        "label": "Special Award",
+        "start": "0x021020B8",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 4,
+        "default": 0,
+        "special_values": {
+          "0": "CREDIT"
+        }
+      },
+      "15": {
+        "label": "Free Game Limit",
+        "start": "0x021020C8",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 9,
+        "default": 5
+      },
+      "16": {
+        "label": "Extra Ball Limit",
+        "start": "0x021020D0",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 9,
+        "default": 5
+      },
+      "17": {
+        "label": "Extra Ball Percentage",
+        "start": "0x021020D8",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 50,
+        "default": 25,
+        "suffix": "%"
+      },
+      "18": {
+        "label": "Game Pricing",
+        "start": "0x021020E0",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "default": 63,
+        "special_values": {
+          "63": "USA 10"
+        }
+      },
+      "19": {
+        "label": "Match Percentage",
+        "start": "0x021020F0",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 10,
+        "default": 9,
+        "suffix": "%"
+      },
+      "20": {
+        "label": "Match Award",
+        "start": "0x021020E8",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 2,
+        "default": 0,
+        "special_values": {
+          "0": "CREDIT"
+        }
+      },
+      "21": {
+        "label": "Balls Per Game",
+        "start": "0x021020F8",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 10,
+        "default": 3
+      },
+      "22": {
+        "label": "Tilt Warnings",
+        "start": "0x02102100",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 3,
+        "default": 2
+      },
+      "23": {
+        "label": "Credit Limit",
+        "start": "0x02102108",
+        "encoding": "int",
+        "length": 4,
+        "min": 4,
+        "max": 50,
+        "default": 30
+      },
+      "24": {
+        "label": "Allow High Scores",
+        "start": "0x02102180",
+        "encoding": "bool",
+        "default": 1
+      },
+      "25": {
+        "label": "High Score Award",
+        "start": "0x021021B0",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 2,
+        "default": 0,
+        "special_values": {
+          "0": "CREDIT"
+        }
+      },
+      "26": {
+        "label": "Grand Champion Awards",
+        "start": "0x021021B8",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 5,
+        "default": 1
+      },
+      "27": {
+        "label": "High Score #1 Awards",
+        "start": "0x021021C0",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 3,
+        "default": 1
+      },
+      "28": {
+        "label": "High Score #2 Awards",
+        "start": "0x021021C8",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 2,
+        "default": 0
+      },
+      "29": {
+        "label": "High Score #3 Awards",
+        "start": "0x021021D0",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 1,
+        "default": 0
+      },
+      "30": {
+        "label": "High Score #4 Awards",
+        "start": "0x021021D8",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 1,
+        "default": 0
+      },
+      "31": {
+        "label": "Grand Champion Score",
+        "start": "0x02102188",
+        "encoding": "int",
+        "length": 4,
+        "min": 1000000,
+        "max": 1000000000,
+        "default": 75000000
+      },
+      "32": {
+        "label": "High Score #1",
+        "start": "0x02102190",
+        "encoding": "int",
+        "length": 4,
+        "min": 1000000,
+        "max": 1000000000,
+        "default": 55000000
+      },
+      "33": {
+        "label": "High Score #2",
+        "start": "0x02102198",
+        "encoding": "int",
+        "length": 4,
+        "min": 1000000,
+        "max": 1000000000,
+        "default": 40000000
+      },
+      "34": {
+        "label": "High Score #3",
+        "start": "0x021021A0",
+        "encoding": "int",
+        "length": 4,
+        "min": 1000000,
+        "max": 1000000000,
+        "default": 30000000
+      },
+      "35": {
+        "label": "High Score #4",
+        "start": "0x021021A8",
+        "encoding": "int",
+        "length": 4,
+        "min": 1000000,
+        "max": 1000000000,
+        "default": 25000000
+      },
+      "36": {
+        "label": "HSTD Initials",
+        "start": "0x021021E0",
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "3 INITIALS",
+          "10 LETTER NAME"
+        ]
+      },
+      "37": {
+        "label": "HSTD Reset Count",
+        "start": "0x021021E8",
+        "encoding": "int",
+        "length": 4,
+        "min": 100,
+        "max": 9900,
+        "default": 2000
+      },
+      "38": {
+        "label": "Free Play",
+        "start": "0x02102110",
+        "encoding": "bool",
+        "default": 0
+      },
+      "39": {
+        "label": "Language",
+        "start": "0x02102050",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 4,
+        "default": 1,
+        "special_values": {
+          "1": "ENGLISH"
+        }
+      },
+      "40": {
+        "label": "Player Language Select",
+        "start": "0x02102038",
+        "encoding": "bool",
+        "default": 0
+      },
+      "41": {
+        "label": "Custom Message",
+        "start": "0x02102010",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 2,
+        "default": 1,
+        "special_values": {
+          "1": "ON"
+        }
+      },
+      "42": {
+        "label": "Flash Lamp Power",
+        "start": "0x02102028",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 2,
+        "default": 2,
+        "special_values": {
+          "2": "NORMAL"
+        }
+      },
+      "43": {
+        "label": "Coil Pulse Power",
+        "start": "0x02102008",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 2,
+        "default": 2,
+        "special_values": {
+          "2": "NORMAL"
+        }
+      },
+      "44": {
+        "label": "Knocker Volume",
+        "start": "0x02102118",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 2,
+        "default": 2,
+        "special_values": {
+          "2": "NORMAL"
+        }
+      },
+      "45": {
+        "label": "Game Restart",
+        "start": "0x02102120",
+        "encoding": "bool",
+        "default": 1
+      },
+      "46": {
+        "label": "Bill Validator",
+        "start": "0x02102128",
+        "encoding": "bool",
+        "default": 0
+      },
+      "47": {
+        "label": "Music Volume",
+        "start": "0x02102048",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 15,
+        "default": 1
+      },
+      "48": {
+        "label": "Ball Save Time",
+        "start": "0x02102130",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 15,
+        "default": 5,
+        "special_values": {
+          "0": "NO BALL SAVES"
+        },
+        "suffix": " s"
+      },
+      "49": {
+        "label": "Timed Plunger",
+        "start": "0x02102138",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 60,
+        "default": 0,
+        "special_values": {
+          "0": "OFF"
+        },
+        "suffix": " s"
+      },
+      "50": {
+        "label": "Flipper Ball Launch",
+        "start": "0x02102140",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 4,
+        "default": 4,
+        "special_values": {
+          "4": "OFF"
+        }
+      },
+      "51": {
+        "label": "Coindoor Ball Saver",
+        "start": "0x02102148",
+        "encoding": "bool",
+        "default": 0
+      },
+      "52": {
+        "label": "Competition Mode",
+        "start": "0x02102150",
+        "encoding": "bool",
+        "default": 0
+      },
+      "53": {
+        "label": "Consolation Ball",
+        "start": "0x02102158",
+        "encoding": "bool",
+        "default": 1
+      },
+      "54": {
+        "label": "Fast Boot",
+        "start": "0x02102020",
+        "encoding": "bool",
+        "default": 1
+      },
+      "55": {
+        "label": "Q24 Option",
+        "start": "0x02102160",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 2,
+        "default": 0,
+        "special_values": {
+          "0": "COIN METER"
+        }
+      },
+      "56": {
+        "label": "Ticket Dispenser",
+        "start": "0x02102168",
+        "encoding": "bool",
+        "default": 0
+      },
+      "57": {
+        "label": "Player Competition",
+        "start": "0x02102170",
+        "encoding": "bool",
+        "default": 1
+      },
+      "58": {
+        "label": "Team Scores",
+        "start": "0x02102178",
+        "encoding": "bool",
+        "default": 0
+      },
+      "59": {
+        "label": "Location ID",
+        "start": "0x02102040",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 9999,
+        "default": 0
+      },
+      "60": {
+        "label": "Game ID",
+        "start": "0x02102030",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 9999,
+        "default": 0
+      },
+      "61": {
+        "label": "Time Format",
+        "start": "0x02102018",
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "12-HOUR",
+          "24-HOUR"
+        ]
+      },
+      "62": {
+        "label": "Coin Input Delay",
+        "start": "0x021021F0",
+        "encoding": "int",
+        "length": 4,
+        "min": 30,
+        "max": 60,
+        "default": 30
+      },
+      "63": {
+        "label": "Lost Ball Recovery",
+        "start": "0x021021F8",
+        "encoding": "bool",
+        "default": 1
+      },
+      "64": {
+        "label": "Coin Door Disable Tilt",
+        "start": "0x02102200",
+        "encoding": "bool",
+        "default": 0
+      }
+    }
+  },
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "encoding": "int",
+      "start": "0x02110250",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -45,6 +1104,53 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x00031989"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x000319BA",
+      "mask": "0xFE",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "enum",
+      "start": "0x000319BA",
+      "mask": "0x1F",
+      "values": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
     },
     "scores": [
       {

@@ -5,11 +5,12 @@
     "Scores are 4-byte little-endian integers.",
     "Score entry: 4-byte score at start, initials (+0x0C bytes) as null-terminated ch.",
     "Stride between entries is 0x24 bytes.",
-    "Verified against NVRAM data with real scores."
+    "Verified against NVRAM data with real scores.",
+    "that is in free play. The alignment was validated prospectively: on nba_802 and smanve_101 --"
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 2,
+    "version": 3,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
