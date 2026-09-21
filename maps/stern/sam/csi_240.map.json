@@ -3,22 +3,34 @@
     "Locally added -- upstream pinmame-nvram-maps has no map for CSI.",
     "Built from a 4-player game driven through the cabinet's own streamer.",
     "current_player and current_ball are adjacent in CPU RAM at 0x0003443C and 0x0003443D, player low",
-    "and ball high, the shape every Stern SAM game measured uses.",
     "Scores are 4 bytes on 8-byte centres from 0x021109F0. The sweep also offered 0x00033784 on 4-byte",
     "centres in CPU RAM, reading 601,580 / 150,440 / 15,040 / 9,400 -- each roughly a quarter of the",
     "one before, which is a scaled or derived set rather than a scoreboard. Scores live in NVRAM on",
     "every SAM game measured, which is what settles it.",
-    "player_count at 0x02110900, the one address every SAM game shares.",
     "Five high score records from 0x02102B98, bounded by where the 16-bit checksum stops validating.",
     "This game has no mode champions: the block ends at five and the machine's post-game DMD cycle",
     "shows no champion entries, unlike Avatar, Dark Knight and Big Buck Hunter.",
     "Only csi_240 is claimed; SAM addresses move between revisions.",
     "Confirmed after the table exited: the map decodes that game as 4 players scoring 945,250 /",
-    "1,062,000 / 1,013,750 / 1,014,000."
+    "1,062,000 / 1,013,750 / 1,014,000.",
+    "game_over, tilted, tilt_warnings and credits come from a 783-frame recording of live memory",
+    "spanning an operator-menu session and a full game with a tilt on ball 1. The session also",
+    "adjustment indices 30 and 32 as the free_play-relative rule predicted.",
+    "0x0003446E is the status bitfield the other SAM games keep at ball+0x31, in a richer variant:",
+    "1 in attract, 38 (0x26) at the start of each ball, 18 (0x12) once the ball is in play, 20",
+    "(0x14) while tilted. game_over with mask 0x12 inverted decodes all four correctly in every one",
+    "of the 783 frames. Bit 0x04 is NOT a usable tilt mask here, unlike trn_174h and its siblings:",
+    "the ball-start value 38 carries it too. The tilt is bit 0x02 clearing during play.",
+    "tilt comes instead from 0x000390BC, a warning counter as on twenty4_150: 1 at the first warning",
+    "while scoring continued, 2 at the exact frame player 1's score froze at 43,500 -- frozen until",
+    "the ball ended -- and 0 at ball end. tilted is bit 0x02 of it, exact at the factory two-warning",
+    "setting; the raw counter is mapped for anyone who changes that.",
+    "credits at 0x0211100C, the ninth SAM game at that address: rose to 2 with the coins, fell to 1",
+    "at game start."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 2,
+    "version": 7,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "copyright": [
       "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
@@ -28,11 +40,48 @@
       "csi_240"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102110",
+      "end": "0x02102114"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x021020F8",
+      "end": "0x021020FC"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210C"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -43,6 +92,24 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x0003443D"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x0003446E",
+      "mask": "0x12",
+      "invert": true
+    },
+    "tilt_warnings": {
+      "label": "Tilt Warnings",
+      "encoding": "int",
+      "start": "0x000390BC"
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x000390BC",
+      "mask": "0x02"
     },
     "scores": [
       {

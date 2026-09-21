@@ -4,7 +4,6 @@
     "Built from a 4-player game driven through the cabinet's own streamer.",
     "current_player and current_ball are adjacent in CPU RAM at 0x00033020 and 0x00033021, player low",
     "and ball high. Scores are 4 bytes on 8-byte centres from 0x021109E4.",
-    "player_count at 0x02110900, the one address every SAM game shares.",
     "Nine records from 0x021029F8, bounded by where the 16-bit checksum stops validating -- the tenth",
     "does not pass. Five are the high score ladder; four are champions, named off the machine's",
     "post-game DMD cycle and each pinned by a distinct factory default: Free Throws 2 in a row,",
@@ -17,11 +16,24 @@
     "among values that move by millions between captures. It reads as a per-game statistic the",
     "game-over summary shows, not a persisted champion.",
     "Score slots confirmed on that game: 1,336,840 for player 1 at 0x021109E4.",
-    "Only nba_802 is claimed; SAM addresses move between revisions."
+    "Only nba_802 is claimed; SAM addresses move between revisions.",
+    "game_over, tilted and credits come from a 1,099-frame recording of live memory spanning an",
+    "indices 30 and 32 as the free_play-relative rule predicted.",
+    "This ROM does not keep the ball+0x31 status byte its siblings use (a constant 0 here). Its game",
+    "state lives in a block at the top of RAM, 0x0003FF00-0x0003FFFF.",
+    "game_over at 0x0003FF83 reads 1 in the attract on both sides of the game and 0 in play, dropping",
+    "at the exact frame the game started -- the same frame credits fell -- and returning on the",
+    "frame of the last score change (the end-of-ball bonus). Correct in all 1,099 frames; any",
+    "non-zero value is game over, so no mask is needed. Ten neighbouring bytes carry the same edges.",
+    "tilted at 0x0003FF6B reads 4 for exactly the sixteen samples from the tilt to the end of the",
+    "tilted ball -- during which player 1's score sat frozen at 5,250 -- and 0 everywhere else in the",
+    "recording. Any non-zero value is tilted.",
+    "credits at 0x0211100C, the fourteenth SAM game at that address: rose to 9 with the coins (capped",
+    "by the Maximum Credits just set) and fell to 8 at game start."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 2,
+    "version": 8,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "copyright": [
       "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
@@ -31,11 +43,53 @@
       "nba_802"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102110",
+      "end": "0x02102114"
+    },
+    {
+      "label": "Master Volume",
+      "start": "0x0211024C",
+      "end": "0x0211024D"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x021020F8",
+      "end": "0x021020FC"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210C"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -46,6 +100,16 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x00033021"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x0003FF83"
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x0003FF6B"
     },
     "scores": [
       {
@@ -72,7 +136,15 @@
         "length": 4,
         "start": "0x021109FC"
       }
-    ]
+    ],
+    "volume": {
+      "label": "Master Volume",
+      "encoding": "int",
+      "start": "0x0211024C",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    }
   },
   "high_scores": [
     {

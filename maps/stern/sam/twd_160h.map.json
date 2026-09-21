@@ -1,18 +1,68 @@
 {
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 4,
+    "version": 12,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "twd_160h"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102120",
+      "end": "0x02102124"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210C"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102118",
+      "end": "0x0210211C"
+    },
+    {
+      "label": "Master Volume",
+      "start": "0x02110204",
+      "end": "0x02110205"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102120"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "encoding": "int",
+      "start": "0x02110204",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102118"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x02102108"
     },
     "current_player": {
       "label": "Player",
@@ -23,6 +73,19 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x00036135"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x00036166",
+      "mask": "0xFE",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x00036166",
+      "mask": "0x02"
     },
     "scores": [
       {
@@ -330,6 +393,29 @@
     "current_player and current_ball are adjacent bytes in CPU RAM at 0x00036134 and 0x00036135, player",
     "low and ball high, the shape every SAM game checked so far uses. The player byte completed 1->2->3",
     "three times, once per ball, against one completion for the ball.",
-    "player_count at 0x02110900, the one address shared across all of them."
+    "player_count at 0x02110900, the one address shared across all of them.",
+    "game_over, tilted, credits and volume come from a 974-frame recording of live memory spanning",
+    "an operator-menu session and one five-ball game with a mid-ball tilt on ball 1. The menu session",
+    "also promoted ball_count and max_credits from derived to measured: Balls Per Game 3 -> 5 landed",
+    "at adjustment index 32 and Max Credits 30 -> 9 at index 34, three and one records below the",
+    "free play record at index 35, as the free_play-relative rule predicted.",
+    "0x00036166 is the status bitfield SAM games keep at ball+0x31: 1 in attract, 41 at each ball",
+    "start, 20 in play, 22 for exactly the ten samples between the tilt and the end of the tilted",
+    "ball, during which player 1's score sat frozen at 191,060. 41 and 20 share no bit, so game_over",
+    "is 'any bit above 0x01' -- mask 0xFE inverted -- correct in all 974 frames. tilted is bit 0x02,",
+    "which no non-tilt value carries on this game.",
+    "volume at 0x02110204 -- not the 0x02110250 used by twd_156 -- moving 59, 60, 58 in the operator",
+    "menu with its complement check byte following; declared as checksum8. credits at 0x0211100C,",
+    "the nineteenth SAM game at that address, stepping down at game start and up again at the end",
+    "of the game when the match awarded a credit.",
+    "Adjustment index 39, four records above free play, is Ball Save Timer (5 -> 0 in the same",
+    "menu session); not a mapped field.",
+    "bytes have read zero in every image captured, so the width is taken from the record's",
+    "The record is 36 bytes with the checksum at +32, so four bytes sit between the 4-byte score at",
+    "+24 and the checksum. They read zero in every image captured (163 records across five games)",
+    "and their purpose is not established: they are consistent with the upper half of a 64-bit score,",
+    "but this game's champion-threshold table at 0x021024F8 stores its thresholds as 4-byte values",
+    "with a complement check byte, which is what a 32-bit score would be compared against. The score",
+    "is therefore declared as 4 bytes until a value above 2^32 is observed or the ROM is disassembled."
   ]
 }

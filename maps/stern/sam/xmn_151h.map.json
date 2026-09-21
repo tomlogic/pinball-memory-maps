@@ -33,11 +33,24 @@
     "The four scores of that game read 721,760 / 1,099,300 / 853,880 / 1,302,140 exactly where this map",
     "declares them, so the 4-byte stride is measured here rather than carried over from another ROM.",
     "Only xmn_151h is claimed: the other X-Men revisions were not checked and SAM high score",
-    "addresses move between ROM revisions."
+    "addresses move between ROM revisions.",
+    "game_over, tilted, credits and volume come from a 714-frame recording of live memory spanning",
+    "an operator-menu session and one five-ball game with a mid-ball tilt on ball 1. The menu session",
+    "also promoted ball_count and max_credits from derived to measured: Balls Per Game 3 -> 5 landed",
+    "at adjustment index 30 and Max Credits 30 -> 9 at index 32, as the free_play-relative rule",
+    "predicted. Ball Save Timer 5 -> 0 landed at index 37, four records above free play; it is not",
+    "a mapped field but the position is the same on every SAM game measured.",
+    "0x00030B16 is the status bitfield SAM games keep at ball+0x31, in its plainest variant: 1 in",
+    "attract, 19 in play, 21 for exactly the nine samples between the tilt and the end of the",
+    "tilted ball, during which player 1's score sat frozen at 45,630. game_over is mask 0x12",
+    "inverted, correct in all 714 frames; tilted is bit 0x04.",
+    "volume at 0x02110250, set from 60 to 58 in the operator menu with its complement check byte",
+    "following; declared as checksum8. credits at 0x0211100C, the twentieth SAM game at that",
+    "address, stepping up with each coin and down once at game start."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 7,
+    "version": 13,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "copyright": [
       "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
@@ -47,11 +60,61 @@
       "xmn_151h"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102110",
+      "end": "0x02102114"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x021020F8",
+      "end": "0x021020FC"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210C"
+    },
+    {
+      "label": "Master Volume",
+      "start": "0x02110250",
+      "end": "0x02110251"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "volume": {
+      "label": "Volume",
+      "encoding": "int",
+      "start": "0x02110250",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -62,6 +125,19 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x00030AE5"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x00030B16",
+      "mask": "0x12",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x00030B16",
+      "mask": "0x04"
     },
     "scores": [
       {
@@ -88,14 +164,7 @@
         "length": 4,
         "start": "0x021109F0"
       }
-    ],
-    "volume": {
-      "label": "Volume",
-      "encoding": "int",
-      "start": "0x02110250",
-      "min": 0,
-      "max": 63
-    }
+    ]
   },
   "high_scores": [
     {

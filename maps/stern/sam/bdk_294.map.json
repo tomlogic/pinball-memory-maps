@@ -1,18 +1,55 @@
 {
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 5,
+    "version": 10,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "bdk_294"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102110",
+      "end": "0x02102114"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x021020F8",
+      "end": "0x021020FC"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210C"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -23,6 +60,19 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x000348B9"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x000348EA",
+      "mask": "0x12",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x000348EA",
+      "mask": "0x04"
     },
     "scores": [
       {
@@ -176,11 +226,20 @@
     "Scores are 4 bytes on 8-byte centres from 0x021109F0, the only group of four evenly spaced values",
     "that rose monotonically through the game. A different base again -- 0x021109E4 on 24, X-Men,",
     "twd_156c and Avatar, 0x02110A0C on Star Trek, 0x02110A24 on LUCI, 0x02110A9C on twd_160h.",
-    "player_count at 0x02110900, the one address every SAM game shares.",
     "The DMD confirms this map's champion labels: after game over it cycled BATMOBILE HURRY-UP",
     "Confirmed after the table exited: the map decodes that game as 2,108,050 / 2,064,720 /",
     "1,217,240 / 1,793,870, exactly what the DMD showed, with player_count 4. All three champion",
     "entries decode as the machine displays them -- 'K O' 10,000,000, 'M R' 25,000,000 and 'JLS'",
-    "75,000,000 -- so the labels this map already carried are right."
+    "75,000,000 -- so the labels this map already carried are right.",
+    "game_over, tilted and credits come from a 453-frame recording of live memory spanning an",
+    "operator-menu session and two consecutive games, the first tilted on ball 1. The session also",
+    "adjustment indices 30 and 32 as the free_play-relative rule predicted.",
+    "0x000348EA is the status bitfield trn_174h, avr_200 and avs_170 keep at ball+0x31, in a variant",
+    "without bit 0x01 during play: 1 in attract, 18 (0x12) playing, 20 (0x14) for exactly the eight",
+    "samples between the tilt and the end of the tilted ball, during which player 1's score sat",
+    "frozen at 275,210. The same declaration as those games -- game_over mask 0x12 inverted, tilted",
+    "bit 0x04 -- decodes correctly in all 453 frames across both games.",
+    "credits at 0x0211100C, the seventh SAM game measured at that address: rose to 2 with the coins,",
+    "then fell once at each of the two game starts."
   ]
 }
