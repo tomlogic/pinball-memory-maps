@@ -2,8 +2,8 @@
   "_notes": [
     "Back to the Future [Data East, 1990]",
     "2026-02-14 added by Tom Collins <tom@scorbit.io>",
-    "Adjustments 0x1E00-0x1E43 are protected by a plain 8-bit sum (complement false) at 0x1EDE; see README.md in maps/dataeast.",
-    "This map is identical to bttf_a27.map.json other than the increased Adjustments length."
+    "Adjustments 0x1E00-0x1E42 are protected by a plain 8-bit sum (complement false) at 0x1EDE; see README.md in maps/dataeast.",
+    "This map is identical to bttf_a28.map.json other than the decreased Adjustments length."
   ],
   "_fileformat": 0.9,
   "_metadata": {
@@ -14,14 +14,15 @@
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "dataeast",
     "roms": [
-      "bttf_a28"
+      "bttf_a27",
+      "bttf_g27"
     ],
     "validation": {
       "checksum": [
         {
           "label": "Adjustments",
           "start": "0x1E00",
-          "length": 68,
+          "length": 67,
           "complement": false,
           "checksum": "0x1EDE"
         }
