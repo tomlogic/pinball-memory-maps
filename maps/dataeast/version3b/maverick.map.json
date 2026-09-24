@@ -4,11 +4,17 @@
     "IPDB: 1561, OPDB: GrN9V-ML8nw",
     "Compiled by Tom Collins <tom@scorbit.io>",
     "2026-02-05: Map based on Guns N' Roses",
-    "mav_100 and mav_200 have different game_state locations"
+    "mav_100 and mav_200 have different game_state locations",
+    "version 3 game -- clra; ldab <count>; ldx #$1E00; loop adda 0,x / inx / decb; rts -- so the",
+    "address the caller stores the result to. Taken from mav_402 and confirmed against saved NVRAM",
+    "hook_501 exactly, which is what validates it.",
+    "Other ROM revisions listed under roms were not scanned; they are expected to match mav_402, and a",
+    "mismatch fails safe because a writer must refuse a region that does not validate.",
+    "Adjustments 0x1E00-0x1E5B are protected by a plain 8-bit sum (complement false) at 0x1FDD; see README.md in maps/dataeast."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 3,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -18,7 +24,18 @@
       "mav_400",
       "mav_401",
       "mav_402"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": 92,
+          "complement": false,
+          "checksum": "0x1FDD"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [

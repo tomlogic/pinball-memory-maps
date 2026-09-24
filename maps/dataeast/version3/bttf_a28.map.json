@@ -1,11 +1,17 @@
 {
   "_notes": [
     "Back to the Future [Data East, 1990]",
-    "2026-02-14 added by Tom Collins <tom@scorbit.io>"
+    "2026-02-14 added by Tom Collins <tom@scorbit.io>",
+    "Adjustments 0x1E00-0x1E42 are protected by a plain 8-bit sum (checksum8_sum, not complemented) at 0x1EDE,",
+    "the byte right after the custom-message text, followed by a change counter and the 0xFF fill. This",
+    "block runs from 0x1E00 to the byte before the 0xFF fill. Verified against saved bttf_a27 images (both cabinets), one",
+    "writer must drop the write rather than repair it.",
+    "Adjustments 0x1E00-0x1E42 are protected by a plain 8-bit sum (complement false) at 0x1EDE; see README.md in maps/dataeast.",
+    "The declaration follows bttf_a27 and bttf_g27, whose ROMs sum 0x1E00-0x1E42 and which is the revision confirmed against saved NVRAM. bttf_a28 itself sums one byte more, 0x1E00-0x1E43."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 7,
+    "version": 10,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -15,7 +21,18 @@
       "bttf_a27",
       "bttf_a28",
       "bttf_g27"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": 67,
+          "complement": false,
+          "checksum": "0x1EDE"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [
