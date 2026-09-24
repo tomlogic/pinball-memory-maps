@@ -18,9 +18,9 @@
     "reproduced this map's existing score address, and rejected a CPU RAM candidate at 0x00038D9C",
     "whose four values (~16.7M, near-identical) are the usual scaled-set false positive."
   ],
-  "_fileformat": 0.7,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": [
       "Copyright (C)2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
