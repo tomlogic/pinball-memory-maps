@@ -17,11 +17,11 @@ and change game settings without using the service menu.
 
 This project started in October 2015, and should be considered "beta"
 quality.  As people map more games, the file format may change to
-support additional requirements.  We are working toward a "1.0" file 
+support additional requirements.  We are working toward a "1.0" file
 format version that should reduce the number of changes moving foward.
 
 Starting in 2025, it transitioned to include mapping of all RAM for a game,
-including the volatile RAM that isn't stored in `.nv` files, and isn't 
+including the volatile RAM that isn't stored in `.nv` files, and isn't
 maintained by battery backup in physical games.
 
 I chose to use [JSON](http://json.org) as a simple yet flexible file
@@ -63,7 +63,7 @@ documentation for how to interpret them.
 
 [Project home](https://github.com/tomlogic/pinball-memory-maps)
 
-_Note that this project was renamed to pinball-memory-maps from 
+_Note that this project was renamed to pinball-memory-maps from
 pinmame-nvram-maps in August 2026._
 
 ## License
@@ -73,7 +73,7 @@ As of August 2026, these Pinball Memory Maps are made available under the
 Any rights in individual contents of the database are licensed under the
 [Database Contents License](http://opendatacommons.org/licenses/dbcl/1.0/).
 
-This project was previously licensed under the GNU Lesser General Public 
+This project was previously licensed under the GNU Lesser General Public
 License v3.0 (LGPL).  Since that license is more appropriate for code than
 data, it now applies to code in the `tools/` directory.
 
@@ -93,7 +93,7 @@ currently includes a Python program (`nvram_parser.py`) that works as a
 standalone application to dump a parsed `.nv` file, or as a class
 (ParseNVRAM) you can use from other programs.
 
-There is also a [Rust library](https://github.com/francisdb/pinmame-nvram) 
+There is also a [Rust library](https://github.com/francisdb/pinmame-nvram)
 for reading and writing nvram files that uses the maps from this project.
 
 ## Project Contents
@@ -102,7 +102,7 @@ for reading and writing nvram files that uses the maps from this project.
 
 The file `index.json` is a simple object that maps PinMAME romset names
 to their corresponding map file (which may be valid for multiple ROMs).
-Implementations can use it for lookups instead of parsing all maps in the 
+Implementations can use it for lookups instead of parsing all maps in the
 filesystem.
 
 - The object has a single entry for a given ROM (i.e., the repository
@@ -113,7 +113,7 @@ filesystem.
 
 ### Listing of PinMAME ROM sets
 
-The file `romnames.json` is a simple object with PinMAME romset names 
+The file `romnames.json` is a simple object with PinMAME romset names
 as the key (e.g., "hs_l4") and a value with a human-readable description
 (e.g., "High Speed (L-4)").
 
@@ -122,22 +122,22 @@ You can update the contents of that file by piping the output of
 
 ### Platform Files
 
-Each map references a "platform" file that primarily describes the memory 
-layout for the game.  The top-level `platforms/` directory holds these 
-JSON files, and the map file's `_metadata` section has a `platform` 
-property with the name of that file  without the `.json` extension (e.g., 
+Each map references a "platform" file that primarily describes the memory
+layout for the game.  The top-level `platforms/` directory holds these
+JSON files, and the map file's `_metadata` section has a `platform`
+property with the name of that file  without the `.json` extension (e.g.,
 "williams-system11").
 
 The platform file has the following properties:
 
 - **_notes**: Optional notes about the hardware platform.
 - **cpu**: Optional string describing the hardware's CPU.
-- **endian**: Set to either `"big"` (default) or `"little"` to indicate the 
+- **endian**: Set to either `"big"` (default) or `"little"` to indicate the
   default byte order of multibyte values.
   Refers to which end of the number is stored first.  For example, a
   `bcd`-encoded score of 123,450 is the byte sequence 0x12, 0x34, 0x50 if
   big-endian, and 0x50 0x34 0x12 if little-endian.
-- **memory_layout**: An array of dictionaries describing RAM regions for the 
+- **memory_layout**: An array of dictionaries describing RAM regions for the
   given hardware.
 
 #### Memory Layout Entries
@@ -150,12 +150,12 @@ The platform file has the following properties:
   - "banked" (ROM regions swapped in as pages)
 - **address**: The base CPU address used to access the memory contents.
 - **size**: The number of addresses covered by the device.
-- **nibble**: Set to `"both"` (default for 8-bit memory), `"high"`, or 
-  `"low"` to identify which 4-bit nibble to use from each address.  Some 
+- **nibble**: Set to `"both"` (default for 8-bit memory), `"high"`, or
+  `"low"` to identify which 4-bit nibble to use from each address.  Some
   games (e.g., Williams System 7, Gottlieb System 80B, Stern M-100) used
   4-bit NVRAM, so only half of each byte is valid.
   `"both"` indicates use of the full 8 bits/byte.  Set to `"low"` to use
-  the lower 4 bits of the byte or `high` to use the upper 4 bits of the byte. 
+  the lower 4 bits of the byte or `high` to use the upper 4 bits of the byte.
   The `bcd` sequence `0x12 0x34 0x56` translates to `123456` when `nibble` is
   `both`, `246` when `nibble` is `low` and `135` when `nibble` is `high`.
   Robowars has an example of a `nibble=low` `ch` field, where the sequence
@@ -166,60 +166,125 @@ The platform file has the following properties:
 
 ### Memory Maps
 
-The actual memory maps are in subdirectories of `maps/`, with a file 
-extension of `.map.json`.  The map's JSON file is essentially a big object 
-(dictionary/associative array), with the following key/value pairs.  It 
-may help to review one or more of the maps as an example of the file 
+The actual memory maps are in subdirectories of `maps/`, with a file
+extension of `.map.json`.  The map's JSON file is essentially a big object
+(dictionary/associative array), with the following key/value pairs.  It
+may help to review one or more of the maps as an example of the file
 format while reading this section of the documentation.
 
 In cases where this specification isn't clear, please use existing maps
-or the Python library as a guide, or open a GitHub issue requesting a 
-documentation update.  The descriptions below may refer to features 
+or the Python library as a guide, or open a GitHub issue requesting a
+documentation update.  The descriptions below may refer to features
 explained in detail later in this document.
 
 Numbers can appear as decimal values (`1234`) or hexadecimal values
-inside of strings (`"0x4D2"`).  Hex notation is preferred for addresses 
-since most reverse-engineering tools (hex editors, PinMAME debugger, 
+inside of strings (`"0x4D2"`).  Hex notation is preferred for addresses
+since most reverse-engineering tools (hex editors, PinMAME debugger,
 disassembly listings) default to hex.
 
 #### Metadata
 
-Keys starting with underscore describe the map itself and provide defaults 
+Keys starting with underscore describe the map itself and provide defaults
 for later entries.
 
 - **_notes**: Notes about the map, possibly indicating who created it or
   portions of the map that may not be entirely correct.  Can be a string
   or an array of strings.
-- **_fileformat** _(required)_: A `float` indicating the file's format.  
-  See Version History at the end of this README for changes made with each 
+- **_fileformat** _(required)_: A `float` indicating the file's format.
+  See Version History at the end of this README for changes made with each
   format version.
-- **_metadata** _(required)_: An object with multiple properties 
+- **_metadata** _(required)_: An object with multiple properties
   describing the map.
 
 ##### _metadata Properties
 
 - **version** _(required)_: An `integer` indicating the map's version.
-- **license** _(required)_: All files from this project are covered by the 
-  ODbL license.  Modified map files, or maps created using an existing map 
-  as a starting point are also covered by that license.  Please use "Open 
+
+- **license** _(required)_: All files from this project are covered by the
+  ODbL license.  Modified map files, or maps created using an existing map
+  as a starting point are also covered by that license.  Please use "Open
   Data Commons Open Database License (ODbL) v1.0" for any new maps.
-- **platform** _(required)_: Identifies the hardware platform (e.g., Williams 
-  WPC) for the ROMs covered by this map.  This is a string that 
-  corresponds to a JSON file in the top-level `platforms/` directory.  See 
+
+- **platform** _(required)_: Identifies the hardware platform (e.g., Williams
+  WPC) for the ROMs covered by this map.  This is a string that
+  corresponds to a JSON file in the top-level `platforms/` directory.  See
   the Platform section above for details on what's covered in that file.
+
 - **roms** _(required)_: An array of PinMAME ROMs that use this map.
+
 - **free_only**: An array of PinMAME ROMs that only support "home" use.  If
-  a ROM is in this array, it's always Free Play, and you should ignore 
-  `game_state` fields of `credits`, `max_credits`, and `free_play` as they 
+  a ROM is in this array, it's always Free Play, and you should ignore
+  `game_state` fields of `credits`, `max_credits`, and `free_play` as they
   don't make sense in this context.
+
 - **copyright**: Original author of the map, possibly an array of people
   who have contributed to the map.
-- **char_map**: Characters to use for the `ch` encoding instead of a straight 
+
+- **char_map**: Characters to use for the `ch` encoding instead of a straight
   ASCII table.  See Whirlwind (`whirl_l3.map.json`) as an example.
-- **values**: An object of string keys and list values referenced by 
-  multiple descriptors later in the file.  The `value` property for 
-  descriptors (see below) is either an array of values or a key to this 
+
+- **values**: An object of string keys and list values referenced by
+  multiple descriptors later in the file.  The `value` property for
+  descriptors (see below) is either an array of values or a key to this
   object.
+
+- **validation**: ROMs have routines to identify memory corruption and
+  will either clear or reset "corrupted" memory to a default value.  The
+  `validation` section of the map details those methods so map consumers
+  can make the necessary updates for modified memory to appear "valid" to
+  the ROM.  Writers should update mirrors first and then checksums (since
+  checksums can cover mirrored values).  The `validation` object supports
+  the following keys, each of which has an array of objects as its value.
+
+  - **checksum**: One validation method is to sum values across a memory
+    range, and store either the sum or it's complement (i.e., `sum XOR
+    0xFF`) at another address.  The properties of the checksum objects in
+    the `_metadata.validation.checksum` array are:
+
+    - **_notes**, **label**, **start**, **end**, **length**, **repeat**:
+      Same definition as in the Descriptors documentation below.
+
+    - **bits** _(required)_: Either 4, 8, or 16, indicating the stored
+      checksum's size (nibble, one byte, and two bytes respectively).
+      4-bit checksums are only valid in 4-bit memory regions (e.g., some
+      NVRAM on early solid-state games).  16-bit checksums use the
+      platform file's byte order.
+
+    - **checksum**: Optional field for the address of the checksum.  If
+      absent, the checksum appears at the end of the region defined by the
+      `start` and either `length` or `end` property.  For example, a
+      16-bit checksum starts at `start + length - 2` and sums `length - 2`
+      bytes.  Maps should only use this field if the checksum doesn't
+      immediately follow the summed memory area.  If the object also has a
+      `repeat` property, it will add `step` to `checksum` in addition to
+      `start`.
+
+    - **complement** _(required)_: A boolean property with `false` indicating
+      that the actual sum is stored, versus `true` which stores the
+      complement (a value added to the sum to get 0).
+
+  - **mirror**: The other known validation method is to copy a memory
+    region to one or more additional locations.  Gottlieb System
+    3/80/80A/80B games mirrored their audits and adjustments in triplicate.
+    At startup, if a byte only matched two regions, the ROM automatically
+    copy that byte to the third region.  If all three regions disagreed,
+    it would reset the audit or adjustment covered by that byte. Stern SAM
+    games mirrored 32-bit values in their audits, in addition to storing a
+    checksum. When modifying mirrored memory, apply writes to all
+    specified regions.
+
+    - **_notes**, **label**, **repeat**: Same definition as in the
+      Descriptors documentation below.
+
+    - **start**: An optional base address (default 0) to add to each entry
+      in `offsets`.  Necessary to support `repeat` for mirrored audits on
+      Stern SAM.
+
+    - **length** _(required)_: Size of each region.
+
+    - **offsets** _(required)_: Address (or offset from `start`) of each
+      region.  Must have at least two entries.  Typically two or three
+      regions defined.
 
 #### Descriptors
 
@@ -228,110 +293,129 @@ interpret them.  They're comprised of the following key/value pairs:
 
 - **_notes**: Notes for someone maintaining the map; not displayed when
   parsing memory.  Can be a string or an array of strings.
+- **label**: A label describing this descriptor.
 
-- You must specify the location of data in memory with one or more of the
-  following properties.  At least one of `start` and `offsets` are required.
-  Entries cannot have both an `end` and `length`.
-  - **start**: CPU address of the first byte/nibble to interpret.  It can 
-    reference any memory region in the platform file's `memory_layout` 
-    section.  Default behavior is to use that single byte/nibble unless the 
-    `end` or `length` keys are present.
-  - **end**: Address of the last byte/nibble to interpret.  Its value
-    must be greater than or equal to `start`. 
-  - **length**: Number of bytes/nibbles to interpret, must be at least 1 
-    (default).
-  - **offsets**: For `dipsw` encoding, this is an array of switch numbers.
-    For other encodings, it is an array of addresses to use an alternative to 
-    using start/end or start/length when addresses aren't contiguous.  If 
-    both `start` and `offsets` are present, `start` is a base address 
-    added to each entry of `offsets`.
+Descriptors in an array can include a `repeat` object to make multiple
+copies of the descriptor.  This is useful for lists of mode champions (e.g.,
+Johnny Mnemonic) or repeated entries in `_metadata.validation`.  Map
+consumers should remove `repeat` from the descriptor "template", and replace
+`"{#}"` in `label` and `short_label` with the index of the entry
+(starting from `1`).  The `repeat` object has two properties:
+
+- **count** _(required)_: Number of times to repeat the template.
+- **step** _(required)_: Integer (or hex string) value added to the
+  template's `start` property (and `checksum` property for those records).
+
+You must specify the location of data in memory with one or more of the
+following properties.  At least one of `start` and `offsets` are required.
+Entries cannot have both an `end` and `length`.
+
+- **start**: CPU address of the first byte/nibble to interpret.  It can
+  reference any memory region in the platform file's `memory_layout`
+  section.  Default behavior is to use that single byte/nibble unless the
+  `end` or `length` keys are present.
+- **end**: Address of the last byte/nibble to interpret.  Its value
+  must be greater than or equal to `start`.
+- **length**: Number of bytes/nibbles to interpret, must be at least 1
+  (default).
+- **offsets**: For `dipsw` encoding, this is an array of switch numbers.
+  For other encodings, it is an array of addresses to use an alternative to
+  using start/end or start/length when addresses aren't contiguous.  If
+  both `start` and `offsets` are present, `start` is a base address
+  added to each entry of `offsets`.
+
+The **encoding** _(required)_ property describes the method a map consumer
+uses to decode the bytes/nibbles referenced by the descriptor.  The property
+must be one of the following:
+
+- `"enum"`: An enumerated type where the byte at `start` is used as an
+  index into an array of strings provided in `values`.
+- `"int"`: A (possibly) multibyte integer, where each byte is multiplied
+  by a power of 256.  The big-endian byte sequence `0x12 0x34` would
+  translate to the decimal value `4660`.
+- `"bits"`: Same decoding as `"int"`, but used to sum select integers from
+  the array in `values`.
+- `"bool"`: Same decoding as `"int"`, but all non-zero values equate to
+  `true` and zero is `false`.  Inverts the logic if the optional property
+  `invert` is set to `true` (zero is `true` and non-zero is `false`).
+- `"bcd"`: A binary-coded decimal value, where each byte represents two
+  decimal digits of a number.  The big-endian byte sequence `0x12 0x34`
+  would translate to the decimal value `1234`.  When converting BCD
+  values, treat the nibbles 0xA to 0xF as 0 numerically, or a space for
+  display purposes.
+- `"ch"`: A sequence of 7-bit ASCII characters that may be shortened by a
+  null byte (0x00) terminator based on the `"null"` attribute for the entry.
+  If the map has `char_map` metadata, all bytes (including 0x00) are
+  indexes into that string.
+- `"raw"`: A series of raw bytes, useful for extracting data yet to be
+  decoded or that requires custom processing.
+- `"dipsw"`: A special encoding where `offsets` is an array of DIP switch
+  numbers (indexed starting with 1) that combine to form an index into
+  the `values` array for the entry.  See the "DIP Switches" section for
+  details.
+- `"wpc_rtc"`: A special type for a real-time clock value
+  from a WPC game, stored as a sequence of 7 bytes.  Starts with a
+  two-byte year (2015 is `0x07 0xDF`), month (1-12), day of month (1-31),
+  day of the week (0-6, 0=Sunday), hour (0-23) and minute (0-59).
 
 - These properties provide additional encoding details:
-  - **endian**: Overrides the platform's `endian` setting.
-  - **nibble**: Overrides the platform's `nibble` setting for the platform's
-    Memory Layout section corresponding to the first address of the 
-    descriptor.
-  - **null**: Used for `"ch"` encodings to specify null (0x00) byte handling.
-      For `truncate` and `terminate`, ignore all bytes after the null.
-    - `"ignore"`: Ignore (skip over) null bytes.  Default setting.
-    - `"truncate"`: A null can shorten the string, but won't be present for
-      strings that fill the allotted space.
-    - `"terminate"`: Null bytes are always present and terminate the string.
 
-- **encoding** _(required)_ must be one of the following:
-  - `"enum"`: An enumerated type where the byte at `start` is used as an
-    index into an array of strings provided in `values`.
-  - `"int"`: A (possibly) multibyte integer, where each byte is multiplied
-    by a power of 256.  The big-endian byte sequence `0x12 0x34` would 
-    translate to the decimal value `4660`.
-  - `"bits"`: Same decoding as `"int"`, but used to sum select integers from
-    the array in `values`.
-  - `"bool"`: Same decoding as `"int"`, but all non-zero values equate to
-    `true` and zero is `false`.  Inverts the logic if the optional property
-    `invert` is set to `true` (zero is `true` and non-zero is `false`).
-  - `"bcd"`: A binary-coded decimal value, where each byte represents two
-    decimal digits of a number.  The big-endian byte sequence `0x12 0x34` 
-    would translate to the decimal value `1234`.  When converting BCD 
-    values, treat the nibbles 0xA to 0xF as 0 numerically, or a space for 
-    display purposes.
-  - `"ch"`: A sequence of 7-bit ASCII characters that may be shortened by a
-    null byte (0x00) terminator based on the `"null"` attribute for the entry.
-    If the map has `char_map` metadata, all bytes (including 0x00) are
-	indexes into that string.
-  - `"raw"`: A series of raw bytes, useful for extracting data yet to be
-    decoded or that requires custom processing.
-  - `"dipsw"`: A special encoding where `offsets` is an array of DIP switch
-    numbers (indexed starting with 1) that combine to form an index into
-    the `values` array for the entry.  See the "DIP Switches" section for
-    details.
-  - `"wpc_rtc"`: A special type for a real-time clock value
-    from a WPC game, stored as a sequence of 7 bytes.  Starts with a
-    two-byte year (2015 is `0x07 0xDF`), month (1-12), day of month (1-31),
-    day of the week (0-6, 0=Sunday), hour (0-23) and minute (0-59).
+- **endian**: Overrides the platform's `endian` setting.
+- **nibble**: Overrides the platform's `nibble` setting for the platform's
+  Memory Layout section corresponding to the first address of the
+  descriptor.
+- **null**: Used for `"ch"` encodings to specify null (0x00) byte handling.
+    For `truncate` and `terminate`, ignore all bytes after the null.
+  - `"ignore"`: Ignore (skip over) null bytes.  Default setting.
+  - `"truncate"`: A null can shorten the string, but won't be present for
+    strings that fill the allotted space.
+  - `"terminate"`: Null bytes are always present and terminate the string.
 
-- These properties convert the value decoded from memory.  Apply `mask`, 
-  then `scale`, then `offset`. An entry can only have one of `values`, 
-  `special_values`, or `invert`.
-  - **mask**: A mask to apply to each byte before furtherprocessing.  For 
-    example, a mask of `"0x5F"` converts lowercase initials to uppercase 
-    and a mask of `"0x0F"` clears the upper four bits.
-  - **scale**: A numeric multiplier for a decoded `int`, `bcd`, or `bits`.
-  - **offset**: A numeric value to add to a decoded `int`, `bcd`, or `bits`
-    value before displaying it.  Applied after `scale`.
-  - **values**: For `enum` encoding, an array of strings, integers or boolean 
-    values indexed with the value read from memory.  For the `bits` 
-    encoding, an array of integers (for bit 0, 1, 2, etc.) to combine based on 
-    bits set in the value read from memory.  Instead of an actual array, this 
-    property can be a string that references a shared array stored in the 
-    `values` metadata property for the map.
-  - **special_values**: A set of key/value pairs for a numeric field where 
-    some values have special meaning (for example, `{"0": "OFF"}`).  The
-    key is a string representation of the number.
-  - **invert**: Only used for `bool` encoding.  Defaults to `false`.  If
-    set to `true`, treat a value of zero as `true` and non-zero as `false`.
+These properties convert the value decoded from memory.  Apply `mask`,
+then `scale`, then `offset`. An entry can only have one of `values`,
+`special_values`, or `invert`.
 
-- These properties are only related to displaying the value, independently of
-  how it's actually stored in memory.
-  - **label**: A label describing this descriptor. 
-  - **short_label**: An optional, abbreviated label for use when space is
-    limited (like in a game launcher on a DMD). 
-  - **units**: Used to indicate that a field contains a time value as either a
-    number of `"seconds"` or `"minutes"`, and should be displayed as 
-    `HH:MM:SS`.
-  - **suffix**: A string to append to the value (e.g., `"M"` if the value
-    represents millions).
+- **mask**: A mask to apply to each byte before furtherprocessing.  For
+  example, a mask of `"0x5F"` converts lowercase initials to uppercase
+  and a mask of `"0x0F"` clears the upper four bits.
+- **scale**: A numeric multiplier for a decoded `int`, `bcd`, or `bits`.
+- **offset**: A numeric value to add to a decoded `int`, `bcd`, or `bits`
+  value before displaying it.  Applied after `scale`.
+- **values**: For `enum` encoding, an array of strings, integers or boolean
+  values indexed with the value read from memory.  For the `bits`
+  encoding, an array of integers (for bit 0, 1, 2, etc.) to combine based on
+  bits set in the value read from memory.  Instead of an actual array, this
+  property can be a string that references a shared array stored in the
+  `values` metadata property for the map.
+- **special_values**: A set of key/value pairs for a numeric field where
+  some values have special meaning (for example, `{"0": "OFF"}`).  The
+  key is a string representation of the number.
+- **invert**: Only used for `bool` encoding.  Defaults to `false`.  If
+  set to `true`, treat a value of zero as `true` and non-zero as `false`.
 
-- Encodings can include properties that describe limitations imposed on
-  adjustments in the service menu, or just ranges that the ROM considers
-  invalid.  These all pertain to the stored value, exclusive of any `scale`
-  or `offset`.
-  - **default**: The factory default value.
-    Used for the **initials** entry of a high score to indicate the value
-    for an unused entry (e.g., `"   "` on WPC, `"\u0000\u0000\u0000"` on
-    Gottlieb System 80).  Defaults to `0` unless specified.
-  - **min** and **max**: The valid range of values.
-  - **multiple_of**: Enforce a subset of values between `min` and `max`.
-    Defaults to `1` (all values allowed) unless specified.
+These properties are only related to displaying the value, independently of
+how it's actually stored in memory.
+
+- **short_label**: An optional, abbreviated label for use instead of
+  `label` for instances when space is limited (e.g., a DMD game launcher).
+- **units**: Used to indicate that a field contains a time value as either a
+  number of `"seconds"` or `"minutes"`, and should be displayed as
+  `HH:MM:SS`.
+- **suffix**: A string to append to the value (e.g., `"M"` if the value
+  represents millions).
+
+Encodings can include properties that describe limitations imposed on
+adjustments in the service menu, or just ranges that the ROM considers
+invalid.  These all pertain to the stored value, exclusive of any `scale`
+or `offset`.
+
+- **default**: The factory default value.  Used for the **initials** entry
+  of a high score to indicate the value for an unused entry (e.g., `"   "`
+  on WPC, `"\u0000\u0000\u0000"` on Gottlieb System 80).  Defaults to `0`
+  unless specified.
+- **min** and **max**: The valid range of values.
+- **multiple_of**: Enforce a subset of values between `min` and `max`.
+  Defaults to `1` (all values allowed) unless specified.
 
 ##### Encoding/Property Cheat Sheet
 
@@ -364,9 +448,9 @@ interpret them.  They're comprised of the following key/value pairs:
 ##### Property Notes
 - The `null` property only applies to `ch` encoding.
 - The `values` property is an array of values, starting with an index of 0.
-- The `special_values` property is an object of integer (as string) keys 
-  and a number or string values to override display of a specific integer.  A 
-  common example would be replacing a 0 with the word OFF (represented as 
+- The `special_values` property is an object of integer (as string) keys
+  and a number or string values to override display of a specific integer.  A
+  common example would be replacing a 0 with the word OFF (represented as
   `"special_values": { "0": "OFF" }}`).  Another example is Atari games that
   start up with 888,888 in the score displays.  Using `"special_values":
   { "888888": 0 }` treats that as a 0.
@@ -386,15 +470,15 @@ early Atari games don't have high scores!
   - **short_label**: Optional abbreviated label (e.g., `"GC"`).
   - **score**: Descriptor of where the high score's score is stored in
     memory.
-  - **initials**: Optional descriptor of where the high score's initials are 
+  - **initials**: Optional descriptor of where the high score's initials are
     stored in memory.
 - **mode_champions**: Another array of descriptors with recognition of
-  other in-game accomplishments.  These descriptors might just have 
-  initials, and can include the following properties (which may change in 
+  other in-game accomplishments.  These descriptors might just have
+  initials, and can include the following properties (which may change in
   future versions).
   - **counter**: Medieval Madness uses a counter in its King of the Realm
     scores to skip over older/duplicate records.
-  - **nth_time**: Medieval Madness includes "for the #th time" in King of 
+  - **nth_time**: Medieval Madness includes "for the #th time" in King of
     the Realm high scores.
   - **timestamp**: Some WPC games (AFM, MM, SS) include a timestamp in the
     mode champion record.
@@ -408,7 +492,7 @@ early Atari games don't have high scores!
   referred to as "Bookkeeping").
 - **game_state**: A collection of memory areas used during a game to store
   the state of the game (e.g., player #, ball #, progressive jackpot value,
-  etc.).  See the Game State section for an array of this section's 
+  etc.).  See the Game State section for an array of this section's
   properties.
 - **dip_switches**: A special section detailing DIP switch options for the
   game.  See the "DIP Switches" section below for details.
@@ -416,7 +500,7 @@ early Atari games don't have high scores!
 #### Game State
 
 The Game State section (`game_state`) contains information about the current
-game in progress.  Some items are still valid in a game over state (e.g., 
+game in progress.  Some items are still valid in a game over state (e.g.,
 `credits`) but you should ignore others like `current_player` and `tilted`.
 
 ##### Key Fields
@@ -424,10 +508,10 @@ These should be considered a priority when mapping a game.
 
 - **scores**: An array of entries representing player scores from the current
     game or the game that just finished.
-- **current_player**: A number representing the current player (1-6).  Values 
+- **current_player**: A number representing the current player (1-6).  Values
     of 0 or larger than `player_count` are an indication that there isn't a
     game in progress (i.e., in attract mode).
-- **player_count**: Number of players in the current game (1-6), or the game 
+- **player_count**: Number of players in the current game (1-6), or the game
     that just finished.
 - **current_ball**: Current ball number (typically 1-5).  Values of 0 or
     larger than `ball_count` are an indication that there isn't a game in
@@ -459,7 +543,7 @@ priority.
 - **tilt_warnings**: Number of tilt warnings received on the current ball.
 
 The following should use an encoding of `bool`:
-- **free_play**: Whether the game is configured for Free Play.  *(See also, 
+- **free_play**: Whether the game is configured for Free Play.  *(See also,
   `_metadata.free_only`.)*
 - **game_over**: Whether the game is in progress (false) or over (true).
 - **tilted**: Current player has tilted their ball.
@@ -539,10 +623,10 @@ See `gottlieb/victory.map.json` as a full example of DIP switch documentation.
 
 #### Checksums
 
-The `checksum8` and `checksum16` sections were deprecated in 
-`_fileformat` 0.9.  They will remain in maps until a release of 
-`_fileformat` 1.0 to give time for consumers to implement support for 
-`_metadata.validation`.  Consumers of v0.9 maps should ignore `checksum8` and 
+The `checksum8` and `checksum16` sections were deprecated in
+`_fileformat` 0.9.  They will remain in maps until a release of
+`_fileformat` 1.0 to give time for consumers to implement support for
+`_metadata.validation`.  Consumers of v0.9 maps should ignore `checksum8` and
 `checksum16` and rely solely on the `_metadata.validation` section.
 
 The objects used for the last two entries in the map are
@@ -551,16 +635,16 @@ slightly different from the other descriptors.  They have the required
 `label` is optional.  They introduce a new, optional `groupings` key used to
 treat a single descriptor as an array of groupings-sized ranges.
 
-(For example, on WPC games, the audits are a series of 6-byte entries, each 
+(For example, on WPC games, the audits are a series of 6-byte entries, each
 with an 8-bit checksum as the last byte.)
 
 As of file format v0.7, these objects allow for non-adjacent checksums via
-a `checksum` field to represent the checksum's address.  The original 
-behavior (followed when `checksum` isn't present) is to extract the 
-checksum byte from the end of the `start` to `end` range.  If `checksum` is 
+a `checksum` field to represent the checksum's address.  The original
+behavior (followed when `checksum` isn't present) is to extract the
+checksum byte from the end of the `start` to `end` range.  If `checksum` is
 present, `start` to `end` describe only the bytes checksummed.
 
-(For example, on Williams System 11 games, the single byte credit field 
+(For example, on Williams System 11 games, the single byte credit field
 has a checksum that appears in a non-adjacent address.)
 
 - **checksum8**: An array of memory regions protected by an 8-bit
@@ -595,13 +679,13 @@ has a checksum that appears in a non-adjacent address.)
 
 ### v0.7
 - Add `platform` metadata property.
-- Hex string usage is no longer deprecated.  In the majority of cases it's 
+- Hex string usage is no longer deprecated.  In the majority of cases it's
   easier to use hex notation.
 
 ### v0.8
 - Add `checksum` property to checksum8/checksum16 objects to allow for
   non-adjacent checksums (needed for Credits on System 11).
-- Add `bool` encoding and `invert` property.  
+- Add `bool` encoding and `invert` property.
 - Rename `attract` to `game_over`.
 - Add `final_scores` to `game_state`.
 - `special_values` can have integer values in addition to string values.
@@ -613,6 +697,6 @@ has a checksum that appears in a non-adjacent address.)
 
 ### v0.9
 - Add `_metadata.validation` with `mirror` and `checksum` sections.
-- Deprecate `checksum8` and `checksum16`.  Use `tools/normalize-map.py` to 
+- Deprecate `checksum8` and `checksum16`.  Use `tools/normalize-map.py` to
   convert those sections to `_metadata.validation.checksum` entries.
 - Add `repeat` property as an option to any descriptor in an array context.
