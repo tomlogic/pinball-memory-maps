@@ -4,9 +4,9 @@
     "WPC 50048, SYS 3.65 REV 1.5",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -217,93 +217,16 @@
       }
     },
     {
-      "label": "Favorite Stiff #1",
+      "label": "Favorite Stiff #{#}",
       "initials": {
         "start": 8119,
         "encoding": "ch",
         "default": "\u00ff\u00ff\u00ff",
         "length": 3
-      }
-    },
-    {
-      "label": "Favorite Stiff #2",
-      "initials": {
-        "start": 8122,
-        "encoding": "ch",
-        "default": "\u00ff\u00ff\u00ff",
-        "length": 3
-      }
-    },
-    {
-      "label": "Favorite Stiff #3",
-      "initials": {
-        "start": 8125,
-        "encoding": "ch",
-        "default": "\u00ff\u00ff\u00ff",
-        "length": 3
-      }
-    },
-    {
-      "label": "Favorite Stiff #4",
-      "initials": {
-        "start": 8128,
-        "encoding": "ch",
-        "default": "\u00ff\u00ff\u00ff",
-        "length": 3
-      }
-    },
-    {
-      "label": "Favorite Stiff #5",
-      "initials": {
-        "start": 8131,
-        "encoding": "ch",
-        "default": "\u00ff\u00ff\u00ff",
-        "length": 3
-      }
-    },
-    {
-      "label": "Favorite Stiff #6",
-      "initials": {
-        "start": 8134,
-        "encoding": "ch",
-        "default": "\u00ff\u00ff\u00ff",
-        "length": 3
-      }
-    },
-    {
-      "label": "Favorite Stiff #7",
-      "initials": {
-        "start": 8137,
-        "encoding": "ch",
-        "default": "\u00ff\u00ff\u00ff",
-        "length": 3
-      }
-    },
-    {
-      "label": "Favorite Stiff #8",
-      "initials": {
-        "start": 8140,
-        "encoding": "ch",
-        "default": "\u00ff\u00ff\u00ff",
-        "length": 3
-      }
-    },
-    {
-      "label": "Favorite Stiff #9",
-      "initials": {
-        "start": 8143,
-        "encoding": "ch",
-        "default": "\u00ff\u00ff\u00ff",
-        "length": 3
-      }
-    },
-    {
-      "label": "Favorite Stiff #10",
-      "initials": {
-        "start": 8146,
-        "encoding": "ch",
-        "default": "\u00ff\u00ff\u00ff",
-        "length": 3
+      },
+      "repeat": {
+        "count": 10,
+        "step": 3
       }
     }
   ],

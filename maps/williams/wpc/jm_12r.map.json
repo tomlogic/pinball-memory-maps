@@ -3,9 +3,9 @@
     "Compiled by Tom Collins for initial development/testing purposes.",
     "WPC 50042, SYS 3.50 REV 1.2"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2015 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -203,174 +203,23 @@
       }
     },
     {
-      "label": "Masters of Powerdown #1",
-      "short_label": "Powerdown #1",
+      "label": "Masters of Powerdown #{#}",
+      "short_label": "Powerdown #{#}",
       "_notes": "Need to add a way to ignore entries if initials = '   '",
       "initials": {
         "start": 7889,
         "encoding": "ch",
+        "default": "   ",
         "length": 3
       },
       "score": {
         "start": 7892,
         "encoding": "bcd",
         "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #2",
-      "short_label": "Powerdown #2",
-      "initials": {
-        "start": 7898,
-        "encoding": "ch",
-        "length": 3
       },
-      "score": {
-        "start": 7901,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #3",
-      "short_label": "Powerdown #3",
-      "initials": {
-        "start": 7907,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 7910,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #4",
-      "short_label": "Powerdown #4",
-      "initials": {
-        "start": 7916,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 7919,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #5",
-      "short_label": "Powerdown #5",
-      "initials": {
-        "start": 7925,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 7928,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #6",
-      "short_label": "Powerdown #6",
-      "initials": {
-        "start": 7934,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 7937,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #7",
-      "short_label": "Powerdown #7",
-      "initials": {
-        "start": 7943,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 7946,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #8",
-      "short_label": "Powerdown #8",
-      "initials": {
-        "start": 7952,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 7955,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #9",
-      "short_label": "Powerdown #9",
-      "initials": {
-        "start": 7961,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 7964,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #10",
-      "short_label": "Powerdown #10",
-      "initials": {
-        "start": 7970,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 7973,
-        "encoding": "bcd",
-        "length": 6
-      }
-    }
-  ],
-  "more_mode_champions": [
-    {
-      "label": "Masters of Powerdown #11",
-      "short_label": "Powerdown #11",
-      "initials": {
-        "start": 7979,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 7982,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Masters of Powerdown #32",
-      "short_label": "Powerdown #32",
-      "initials": {
-        "start": 8150,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 8153,
-        "encoding": "bcd",
-        "length": 6
+      "repeat": {
+        "count": 30,
+        "step": 9
       }
     }
   ],

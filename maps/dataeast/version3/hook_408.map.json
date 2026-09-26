@@ -1,11 +1,20 @@
 {
   "_notes": [
     "Hook [Data East, 1992]",
-    "2026-02-13 added by Tom Collins <tom@scorbit.io>"
+    "2026-02-13 added by Tom Collins <tom@scorbit.io>",
+    "Adjustments 0x1E00-0x1E67 are protected by a plain 8-bit sum (checksum8_sum, not complemented) at",
+    "0x1EDA, right after the custom-message text, with a change counter at 0x1EDB. Measured live on",
+    "hook_501 from 998 samples: Free Play 1 -> 0 -> 1 at 0x1E04 moved the sum by -1/+1 and Balls Per",
+    "Game 3 -> 5 -> 2 -> 3 at 0x1E0D moved it by +2/-3/+1. Same scheme as tmnt_200 (sum at 0x1EFE",
+    "there); the sum's address follows the banner text length. Hook does not reset the machine when",
+    "the operator menu is exited.",
+    "The eight bytes 0x1E68-0x1E6F are the leading spaces of the custom message (0x20 x 8 = 256, invisible",
+    "to an 8-bit sum), which is why a sum over 0x1E00-0x1E6F also validates; the block ends at 0x1E67.",
+    "Adjustments 0x1E00-0x1E67 are protected by a plain 8-bit sum (complement false) at 0x1EDA; see README.md in maps/dataeast."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 8,
+    "version": 10,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -21,7 +30,18 @@
       "hook_501",
       "hook_e406",
       "hook_f401"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": 104,
+          "complement": false,
+          "checksum": "0x1EDA"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [

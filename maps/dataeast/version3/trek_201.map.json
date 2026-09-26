@@ -2,11 +2,16 @@
   "_notes": [
     "Star Trek 25th Anniversary [Data East, 1991]",
     "Created by Tom Collins, based on btmn_106 (by Dave horsepin/Tom Collins)",
-    "High Scores for trek_110/trek_11a: Initials -0x1F, scores -0x20"
+    "High Scores for trek_110/trek_11a: Initials -0x1F, scores -0x20",
+    "Adjustments 0x1E00-0x1E45 are protected by a plain 8-bit sum (checksum8_sum, not complemented) at 0x1FC0,",
+    "the byte right after the custom-message text, followed by a change counter and the 0xFF fill. This",
+    "block runs from 0x1E00 to the byte before the 0xFF fill. Verified against saved trek_201 images (both cabinets), one",
+    "writer must drop the write rather than repair it.",
+    "Adjustments 0x1E00-0x1E45 are protected by a plain 8-bit sum (complement false) at 0x1FC0; see README.md in maps/dataeast."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 5,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2016 by Dave horsepin <horse@horsesoft.uk>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -17,7 +22,18 @@
       "trek_200",
       "trek_201",
       "trek_300"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": 70,
+          "complement": false,
+          "checksum": "0x1FC0"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [

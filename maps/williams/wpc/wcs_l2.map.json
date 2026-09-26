@@ -8,9 +8,9 @@
     "WPC 50031, SYS 3.23 REV 3.12 (wcs_l3c)",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 8,
+    "version": 9,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -222,7 +222,7 @@
       }
     },
     {
-      "label": "Buy-In High Score #1",
+      "label": "Buy-In High Score #{#}",
       "initials": {
         "start": 8035,
         "encoding": "ch",
@@ -232,45 +232,10 @@
         "start": 8038,
         "encoding": "bcd",
         "length": 6
-      }
-    },
-    {
-      "label": "Buy-In High Score #2",
-      "initials": {
-        "start": 8044,
-        "encoding": "ch",
-        "length": 3
       },
-      "score": {
-        "start": 8047,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Buy-In High Score #3",
-      "initials": {
-        "start": 8053,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 8056,
-        "encoding": "bcd",
-        "length": 6
-      }
-    },
-    {
-      "label": "Buy-In High Score #4",
-      "initials": {
-        "start": 8062,
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "start": 8065,
-        "encoding": "bcd",
-        "length": 6
+      "repeat": {
+        "count": 4,
+        "step": 9
       }
     }
   ],

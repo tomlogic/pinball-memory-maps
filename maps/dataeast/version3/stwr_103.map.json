@@ -1,11 +1,16 @@
 {
   "_notes": [
     "Star Wars [Data East, 1992]",
-    "2026-02-13 added by Tom Collins <tom@scorbit.io>"
+    "2026-02-13 added by Tom Collins <tom@scorbit.io>",
+    "Adjustments 0x1E00-0x1E59 are protected by a plain 8-bit sum (checksum8_sum, not complemented) at 0x1FC0,",
+    "the byte right after the custom-message text, followed by a change counter and the 0xFF fill. This",
+    "block runs from 0x1E00 to the byte before the 0xFF fill. Verified against saved stwr_107 images (both cabinets), one",
+    "writer must drop the write rather than repair it.",
+    "Adjustments 0x1E00-0x1E59 are protected by a plain 8-bit sum (complement false) at 0x1FC0; see README.md in maps/dataeast."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 8,
+    "version": 10,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -21,7 +26,18 @@
       "stwr_a046",
       "stwr_a14",
       "stwr_e12"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": 90,
+          "complement": false,
+          "checksum": "0x1FC0"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [
