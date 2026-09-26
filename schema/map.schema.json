@@ -36,18 +36,18 @@
         "$ref": "#/$defs/modeChampion"
       }
     },
-    "more_mode_champions": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/modeChampion"
-      }
-    },
     "game_state": {
       "description": "Memory areas used during a game to store the state of the game.",
       "type": "object",
       "properties": {
         "_notes": {
           "$ref": "#/$defs/notes"
+        },
+        "scores": {
+          "$ref": "#/$defs/descriptorArray"
+        },
+        "final_scores": {
+          "$ref": "#/$defs/descriptorArray"
         }
       },
       "additionalProperties": {
@@ -56,10 +56,7 @@
             "$ref": "#/$defs/descriptor"
           },
           {
-            "type": "array",
-            "items": {
-              "$ref": "#/$defs/descriptor"
-            }
+            "$ref": "#/$defs/descriptorArray"
           }
         ]
       }
@@ -245,8 +242,8 @@
       "minimum": 1,
       "default": 1
     },
-    "descriptor": {
-      "description": "A region of memory and how to interpret it. See Descriptors in README.md.",
+    "baseObject": {
+      "description": "Base object.",
       "type": "object",
       "properties": {
         "_notes": {
@@ -257,7 +254,14 @@
         },
         "short_label": {
           "type": "string"
-        },
+        }
+      }
+    },
+    "baseMemoryObject": {
+      "description": "Base object referencing memory.",
+      "type": "object",
+      "$ref": "#/$defs/baseObject",
+      "properties": {
         "start": {
           "$ref": "#/$defs/intOrHex"
         },
@@ -274,6 +278,99 @@
           },
           "minItems": 1
         },
+        "nibble": {
+          "description": "portion of each byte to use (low/high/both 4-bit halves); defaults to value from platform file",
+          "enum": [
+            "low",
+            "high",
+            "both"
+          ]
+        },
+        "endian": {
+          "description": "big or little-endian byte ordering; defaults to value from platform file",
+          "enum": [
+            "big",
+            "little"
+          ]
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "start"
+          ]
+        },
+        {
+          "required": [
+            "offsets"
+          ]
+        }
+      ],
+      "not": {
+        "description": "descriptor cannot contain both `end` and `length`",
+        "required": [
+          "end",
+          "length"
+        ]
+      }
+    },
+    "descriptorArray": {
+      "description": "An array of descriptors that can include a `repeat` property.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/descriptorCore",
+        "properties": {
+          "repeat": {
+            "$ref": "#/$defs/repeat"
+          }
+        },
+        "unevaluatedProperties": false
+      }
+    },
+    "descriptor": {
+      "description": "A region of memory and how to interpret it. See Descriptors in README.md.",
+      "$ref": "#/$defs/descriptorCore",
+      "unevaluatedProperties": false
+    },
+    "descriptorCore": {
+      "description": "Core descriptor object without `unevaluatedProperties`, for use in a descriptorArray",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseMemoryObject"
+        },
+        {
+          "description": "`null` property only valid when encoding=ch",
+          "if": {
+            "required": [
+              "null"
+            ]
+          },
+          "then": {
+            "properties": {
+              "encoding": {
+                "const": "ch"
+              }
+            }
+          }
+        },
+        {
+          "description": "`invert` property only valid when encoding=bool",
+          "if": {
+            "required": [
+              "invert"
+            ]
+          },
+          "then": {
+            "properties": {
+              "encoding": {
+                "const": "bool"
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
         "encoding": {
           "enum": [
             "bcd",
@@ -337,22 +434,8 @@
         "mask": {
           "$ref": "#/$defs/intOrHex"
         },
-        "nibble": {
-          "description": "portion of each byte to use (low/high/both 4-bit halves); defaults to value from platform file",
-          "enum": [
-            "low",
-            "high",
-            "both"
-          ]
-        },
-        "endian": {
-          "description": "big or little-endian byte ordering; defaults to value from platform file",
-          "enum": [
-            "big",
-            "little"
-          ]
-        },
         "null": {
+          "description": "option for encoding=ch",
           "enum": [
             "ignore",
             "truncate",
@@ -376,20 +459,14 @@
       },
       "required": [
         "encoding"
-      ],
-      "additionalProperties": false
+      ]
     },
     "highScore": {
       "type": "object",
+      "$ref": "#/$defs/baseObject",
       "properties": {
-        "_notes": {
-          "$ref": "#/$defs/notes"
-        },
-        "label": {
-          "type": "string"
-        },
-        "short_label": {
-          "type": "string"
+        "repeat": {
+          "$ref": "#/$defs/repeat"
         },
         "initials": {
           "$ref": "#/$defs/descriptor"
@@ -401,19 +478,14 @@
       "required": [
         "score"
       ],
-      "additionalProperties": false
+      "unevaluatedProperties": false
     },
     "modeChampion": {
       "type": "object",
+      "$ref": "#/$defs/baseObject",
       "properties": {
-        "_notes": {
-          "$ref": "#/$defs/notes"
-        },
-        "label": {
-          "type": "string"
-        },
-        "short_label": {
-          "type": "string"
+        "repeat": {
+          "$ref": "#/$defs/repeat"
         },
         "initials": {
           "$ref": "#/$defs/descriptor"
@@ -434,7 +506,7 @@
       "required": [
         "label"
       ],
-      "additionalProperties": false
+      "unevaluatedProperties": false
     },
     "groupedDescriptors": {
       "description": "Groups of descriptors keyed by a group label (e.g. 'A.1 Standard Adjustments'), each mapping menu numbers to descriptors.",
@@ -454,13 +526,8 @@
     "old_checksum": {
       "description": "Used for top-level, deprecated checksum8 and checksum16",
       "type": "object",
+      "$ref": "#/$defs/baseObject",
       "properties": {
-        "_notes": {
-          "$ref": "#/$defs/notes"
-        },
-        "label": {
-          "type": "string"
-        },
         "start": {
           "$ref": "#/$defs/intOrHex"
         },
@@ -482,7 +549,7 @@
       "required": [
         "start"
       ],
-      "additionalProperties": false
+      "unevaluatedProperties": false
     },
     "new_checksum": {
       "description": "from _metadata.validation.checksum[]",
@@ -532,15 +599,10 @@
     "mirror": {
       "description": "from _metadata.validation.mirror[]",
       "type": "object",
+      "$ref": "#/$defs/baseObject",
       "properties": {
-        "_notes": {
-          "$ref": "#/$defs/notes"
-        },
         "repeat": {
           "$ref": "#/$defs/repeat"
-        },
-        "label": {
-          "type": "string"
         },
         "start": {
           "description": "Starting address for first mirrored area (default=0x0000).",
@@ -564,7 +626,7 @@
         "length",
         "offsets"
       ],
-      "additionalProperties": false
+      "unevaluatedProperties": false
     },
     "repeat": {
       "type": "object",
