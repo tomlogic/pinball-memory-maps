@@ -4,9 +4,9 @@
     "WPC",
     "2026-06-24 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -187,6 +187,42 @@
         "start": 7536,
         "encoding": "bcd",
         "length": 5
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Spider Champ",
+      "initials": {
+        "start": "0x1FDA",
+        "encoding": "ch",
+        "length": 3
+      },
+      "timestamp": {
+        "start": "0x1D3E",
+        "encoding": "wpc_rtc",
+        "length": 7
+      }
+    },
+    {
+      "label": "Favorite Stiff Count",
+      "score": {
+        "start": "0x1FD4",
+        "encoding": "int",
+        "suffix": " Stiffs"
+      }
+    },
+    {
+      "label": "Favorite Stiff #{#}",
+      "initials": {
+        "start": "0x1FB5",
+        "encoding": "ch",
+        "default": "\u00ff\u00ff\u00ff",
+        "length": 3
+      },
+      "repeat": {
+        "count": 10,
+        "step": 3
       }
     }
   ],
@@ -1192,6 +1228,16 @@
       "start": 7992,
       "end": 8116,
       "label": "Custom Message (2x32)"
+    },
+    {
+      "start": "0x1FB5",
+      "end": "0x1FD6",
+      "label": "Favorite Stiffs"
+    },
+    {
+      "start": "0x1FDA",
+      "end": "0x1FDE",
+      "label": "Spider Champion"
     }
   ]
 }
