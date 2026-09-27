@@ -3,7 +3,6 @@
     "The Walking Dead (v1.56, 2014, Stern).",
     "Stern SAM platform. ARM AT91 CPU, NVRAM at CPU 0x02100000.",
     "Scores are 4-byte little-endian integers.",
-    "Score entry: 4-byte score at start, initials (+0x08 bytes) as null-terminated ch.",
     "Stride between entries is 0x20 bytes.",
     "Verified against NVRAM data with real scores.",
     "game_state was measured on twd_156c, a colour-hack revision, and twd_156c added to roms after",
@@ -16,11 +15,37 @@
     "current_player/current_ball came from the joint pair test, which reported two candidates here.",
     "The exit dump separated them: 0x000329B4 reads player 4 / ball 3, the true end state, while",
     "0x00031C2C reads 243 / 2 and is not a counter pair at all. The pair test narrows sharply but is",
-    "not always unique, so the exit dump stays part of the procedure."
+    "not always unique, so the exit dump stays part of the procedure.",
+    "game_over, credits and volume come from a 1,098-frame recording of live memory on twd_156c,",
+    "spanning an operator-menu session and a full game with a tilt on ball 1. The session also",
+    "adjustment indices 30 and 32 as the free_play-relative rule predicted. As with game_state, these",
+    "were measured on twd_156c only.",
+    "This ROM does not keep the ball+0x31 status byte its siblings use (a constant 0 here).",
+    "game_over at 0x00035E48 is a latch: 0 through the operator menu and the game, 1 from nineteen",
+    "samples after the last score change (the end-of-ball bonus) through attract. Correct in all",
+    "1,098 frames. It reads 0 before the first game of a session, so it is not a general 'no game in",
+    "progress' flag; it is exact for end-of-game detection.",
+    "volume at 0x02110250, set from 40 to 42 in the operator menu: the byte followed 40, 41, 42 and",
+    "the check byte after it followed 215, 214, 213 -- 0xFF minus the value -- declared as checksum8.",
+    "Note the Master Volume address is not shared platform-wide: nba_802 keeps it at 0x0211024C.",
+    "credits at 0x0211100C, the fifteenth SAM game at that address.",
+    "tilted is deliberately absent. The tilt on ball 1 froze scoring from f167 to the drain at f180,",
+    "and no byte in the 64KB state block holds one value through that window and another through",
+    "normal play. The one lead, 0x00038A24, read 2 at ball start, 1 in play, 0 from the tilt to the",
+    "ball end -- then latched at 2 for balls 2 to 5 and the attract, so it is a ball-1 state the",
+    "tilt cancelled rather than a repeatable flag, and it is not declared.",
+    "The champion record starts at the name, not the value: 24 bytes of name and 0xFF fill, the score",
+    "or counter at +24, then a 16-bit checksum (0xFFFF minus the sum of the preceding bytes) and two",
+    "slack bytes. The checksum is what proves that framing -- it validates on all five high-score",
+    "records when they are taken to start at the name and on none when taken to start at the value.",
+    "It also corrects a pairing error: each name was previously read from the following record, so the",
+    "Grand Champion's score was reported against the first-place player's initials. Framed correctly",
+    "the factory defaults read JDB/75,000,000 and LFS/55,000,000, the set the rest of the SAM family",
+    "ships."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 3,
+    "version": 10,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -31,11 +56,61 @@
       "twd_156c"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102110",
+      "end": "0x02102114"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x021020F8",
+      "end": "0x021020FC"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210C"
+    },
+    {
+      "label": "Master Volume",
+      "start": "0x02110250",
+      "end": "0x02110251"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "encoding": "int",
+      "start": "0x02110250",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -46,6 +121,11 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x000329B5"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x00035E48"
     },
     "scores": [
       {
@@ -79,7 +159,7 @@
       "label": "Grand Champion",
       "short_label": "GC",
       "initials": {
-        "start": "0x021035B8",
+        "start": "0x02103598",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -94,7 +174,7 @@
       "label": "First Place",
       "short_label": "#1",
       "initials": {
-        "start": "0x021035D8",
+        "start": "0x021035B8",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -109,7 +189,7 @@
       "label": "Second Place",
       "short_label": "#2",
       "initials": {
-        "start": "0x021035F8",
+        "start": "0x021035D8",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -124,7 +204,7 @@
       "label": "Third Place",
       "short_label": "#3",
       "initials": {
-        "start": "0x02103618",
+        "start": "0x021035F8",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -139,7 +219,7 @@
       "label": "Fourth Place",
       "short_label": "#4",
       "initials": {
-        "start": "0x02103638",
+        "start": "0x02103618",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -156,7 +236,7 @@
       "label": "Walkers Killed Champion",
       "short_label": "WK",
       "initials": {
-        "start": "0x02103658",
+        "start": "0x02103638",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -171,7 +251,7 @@
       "label": "Combo Champion",
       "short_label": "Combo",
       "initials": {
-        "start": "0x02103678",
+        "start": "0x02103658",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -186,7 +266,7 @@
       "label": "Bicycle Girl Champion",
       "short_label": "BG",
       "initials": {
-        "start": "0x02103698",
+        "start": "0x02103678",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -201,7 +281,7 @@
       "label": "Barn Champion",
       "short_label": "Barn",
       "initials": {
-        "start": "0x021036B8",
+        "start": "0x02103698",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -216,7 +296,7 @@
       "label": "CDC Champion",
       "short_label": "CDC",
       "initials": {
-        "start": "0x021036D8",
+        "start": "0x021036B8",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -231,7 +311,7 @@
       "label": "Riot Champion",
       "short_label": "Riot",
       "initials": {
-        "start": "0x021036F8",
+        "start": "0x021036D8",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -246,7 +326,7 @@
       "label": "Tunnel Champion",
       "short_label": "Tunnel",
       "initials": {
-        "start": "0x02103718",
+        "start": "0x021036F8",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -261,7 +341,7 @@
       "label": "Arena Champion",
       "short_label": "Arena",
       "initials": {
-        "start": "0x02103738",
+        "start": "0x02103718",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -276,7 +356,7 @@
       "label": "Terminus Champion",
       "short_label": "Term",
       "initials": {
-        "start": "0x02103758",
+        "start": "0x02103738",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -291,7 +371,7 @@
       "label": "Blood Bath Champion",
       "short_label": "BB",
       "initials": {
-        "start": "0x02103778",
+        "start": "0x02103758",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -306,7 +386,7 @@
       "label": "Crossbow Champion",
       "short_label": "XB",
       "initials": {
-        "start": "0x02103798",
+        "start": "0x02103778",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -321,7 +401,7 @@
       "label": "X Champion",
       "short_label": "X",
       "initials": {
-        "start": "0x021037B8",
+        "start": "0x02103798",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -336,7 +416,7 @@
       "label": "Horde Champion",
       "short_label": "Horde",
       "initials": {
-        "start": "0x021037D8",
+        "start": "0x021037B8",
         "encoding": "ch",
         "null": "terminate",
         "length": 11
@@ -351,7 +431,7 @@
       "label": "Last Man Standing Champion",
       "short_label": "LMS",
       "initials": {
-        "start": "0x021037F8",
+        "start": "0x021037D8",
         "encoding": "ch",
         "null": "terminate",
         "length": 11

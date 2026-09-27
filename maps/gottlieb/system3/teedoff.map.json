@@ -5,7 +5,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 3,
+    "version": 4,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -56,9 +56,10 @@
       "encoding": "bcd"
     },
     "current_ball": {
-      "_notes": "set to 0 when game over",
+      "_notes": "set to 0 when game over; bit 7 (0x80) is sometimes set, as on current_player, so it is masked off -- unmasked, an idle 0x80 decodes as BCD 80 and reads as a ball in play",
       "label": "Ball",
       "start": "0x0015",
+      "mask": "0x7F",
       "encoding": "bcd"
     },
     "ball_count": {

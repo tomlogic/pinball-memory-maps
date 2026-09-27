@@ -5,7 +5,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 3,
+    "version": 4,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -54,9 +54,10 @@
       "encoding": "bcd"
     },
     "current_ball": {
-      "_notes": "set to 0 when game over",
+      "_notes": "set to 0 when game over; stores ASCII value (0x30 - 0x35) like the maps that keep this field at 0x0B, so the high nibble is masked off -- unmasked, an idle 0x30 decodes as BCD 30 and reads as a ball in play forever",
       "label": "Ball",
       "start": "0x0015",
+      "mask": "0x0F",
       "encoding": "bcd"
     },
     "ball_count": {

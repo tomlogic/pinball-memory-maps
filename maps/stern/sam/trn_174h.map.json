@@ -1,18 +1,55 @@
 {
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 5,
+    "version": 10,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
       "trn_174h"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102110",
+      "end": "0x02102114"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x021020F8",
+      "end": "0x021020FC"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210C"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -23,6 +60,19 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x0003817D"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x000381AE",
+      "mask": "0x12",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x000381AE",
+      "mask": "0x04"
     },
     "scores": [
       {
@@ -131,6 +181,34 @@
     "little-endian value and 0x37315 is its second byte, reading 1, 2, 3 as it crosses 256, 512 and",
     "768. Searching a static exit dump for an adjacent (player=4, ball=3) pair gave 40 candidates.",
     "Requiring the two bytes to move together -- the player wrapping to 1 in the same sample the ball",
-    "steps up -- returned exactly one hit for the whole game, and it is one of those 40."
+    "steps up -- returned exactly one hit for the whole game, and it is one of those 40.",
+    "Free Play derived by aligning this game's adjustment array against a game where it was measured",
+    "(32/35 agreement), which places it at index 33, 0x02102110. The value there reads 1 on a cabinet",
+    "in free play and its check byte validates. Machine adjustments are 8-byte records from",
+    "0x02102008: a 32-bit little-endian value, then a byte holding 0xFF minus the sum of the value's",
+    "four bytes. All 88 records here satisfy that. Writing this field requires updating its check",
+    "byte, or the game discards the change on reload.",
+    "game_over measured from a 925-frame recording of live memory across two games, sampled about",
+    "five times a second. The byte at 0x000381AE takes exactly two values over the whole recording:",
+    "19 while a game is running and 1 in attract and after game over. Decoding it as bool with",
+    "mask 0x12 and invert gives the correct state in all 925 frames, with transitions at game start,",
+    "at game over about six seconds after the last score change (the bonus and match sequence), and",
+    "at the start of the next game.",
+    "mask 0x12 is the two bits that differ between the two observed values rather than a guess at",
+    "which one carries the meaning; only those two values were ever seen, so a narrower mask would",
+    "be asserting more than was measured.",
+    "It is not adjacent to current_ball -- it sits 0x32 bytes past it, outside the window a",
+    "neighbourhood search first covered.",
+    "ball_count, max_credits, credits and tilted come from a 1,070-frame recording of live memory",
+    "spanning an operator-menu session and a full game. Balls Per Game and Maximum Credits were set",
+    "to distinctive values (5 and 9) so the changed records named themselves: adjustment index 30",
+    "went 3 to 5 and index 32 went 30 to 9, both check bytes moving with them.",
+    "credits at 0x0211100C -- the same address st_162h measured -- rose 0,1,2 as six coins were",
+    "inserted at three coins a credit, and fell to 1 when the game started.",
+    "The byte at 0x000381AE is a status bitfield, not a plain flag: it read 0x01 in attract, 0x13",
+    "during play, and 0x15 for exactly the eight samples between the tilt and the end of the tilted",
+    "ball -- during which player 1's score sat frozen at 40,360, the same corroboration that",
+    "confirmed st_162h's tilt flag. So tilted is bit 0x04 of that byte, and game_over's mask 0x12",
+    "decode stays correct in all 1,070 frames of this recording on top of the 925 that set it."
   ]
 }

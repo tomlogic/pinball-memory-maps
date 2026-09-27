@@ -4,7 +4,7 @@
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 7,
     "copyright": [
       "Copyright (C)2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -16,6 +16,23 @@
       "st_162c"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102120",
+      "end": "0x02102124"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210C"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102118",
+      "end": "0x0210211C"
+    }
+  ],
   "game_state": {
     "scores": [
       {
@@ -42,7 +59,22 @@
         "length": 4,
         "start": "0x21109F0"
       }
-    ]
+    ],
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102120"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102118"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x02102108"
+    }
   },
   "high_scores": [
     {

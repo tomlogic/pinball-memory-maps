@@ -8,11 +8,33 @@
     "3,360,170 / 1,651,680 / 2,391,870 / 2,237,460, matching the machine's own game-over display.",
     "The rejected CPU RAM candidate at 0x00031544 is the classic scaled-set false positive this",
     "platform produces -- 732,790 / 184,370 / 18,320 / 11,450, each roughly a quarter of the one",
-    "before. Scores live in NVRAM on every SAM game measured, which is what rejects it."
+    "before. Scores live in NVRAM on every SAM game measured, which is what rejects it.",
+    "game_over, tilted, credits and volume come from a 419-frame recording of live memory spanning",
+    "an operator-menu session and one four-ball game with a mid-ball tilt on ball 1. The menu session",
+    "also promoted ball_count and max_credits from derived to measured: Balls Per Game 5 -> 4 landed",
+    "at adjustment index 30 and Max Credits 9 -> 10 at index 32, as the free_play-relative rule",
+    "predicted.",
+    "0x0003246A is the status bitfield SAM games keep at ball+0x31: 1 in attract, 40 for the first",
+    "seconds of a game, 19 in play, 21 for exactly the 24 samples between the tilt and the end of",
+    "the tilted ball, during which player 1's score sat frozen at 53,210. 40 and 19 share no bit,",
+    "so game_over is 'any bit above 0x01' -- mask 0xFE inverted -- correct in all 419 frames.",
+    "tilted is bit 0x04, which no non-tilt value carries on this game.",
+    "volume at 0x02110250, set from 58 to 60 in the operator menu with its complement check byte",
+    "following; declared as checksum8. credits at 0x0211100C, the eighteenth SAM game at that",
+    "address, stepping down once at game start.",
+    "Best Combo Champion keeps a one-byte count at +0x1A, not a score at +24. Its record holds",
+    "01 00 05 00 at +24, which read as a 4-byte score gives 327,681; Spider-Man VE stores the same",
+    "field the same way and is declared as a one-byte counter at +0x1A, which reads 5. Corrected to",
+    "match. The plain Combo Champion at +24 is a genuine 4-byte count and is unchanged.",
+    "NVRAM also holds five valid champion records at 0x02102D28 on 32-byte centres, carrying Stern's",
+    "generic factory names (G S, L R, J R, D T, P P) against 75,000,000 down to 25,000,000. They are",
+    "deliberately not mapped: none of those initials appears in this game's attract, which shows only",
+    "the Autobot and Decepticon tables declared above. The records look like the generic high-score",
+    "table the ROM carries but does not use on this theme."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 12,
     "copyright": [
       "Copyright (C) 2022 https://github.com/horseyhorsey",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -23,11 +45,61 @@
       "tf_180"
     ]
   },
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "start": "0x02102110",
+      "end": "0x02102114"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "start": "0x021020F8",
+      "end": "0x021020FC"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "start": "0x02102108",
+      "end": "0x0210210C"
+    },
+    {
+      "label": "Master Volume",
+      "start": "0x02110250",
+      "end": "0x02110251"
+    }
+  ],
   "game_state": {
     "player_count": {
       "label": "Player Count",
       "encoding": "int",
       "start": "0x02110900"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "encoding": "bool",
+      "start": "0x02102110"
+    },
+    "credits": {
+      "label": "Credits",
+      "encoding": "int",
+      "start": "0x0211100C"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "encoding": "int",
+      "start": "0x02110250",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "encoding": "int",
+      "start": "0x02102108"
+    },
+    "ball_count": {
+      "label": "Balls Per Game",
+      "encoding": "int",
+      "start": "0x021020F8"
     },
     "current_player": {
       "label": "Player",
@@ -38,6 +110,19 @@
       "label": "Ball",
       "encoding": "int",
       "start": "0x00032439"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x0003246A",
+      "mask": "0xFE",
+      "invert": true
+    },
+    "tilted": {
+      "label": "Tilted",
+      "encoding": "bool",
+      "start": "0x0003246A",
+      "mask": "0x04"
     },
     "scores": [
       {
@@ -73,7 +158,8 @@
       "initials": {
         "start": "0x2102DC8",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -87,7 +173,8 @@
       "initials": {
         "start": "0x2102DE8",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -101,7 +188,8 @@
       "initials": {
         "start": "0x2102E08",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -115,7 +203,8 @@
       "initials": {
         "start": "0x2102E28",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -129,7 +218,8 @@
       "initials": {
         "start": "0x2102E48",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -143,7 +233,8 @@
       "initials": {
         "start": "0x2102E68",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -157,7 +248,8 @@
       "initials": {
         "start": "0x2102E88",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -171,7 +263,8 @@
       "initials": {
         "start": "0x2102EA8",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -185,7 +278,8 @@
       "initials": {
         "start": "0x2102EC8",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -199,7 +293,8 @@
       "initials": {
         "start": "0x2102EE8",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "encoding": "int",
@@ -215,7 +310,8 @@
       "initials": {
         "start": "0x2102F08",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
       "score": {
         "start": "0x2102F20",
@@ -229,13 +325,13 @@
       "initials": {
         "start": "0x2102F28",
         "encoding": "ch",
-        "length": 3
+        "length": 11,
+        "null": "terminate"
       },
-      "score": {
-        "start": "0x2102F40",
+      "counter": {
+        "start": "0x02102F42",
         "encoding": "int",
-        "length": 4,
-        "suffix": "-WAY"
+        "length": 1
       }
     }
   ]
