@@ -10,7 +10,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -405,21 +405,21 @@
         "length": 2
       },
       "11": {
-        "label": "First High Score",
+        "label": "First Replay Level",
         "start": "0x1833",
         "encoding": "bcd",
         "length": 2,
         "scale": 100000
       },
       "12": {
-        "label": "Second High Score",
+        "label": "Second Replay Level",
         "start": "0x1835",
         "encoding": "bcd",
         "length": 2,
         "scale": 100000
       },
       "13": {
-        "label": "Third High Score",
+        "label": "Third Replay Level",
         "start": "0x1837",
         "encoding": "bcd",
         "length": 2,

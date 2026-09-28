@@ -7,9 +7,9 @@
     "If a value differs in all three locations, it's replaced with a default value.",
     "Note that offsets 242 through 246 are 4-bit checksums of each of the high scores."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -26,6 +26,62 @@
       "hlywhgfp",
       "hlywhffp"
     ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "High Score #1",
+          "bits": 4,
+          "start": "0x18B1",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18F2"
+        },
+        {
+          "label": "High Score #2",
+          "bits": 4,
+          "start": "0x18BE",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18F3"
+        },
+        {
+          "label": "High Score #3",
+          "bits": 4,
+          "start": "0x18CB",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18F4"
+        },
+        {
+          "label": "High Score #4",
+          "bits": 4,
+          "start": "0x18D8",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18F5"
+        },
+        {
+          "label": "High Score #5",
+          "bits": 4,
+          "start": "0x18E5",
+          "length": 13,
+          "complement": false,
+          "checksum": "0x18F6"
+        }
+      ],
+      "mirror": [
+        {
+          "label": "Adjustments",
+          "start": "0x1800",
+          "length": 59,
+          "offsets": [
+            0,
+            59,
+            118
+          ]
+        }
+      ]
+    },
     "values": {
       "off_on": [
         "off",
@@ -333,21 +389,21 @@
   "adjustments": {
     "Standard Adjustments": {
       "11": {
-        "label": "First High Score",
+        "label": "First Replay Level",
         "start": "0x1833",
         "encoding": "bcd",
         "length": 2,
         "scale": 100000
       },
       "12": {
-        "label": "Second High Score",
+        "label": "Second Replay Level",
         "start": "0x1835",
         "encoding": "bcd",
         "length": 2,
         "scale": 100000
       },
       "13": {
-        "label": "Third High Score",
+        "label": "Third Replay Level",
         "start": "0x1837",
         "encoding": "bcd",
         "length": 2,
