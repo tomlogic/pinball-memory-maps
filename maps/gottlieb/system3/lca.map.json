@@ -4,9 +4,9 @@
     "Audits/Adjustments stored in triplicate at 0x680, 0x700, 0x780",
     "Based on vegas.map.json."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
     ],
@@ -14,7 +14,29 @@
     "platform": "gottlieb-system3-32K",
     "roms": [
       "lca"
-    ]
+    ],
+    "validation": {
+      "mirror": [
+        {
+          "label": "Working Memory",
+          "length": "0x2E",
+          "offsets": [
+            "0x500",
+            "0x55B",
+            "0x589"
+          ]
+        },
+        {
+          "label": "Audits/Settings/High Scores",
+          "length": "0x80",
+          "offsets": [
+            "0x680",
+            "0x700",
+            "0x780"
+          ]
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [
