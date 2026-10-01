@@ -4,9 +4,9 @@
     "WPC 50051, SYS 3.46 REV 1.0",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 7,
+    "version": 8,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -15,7 +15,117 @@
       "jb_101r",
       "jb_10b",
       "jb_10r"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Audits {#}",
+          "repeat": {
+            "count": 166,
+            "step": 6
+          },
+          "start": "0x1811",
+          "length": 6,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (2x32)",
+          "start": "0x177C",
+          "end": "0x17FF",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Adjustments",
+          "start": "0x1BF5",
+          "end": "0x1CF8",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Timestamps",
+          "start": "0x1CFB",
+          "end": "0x1D5E",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Scores",
+          "start": "0x1D5F",
+          "end": "0x1D84",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Grand Champion",
+          "start": "0x1D85",
+          "end": "0x1D8F",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "HSTD Reset",
+          "start": "0x1D90",
+          "end": "0x1D95",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Credits",
+          "start": "0x1D96",
+          "end": "0x1D9F",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Volume",
+          "start": "0x1DA0",
+          "end": "0x1DA2",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "start": "0x1DA3",
+          "end": "0x1DAD",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "start": "0x1DAE",
+          "end": "0x1E83",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (3x32)",
+          "start": "0x1E84",
+          "end": "0x1F46",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (2x32)",
+          "start": "0x1F47",
+          "end": "0x1FC3",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Casino Run Champ",
+          "start": "0x1FC4",
+          "end": "0x1FCE",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Buy-In Scores",
+          "start": "0x1FCF",
+          "end": "0x1FF4",
+          "bits": 16,
+          "complement": true
+        }
+      ]
+    }
   },
   "last_played": {
     "start": 6144,

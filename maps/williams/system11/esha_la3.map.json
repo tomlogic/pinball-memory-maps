@@ -12,9 +12,9 @@
     "game's saved NVRAM from two cabinets. A write to the block that leaves the check byte stale is",
     "answered at the next boot with a full factory reset of NVRAM (measured live on swrds_l2)."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 7,
+    "version": 8,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -26,7 +26,34 @@
       "esha_la3",
       "esha_l4c",
       "esha_pr4"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Audits {#}",
+          "repeat": {
+            "count": 46,
+            "step": 4
+          },
+          "start": "0x0640",
+          "length": 4,
+          "complement": true
+        },
+        {
+          "label": "Credits",
+          "start": "0x06FA",
+          "complement": true,
+          "checksum": "0x0767"
+        },
+        {
+          "label": "Adjustments",
+          "start": "0x0780",
+          "end": "0x07E3",
+          "complement": true,
+          "checksum": "0x07EC"
+        }
+      ]
+    }
   },
   "game_state": {
     "credits": {

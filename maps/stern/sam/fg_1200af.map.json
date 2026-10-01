@@ -11,9 +11,9 @@
     "high score ladder only.",
     "Only fg_1200af is claimed; SAM addresses move between revisions."
   ],
-  "_fileformat": 0.7,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 1,
+    "version": 2,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "copyright": [
       "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
@@ -21,7 +21,46 @@
     "platform": "stern-sam",
     "roms": [
       "fg_1200af"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Grand Champion",
+          "start": "0x2102B60",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #1",
+          "start": "0x2102B80",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #2",
+          "start": "0x2102BA0",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #3",
+          "start": "0x2102BC0",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #4",
+          "start": "0x2102BE0",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        }
+      ]
+    }
   },
   "game_state": {
     "player_count": {

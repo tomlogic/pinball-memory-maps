@@ -6,9 +6,9 @@
     "WPC 50059, SYS 3.70 REV 1.0",
     "2025-07-07 Tom Collins added automated audits (B.4 Feature Audits)"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 7,
+    "version": 8,
     "copyright": [
       "Copyright (C) 2016 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -19,7 +19,160 @@
       "mm_10",
       "mm_10pfx",
       "mm_10u"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Audits {#}",
+          "repeat": {
+            "count": 148,
+            "step": 6
+          },
+          "start": "0x1811",
+          "length": 6,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (2x32)",
+          "start": "0x177C",
+          "end": "0x17FF",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Adjustments",
+          "start": "0x1B89",
+          "end": "0x1CAC",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Timestamps",
+          "start": "0x1CAF",
+          "end": "0x1D20",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Scores",
+          "start": "0x1D21",
+          "end": "0x1D42",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Grand Champion",
+          "start": "0x1D43",
+          "end": "0x1D4C",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "HSTD Reset",
+          "start": "0x1D4D",
+          "end": "0x1D52",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Credits",
+          "start": "0x1D53",
+          "end": "0x1D5C",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Volume",
+          "start": "0x1D5D",
+          "end": "0x1D5F",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "start": "0x1D60",
+          "end": "0x1D6A",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "?? replay level",
+          "start": "0x1D6B",
+          "end": "0x1E40",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (3x32)",
+          "start": "0x1E41",
+          "end": "0x1F03",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (2x32)",
+          "start": "0x1F04",
+          "end": "0x1F80",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Castle Champion",
+          "start": "0x1F81",
+          "end": "0x1F8A",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Joust Champion",
+          "start": "0x1F8B",
+          "end": "0x1F94",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Catapult Champion",
+          "start": "0x1F95",
+          "end": "0x1F9E",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Peasant Champion",
+          "start": "0x1F9F",
+          "end": "0x1FA8",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Damsel Champion",
+          "start": "0x1FA9",
+          "end": "0x1FB2",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Troll Champion",
+          "start": "0x1FB3",
+          "end": "0x1FBC",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Madness Champion",
+          "start": "0x1FBD",
+          "end": "0x1FC6",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "King of the Realm",
+          "start": "0x1FC7",
+          "end": "0x1FE8",
+          "bits": 16,
+          "complement": true
+        }
+      ]
+    }
   },
   "last_played": {
     "start": 6144,

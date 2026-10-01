@@ -16,9 +16,9 @@
     "the next boot with a full factory reset of NVRAM, which is how Free Play set from outside the",
     "service menu was wiping the machine."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -27,7 +27,34 @@
     "platform": "williams-system11-48K",
     "roms": [
       "swrds_l2"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Audits {#}",
+          "repeat": {
+            "count": 39,
+            "step": 4
+          },
+          "start": "0x0670",
+          "length": 4,
+          "complement": true
+        },
+        {
+          "label": "Credits",
+          "start": "0x070E",
+          "complement": true,
+          "checksum": "0x0771"
+        },
+        {
+          "label": "Adjustments",
+          "start": "0x0780",
+          "end": "0x07DD",
+          "complement": true,
+          "checksum": "0x07E5"
+        }
+      ]
+    }
   },
   "game_state": {
     "credits": {

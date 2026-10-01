@@ -4,9 +4,9 @@
     "WPC 50062, SYS 3.76 REV 2.0",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -16,7 +16,111 @@
     ],
     "free_only": [
       "cv_20h"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Audits {#}",
+          "repeat": {
+            "count": 167,
+            "step": 6
+          },
+          "start": "0x1811",
+          "length": 6,
+          "complement": true
+        },
+        {
+          "label": "Cannon Ball Champ",
+          "start": "0x174E",
+          "end": "0x1754",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Party Champ",
+          "start": "0x1755",
+          "end": "0x175E",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (2x32)",
+          "start": "0x177C",
+          "end": "0x17FF",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Adjustments",
+          "start": "0x1BFB",
+          "end": "0x1D2C",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Timestamps",
+          "start": "0x1D2F",
+          "end": "0x1D92",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Scores",
+          "start": "0x1D93",
+          "end": "0x1DB4",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Grand Champion",
+          "start": "0x1DB5",
+          "end": "0x1DBE",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "HSTD Reset",
+          "start": "0x1DBF",
+          "end": "0x1DC4",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "_notes": "this checksum fails for cv_20h, but is necessary for cv_20hc",
+          "label": "Credits",
+          "start": "0x1DC5",
+          "end": "0x1DCE",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Volume",
+          "start": "0x1DCF",
+          "end": "0x1DD1",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "start": "0x1DD2",
+          "end": "0x1DDC",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "start": "0x1DDD",
+          "end": "0x1EB2",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (3x32)",
+          "start": "0x1EB3",
+          "end": "0x1F75",
+          "bits": 16,
+          "complement": true
+        }
+      ]
+    }
   },
   "last_played": {
     "start": 6144,

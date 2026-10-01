@@ -4,9 +4,9 @@
     "WPC 50026, SYS 3.50 REV 1.1",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -14,7 +14,124 @@
       "i500_10r",
       "i500_11b",
       "i500_11r"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Audits {#}",
+          "repeat": {
+            "count": 146,
+            "step": 6
+          },
+          "start": "0x1811",
+          "length": 6,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (2x32)",
+          "start": "0x177C",
+          "end": "0x17FF",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Adjustments",
+          "start": "0x1BD1",
+          "end": "0x1CCC",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Timestamps",
+          "start": "0x1CCF",
+          "end": "0x1D24",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Scores",
+          "start": "0x1D25",
+          "end": "0x1D46",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Grand Champion",
+          "start": "0x1D47",
+          "end": "0x1D50",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "HSTD Reset",
+          "start": "0x1D51",
+          "end": "0x1D56",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Credits",
+          "start": "0x1D57",
+          "end": "0x1D60",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Volume",
+          "start": "0x1D61",
+          "end": "0x1D63",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "start": "0x1D64",
+          "end": "0x1D6E",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "start": "0x1D6F",
+          "end": "0x1E44",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (3x32)",
+          "start": "0x1E45",
+          "end": "0x1F07",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (2x32)",
+          "start": "0x1F08",
+          "end": "0x1F84",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Buy-In Scores",
+          "start": "0x1F85",
+          "end": "0x1FA6",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Buy-In Champ",
+          "start": "0x1FA7",
+          "end": "0x1FB0",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Pit Stop Record",
+          "start": "0x1FB1",
+          "end": "0x1FB8",
+          "bits": 16,
+          "complement": true
+        }
+      ]
+    }
   },
   "last_played": {
     "start": 6144,

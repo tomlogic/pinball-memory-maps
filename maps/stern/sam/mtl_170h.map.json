@@ -23,9 +23,9 @@
     "the shift that was visible in the defaults but not provable from them.",
     "Only mtl_170h is claimed."
   ],
-  "_fileformat": 0.7,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 3,
+    "version": 4,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "copyright": [
       "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
@@ -33,7 +33,116 @@
     "platform": "stern-sam",
     "roms": [
       "mtl_170h"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Grand Champion",
+          "start": "0x21036D8",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #1",
+          "start": "0x21036F8",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #2",
+          "start": "0x2103718",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #3",
+          "start": "0x2103738",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #4",
+          "start": "0x2103758",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Combo Champion",
+          "start": "0x2103778",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Battery Champion",
+          "start": "0x2103798",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Enter Sandman Champion",
+          "start": "0x21037B8",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Fade To Black Champion",
+          "start": "0x21037D8",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "For Whom The Bell Tolls Champion",
+          "start": "0x21037F8",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Fuel Champion",
+          "start": "0x2103818",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Lady Justice Champion",
+          "start": "0x2103838",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Seek & Destroy Champion",
+          "start": "0x2103858",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "The End Of The Line Champion",
+          "start": "0x2103878",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Blackened Champion",
+          "start": "0x2103898",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        }
+      ]
+    }
   },
   "game_state": {
     "player_count": {

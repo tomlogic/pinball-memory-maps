@@ -11,9 +11,9 @@
     "2025-07-07 Tom Collins added automated audits",
     "unknown location for audit 'B.4 30 BLAST FOR E.B.', single-byte value"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 9,
+    "version": 10,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -33,7 +33,110 @@
       "rs_lx3",
       "rs_lx4",
       "rs_lx5"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Audits {#}",
+          "repeat": {
+            "count": 119,
+            "step": 6
+          },
+          "start": "0x1811",
+          "length": 6,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (2x32)",
+          "start": "0x177C",
+          "end": "0x17FF",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Adjustments",
+          "start": "0x1B1D",
+          "end": "0x1BFA",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Timestamps",
+          "start": "0x1BFD",
+          "end": "0x1C60",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Scores",
+          "start": "0x1C61",
+          "end": "0x1C86",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Grand Champion",
+          "start": "0x1C87",
+          "end": "0x1C91",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "HSTD Reset",
+          "start": "0x1C92",
+          "end": "0x1C97",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Credits",
+          "start": "0x1C98",
+          "end": "0x1CA1",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Volume",
+          "start": "0x1CA2",
+          "end": "0x1CA4",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "start": "0x1CA5",
+          "end": "0x1CAF",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "start": "0x1CB0",
+          "end": "0x1D85",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (3x32)",
+          "start": "0x1D86",
+          "end": "0x1E48",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Custom Message (2x32)",
+          "start": "0x1E49",
+          "end": "0x1EC5",
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Mode Champions",
+          "start": "0x1EC6",
+          "end": "0x1EEB",
+          "bits": 16,
+          "complement": true
+        }
+      ]
+    }
   },
   "last_played": {
     "start": 6144,

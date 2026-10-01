@@ -19,9 +19,9 @@
     "Score slots confirmed on that game: 1,336,840 for player 1 at 0x021109E4.",
     "Only nba_802 is claimed; SAM addresses move between revisions."
   ],
-  "_fileformat": 0.7,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 2,
+    "version": 3,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "copyright": [
       "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
@@ -29,7 +29,74 @@
     "platform": "stern-sam",
     "roms": [
       "nba_802"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Grand Champion",
+          "start": "0x21029F8",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #1",
+          "start": "0x2102A18",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #2",
+          "start": "0x2102A38",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #3",
+          "start": "0x2102A58",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "High Score #4",
+          "start": "0x2102A78",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "Free Throws Champion",
+          "start": "0x2102A98",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "2-Pointers Champion",
+          "start": "0x2102AB8",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "3-Pointers Champion",
+          "start": "0x2102AD8",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        },
+        {
+          "label": "NBA Finals Champion",
+          "start": "0x2102AF8",
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        }
+      ]
+    }
   },
   "game_state": {
     "player_count": {
