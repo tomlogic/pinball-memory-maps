@@ -43,6 +43,7 @@ File format updates
 import json
 import sys
 from collections import OrderedDict
+from typing import Union, Optional
 
 # global to hold required file format for last converted file
 file_format = 0.0
@@ -106,7 +107,7 @@ def map_convert(pairs):
     return result
 
 
-def create_metadata(map_data: OrderedDict):
+def create_metadata(map_data: OrderedDict) -> None:
     """
     Move all underscore-prefixed properties (other than `_notes` and `_fileformat`) to
     a new `_metadata` property.
@@ -139,7 +140,7 @@ def create_metadata(map_data: OrderedDict):
     map_data['_metadata'].move_to_end('version', last=False)
 
 
-def rename_last_game(map_data: OrderedDict):
+def rename_last_game(map_data: OrderedDict) -> None:
     # move last_game into game_state
     if 'last_game' in map_data:
         if 'game_state' not in map_data:
@@ -158,18 +159,93 @@ def rename_last_game(map_data: OrderedDict):
                 map_data.move_to_end(entry, last=False)
 
 
+def to_int(v: Union[int, str, None]) -> Optional[int]:
+    """Returns 'v' if already an int, None if None, otherwise assume a string and convert
+    with a base of '0' (which handles leading 0 as octal and 0x as hex).
+    """
+    if v is None or isinstance(v, int):
+        return v
+    return int(v, 0)
+
+
+def migrate_checksum_records(map_data: OrderedDict) -> None:
+    """
+    Convert top-level `checksum8` and `checksum16` records to `_metadata.validation.checksum[]`
+    records.
+
+    :param map_data: existing JSON map
+    """
+    if map_data['_metadata'].get('validation', {}).get('checksum'):
+        # we already have a _metadata.validation.checksum entry, nothing to do
+        return
+
+    checksum_validation = []
+
+    sections = {'checksum8': 8, 'checksum16': 16}
+    for section, bits in sections.items():
+        if section in map_data:
+            for record in map_data[section]:
+                start: int = to_int(record['start'])
+                length = to_int(record.get('length'))
+                end = to_int(record.get('end'))
+
+                if 'groupings' in record:
+                    step = to_int(record['groupings'])
+                    if length is None:
+                        length = end - start + 1
+                    repeat = {"count": length // step, "step": step}
+                    length = step
+                    end = None
+                else:
+                    repeat = None
+
+                new_record = OrderedDict()
+                for field in ['_notes', 'label']:
+                    if field in record:
+                        new_record[field] = record[field]
+                if repeat is not None:
+                    new_record['repeat'] = repeat
+                    new_record['label'] += ' {#}'
+                new_record['start'] = '0x%04X' % start
+                if length:
+                    new_record['length'] = length
+                elif end:
+                    new_record['end'] = '0x%04X' % end
+                if bits == 16:
+                    # default for bits is 8, only include it if necessary
+                    new_record['bits'] = 16
+                new_record['complement'] = True
+                if 'checksum' in record:
+                    new_record['checksum'] = '0x%04X' % to_int(record['checksum'])
+                checksum_validation.append(new_record)
+
+    if checksum_validation:
+        if 'validation' not in map_data:
+            map_data['_metadata']['validation'] = {}
+        map_data['_metadata']['validation']['checksum'] = checksum_validation
+        map_data['_fileformat'] = 0.9
+
+
 exitcode = 0
 for filename in sys.argv[1:]:
     file_format = 0.6       # default to 0.6, first _fileformat with _metadata property
     try:
-        data = json.load(open(filename, 'r'), object_pairs_hook=map_convert)
+        original = open(filename, 'r').read()
+        data = json.loads(original, object_pairs_hook=map_convert)
         data['_fileformat'] = file_format
         create_metadata(data)
         rename_last_game(data)
-        with open(filename, 'w') as outfile:
-            outfile.write(json.dumps(data, indent=2))
-            # add trailing newline to match `jq` output
-            outfile.write('\n')
+        migrate_checksum_records(data)
+
+        # add trailing newline to match `jq` output
+        updated = json.dumps(data, indent=2) + '\n'
+
+        if updated != original:
+            data['_metadata']['version'] += 1
+            updated = json.dumps(data, indent=2) + '\n'
+            with open(filename, 'w') as outfile:
+                outfile.write(updated)
+
     except json.decoder.JSONDecodeError as e:
         print("JSON decode error(s) for %s:\n%s\n" % (filename, str(e)))
         # at least one JSON file was improperly formatted
