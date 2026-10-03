@@ -10,9 +10,9 @@
     "v0.2 (2018-03) by Tom Collins; added adjustments, audits, checksums",
     "2025-07-07 Tom Collins added automated audits (B.2, B.6)"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 10,
+    "version": 9,
     "copyright": [
       "Copyright (C) 2017 by Mike Metzger <mike@flexiblecreations.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -36,111 +36,7 @@
     ],
     "free_only": [
       "tom_14h"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 115,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x177C",
-          "end": "0x17FF",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1B1D",
-          "end": "0x1BFA",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1BFD",
-          "end": "0x1C60",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1C61",
-          "end": "0x1C82",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1C83",
-          "end": "0x1C8C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1C8D",
-          "end": "0x1C92",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1C93",
-          "end": "0x1C9C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1C9D",
-          "end": "0x1C9F",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1CA0",
-          "end": "0x1CAA",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Replay Data?",
-          "start": "0x1CAB",
-          "end": "0x1D80",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1D81",
-          "end": "0x1E43",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1E44",
-          "end": "0x1EC0",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Buy-In High Scores",
-          "start": "0x1EC1",
-          "end": "0x1EE2",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "player_count": {

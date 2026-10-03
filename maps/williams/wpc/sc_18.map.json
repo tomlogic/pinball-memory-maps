@@ -6,9 +6,9 @@
     "Unknown whether this map works for sc_18n11 and sc_18ns2.",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 9,
+    "version": 8,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -21,117 +21,7 @@
       "sc_18pfx",
       "sc_18s11",
       "sc_18s2"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 154,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x177C",
-          "end": "0x17FF",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1BD1",
-          "end": "0x1CC2",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1CC5",
-          "end": "0x1D28",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1D29",
-          "end": "0x1D4A",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1D4B",
-          "end": "0x1D54",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1D55",
-          "end": "0x1D5A",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1D5B",
-          "end": "0x1D64",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1D65",
-          "end": "0x1D67",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D68",
-          "end": "0x1D72",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D73",
-          "end": "0x1E48",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1E49",
-          "end": "0x1F0B",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1F0C",
-          "end": "0x1F88",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Assault Champion",
-          "start": "0x1F89",
-          "end": "0x1F92",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Assault High Scores",
-          "start": "0x1F93",
-          "end": "0x1FB4",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "last_played": {
     "start": 6144,

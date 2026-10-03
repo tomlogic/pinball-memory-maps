@@ -4,9 +4,9 @@
     "WPC",
     "2026-06-24 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 7,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -20,96 +20,7 @@
     ],
     "free_only": [
       "nbaf_115"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 130,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1B1D",
-          "end": "0x1C02",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1C05",
-          "end": "0x1C68",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1C69",
-          "end": "0x1C8A",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1C8B",
-          "end": "0x1C94",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1C95",
-          "end": "0x1C9A",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1C9B",
-          "end": "0x1CA4",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1CA5",
-          "end": "0x1CA7",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1CA8",
-          "end": "0x1CB2",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1CB3",
-          "end": "0x1D88",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1D89",
-          "end": "0x1E4B",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1E4C",
-          "end": "0x1EC8",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "last_played": {
     "start": 6144,

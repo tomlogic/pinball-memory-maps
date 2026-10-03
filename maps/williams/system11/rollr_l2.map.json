@@ -13,42 +13,15 @@
     "game's saved NVRAM from two cabinets. A write to the block that leaves the check byte stale is",
     "answered at the next boot with a full factory reset of NVRAM (measured live on swrds_l2)."
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 7,
+    "version": 6,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-system11-48K",
     "roms": [
       "rollr_l2"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 47,
-            "step": 4
-          },
-          "start": "0x062E",
-          "length": 4,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x06EC",
-          "complement": true,
-          "checksum": "0x0765"
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x0780",
-          "end": "0x07E3",
-          "complement": true,
-          "checksum": "0x07EC"
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "credits": {

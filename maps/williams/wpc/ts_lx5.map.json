@@ -8,9 +8,9 @@
     "WPC 50032, SYS 3.41 REV 0.6 (ts_lh6)",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 10,
+    "version": 9,
     "copyright": [
       "Copyright (C) 2022 https://github.com/horseyhorsey",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -42,132 +42,7 @@
     "free_only": [
       "ts_dm6",
       "ts_lm6"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 158,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x177C",
-          "end": "0x17FF",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1BD1",
-          "end": "0x1CCC",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1CCF",
-          "end": "0x1D1D",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1D1E",
-          "end": "0x1D3F",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1D40",
-          "end": "0x1D49",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1D4A",
-          "end": "0x1D4F",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1D50",
-          "end": "0x1D59",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1D5A",
-          "end": "0x1D5C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D5D",
-          "end": "0x1D67",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D68",
-          "end": "0x1E3D",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1E3E",
-          "end": "0x1F00",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1F01",
-          "end": "0x1F7D",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "_notes": "Initials 8062 to 8091 (unused all 0xFF), 0x00, count (0x00-0x0A), 16-bit checksum",
-          "label": "Final Battle Immortals",
-          "start": "0x1F7E",
-          "end": "0x1F9F",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Loop Champion",
-          "start": "0x1FA0",
-          "end": "0x1FA6",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Buy-In Scores",
-          "start": "0x1FA7",
-          "end": "0x1FC8",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Buy-In Grand Champion",
-          "start": "0x1FC9",
-          "end": "0x1FD2",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "player_count": {

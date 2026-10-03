@@ -12,9 +12,9 @@
     "block exactly. An external write to the block that leaves 0x7E5 stale is answered at the next",
     "boot with a full factory reset of NVRAM."
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 7,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -23,34 +23,7 @@
     "platform": "williams-system11-48K",
     "roms": [
       "bnzai_l3"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 40,
-            "step": 4
-          },
-          "start": "0x0660",
-          "length": 4,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x0702",
-          "complement": true,
-          "checksum": "0x0749"
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x0780",
-          "end": "0x07DD",
-          "complement": true,
-          "checksum": "0x07E5"
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "credits": {

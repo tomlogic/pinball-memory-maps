@@ -5,9 +5,9 @@
     "WPC 20013, SYS 2.46 REV 0.4 (br_l4)",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 8,
+    "version": 7,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-8K",
@@ -16,103 +16,7 @@
       "br_d4",
       "br_l3",
       "br_l4"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 127,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1B1D",
-          "end": "0x1C06",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1C09",
-          "end": "0x1C6C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1C6D",
-          "end": "0x1C8E",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1C8F",
-          "end": "0x1C98",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1C99",
-          "end": "0x1C9E",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1C9F",
-          "end": "0x1CA7",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1CA8",
-          "end": "0x1CAA",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1CAB",
-          "end": "0x1CB5",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1CB6",
-          "end": "0x1D8B",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1D8C",
-          "end": "0x1E4E",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1E4F",
-          "end": "0x1ED2",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Most Ships Sunk",
-          "start": "0x1ED3",
-          "end": "0x1ED8",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "last_played": {
     "start": 6144,

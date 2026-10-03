@@ -6,7 +6,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 8,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -16,110 +16,7 @@
       "ss_11",
       "ss_11s10",
       "ss_12"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 167,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1BFB",
-          "end": "0x1CEE",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1CF1",
-          "end": "0x1D54",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1D55",
-          "end": "0x1D76",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1D77",
-          "end": "0x1D80",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1D81",
-          "end": "0x1D86",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1D87",
-          "end": "0x1D90",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1D91",
-          "end": "0x1D93",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D94",
-          "end": "0x1D9E",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D9F",
-          "end": "0x1E74",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1E75",
-          "end": "0x1F37",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1F38",
-          "end": "0x1FB4",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Favorite Stiffs",
-          "start": "0x1FB5",
-          "end": "0x1FD6",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Spider Champion",
-          "start": "0x1FDA",
-          "end": "0x1FDE",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "last_played": {
     "start": 6144,

@@ -10,7 +10,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 10,
+    "version": 9,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -25,110 +25,7 @@
       "wcs_p3",
       "wcs_p5",
       "wcs_p6"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 149,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1B95",
-          "end": "0x1C86",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1C89",
-          "end": "0x1CEC",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1CED",
-          "end": "0x1D12",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1D13",
-          "end": "0x1D1D",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1D1E",
-          "end": "0x1D23",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1D24",
-          "end": "0x1D2C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1D2D",
-          "end": "0x1D2F",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D30",
-          "end": "0x1D3A",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D3B",
-          "end": "0x1E10",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1E11",
-          "end": "0x1ED3",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1ED4",
-          "end": "0x1F57",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Final Match Goal Champ",
-          "start": "0x1F58",
-          "end": "0x1F62",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Buy-In High Scores",
-          "start": "0x1F63",
-          "end": "0x1F88",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "last_played": {
     "start": 6144,

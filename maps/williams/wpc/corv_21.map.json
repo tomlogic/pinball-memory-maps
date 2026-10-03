@@ -4,139 +4,15 @@
     "WPC 50036, SYS 3.54 REV 2.1",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 6,
+    "version": 5,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
     "roms": [
       "corv_21"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 154,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x177C",
-          "end": "0x17FF",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1BD1",
-          "end": "0x1CB8",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1CBB",
-          "end": "0x1D1E",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1D1F",
-          "end": "0x1D44",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1D45",
-          "end": "0x1D4F",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1D50",
-          "end": "0x1D55",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1D56",
-          "end": "0x1D5F",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1D60",
-          "end": "0x1D62",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D63",
-          "end": "0x1D6D",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D6E",
-          "end": "0x1E43",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1E44",
-          "end": "0x1F06",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1F07",
-          "end": "0x1F83",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Future Car Champ",
-          "start": "0x1F84",
-          "end": "0x1F8E",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "World Speed Record (initials)",
-          "start": "0x1F8F",
-          "end": "0x1F99",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Cornering Record (initials)",
-          "start": "0x1F9A",
-          "end": "0x1FA4",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "World Speed/Cornering Loops",
-          "start": "0x1FAB",
-          "end": "0x1FB0",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "last_played": {
     "start": 6144,

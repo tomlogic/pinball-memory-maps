@@ -5,9 +5,9 @@
     "WPC 50050, SYS 3.63 REV 2.1 (congo_21)",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 8,
+    "version": 7,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -17,117 +17,7 @@
       "congo_20",
       "congo_20s10k",
       "congo_21"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 142,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x177C",
-          "end": "0x17FF",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1B95",
-          "end": "0x1C7C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1C7F",
-          "end": "0x1CE2",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1CE3",
-          "end": "0x1D08",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1D09",
-          "end": "0x1D13",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1D14",
-          "end": "0x1D19",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1D1A",
-          "end": "0x1D23",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1D24",
-          "end": "0x1D26",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D27",
-          "end": "0x1D31",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1D32",
-          "end": "0x1E07",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1E08",
-          "end": "0x1ECA",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1ECB",
-          "end": "0x1F47",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Buy-In Scores",
-          "start": "0x1F48",
-          "end": "0x1F5B",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Diamond Champ",
-          "start": "0x1F5C",
-          "end": "0x1F66",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "last_played": {
     "start": 6144,

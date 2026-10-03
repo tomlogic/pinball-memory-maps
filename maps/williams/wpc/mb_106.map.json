@@ -4,9 +4,9 @@
     "WPC 50065, SYS 3.77 REV 1.0",
     "2025-07-07 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 6,
+    "version": 5,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -16,124 +16,7 @@
     ],
     "free_only": [
       "mb_106"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 127,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x177C",
-          "end": "0x17FF",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1B1D",
-          "end": "0x1C2C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1C2F",
-          "end": "0x1C92",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1C93",
-          "end": "0x1CB4",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1CB5",
-          "end": "0x1CBE",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1CBF",
-          "end": "0x1CC4",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1CC5",
-          "end": "0x1CCE",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1CCF",
-          "end": "0x1CD1",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1CD2",
-          "end": "0x1CDC",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1CDD",
-          "end": "0x1DB2",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1DB3",
-          "end": "0x1E75",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1E76",
-          "end": "0x1EF2",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Monster Bash Champion",
-          "start": "0x1EF3",
-          "end": "0x1EFC",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Monsters of Rock Champion",
-          "start": "0x1EFD",
-          "end": "0x1F06",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Mosh Multiball Champion",
-          "start": "0x1F07",
-          "end": "0x1F10",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "last_played": {
     "start": 6144,

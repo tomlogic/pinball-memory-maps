@@ -7,9 +7,9 @@
     "WPC 50003, SYS 3.58 REV 9.0",
     "2025-09-05 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 6,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -22,103 +22,7 @@
     ],
     "free_only": [
       "fh_905h"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 121,
-            "step": 6
-          },
-          "start": "0x1811",
-          "length": 6,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x177C",
-          "end": "0x17FF",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x1B1D",
-          "end": "0x1C04",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Timestamps",
-          "start": "0x1C07",
-          "end": "0x1C6A",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Scores",
-          "start": "0x1C6B",
-          "end": "0x1C8C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Grand Champion",
-          "start": "0x1C8D",
-          "end": "0x1C96",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "HSTD Reset",
-          "start": "0x1C97",
-          "end": "0x1C9C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x1C9D",
-          "end": "0x1CA5",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Volume",
-          "start": "0x1CA6",
-          "end": "0x1CA8",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1CA9",
-          "end": "0x1CB3",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "start": "0x1CB4",
-          "end": "0x1D89",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (3x32)",
-          "start": "0x1D8A",
-          "end": "0x1E4C",
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Custom Message (2x32)",
-          "start": "0x1E4D",
-          "end": "0x1E4F",
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "player_count": {

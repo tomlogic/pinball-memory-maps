@@ -2,9 +2,9 @@
   "_notes": [
     "Compiled by Tom Collins, based on st_162h by HorsePin"
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.7,
   "_metadata": {
-    "version": 4,
+    "version": 3,
     "copyright": [
       "Copyright (C)2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -14,67 +14,7 @@
     "roms": [
       "st_162",
       "st_162c"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Grand Champion",
-          "start": "0x2102EC0",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #1",
-          "start": "0x2102EE0",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #2",
-          "start": "0x2102F00",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #3",
-          "start": "0x2102F20",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #4",
-          "start": "0x2102F40",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Combo Champion",
-          "start": "0x2102F60",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Warp Champion",
-          "start": "0x2102F80",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Medals Champion",
-          "start": "0x2102FA0",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "scores": [

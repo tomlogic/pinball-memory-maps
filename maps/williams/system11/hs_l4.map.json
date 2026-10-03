@@ -11,9 +11,9 @@
     "block exactly. An external write to the block that leaves 0x7E5 stale is answered at the next",
     "boot with a full factory reset of NVRAM."
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 7,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2017 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -23,40 +23,7 @@
     "roms": [
       "hs_l3",
       "hs_l4"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 33,
-            "step": 4
-          },
-          "start": "0x06A0",
-          "length": 4,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x0726",
-          "complement": true,
-          "checksum": "0x076D"
-        },
-        {
-          "label": "Auto Replay Data",
-          "start": "0x0748",
-          "end": "0x075A",
-          "complement": true
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x0780",
-          "end": "0x07DD",
-          "complement": true,
-          "checksum": "0x07E5"
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "credits": {

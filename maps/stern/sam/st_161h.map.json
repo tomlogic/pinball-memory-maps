@@ -16,9 +16,9 @@
     "cycle. An earlier sweep of 0x0-0x3FFFF missed both; they sit above it.",
     "Score slots re-confirmed on that game: 857,000 / 1,775,680 / 973,300 / 728,880 at 0x02110A0C."
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.7,
   "_metadata": {
-    "version": 6,
+    "version": 5,
     "copyright": [
       "Copyright (C)2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -28,67 +28,7 @@
     "roms": [
       "st_161h",
       "st_161hc"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Grand Champion",
-          "start": "0x2102E80",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #1",
-          "start": "0x2102EA0",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #2",
-          "start": "0x2102EC0",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #3",
-          "start": "0x2102EE0",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #4",
-          "start": "0x2102F00",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Combo Champion",
-          "start": "0x2102F20",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Warp Champion",
-          "start": "0x2102F40",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Medals Champion",
-          "start": "0x2102F60",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "player_count": {

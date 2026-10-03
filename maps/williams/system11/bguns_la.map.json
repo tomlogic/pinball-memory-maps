@@ -13,43 +13,15 @@
     "check byte stale is answered at the next boot with a full factory reset of NVRAM (measured live",
     "on swrds_l2)."
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 7,
+    "version": 6,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-system11-48K",
     "roms": [
       "bguns_la"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "_notes": "extra, unused audit 1800-1803",
-          "label": "Audits {#}",
-          "repeat": {
-            "count": 38,
-            "step": 4
-          },
-          "start": "0x0670",
-          "length": 4,
-          "complement": true
-        },
-        {
-          "label": "Credits",
-          "start": "0x070E",
-          "complement": true,
-          "checksum": "0x0771"
-        },
-        {
-          "label": "Adjustments",
-          "start": "0x0780",
-          "end": "0x07DD",
-          "complement": true,
-          "checksum": "0x07E5"
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "credits": {

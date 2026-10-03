@@ -16,9 +16,9 @@
     "Confirmed after the table exited: the map decodes that game as 4 players scoring 945,250 /",
     "1,062,000 / 1,013,750 / 1,014,000."
   ],
-  "_fileformat": 0.9,
+  "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 2,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "copyright": [
       "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
@@ -26,46 +26,7 @@
     "platform": "stern-sam",
     "roms": [
       "csi_240"
-    ],
-    "validation": {
-      "checksum": [
-        {
-          "label": "Grand Champion",
-          "start": "0x2102B98",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #1",
-          "start": "0x2102BB8",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #2",
-          "start": "0x2102BD8",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #3",
-          "start": "0x2102BF8",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #4",
-          "start": "0x2102C18",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        }
-      ]
-    }
+    ]
   },
   "game_state": {
     "player_count": {
