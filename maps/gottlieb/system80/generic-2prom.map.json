@@ -6,9 +6,9 @@
     "All games share the same bookkeeping/audit and high score layout.",
     "The '1prom' and '2prom' versions of this file are identical except for platform/roms."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -20,6 +20,20 @@
       "spidermn",
       "starrace"
     ],
+    "validation": {
+      "mirror": [
+        {
+          "label": "Adjustments",
+          "start": "0x1800",
+          "length": 85,
+          "offsets": [
+            0,
+            85,
+            170
+          ]
+        }
+      ]
+    },
     "values": {
       "off_on": [
         "off",

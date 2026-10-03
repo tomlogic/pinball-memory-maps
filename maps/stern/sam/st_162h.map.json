@@ -18,9 +18,9 @@
     "reproduced this map's existing score address, and rejected a CPU RAM candidate at 0x00038D9C",
     "whose four values (~16.7M, near-identical) are the usual scaled-set false positive."
   ],
-  "_fileformat": 0.7,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 5,
+    "version": 7,
     "copyright": [
       "Copyright (C)2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -30,7 +30,61 @@
     "roms": [
       "st_162h",
       "st_162hc"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "_notes": "119 adjustments: 4-byte LE value, 1-byte checksum, 3 bytes 0xFF padding",
+          "repeat": {
+            "count": 119,
+            "step": 8
+          },
+          "label": "Adjustment {#} (checksum)",
+          "start": "0x02102008",
+          "length": 5,
+          "complement": true
+        },
+        {
+          "_notes": "65 audits: 4-byte LE value, 4 bytes observed always zero, 4-byte copy of the value, 1-byte checksum over those 12, 3 bytes 0xFF padding. The copy is written in the same instant as the value; a writer must update both and the checksum.",
+          "repeat": {
+            "count": 65,
+            "step": 16
+          },
+          "label": "Audit {#} (checksum)",
+          "start": "0x021023D0",
+          "length": 13,
+          "complement": true
+        },
+        {
+          "_notes": "8 champion records: 28 bytes of initials and score, 2-byte LE checksum, 2 slack bytes",
+          "label": "Champion record {#} (checksum)",
+          "start": "0x02102ED0",
+          "repeat": {
+            "count": 8,
+            "step": 32
+          },
+          "length": 30,
+          "bits": 16,
+          "complement": true
+        }
+      ],
+      "mirror": [
+        {
+          "_notes": "65 audits: 4-byte LE value, 4 bytes observed always zero, 4-byte copy of the value, 1-byte checksum over those 12, 3 bytes 0xFF padding. The copy is written in the same instant as the value; a writer must update both and the checksum.",
+          "repeat": {
+            "count": 65,
+            "step": 16
+          },
+          "start": "0x021023D0",
+          "label": "Audit {#} (mirror)",
+          "length": 4,
+          "offsets": [
+            0,
+            8
+          ]
+        }
+      ]
+    }
   },
   "game_state": {
     "player_count": {

@@ -8,9 +8,9 @@
     "Note that offsets 246 through 250 are 4-bit checksums of each of the high scores.",
     "80b-7digit-{8KB,10KB}.map.json are identical other than platform (8K vs. 10K ROM)."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -23,6 +23,62 @@
       "ravengfp",
       "ravenafp"
     ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "High Score #1",
+          "bits": 4,
+          "start": "0x18BA",
+          "length": 12,
+          "complement": false,
+          "checksum": "0x18F6"
+        },
+        {
+          "label": "High Score #2",
+          "bits": 4,
+          "start": "0x18C6",
+          "length": 12,
+          "complement": false,
+          "checksum": "0x18F7"
+        },
+        {
+          "label": "High Score #3",
+          "bits": 4,
+          "start": "0x18D2",
+          "length": 12,
+          "complement": false,
+          "checksum": "0x18F8"
+        },
+        {
+          "label": "High Score #4",
+          "bits": 4,
+          "start": "0x18DE",
+          "length": 12,
+          "complement": false,
+          "checksum": "0x18F9"
+        },
+        {
+          "label": "High Score #5",
+          "bits": 4,
+          "start": "0x18EA",
+          "length": 12,
+          "complement": false,
+          "checksum": "0x18FA"
+        }
+      ],
+      "mirror": [
+        {
+          "label": "Adjustments",
+          "start": "0x1800",
+          "length": 62,
+          "offsets": [
+            0,
+            62,
+            124
+          ]
+        }
+      ]
+    },
     "values": {
       "off_on": [
         "off",
@@ -330,21 +386,21 @@
   "adjustments": {
     "Standard Adjustments": {
       "11": {
-        "label": "First High Score",
+        "label": "First Replay Level",
         "start": "0x1836",
         "encoding": "bcd",
         "length": 2,
         "scale": 100000
       },
       "12": {
-        "label": "Second High Score",
+        "label": "Second Replay Level",
         "start": "0x1838",
         "encoding": "bcd",
         "length": 2,
         "scale": 100000
       },
       "13": {
-        "label": "Third High Score",
+        "label": "Third Replay Level",
         "start": "0x183A",
         "encoding": "bcd",
         "length": 2,

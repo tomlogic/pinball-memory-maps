@@ -6,11 +6,17 @@
     "Williams System 11C",
     "2025-02 v0.1: Initial version",
     "2025-03 v0.2: Tom Collins added audits",
-    "2025-09 v0.4: Tom Collins added to game_state"
+    "2025-09 v0.4: Tom Collins added to game_state",
+    "Adjustments 0x780-0x7E3 are protected by an 8-bit complement sum at 0x7E6: the ROM's checksum",
+    "routine (CE 07 80 4F AB 00 08 8C 07 7E4 26 F8 43 39 in dude_u27 (dd_l2 set)) sums from 0x780 up to but not",
+    "including 0x7E4 and complements it, and the ROM stores the result with STAA $07E6. Taken",
+    "from the ROM; no NVRAM image was available to cross-check. A write to the block that leaves the",
+    "check byte stale is answered at the next boot with a full factory reset of NVRAM (measured live",
+    "on swrds_l2)."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-system11-48K",
@@ -203,6 +209,12 @@
       "start": 1805,
       "checksum": 1914,
       "label": "Credits"
+    },
+    {
+      "start": 1920,
+      "end": 2019,
+      "checksum": 2022,
+      "label": "Adjustments"
     }
   ],
   "audits": {

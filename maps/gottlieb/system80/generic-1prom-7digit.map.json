@@ -6,9 +6,9 @@
     "All games share the same bookkeeping/audit and high score layout.",
     "Identical to the non-conversion ROMs, other than scores are 10x."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 7,
+    "version": 8,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -29,6 +29,20 @@
       "vlcno_a7",
       "vlcno_b7"
     ],
+    "validation": {
+      "mirror": [
+        {
+          "label": "Adjustments",
+          "start": "0x1800",
+          "length": 85,
+          "offsets": [
+            0,
+            85,
+            170
+          ]
+        }
+      ]
+    },
     "values": {
       "off_on": [
         "off",

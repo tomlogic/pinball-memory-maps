@@ -5,11 +5,11 @@
     "Game stores 61 bytes of data in triplicate at offsets 0, 61 and 122.",
     "If a value in one location doesn't match the other two, it's replaced by the other value.",
     "If a value differs in all three locations, it's replaced with a default value.",
-    "0x18FC to 0x18FF are likely high score checksums."
+    "0x18FC to 0x18FE are high score checksums."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -23,6 +23,46 @@
       "tagtmgfp",
       "tagtem2f"
     ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "High Score #2",
+          "bits": 4,
+          "start": "0x18D8",
+          "length": 12,
+          "complement": false,
+          "checksum": "0x18FC"
+        },
+        {
+          "label": "High Score #3",
+          "bits": 4,
+          "start": "0x18E4",
+          "length": 12,
+          "complement": false,
+          "checksum": "0x18FD"
+        },
+        {
+          "label": "Team Score #2",
+          "bits": 4,
+          "start": "0x18F0",
+          "length": 12,
+          "complement": false,
+          "checksum": "0x18FE"
+        }
+      ],
+      "mirror": [
+        {
+          "label": "Adjustments",
+          "start": "0x1800",
+          "length": 61,
+          "offsets": [
+            0,
+            61,
+            122
+          ]
+        }
+      ]
+    },
     "values": {
       "off_on": [
         "off",
@@ -346,14 +386,14 @@
   "adjustments": {
     "Standard Adjustments": {
       "11": {
-        "label": "Regular High Score",
+        "label": "Regular Replay Level",
         "start": "0x1842",
         "encoding": "bcd",
         "length": 2,
         "scale": 100000
       },
       "12": {
-        "label": "Team High Score",
+        "label": "Team Replay Level",
         "start": "0x1844",
         "encoding": "bcd",
         "length": 2,

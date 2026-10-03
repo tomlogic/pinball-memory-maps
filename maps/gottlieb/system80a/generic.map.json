@@ -5,9 +5,9 @@
     "NVRAM: 85-byte regions stored in triplicate at 0x1800, 0x1855, and 0x18AA.",
     "All games share the same bookkeeping/audit and high score layout."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -45,6 +45,20 @@
       "thegamsc",
       "touchdn"
     ],
+    "validation": {
+      "mirror": [
+        {
+          "label": "Adjustments",
+          "start": "0x1800",
+          "length": 85,
+          "offsets": [
+            0,
+            85,
+            170
+          ]
+        }
+      ]
+    },
     "values": {
       "off_on": [
         "off",

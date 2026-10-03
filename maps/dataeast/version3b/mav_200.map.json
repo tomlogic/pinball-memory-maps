@@ -2,11 +2,14 @@
   "_notes": [
     "Maverick: The Movie (Data East, 1994)",
     "IPDB: 1561, OPDB: GrN9V-ML8nw",
-    "Compiled by Tom Collins <tom@scorbit.io>"
+    "Compiled by Tom Collins <tom@scorbit.io>",
+    "Adjustments 0x1E00-0x1E5B are protected by a plain 8-bit sum (complement false) at 0x1FDD; see README.md in maps/dataeast.",
+    "Block length and check byte read from the ROM of mav_200.",
+    "mav_100 sums one byte less, 0x1E00-0x1E5A; the declaration follows mav_200."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 8,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -15,7 +18,18 @@
     "roms": [
       "mav_100",
       "mav_200"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": 92,
+          "complement": false,
+          "checksum": "0x1FDD"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [

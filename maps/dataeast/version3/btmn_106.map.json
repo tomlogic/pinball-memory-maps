@@ -1,11 +1,17 @@
 {
   "_notes": [
     "Batman [Data East, 1991]",
-    "Originally compiled by Horsepin.  Updated by Tom Collins"
+    "Originally compiled by Horsepin.  Updated by Tom Collins",
+    "Adjustments 0x1E00-0x1E47 are protected by a plain 8-bit sum stored at 0x1EFE (checksum8_sum, not",
+    "complemented), the scheme measured live on tmnt_200 (see that map): the block runs from 0x1E00 to",
+    "the byte before the 0xFF fill, which on this game is 0x1E47. Verified against saved btmn_106 images from both cabinets.",
+    "A write that changes an adjustment without updating 0x1EFE is reset to factory at the next boot;",
+    "0x1DDF is the ROM's derived free-play-in-effect flag, re-derived from 0x1E04 at boot.",
+    "Adjustments 0x1E00-0x1E47 are protected by a plain 8-bit sum (complement false) at 0x1EFE; see README.md in maps/dataeast."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 5,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2016 by Dave horsepin <horse@horsesoft.uk>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -17,7 +23,18 @@
       "btmn_106",
       "btmn_f13",
       "btmn_g13"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": 72,
+          "complement": false,
+          "checksum": "0x1EFE"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [

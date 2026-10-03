@@ -4,11 +4,16 @@
     "High Speed (Williams 1986)",
     "https://www.ipdb.org/machine.cgi?id=1176",
     "Williams System 11",
-    "2025-09 v0.4: Tom Collins added to game_state"
+    "2025-09 v0.4: Tom Collins added to game_state",
+    "Adjustments 0x780-0x7DD (Free Play at 0x796) are protected by an 8-bit complement sum at 0x7E5,",
+    "the scheme measured live on swrds_l2 (see that map). Verified against this game's saved NVRAM",
+    "from both cabinets, one image state each: the byte at 0x7E5 equals 0xFF minus the sum of the",
+    "block exactly. An external write to the block that leaves 0x7E5 stale is answered at the next",
+    "boot with a full factory reset of NVRAM."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2017 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -1037,6 +1042,12 @@
       "start": 1864,
       "end": 1882,
       "label": "Auto Replay Data"
+    },
+    {
+      "start": 1920,
+      "end": 2013,
+      "checksum": 2021,
+      "label": "Adjustments"
     }
   ]
 }

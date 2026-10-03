@@ -5,9 +5,9 @@
     "Audits/Adjustments stored in triplicate at 0xD00, 0xE00, 0xF00",
     "Mirrored working memory: 0xFC bytes at 0x800, 0x9F9, and 0xAF6."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 4,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
     ],
@@ -17,7 +17,29 @@
       "waterwl2",
       "waterwl5",
       "waterwld"
-    ]
+    ],
+    "validation": {
+      "mirror": [
+        {
+          "label": "Working Memory",
+          "length": "0xFC",
+          "offsets": [
+            "0x800",
+            "0x9F9",
+            "0xAF6"
+          ]
+        },
+        {
+          "label": "Audits/Settings/High Scores",
+          "length": "0x100",
+          "offsets": [
+            "0xD00",
+            "0xE00",
+            "0xF00"
+          ]
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [
