@@ -244,7 +244,7 @@ for later entries.
     - **_notes**, **label**, **start**, **end**, **length**, **repeat**:
       Same definition as in the Descriptors documentation below.
 
-    - **bits** _(required)_: Either 4, 8, or 16, indicating the stored
+    - **bits**: Either 4, 8 (default), or 16, indicating the stored
       checksum's size (nibble, one byte, and two bytes respectively).
       4-bit checksums are only valid in 4-bit memory regions (e.g., some
       NVRAM on early solid-state games).  16-bit checksums use the
@@ -261,7 +261,7 @@ for later entries.
 
     - **complement** _(required)_: A boolean property with `false` indicating
       that the actual sum is stored, versus `true` which stores the
-      complement (a value added to the sum to get 0).
+      bitwise complement of the sum (i.e., `~sum` or `sum XOR 0xFFFF`).
 
   - **mirror**: The other known validation method is to copy a memory
     region to one or more additional locations.  Gottlieb System
