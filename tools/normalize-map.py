@@ -220,7 +220,7 @@ def migrate_checksum_records(map_data: OrderedDict) -> None:
                 checksum_validation.append(new_record)
 
     if checksum_validation:
-        if 'validation' not in map_data:
+        if 'validation' not in map_data['_metadata']:
             map_data['_metadata']['validation'] = {}
         map_data['_metadata']['validation']['checksum'] = checksum_validation
         map_data['_fileformat'] = 0.9

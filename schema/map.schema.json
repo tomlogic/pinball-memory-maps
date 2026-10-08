@@ -553,14 +553,10 @@
     },
     "new_checksum": {
       "description": "from _metadata.validation.checksum[]",
+      "$comment": "We can't use baseMemoryObject since fields like `offsets` aren't valid for checksum",
       "type": "object",
+      "$ref": "#/$defs/baseObject",
       "properties": {
-        "_notes": {
-          "$ref": "#/$defs/notes"
-        },
-        "label": {
-          "type": "string"
-        },
         "start": {
           "$ref": "#/$defs/intOrHex"
         },
@@ -594,7 +590,14 @@
         "start",
         "complement"
       ],
-      "additionalProperties": false
+      "not": {
+        "description": "entry cannot contain both `end` and `length`",
+        "required": [
+          "end",
+          "length"
+        ]
+      },
+      "unevaluatedProperties": false
     },
     "mirror": {
       "description": "from _metadata.validation.mirror[]",
@@ -633,11 +636,13 @@
       "properties": {
         "count": {
           "description": "number of times to repeat this entry",
-          "$ref": "#/$defs/intOrHex"
+          "type": "integer",
+          "minimum": 1
         },
         "step": {
-          "description": "amount added to `start` on each repetition",
-          "$ref": "#/$defs/intOrHex"
+          "description": "amount added to `start` (and `checksum`) on each repetition",
+          "type": "integer",
+          "minimum": 1
         }
       },
       "required": [

@@ -237,8 +237,8 @@ for later entries.
   the following keys, each of which has an array of objects as its value.
 
   - **checksum**: One validation method is to sum values across a memory
-    range, and store either the sum or it's complement (i.e., `sum XOR
-    0xFF`) at another address.  The properties of the checksum objects in
+    range, and store either the sum or its complement (i.e., `sum XOR
+    0xFFFF`) at another address.  The properties of the checksum objects in
     the `_metadata.validation.checksum` array are:
 
     - **_notes**, **label**, **start**, **end**, **length**, **repeat**:
@@ -267,7 +267,7 @@ for later entries.
     region to one or more additional locations.  Gottlieb System
     3/80/80A/80B games mirrored their audits and adjustments in triplicate.
     At startup, if a byte only matched two regions, the ROM automatically
-    copy that byte to the third region.  If all three regions disagreed,
+    copies that byte to the third region.  If all three regions disagreed,
     it would reset the audit or adjustment covered by that byte. Stern SAM
     games mirrored 32-bit values in their audits, in addition to storing a
     checksum. When modifying mirrored memory, apply writes to all
@@ -302,9 +302,11 @@ consumers should remove `repeat` from the descriptor "template", and replace
 `"{#}"` in `label` and `short_label` with the index of the entry
 (starting from `1`).  The `repeat` object has two properties:
 
-- **count** _(required)_: Number of times to repeat the template.
-- **step** _(required)_: Integer (or hex string) value added to the
-  template's `start` property (and `checksum` property for those records).
+- **count** _(required)_: Integer number of times to repeat the template.
+- **step** _(required)_: Integer value added to the template's `start`
+  property (and `checksum` property for those records).  For `high_scores`
+  and `mode_champions`, `step` is applied to each nested descriptor
+  (`initials`, `score`, `timestamp`, ...).
 
 You must specify the location of data in memory with one or more of the
 following properties.  At least one of `start` and `offsets` are required.
@@ -621,13 +623,13 @@ Example with entries for a single switch and group of two switches.
 
 See `gottlieb/victory.map.json` as a full example of DIP switch documentation.
 
-#### Checksums
+#### Checksums (deprecated)
 
-The `checksum8` and `checksum16` sections were deprecated in
+**The `checksum8` and `checksum16` sections were deprecated in
 `_fileformat` 0.9.  They will remain in maps until a release of
 `_fileformat` 1.0 to give time for consumers to implement support for
 `_metadata.validation`.  Consumers of v0.9 maps should ignore `checksum8` and
-`checksum16` and rely solely on the `_metadata.validation` section.
+`checksum16` and rely solely on the `_metadata.validation` section.**
 
 The objects used for the last two entries in the map are
 slightly different from the other descriptors.  They have the required
