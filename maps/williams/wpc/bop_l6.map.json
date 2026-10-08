@@ -4,9 +4,9 @@
     "WPC",
     "2026-06-24 Tom Collins added automated audits"
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 6,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -194,6 +194,26 @@
         "start": 7271,
         "encoding": "bcd",
         "length": 5
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Billionaire #{#}",
+      "initials": {
+        "start": "0x1EC7",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1ECA",
+        "encoding": "bcd",
+        "length": 5,
+        "default": 1000000000
+      },
+      "repeat": {
+        "count": 20,
+        "step": 8
       }
     }
   ],
@@ -931,6 +951,11 @@
       "start": 7747,
       "end": 7878,
       "label": "Custom Message (2x32)"
+    },
+    {
+      "start": "0x1EC7",
+      "end": "0x1F68",
+      "label": "Mode Champions"
     }
   ]
 }

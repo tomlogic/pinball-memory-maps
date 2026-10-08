@@ -87,8 +87,8 @@
 * [BMX][913b3] _bmx_
 * [BMX (Free Play)][07ad3] _bmxa_
 * [Back to the Future (2.1)][ae91c] _bttf_a21_
-* [Back to the Future (2.7 German)][fc2d6] _bttf_g27_
-* [Back to the Future (2.7)][fc2d6] _bttf_a27_
+* [Back to the Future (2.7 German)][4995b] _bttf_g27_
+* [Back to the Future (2.7)][4995b] _bttf_a27_
 * [Back to the Future (2.8)][fc2d6] _bttf_a28_
 * [Bad Cats (L-5)][99f7f] _bcats_l5_
 * [Bad Girls][f64d8] _badgirls_
@@ -1635,6 +1635,7 @@
 [4862f]: maps/williams/wpc/ft_l5.map.json
 [491d9]: maps/stern/sam/smanve_101.map.json
 [492eb]: maps/bally/as-2518-35/embryon.map.json
+[4995b]: maps/dataeast/version3/bttf_a27.map.json
 [4aa9b]: maps/williams/system4/stlwr_l2.map.json
 [4ab43]: maps/dataeast/version3/trek_120.map.json
 [4ab4c]: maps/dataeast/version3/trek_201.map.json

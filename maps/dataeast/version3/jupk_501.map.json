@@ -1,11 +1,13 @@
 {
   "_notes": [
     "Jurassic Park (Data East, 1993)",
-    "Based on jupk_513 (slight game_state changes)"
+    "Based on jupk_513 (slight game_state changes)",
+    "Adjustments 0x1E00-0x1E56 are protected by a plain 8-bit sum (complement false) at 0x1FD8; see README.md in maps/dataeast.",
+    "Block length and check byte read from the ROM of jupk_501 and jupk_g51."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 5,
+    "version": 7,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -14,7 +16,18 @@
     "roms": [
       "jupk_501",
       "jupk_g51"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": 87,
+          "complement": false,
+          "checksum": "0x1FD8"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [

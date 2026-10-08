@@ -2,9 +2,9 @@
   "_notes": [
     "Compiled by Tom Collins, based on simpprty."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 2,
+    "version": 3,
     "copyright": [
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
     ],
@@ -27,7 +27,18 @@
       "lotr",
       "lotr8",
       "lotr9"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": "0x63",
+          "complement": false,
+          "checksum": "0x1FC1"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [

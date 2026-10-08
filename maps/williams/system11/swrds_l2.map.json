@@ -6,11 +6,19 @@
     "Williams System 11B",
     "Same layout as Mousin' Around!",
     "2025-03 v0.2: Tom Collins added audits",
-    "2025-09 v0.4: Tom Collins added to game_state"
+    "2025-09 v0.4: Tom Collins added to game_state",
+    "2026-09 v6: adjustments 0x780-0x7DD (Balls Per Game at 0x788, Free Play at 0x796, through the",
+    "custom-message text) are protected by an 8-bit complement sum at 0x7E5. Measured on a 698-sample",
+    "live recording of RAM: Free Play 0 -> 1 moved the check byte by -1 and Balls Per Game stepped",
+    "through 3, 2, 1, 9, 7, 6, 5, 4, 3 moved it by the opposite of each step. The ROM recomputes the",
+    "byte when you leave the adjustment, not on every change, so a live reader may see it lag by a",
+    "few seconds. An external write to any byte in the block that leaves 0x7E5 stale is answered at",
+    "the next boot with a full factory reset of NVRAM, which is how Free Play set from outside the",
+    "service menu was wiping the machine."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -185,6 +193,12 @@
       "start": 1806,
       "checksum": 1905,
       "label": "Credits"
+    },
+    {
+      "start": 1920,
+      "end": 2013,
+      "checksum": 2021,
+      "label": "Adjustments"
     }
   ],
   "audits": {

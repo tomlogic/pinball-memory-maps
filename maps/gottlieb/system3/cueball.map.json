@@ -1,12 +1,12 @@
 {
   "_notes": [
-    "Audits/Adjustments stored in triplicate at 0x680, 0x700, 0x780",
     "Based on freddy.map.json.",
-    "Mirrored working memory: 0x90 bytes at 0x400, 0x521, and 0x5B2."
+    "Audits/Adjustments stored in triplicate at 0x680, 0x700, 0x780",
+    "Mirrored working memory: 0x91 bytes at 0x400, 0x521, and 0x5B2."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 4,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -17,7 +17,29 @@
       "cueball1",
       "cueball2",
       "cueball3"
-    ]
+    ],
+    "validation": {
+      "mirror": [
+        {
+          "label": "Working Memory",
+          "length": "0x91",
+          "offsets": [
+            "0x400",
+            "0x521",
+            "0x5B2"
+          ]
+        },
+        {
+          "label": "Audits/Settings/High Scores",
+          "length": "0x80",
+          "offsets": [
+            "0x680",
+            "0x700",
+            "0x780"
+          ]
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [

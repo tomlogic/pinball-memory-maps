@@ -1,32 +1,30 @@
 {
   "_notes": [
-    "Maverick: The Movie (Data East, 1994)",
-    "IPDB: 1561, OPDB: GrN9V-ML8nw",
-    "Compiled by Tom Collins <tom@scorbit.io>",
-    "Adjustments 0x1E00-0x1E5B are protected by a plain 8-bit sum (complement false) at 0x1FDD; see README.md in maps/dataeast.",
-    "Block length and check byte read from the ROM of mav_200.",
-    "mav_100 sums one byte less, 0x1E00-0x1E5A; the declaration follows mav_200."
+    "Back to the Future [Data East, 1990]",
+    "2026-02-14 added by Tom Collins <tom@scorbit.io>",
+    "Adjustments 0x1E00-0x1E42 are protected by a plain 8-bit sum (complement false) at 0x1EDE; see README.md in maps/dataeast.",
+    "This map is identical to bttf_a28.map.json other than the decreased Adjustments length."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 8,
+    "version": 11,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "dataeast",
     "roms": [
-      "mav_100",
-      "mav_200"
+      "bttf_a27",
+      "bttf_g27"
     ],
     "validation": {
       "checksum": [
         {
           "label": "Adjustments",
           "start": "0x1E00",
-          "length": 92,
+          "length": 67,
           "complement": false,
-          "checksum": "0x1FDD"
+          "checksum": "0x1EDE"
         }
       ]
     }
@@ -36,51 +34,31 @@
       {
         "label": "Player 1",
         "encoding": "bcd",
-        "offsets": [
-          "0x16E6",
-          "0x16D6",
-          "0x16D7",
-          "0x16D8",
-          "0x16D9"
-        ]
+        "start": "0x0010",
+        "length": 4
       },
       {
         "label": "Player 2",
         "encoding": "bcd",
-        "offsets": [
-          "0x16E7",
-          "0x16DA",
-          "0x16DB",
-          "0x16DC",
-          "0x16DD"
-        ]
+        "start": "0x0014",
+        "length": 4
       },
       {
         "label": "Player 3",
         "encoding": "bcd",
-        "offsets": [
-          "0x16E8",
-          "0x16DE",
-          "0x16DF",
-          "0x16E0",
-          "0x16E1"
-        ]
+        "start": "0x0018",
+        "length": 4
       },
       {
         "label": "Player 4",
         "encoding": "bcd",
-        "offsets": [
-          "0x16E9",
-          "0x16E2",
-          "0x16E3",
-          "0x16E4",
-          "0x16E5"
-        ]
+        "start": "0x001C",
+        "length": 4
       }
     ],
     "credits": {
       "label": "Credits",
-      "start": "0x16CE",
+      "start": "0x1DE0",
       "encoding": "bcd"
     },
     "free_play": {
@@ -95,7 +73,7 @@
     },
     "player_count": {
       "label": "Player Count",
-      "start": "0x01BE",
+      "start": "0x03C8",
       "encoding": "int"
     },
     "ball_count": {
@@ -105,135 +83,105 @@
     },
     "current_player": {
       "label": "Player",
-      "start": "0x01BB",
+      "start": "0x03C7",
       "encoding": "int"
     },
     "current_ball": {
       "label": "Ball",
-      "start": "0x01BC",
+      "start": "0x00CA",
       "encoding": "int"
     },
     "game_over": {
       "_notes": "game is over if current player/ball is 0",
       "label": "Game Over",
-      "start": "0x01BB",
+      "start": "0x03C7",
       "encoding": "bool",
       "invert": true
     }
   },
   "high_scores": [
     {
-      "label": "First",
-      "short_label": "#1",
+      "label": "World Record",
+      "short_label": "WR",
       "initials": {
-        "start": "0x16BA",
+        "start": "0x1DCC",
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "encoding": "bcd",
-        "offsets": [
-          "0x1694",
-          "0x167C",
-          "0x167D",
-          "0x167E",
-          "0x167F"
-        ]
+        "start": "0x1DA0",
+        "length": 4
+      }
+    },
+    {
+      "label": "First",
+      "short_label": "#1",
+      "initials": {
+        "start": "0x1DCF",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "encoding": "bcd",
+        "start": "0x1DA4",
+        "length": 4
       }
     },
     {
       "label": "Second",
       "short_label": "#2",
       "initials": {
-        "start": "0x16BD",
+        "start": "0x1DD2",
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "encoding": "bcd",
-        "offsets": [
-          "0x1695",
-          "0x1680",
-          "0x1681",
-          "0x1682",
-          "0x1683"
-        ]
+        "start": "0x1DA8",
+        "length": 4
       }
     },
     {
       "label": "Third",
       "short_label": "#3",
       "initials": {
-        "start": "0x16C0",
+        "start": "0x1DD5",
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "encoding": "bcd",
-        "offsets": [
-          "0x1696",
-          "0x1684",
-          "0x1685",
-          "0x1686",
-          "0x1687"
-        ]
+        "start": "0x1DAC",
+        "length": 4
       }
     },
     {
       "label": "Fourth",
       "short_label": "#4",
       "initials": {
-        "start": "0x16C3",
+        "start": "0x1DD8",
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "encoding": "bcd",
-        "offsets": [
-          "0x1697",
-          "0x1688",
-          "0x1689",
-          "0x168A",
-          "0x168B"
-        ]
+        "start": "0x1DB0",
+        "length": 4
       }
     },
     {
       "label": "Fifth",
       "short_label": "#5",
       "initials": {
-        "start": "0x16C6",
+        "start": "0x1DDB",
         "encoding": "ch",
         "length": 3
       },
       "score": {
         "encoding": "bcd",
-        "offsets": [
-          "0x1698",
-          "0x168C",
-          "0x168D",
-          "0x168E",
-          "0x168F"
-        ]
-      }
-    },
-    {
-      "label": "Sixth",
-      "short_label": "#6",
-      "initials": {
-        "start": "0x16C9",
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "encoding": "bcd",
-        "offsets": [
-          "0x1699",
-          "0x1690",
-          "0x1691",
-          "0x1692",
-          "0x1693"
-        ]
+        "start": "0x1DB4",
+        "length": 4
       }
     }
   ]

@@ -1,11 +1,22 @@
 {
   "_notes": [
     "Teenage Mutant Ninja Turtles [Data East, 1991]",
-    "2026-02-14 added by Tom Collins <tom@scorbit.io>"
+    "2026-02-14 added by Tom Collins <tom@scorbit.io>",
+    "Adjustments 0x1E00-0x1E48 are protected by a plain 8-bit sum stored at 0x1EFE (checksum8_sum,",
+    "the Whitestar form: not complemented). Measured on tmnt_200 from 845 live-RAM samples across",
+    "two operator-menu sessions: Free Play 0 -> 1 at 0x1E04 moved 0x1EFE by 1, Balls Per Game",
+    "3 -> 5 -> 3 at 0x1E0D moved it by 2 and back. A write that changes an adjustment without",
+    "updating 0x1EFE is discarded at the next boot: the ROM resets the block to factory, which is",
+    "how Free Play set by an external writer kept reverting. 0x1EFF counts menu changes.",
+    "0x1DDF is the ROM's 'free play in effect' working flag: cleared while the operator menu is",
+    "open and re-derived from 0x1E04 on leaving it and at boot. Data East resets the machine when",
+    "the operator menu is exited, so a change to 0x1E04 made from outside the menu takes effect at",
+    "the next boot rather than immediately.",
+    "Adjustments 0x1E00-0x1E48 are protected by a plain 8-bit sum (complement false) at 0x1EFE; see README.md in maps/dataeast."
   ],
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "_metadata": {
-    "version": 8,
+    "version": 10,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -18,7 +29,18 @@
       "tmnt_104g",
       "tmnt_200",
       "tmnt_a07"
-    ]
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Adjustments",
+          "start": "0x1E00",
+          "length": 73,
+          "complement": false,
+          "checksum": "0x1EFE"
+        }
+      ]
+    }
   },
   "game_state": {
     "scores": [
