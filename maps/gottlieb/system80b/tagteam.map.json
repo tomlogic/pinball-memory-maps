@@ -2,14 +2,14 @@
   "_notes": [
     "Compiled by Tom Collins, based on map for System 80B games with 8-digit scores.",
     "Game uses a 4-bit nvram (256x4), so only uses the low nibble of each byte.",
-    "Game stores 61 bytes of data in triplicate at offsets 0, 61 and 122.",
+    "Game stores 72 bytes of data in triplicate at offsets 0, 72 and 144.",
     "If a value in one location doesn't match the other two, it's replaced by the other value.",
     "If a value differs in all three locations, it's replaced with a default value.",
     "0x18FC to 0x18FE are high score checksums."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 7,
+    "version": 8,
     "copyright": [
       "Copyright (C) 2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -54,11 +54,11 @@
         {
           "label": "Adjustments",
           "start": "0x1800",
-          "length": 61,
+          "length": 72,
           "offsets": [
             0,
-            61,
-            122
+            72,
+            144
           ]
         }
       ]

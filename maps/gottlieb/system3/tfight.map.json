@@ -6,7 +6,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
     ],
@@ -22,7 +22,7 @@
           "length": "0x6A",
           "offsets": [
             "0x400",
-            "0x5D3",
+            "0x4D3",
             "0x53D"
           ]
         },
