@@ -7,7 +7,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 8,
+    "version": 9,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -1128,7 +1128,7 @@
         "default": 1,
         "values": [
           "Off",
-          "ON"
+          "On"
         ]
       },
       "21": {
@@ -1264,6 +1264,220 @@
           "Never",
           "Slow",
           "Instantly"
+        ]
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ex. Ball Count",
+        "start": 7101,
+        "length": 2,
+        "encoding": "int",
+        "min": 5,
+        "max": 9,
+        "default": 6
+      },
+      "02": {
+        "label": "Attract Sounds",
+        "start": 7104,
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "Off",
+          "On"
+        ]
+      },
+      "03": {
+        "label": "Family Mode",
+        "start": 7106,
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "04": {
+        "label": "Shots For Mode",
+        "start": 7107,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 3,
+        "default": 1
+      },
+      "05": {
+        "_notes": [
+          "The screen did not confirm the values 0, 1.",
+          "Not every value was seen on screen."
+        ],
+        "label": "Ballsave Time",
+        "start": 7109,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 10,
+        "default": 5,
+        "units": "seconds"
+      },
+      "06": {
+        "label": "Manhunt Timer",
+        "start": 7111,
+        "length": 2,
+        "encoding": "int",
+        "min": 15,
+        "max": 35,
+        "default": 30,
+        "units": "seconds"
+      },
+      "07": {
+        "label": "Sniper Timer",
+        "start": 7113,
+        "length": 2,
+        "encoding": "int",
+        "min": 15,
+        "max": 35,
+        "default": 30,
+        "units": "seconds"
+      },
+      "08": {
+        "label": "Stakeout Timer",
+        "start": 7115,
+        "length": 2,
+        "encoding": "int",
+        "min": 15,
+        "max": 35,
+        "default": 30,
+        "units": "seconds"
+      },
+      "09": {
+        "label": "Pursuit Timer",
+        "start": 7117,
+        "length": 2,
+        "encoding": "int",
+        "min": 15,
+        "max": 35,
+        "default": 30,
+        "units": "seconds"
+      },
+      "10": {
+        "label": "Safecrackr Timer",
+        "start": 7119,
+        "length": 2,
+        "encoding": "int",
+        "min": 15,
+        "max": 35,
+        "default": 30,
+        "units": "seconds"
+      },
+      "11": {
+        "label": "Bad Imper. Timer",
+        "start": 7121,
+        "length": 2,
+        "encoding": "int",
+        "min": 15,
+        "max": 35,
+        "default": 30,
+        "units": "seconds"
+      },
+      "12": {
+        "label": "Meltdown Timer",
+        "start": 7123,
+        "length": 2,
+        "encoding": "int",
+        "min": 15,
+        "max": 35,
+        "default": 30,
+        "units": "seconds"
+      },
+      "13": {
+        "label": "Battle Tnk Timer",
+        "start": 7125,
+        "length": 2,
+        "encoding": "int",
+        "min": 15,
+        "max": 35,
+        "default": 30,
+        "units": "seconds"
+      },
+      "14": {
+        "_notes": [
+          "Minimum from the ROM table: not seen on screen.",
+          "Maximum from the ROM table: not seen on screen."
+        ],
+        "label": "Super Grnd Champ.",
+        "start": 7127,
+        "length": 2,
+        "encoding": "bcd",
+        "min": 250,
+        "max": 999,
+        "default": 350,
+        "scale": 1000000
+      },
+      "15": {
+        "_notes": [
+          "Minimum from the ROM table: not seen on screen.",
+          "Maximum from the ROM table: not seen on screen."
+        ],
+        "label": "Super HSTD 1",
+        "start": 7129,
+        "length": 2,
+        "encoding": "bcd",
+        "min": 150,
+        "max": 999,
+        "default": 320,
+        "scale": 1000000
+      },
+      "16": {
+        "_notes": [
+          "Minimum from the ROM table: not seen on screen.",
+          "Maximum from the ROM table: not seen on screen."
+        ],
+        "label": "Super HSTD 2",
+        "start": 7131,
+        "length": 2,
+        "encoding": "bcd",
+        "min": 140,
+        "max": 999,
+        "default": 310,
+        "scale": 1000000
+      },
+      "17": {
+        "_notes": [
+          "Minimum from the ROM table: not seen on screen.",
+          "Maximum from the ROM table: not seen on screen."
+        ],
+        "label": "Super HSTD 3",
+        "start": 7133,
+        "length": 2,
+        "encoding": "bcd",
+        "min": 130,
+        "max": 999,
+        "default": 300,
+        "scale": 1000000
+      },
+      "18": {
+        "_notes": [
+          "Minimum from the ROM table: not seen on screen.",
+          "Maximum from the ROM table: not seen on screen."
+        ],
+        "label": "Super HSTD 4",
+        "start": 7135,
+        "length": 2,
+        "encoding": "bcd",
+        "min": 120,
+        "max": 999,
+        "default": 290,
+        "scale": 1000000
+      },
+      "19": {
+        "label": "Buy Extra Ball",
+        "start": 7138,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "Off",
+          "1 Credit"
         ]
       }
     }

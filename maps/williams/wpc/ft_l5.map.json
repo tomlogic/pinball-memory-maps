@@ -6,7 +6,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 7,
+    "version": 8,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-8K",
@@ -1184,7 +1184,7 @@
         "default": 1,
         "values": [
           "Off",
-          "ON"
+          "On"
         ]
       },
       "21": {
@@ -1320,6 +1320,161 @@
           "Slow",
           "Instantly"
         ]
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "_notes": "Maximum from the ROM table: not seen on screen.",
+        "label": "Timed Plunger",
+        "start": 7099,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 120,
+        "default": 0,
+        "multiple_of": 5,
+        "units": "seconds",
+        "special_values": {
+          "0": "Off"
+        }
+      },
+      "02": {
+        "label": "Flipper Plunger",
+        "start": 7102,
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "03": {
+        "label": "Outlne. Auto Cast",
+        "start": 7104,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "04": {
+        "label": "Pct. Extra Balls",
+        "start": 7105,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 25,
+        "suffix": "%"
+      },
+      "05": {
+        "label": "Ramp Timer",
+        "start": 7107,
+        "length": 2,
+        "encoding": "int",
+        "min": 5,
+        "max": 20,
+        "default": 10,
+        "units": "seconds"
+      },
+      "06": {
+        "_notes": "Maximum from the ROM table: not seen on screen.",
+        "label": "Fish Finder Time",
+        "start": 7109,
+        "length": 2,
+        "encoding": "int",
+        "min": 3,
+        "max": 20,
+        "default": 10,
+        "units": "seconds"
+      },
+      "07": {
+        "_notes": "Maximum from the ROM table: not seen on screen.",
+        "label": "Stretch Truth",
+        "start": 7111,
+        "length": 2,
+        "encoding": "int",
+        "min": 5,
+        "max": 30,
+        "default": 15,
+        "units": "seconds"
+      },
+      "08": {
+        "label": "Feed Frenzy Time",
+        "start": 7114,
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "Slow",
+          "Fast"
+        ]
+      },
+      "09": {
+        "_notes": [
+          "The screen did not confirm the value 5.",
+          "Not every value was seen on screen."
+        ],
+        "label": "Captv. Ball Lites",
+        "start": 7115,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 5,
+        "default": 1
+      },
+      "10": {
+        "label": "Lock Difficulty",
+        "start": 7118,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "Easy",
+          "Medium",
+          "Hard"
+        ]
+      },
+      "11": {
+        "_notes": [
+          "The screen did not confirm the value 4.",
+          "Minimum from the ROM table: not seen on screen."
+        ],
+        "label": "Ball Save Time",
+        "start": 7119,
+        "length": 2,
+        "encoding": "int",
+        "min": 4,
+        "max": 20,
+        "default": 7,
+        "units": "seconds"
+      },
+      "12": {
+        "_notes": [
+          "The screen did not confirm the value 10.",
+          "Not every value was seen on screen."
+        ],
+        "label": "Special Lites At",
+        "start": 7121,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 10,
+        "default": 4,
+        "suffix": " S.Gears"
+      },
+      "13": {
+        "_notes": "Maximum from the ROM table: not seen on screen.",
+        "label": "Lock Save Time",
+        "start": 7123,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 20,
+        "default": 0,
+        "units": "seconds",
+        "special_values": {
+          "0": "Off"
+        }
       }
     }
   },

@@ -7,7 +7,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 9,
+    "version": 10,
     "copyright": [
       "Copyright (C) 2018 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -1561,7 +1561,7 @@
         "default": 1,
         "values": [
           "Off",
-          "ON"
+          "On"
         ]
       },
       "21": {
@@ -1696,6 +1696,668 @@
           "Never",
           "Slow",
           "Instantly"
+        ]
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ball Time",
+        "start": 7201,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 99,
+        "default": 35,
+        "units": "seconds",
+        "special_values": {
+          "0": "Off"
+        }
+      },
+      "02": {
+        "label": "Auto. %Spec.&Match",
+        "start": 7204,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "03": {
+        "label": "V.Mode Auto.Ex.Ball",
+        "start": 7205,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 99,
+        "default": 10,
+        "suffix": "%",
+        "special_values": {
+          "0": "Off"
+        }
+      },
+      "04": {
+        "label": "V. Mode Ex.Ball",
+        "start": 7207,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 25,
+        "default": 3,
+        "suffix": " Waves",
+        "special_values": {
+          "0": "None"
+        }
+      },
+      "05": {
+        "label": "W.H.O. Auto. Ex.Ball",
+        "start": 7209,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 99,
+        "default": 10,
+        "suffix": "%",
+        "special_values": {
+          "0": "Off"
+        }
+      },
+      "06": {
+        "_notes": "The value shows after the prefix \"W-H-O\".",
+        "label": "1st Ex.B. Lit At",
+        "start": 7211,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 2
+      },
+      "07": {
+        "_notes": "The value shows after the prefix \"+\".",
+        "label": "Next Ex.B. Lit At",
+        "start": 7213,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 4,
+        "suffix": " W-H-O"
+      },
+      "08": {
+        "label": "Mem. Extra Ball",
+        "start": 7216,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes",
+          "Forget 1",
+          "Forget 2",
+          "Forget 3"
+        ]
+      },
+      "09": {
+        "label": "Mem. W-H-O Timer",
+        "start": 7218,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "10": {
+        "label": "1st W-H-O Timer",
+        "start": 7219,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 10,
+        "units": "seconds"
+      },
+      "11": {
+        "label": "2nd W-H-O Timer",
+        "start": 7221,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 8,
+        "units": "seconds"
+      },
+      "12": {
+        "label": "3rd W-H-O Timer",
+        "start": 7223,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 7,
+        "units": "seconds"
+      },
+      "13": {
+        "label": "Last W-H-O Timer",
+        "start": 7225,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 6,
+        "units": "seconds"
+      },
+      "14": {
+        "_notes": "The value shows after the prefix \"Jackpot\".",
+        "label": "Easy Locks For",
+        "start": 7227,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 50,
+        "default": 1
+      },
+      "15": {
+        "_notes": "The value shows after the prefix \"Jackpot\".",
+        "label": "Easy 3X5 For",
+        "start": 7229,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 50,
+        "default": 1
+      },
+      "16": {
+        "label": "3b. Jackpt./Davros",
+        "start": 7231,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 12,
+        "default": 2
+      },
+      "17": {
+        "label": "2b. Jackpt./Davros",
+        "start": 7233,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 12,
+        "default": 3
+      },
+      "18": {
+        "label": "Rematch 1st Ball",
+        "start": 7235,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 10,
+        "units": "seconds"
+      },
+      "19": {
+        "label": "Rematch 2nd Ball",
+        "start": 7237,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 5,
+        "units": "seconds"
+      },
+      "20": {
+        "label": "Rematch Targ. Add",
+        "start": 7239,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 50,
+        "default": 5,
+        "units": "seconds",
+        "special_values": {
+          "0": "Off"
+        }
+      },
+      "21": {
+        "label": "Game Over Unlock",
+        "start": 7242,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "22": {
+        "label": "R.E.P.A.I.R. 1 Lamp",
+        "start": 7243,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 10,
+        "units": "seconds"
+      },
+      "23": {
+        "label": "R.E.P.A.I.R. 2 Lamps",
+        "start": 7245,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 9,
+        "units": "seconds"
+      },
+      "24": {
+        "label": "R.E.P.A.I.R. 3 Lamps",
+        "start": 7247,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 8,
+        "units": "seconds"
+      },
+      "25": {
+        "label": "R.E.P.A.I.R. 4 Lamps",
+        "start": 7249,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 7,
+        "units": "seconds"
+      },
+      "26": {
+        "label": "R.E.P.A.I.R. 5 Lamps",
+        "start": 7251,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 6,
+        "units": "seconds"
+      },
+      "27": {
+        "label": "R.E.P.A.I.R. All Lamps",
+        "start": 7253,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 50,
+        "default": 10,
+        "units": "seconds"
+      },
+      "28": {
+        "label": "Transmat/Doc. Mem.",
+        "start": 7256,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "29": {
+        "_notes": "Display not decoded: stored value -> screen: 0 -> 00, 9 -> 700,000, 10 -> 750,000, 11 -> 800,000, 17 -> 2,000,000.",
+        "label": "Transmat Spotdoc.",
+        "start": 7257,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 17,
+        "default": 10
+      },
+      "30": {
+        "label": "Mem. Doctors 1-7",
+        "start": 7260,
+        "encoding": "enum",
+        "default": 5,
+        "values": [
+          "No",
+          "Yes",
+          "Forget 1",
+          "Forget 2",
+          "Forget 3",
+          "Add 1",
+          "Add 2",
+          "Add 3"
+        ]
+      },
+      "31": {
+        "label": "Pre-Lite E.S.C.A.P.E.",
+        "start": 7261,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 4,
+        "default": 1,
+        "suffix": " Lamps",
+        "special_values": {
+          "0": "None"
+        }
+      },
+      "32": {
+        "label": "E.S.C.A.P.E. Targ. Mem.",
+        "start": 7264,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "33": {
+        "label": "E.S.C.A.P.E. Bonus Mem.",
+        "start": 7266,
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "34": {
+        "label": "Bonus 'X' Memory",
+        "start": 7268,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "35": {
+        "label": "Plyfld. X Memory",
+        "start": 7270,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes",
+          "Forget 1",
+          "Forget 2",
+          "Forget 3"
+        ]
+      },
+      "36": {
+        "label": "Playfield, 1.5X",
+        "start": 7271,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 10,
+        "units": "seconds"
+      },
+      "37": {
+        "label": "Playfield, 2.0X",
+        "start": 7273,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 9,
+        "units": "seconds"
+      },
+      "38": {
+        "label": "Playfield, 2.5X",
+        "start": 7275,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 8,
+        "units": "seconds"
+      },
+      "39": {
+        "label": "Playfield, 3.0X",
+        "start": 7277,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 7,
+        "units": "seconds"
+      },
+      "40": {
+        "label": "Playfield, 3.5X",
+        "start": 7279,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 6,
+        "units": "seconds"
+      },
+      "41": {
+        "label": "Playfield, 4.0X",
+        "start": 7281,
+        "length": 2,
+        "encoding": "int",
+        "min": 2,
+        "max": 50,
+        "default": 10,
+        "units": "seconds"
+      },
+      "42": {
+        "label": "Hang-On Time",
+        "start": 7283,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 50,
+        "default": 2,
+        "units": "seconds",
+        "special_values": {
+          "0": "Off"
+        }
+      },
+      "43": {
+        "label": "Second Chance",
+        "start": 7285,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 15,
+        "default": 2,
+        "units": "seconds",
+        "special_values": {
+          "0": "Off"
+        }
+      },
+      "44": {
+        "label": "Video Mode Lit.",
+        "start": 7288,
+        "encoding": "enum",
+        "default": 2,
+        "values": [
+          "Game Start",
+          "Ball Start",
+          "Not Lit"
+        ]
+      },
+      "45": {
+        "label": "V.Mode Esc. Relit",
+        "start": 7290,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "46": {
+        "label": "Video Mode Diff.",
+        "start": 7292,
+        "encoding": "enum",
+        "default": 2,
+        "values": [
+          "Ex. Easy",
+          "Easy",
+          "Medium",
+          "Hard",
+          "Ex. Hard"
+        ]
+      },
+      "47": {
+        "label": "Miniplayfield",
+        "start": 7294,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "Disabled",
+          "Enabled"
+        ]
+      },
+      "48": {
+        "label": "Trap Door",
+        "start": 7296,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "Disabled",
+          "Enabled"
+        ]
+      },
+      "49": {
+        "label": "Unused",
+        "start": 7298,
+        "encoding": "enum",
+        "default": 2,
+        "values": [
+          "Disabled",
+          "Enabled",
+          ""
+        ]
+      },
+      "50": {
+        "label": "Attr. Mode Sounds",
+        "start": 7300,
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "None",
+          "Some",
+          "Alot"
+        ]
+      },
+      "51": {
+        "label": "Fancy A. Mode G.I.",
+        "start": 7302,
+        "encoding": "enum",
+        "default": 1,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "52": {
+        "label": "Timed Plunger",
+        "start": 7303,
+        "length": 2,
+        "encoding": "int",
+        "min": 0,
+        "max": 120,
+        "default": 0,
+        "multiple_of": 5,
+        "units": "seconds",
+        "special_values": {
+          "0": "Off"
+        }
+      },
+      "53": {
+        "label": "Flipper Plunger",
+        "start": 7306,
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "No",
+          "Yes"
+        ]
+      },
+      "54": {
+        "label": "Kick Lock Holes",
+        "start": 7308,
+        "encoding": "enum",
+        "default": 0,
+        "values": [
+          "No",
+          "Any Lock",
+          "2 Locks"
+        ]
+      },
+      "55": {
+        "label": "Game Start Doc.",
+        "start": 7310,
+        "encoding": "enum",
+        "min": 57,
+        "max": 63,
+        "default": 63,
+        "values": [
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "n/a",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
         ]
       }
     }
