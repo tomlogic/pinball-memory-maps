@@ -7,7 +7,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 10,
+    "version": 11,
     "copyright": [
       "Copyright (C) 2018 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -15,9 +15,7 @@
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-8K",
     "roms": [
-      "dw_d1",
       "dw_d2",
-      "dw_l1",
       "dw_l2"
     ],
     "validation": {

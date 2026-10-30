@@ -2,11 +2,12 @@
   "_notes": [
     "Compiled by Tom Collins using template-wpc.json.",
     "WPC 50026, SYS 3.50 REV 1.1",
-    "2025-07-07 Tom Collins added automated audits"
+    "2025-07-07 Tom Collins added automated audits",
+    "Feature Adjustments on i500_10r: 21 Pit Stop Time has the minimum 15."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 9,
+    "version": 10,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -1877,89 +1878,15 @@
         ]
       },
       "29": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "Value names left out: this ROM's choice lists do not match its screens."
-        ],
+        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
         "label": "German Speech",
         "start": 7346,
         "encoding": "enum",
-        "default": 0
-      },
-      "30": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Pit Record",
-        "start": 7347,
-        "length": 2,
-        "encoding": "int",
-        "min": 10,
-        "max": 25,
-        "default": 15
-      },
-      "31": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux Grand",
-        "start": 7349,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 900
-      },
-      "32": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 1",
-        "start": 7351,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 900
-      },
-      "33": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 2",
-        "start": 7353,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 850
-      },
-      "34": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 3",
-        "start": 7355,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 800
-      },
-      "35": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 4",
-        "start": 7357,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 750
+        "default": 0,
+        "values": [
+          "Off",
+          "On"
+        ]
       }
     }
   },

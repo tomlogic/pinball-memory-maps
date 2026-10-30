@@ -1,16 +1,16 @@
 {
   "_notes": [
     "Compiled by Tom Collins using template-wpc.json.",
-    "WPC 50031, SYS 3.17 REV 13.2 (wcs_p2)",
     "WPC 50031, SYS 3.20 REV 13.3 (wcs_p3)",
     "WPC 50031, SYS 3.21 REV 0.1 (wcs_l1, wcs_la1)",
     "WPC 50031, SYS 3.23 REV 0.2 (wcs_l2, wcs_la2)",
     "WPC 50031, SYS 3.23 REV 3.12 (wcs_l3c)",
-    "2025-07-07 Tom Collins added automated audits"
+    "2025-07-07 Tom Collins added automated audits",
+    "Standard Adjustments on wcs_l3c: 26 Tournament Play has the factory value Yes. 28 Min. Vol. Override has the factory value Yes."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 12,
+    "version": 13,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -21,9 +21,7 @@
       "wcs_l3c",
       "wcs_la1",
       "wcs_la2",
-      "wcs_p2",
       "wcs_p3",
-      "wcs_p5",
       "wcs_p6"
     ],
     "validation": {
@@ -1867,78 +1865,6 @@
         "min": 1,
         "max": 80,
         "default": 12
-      },
-      "35": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Backup Goal Chmp.",
-        "start": 7289,
-        "length": 2,
-        "encoding": "int",
-        "min": 5,
-        "max": 32,
-        "default": 6
-      },
-      "36": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Goal Champ Cred.",
-        "start": 7291,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 1
-      },
-      "37": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 1",
-        "start": 7293,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 2600
-      },
-      "38": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 2",
-        "start": 7295,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 2400
-      },
-      "39": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 3",
-        "start": 7297,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 2200
-      },
-      "40": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 4",
-        "start": 7299,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 2000
       }
     }
   },

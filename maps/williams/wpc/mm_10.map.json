@@ -8,7 +8,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 10,
+    "version": 11,
     "copyright": [
       "Copyright (C) 2016 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -2106,12 +2106,17 @@
       "36": {
         "_notes": [
           "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "Value names left out: this ROM's choice lists do not match its screens."
+          "Value names from totan_14 (A.2 01), which has the same ROM choice list."
         ],
         "label": "Buy Extra Ball",
         "start": 7298,
         "encoding": "enum",
-        "default": 0
+        "default": 0,
+        "values": [
+          "Off",
+          "1/2 Cred.",
+          "1 Credit"
+        ]
       },
       "37": {
         "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
@@ -2122,156 +2127,6 @@
         "min": 1,
         "max": 4,
         "default": 1
-      },
-      "38": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Castle Champion",
-        "start": 7301,
-        "length": 2,
-        "encoding": "int",
-        "min": 1,
-        "max": 16,
-        "default": 6
-      },
-      "39": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Castle Credits",
-        "start": 7303,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 0
-      },
-      "40": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Joust Champion",
-        "start": 7305,
-        "length": 2,
-        "encoding": "int",
-        "min": 1,
-        "max": 16,
-        "default": 5
-      },
-      "41": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Joust Credits",
-        "start": 7307,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 0
-      },
-      "42": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Catapult Champ.",
-        "start": 7309,
-        "length": 2,
-        "encoding": "int",
-        "min": 1,
-        "max": 16,
-        "default": 5
-      },
-      "43": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Catapult Credits",
-        "start": 7311,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 0
-      },
-      "44": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Peasant Champion",
-        "start": 7313,
-        "length": 2,
-        "encoding": "int",
-        "min": 1,
-        "max": 16,
-        "default": 5
-      },
-      "45": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Peasant Credits",
-        "start": 7315,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 0
-      },
-      "46": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Damsel Champion",
-        "start": 7317,
-        "length": 2,
-        "encoding": "int",
-        "min": 1,
-        "max": 16,
-        "default": 5
-      },
-      "47": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Damsel Credits",
-        "start": 7319,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 0
-      },
-      "48": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Troll Champion",
-        "start": 7321,
-        "length": 2,
-        "encoding": "int",
-        "min": 16,
-        "max": 64,
-        "default": 32
-      },
-      "49": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Troll Credits",
-        "start": 7323,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 0
-      },
-      "50": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Madness Champion",
-        "start": 7325,
-        "length": 2,
-        "encoding": "int",
-        "min": 5,
-        "max": 64,
-        "default": 32
-      },
-      "51": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Madness Credits",
-        "start": 7327,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 0
-      },
-      "52": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Battle Credits",
-        "start": 7329,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 0
       },
       "53": {
         "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",

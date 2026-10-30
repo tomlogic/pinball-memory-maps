@@ -6,16 +6,14 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 9,
+    "version": 10,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-8K",
     "roms": [
       "tz_92",
       "tz_93",
-      "tz_h7",
       "tz_h8",
-      "tz_i7",
       "tz_i8",
       "tz_la9"
     ],
@@ -1777,20 +1775,24 @@
         "default": 1
       },
       "37": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "Value names left out: this ROM's choice lists do not match its screens."
-        ],
+        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
         "label": "Freeplay Message",
         "start": 7374,
         "encoding": "enum",
-        "default": 1
+        "default": 1,
+        "values": [
+          "Off",
+          "On"
+        ]
       },
       "38": {
         "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
         "label": "Buy In Count",
-        "start": 7376,
-        "encoding": "enum",
+        "start": 7375,
+        "length": 2,
+        "encoding": "int",
+        "min": 1,
+        "max": 4,
         "default": 1
       }
     }

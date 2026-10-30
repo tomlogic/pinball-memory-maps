@@ -2,33 +2,24 @@
   "_notes": [
     "Compiled by Tom Collins using template-wpc.json.",
     "WPC 50023, SYS 3.08 REV 0.7",
-    "2025-07-07 Tom Collins added automated audits"
+    "2025-07-07 Tom Collins added automated audits",
+    "Standard Adjustments on sttng_l7c: 28 Min. Vol. Override has the factory value Yes."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 11,
+    "version": 13,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
     "roms": [
-      "sttng_d1",
-      "sttng_d2",
       "sttng_d7",
       "sttng_dx",
       "sttng_g7",
       "sttng_h7",
-      "sttng_l1",
-      "sttng_l2",
-      "sttng_l3",
-      "sttng_l5",
       "sttng_l7",
       "sttng_l7c",
       "sttng_la7",
-      "sttng_p5",
-      "sttng_p6",
-      "sttng_p8",
-      "sttng_x7",
-      "sttng_x8"
+      "sttng_x7"
     ],
     "validation": {
       "checksum": [
@@ -1817,14 +1808,15 @@
         ]
       },
       "28": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "Value names left out: this ROM's choice lists do not match its screens."
-        ],
+        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
         "label": "Special Speech",
         "start": 7156,
         "encoding": "enum",
-        "default": 0
+        "default": 0,
+        "values": [
+          "Off",
+          "On"
+        ]
       }
     }
   },
