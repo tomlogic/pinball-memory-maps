@@ -505,6 +505,9 @@
             "minutes"
           ]
         },
+        "prefix": {
+          "type": "string"
+        },
         "suffix": {
           "type": "string"
         },
