@@ -10,7 +10,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 12,
+    "version": 13,
     "copyright": [
       "Copyright (C) 2017 by Mike Metzger <mike@flexiblecreations.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -20,9 +20,6 @@
     "roms": [
       "tom_06",
       "tom_061"
-    ],
-    "free_only": [
-      "tom_14h"
     ],
     "validation": {
       "checksum": [
