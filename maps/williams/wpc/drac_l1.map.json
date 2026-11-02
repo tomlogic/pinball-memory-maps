@@ -4,11 +4,13 @@
     "WPC 50001, SYS 2.50 REV 14.1 (drac_p11)",
     "WPC 50001, SYS 2.50 REV 14.2 (drac_p12)",
     "WPC 50001, SYS 2.51 REV 0.1 (drac_l1)",
-    "2025-07-07 Tom Collins added automated audits"
+    "2025-07-07 Tom Collins added automated audits",
+    "Standard Adjustments on drac_l2c: 26 Tournament Play has the factory value YES. 28 Min. Vol. Override has the factory value YES.",
+    "Standard Adjustments on drac_p11, drac_p12: 07 Replay Start has the maximum 505."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 10,
+    "version": 11,
     "copyright": [
       "Copyright (C) 2022 https://github.com/horseyhorsey",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -383,6 +385,58 @@
         "max": 4,
         "default": 1
       },
+      "09": {
+        "label": "Replay Level 1",
+        "start": 7061,
+        "length": 2,
+        "encoding": "bcd",
+        "min": 0,
+        "max": 2500,
+        "default": 200,
+        "suffix": "M",
+        "special_values": {
+          "0": "OFF"
+        }
+      },
+      "10": {
+        "label": "Replay Level 2",
+        "start": 7063,
+        "length": 2,
+        "encoding": "bcd",
+        "min": 0,
+        "max": 2500,
+        "default": 0,
+        "suffix": "M",
+        "special_values": {
+          "0": "OFF"
+        }
+      },
+      "11": {
+        "label": "Replay Level 3",
+        "start": 7065,
+        "length": 2,
+        "encoding": "bcd",
+        "min": 0,
+        "max": 2500,
+        "default": 0,
+        "suffix": "M",
+        "special_values": {
+          "0": "OFF"
+        }
+      },
+      "12": {
+        "label": "Replay Level 4",
+        "start": 7067,
+        "length": 2,
+        "encoding": "bcd",
+        "min": 0,
+        "max": 2500,
+        "default": 0,
+        "suffix": "M",
+        "special_values": {
+          "0": "OFF"
+        }
+      },
       "13": {
         "label": "Replay Boost",
         "start": 7069,
@@ -442,13 +496,13 @@
         ]
       },
       "18": {
-        "label": "Max. Tick,/Player",
+        "label": "Max. Tick./Player",
         "start": 7079,
         "length": 2,
         "encoding": "int",
         "min": 0,
-        "max": 50,
-        "default": 10,
+        "max": 100,
+        "default": 25,
         "suffix": "%",
         "special_values": {
           "0": "OFF"
@@ -463,10 +517,9 @@
         "max": 50,
         "default": 10,
         "suffix": "%",
-        "values": [
-          "0",
-          "OFF"
-        ]
+        "special_values": {
+          "0": "OFF"
+        }
       },
       "20": {
         "label": "Custom Message",

@@ -8,11 +8,12 @@
     "WPC 50039, SYS 3.48 REV 2.0 (tom_20)",
     "v0.1 by Mike Metzger; last_game, high_scores, mode_champions",
     "v0.2 (2018-03) by Tom Collins; added adjustments, audits, checksums",
-    "2025-07-07 Tom Collins added automated audits (B.2, B.6)"
+    "2025-07-07 Tom Collins added automated audits (B.2, B.6)",
+    "Standard Adjustments on tom_101f, tom_10f, tom_12, tom_121, tom_12a: 32 No Bonus Flips has the factory value NO."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 11,
+    "version": 12,
     "copyright": [
       "Copyright (C) 2017 by Mike Metzger <mike@flexiblecreations.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -20,15 +21,12 @@
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
     "roms": [
-      "tom_06",
-      "tom_061",
       "tom_101f",
       "tom_10f",
       "tom_12",
       "tom_121",
       "tom_12a",
       "tom_13",
-      "tom_13c",
       "tom_13f",
       "tom_14h",
       "tom_14hb",

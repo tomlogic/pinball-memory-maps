@@ -2,7 +2,6 @@
   "_notes": [
     "2022-12-22 v0.1 Compiled by Horsepin",
     "2024-12-13 v0.2 High score locations updated by Tom Collins",
-    "WPC 50032, SYS 3.30 REV 13.1 (ts_pa1)",
     "WPC 50032, SYS 3.36 REV 0.4 (ts_la4)",
     "WPC 50032, SYS 3.41 REV 0.5 (ts_lx5)",
     "WPC 50032, SYS 3.41 REV 0.6 (ts_lh6)",
@@ -10,7 +9,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 12,
+    "version": 13,
     "copyright": [
       "Copyright (C) 2022 https://github.com/horseyhorsey",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -35,9 +34,7 @@
       "ts_lh6p",
       "ts_lm6",
       "ts_lx4",
-      "ts_lx5",
-      "ts_pa1",
-      "ts_pa2"
+      "ts_lx5"
     ],
     "free_only": [
       "ts_dm6",
@@ -2014,81 +2011,6 @@
         "min": 1,
         "max": 7,
         "default": 3
-      },
-      "34": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Sdw. Loop Default",
-        "start": 7355,
-        "length": 2,
-        "encoding": "int",
-        "min": 1,
-        "max": 6,
-        "default": 2
-      },
-      "35": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux Grand",
-        "start": 7357,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 900
-      },
-      "36": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 1",
-        "start": 7359,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 850
-      },
-      "37": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 2",
-        "start": 7361,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 800
-      },
-      "38": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 3",
-        "start": 7363,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 750
-      },
-      "39": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "BCD encoding is a guess from the digits of the ROM range."
-        ],
-        "label": "Bckup Aux HSTD 4",
-        "start": 7365,
-        "length": 2,
-        "encoding": "bcd",
-        "min": 0,
-        "max": 9990,
-        "default": 700
       }
     }
   },

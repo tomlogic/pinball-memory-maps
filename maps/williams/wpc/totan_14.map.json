@@ -3,11 +3,12 @@
     "Compiled by HorsePin https://github.com/horseyhorsey",
     "WPC 50047, SYS 3.62 REV 1.4",
     "v0.2: changed score lengths from 5 to 6",
-    "2025-07-07 Tom Collins added automated audits"
+    "2025-07-07 Tom Collins added automated audits",
+    "Standard Adjustments on totan_15c: 26 Tournament Play has the factory value Yes. 28 Min. Vol. Override has the factory value Yes."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 10,
+    "version": 11,
     "copyright": [
       "Copyright (C) 2022 HorsePin",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -15,9 +16,6 @@
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
     "roms": [
-      "totan_04",
-      "totan_12",
-      "totan_13",
       "totan_14",
       "totan_15c"
     ],
@@ -1472,14 +1470,15 @@
         ]
       },
       "05": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "Value names left out: this ROM's choice lists do not match its screens."
-        ],
+        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
         "label": "German Speech",
         "start": 7344,
         "encoding": "enum",
-        "default": 0
+        "default": 0,
+        "values": [
+          "No",
+          "Yes"
+        ]
       },
       "06": {
         "label": "Free Ride Time",

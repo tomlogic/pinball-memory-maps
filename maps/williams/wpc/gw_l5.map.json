@@ -2,11 +2,13 @@
   "_notes": [
     "Compiled by Tom Collins using template-wpc.json.",
     "WPC 50004, SYS 2.46 REV 0.5",
-    "2025-07-07 Tom Collins added automated audits"
+    "2025-07-07 Tom Collins added automated audits",
+    "Feature Adjustments on gw_l5c: 13 Multiball Percnt has the minimum 0.",
+    "Standard Adjustments on gw_l5c: 28 Min. Vol. Override has the factory value Yes."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 9,
+    "version": 10,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-8K",

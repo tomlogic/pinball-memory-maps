@@ -6,18 +6,15 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 11,
+    "version": 13,
     "copyright": "Copyright (C) 2015, 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
     "roms": [
-      "dm_da1",
       "dm_dx3",
       "dm_dx4",
-      "dm_la1",
       "dm_lx3",
-      "dm_lx4",
-      "dm_lx4c"
+      "dm_lx4"
     ],
     "validation": {
       "checksum": [
@@ -487,7 +484,7 @@
           "Credit",
           "Ticket",
           "Ball",
-          "Audit"
+          "Points"
         ],
         "default": 0
       },
@@ -549,8 +546,8 @@
         "encoding": "enum",
         "values": [
           "English",
-          "French",
           "German",
+          "French",
           "Spanish"
         ],
         "default": 0
@@ -842,10 +839,10 @@
         "start": 7132,
         "encoding": "enum",
         "values": [
-          "YES",
-          "NO"
+          "NO",
+          "YES"
         ],
-        "default": 1
+        "default": 0
       },
       "17": {
         "label": "Cred. Champ. Demo",
@@ -909,14 +906,15 @@
         "default": 500
       },
       "23": {
-        "_notes": [
-          "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-          "Value names left out: this ROM's choice lists do not match its screens."
-        ],
+        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
         "label": "Secret Features",
         "start": 7146,
         "encoding": "enum",
-        "default": 1
+        "default": 1,
+        "values": [
+          "Off",
+          "On"
+        ]
       },
       "24": {
         "label": "Match Speech",

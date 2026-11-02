@@ -5,7 +5,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 9,
+    "version": 10,
     "copyright": [
       "Copyright (C) 2015 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -590,8 +590,9 @@
         "encoding": "enum",
         "values": [
           "English",
+          "German",
           "French",
-          "German"
+          "Spanish"
         ],
         "default": 0
       },
@@ -902,16 +903,6 @@
           "NO",
           "YES"
         ],
-        "default": 0
-      },
-      "19": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Cyberpunk Credit",
-        "start": 7145,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
         "default": 0
       },
       "20": {

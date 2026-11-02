@@ -226,6 +226,22 @@ def migrate_checksum_records(map_data: OrderedDict) -> None:
         map_data['_fileformat'] = 0.9
 
 
+def validation_test(data: OrderedDict) -> int:
+    errors = 0
+
+    roms = data['_metadata'].get('roms', [])
+    if len(roms) == 0:
+        print("Error: empty _metadata.roms[]")
+        errors += 1
+
+    for romset in data['_metadata'].get('free_only', []):
+        if romset not in roms:
+            print("Error: free_only romset '%s' not in roms[]" % romset)
+            errors += 1
+
+    return errors
+
+
 exitcode = 0
 for filename in sys.argv[1:]:
     file_format = 0.6       # default to 0.6, first _fileformat with _metadata property
@@ -233,9 +249,15 @@ for filename in sys.argv[1:]:
         original = open(filename, 'r').read()
         data = json.loads(original, object_pairs_hook=map_convert)
         data['_fileformat'] = file_format
+
+        errors = 0
         create_metadata(data)
         rename_last_game(data)
         migrate_checksum_records(data)
+        errors += validation_test(data)
+        if errors > 0:
+            print("^^^ errors in %s" % filename)
+            exitcode = 1
 
         # add trailing newline to match `jq` output
         updated = json.dumps(data, indent=2) + '\n'

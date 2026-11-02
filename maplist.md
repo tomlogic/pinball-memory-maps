@@ -15,9 +15,9 @@
 * [Addams Family, The (D-3 LED Ghost Fix)][e25a1] _taf_d3_
 * [Addams Family, The (D-4 LED Ghost Fix)][23ed8] _taf_d4_
 * [Addams Family, The (D-5 LED Ghost Fix)][585db] _taf_d5_
-* [Addams Family, The (D-6 LED Ghost Fix)][055e6] _taf_d6_
-* [Addams Family, The (H-4)][055e6] _taf_h4_
-* [Addams Family, The (I-4 LED Ghost Fix)][055e6] _taf_i4_
+* [Addams Family, The (D-6 LED Ghost Fix)][7eee5] _taf_d6_
+* [Addams Family, The (H-4)][b4d5a] _taf_h4_
+* [Addams Family, The (I-4 LED Ghost Fix)][b4d5a] _taf_i4_
 * [Addams Family, The (L-1)][bf59c] _taf_l1_
 * [Addams Family, The (L-2)][e25a1] _taf_l2_
 * [Addams Family, The (L-3)][e25a1] _taf_l3_
@@ -25,8 +25,8 @@
 * [Addams Family, The (L-5 Prototype D-7 LED Ghost Fix)][585db] _taf_d7_
 * [Addams Family, The (L-5 Prototype L-7)][585db] _taf_l7_
 * [Addams Family, The (L-5)][055e6] _taf_l5_
-* [Addams Family, The (L-5C Competition + LED Ghost MOD)][055e6] _taf_l5c_
-* [Addams Family, The (L-6)][055e6] _taf_l6_
+* [Addams Family, The (L-5C Competition + LED Ghost MOD)][4f163] _taf_l5c_
+* [Addams Family, The (L-6)][7eee5] _taf_l6_
 * [Addams Family, The (P-2 Prototype)][273ad] _taf_p2_
 * [Addams Family, The (P-3 Prototype LED Ghost Fix)][273ad] _taf_p3_
 * [Adventures of Rocky and Bullwinkle and Friends, The (1.30)][88401] _rab_130_
@@ -216,7 +216,7 @@
 * [Circus (7-digit conversion)][b3e6e] _circus7_
 * [Cirqus Voltaire (1.0)][a6d50] _cv_10_
 * [Cirqus Voltaire (1.1)][a6d50] _cv_11_
-* [Cirqus Voltaire (1.3)][3a614] _cv_13_
+* [Cirqus Voltaire (1.3)][fbd6d] _cv_13_
 * [Cirqus Voltaire (1.4)][3a614] _cv_14_
 * [Cirqus Voltaire (2.0H Coin Play)][39b25] _cv_20hc_
 * [Cirqus Voltaire (2.0H)][39b25] _cv_20h_
@@ -226,10 +226,10 @@
 * [Close Encounters of the Third Kind][3e2c9] _closeenc_
 * [Comet (L-4)][c5177] _comet_l4_
 * [Comet (L-5)][c5177] _comet_l5_
-* [Congo (1.1, DCS95 S1.1)][7abc6] _congo_11_
-* [Congo (1.3, DCS95 S1.1)][7abc6] _congo_13_
-* [Congo (2.0, DCS95 S1.1)][7abc6] _congo_20_
-* [Congo (2.0, WPC-S S1.0-kit)][7abc6] _congo_20s10k_
+* [Congo (1.1, DCS95 S1.1)][5cdc7] _congo_11_
+* [Congo (1.3, DCS95 S1.1)][5cdc7] _congo_13_
+* [Congo (2.0, DCS95 S1.1)][5cdc7] _congo_20_
+* [Congo (2.0, WPC-S S1.0-kit)][5cdc7] _congo_20s10k_
 * [Congo (2.1, DCS95 S1.1)][7abc6] _congo_21_
 * [Contact (L-1)][8b87e] _cntct_l1_
 * [Corvette (2.1)][17a95] _corv_21_
@@ -248,13 +248,13 @@
 * [Count-Down][3e2c9] _countdwn_
 * [Counterforce][c9b93] _cntforce_
 * [Counterforce (7-digit conversion)][b3e6e] _cntforc7_
-* [Creature from the Black Lagoon (D-2 LED Ghost Fix)][97884] _cftbl_d2_
+* [Creature from the Black Lagoon (D-2 LED Ghost Fix)][708c3] _cftbl_d2_
 * [Creature from the Black Lagoon (D-3 LED Ghost Fix)][97884] _cftbl_d3_
 * [Creature from the Black Lagoon (D-4 LED Ghost Fix)][97884] _cftbl_d4_
-* [Creature from the Black Lagoon (L-2)][97884] _cftbl_l2_
+* [Creature from the Black Lagoon (L-2)][708c3] _cftbl_l2_
 * [Creature from the Black Lagoon (L-3)][97884] _cftbl_l3_
 * [Creature from the Black Lagoon (L-4)][97884] _cftbl_l4_
-* [Creature from the Black Lagoon (L-4C Competition + LED Ghost MOD)][97884] _cftbl_l4c_
+* [Creature from the Black Lagoon (L-4C Competition + LED Ghost MOD)][d283a] _cftbl_l4c_
 * [Creature from the Black Lagoon (P-3 Prototype, SP-1)][935f1] _cftbl_p3_
 * [Cue Ball Wizard][f9adc] _cueball_
 * [Cue Ball Wizard (older display rev.)][f9adc] _cueball1_
@@ -266,7 +266,7 @@
 * [Dale Jr. (5.00)][7e952] _dalejr_
 * [Deadly Weapon][cef64] _deadweap_
 * [Defender (L-4)][cb385] _dfndr_l4_
-* [Demolition Man (DA-1 LED Ghost Fix)][184c0] _dm_da1_
+* [Demolition Man (DA-1 LED Ghost Fix)][3b5ca] _dm_da1_
 * [Demolition Man (DH-5 LED Ghost Fix)][62631] _dm_dh5_
 * [Demolition Man (DH-5B Coin Play LED Ghost Fix)][62631] _dm_dh5b_
 * [Demolition Man (DX-3 LED Ghost Fix)][184c0] _dm_dx3_
@@ -277,10 +277,10 @@
 * [Demolition Man (H-6)][62631] _dm_h6_
 * [Demolition Man (H-6B Coin Play)][62631] _dm_h6b_
 * [Demolition Man (H-6C Competition MOD)][62631] _dm_h6c_
-* [Demolition Man (LA-1)][184c0] _dm_la1_
+* [Demolition Man (LA-1)][3b5ca] _dm_la1_
 * [Demolition Man (LX-3)][184c0] _dm_lx3_
 * [Demolition Man (LX-4)][184c0] _dm_lx4_
-* [Demolition Man (LX-4C Competition + LED Ghost MOD)][184c0] _dm_lx4c_
+* [Demolition Man (LX-4C Competition + LED Ghost MOD)][5554f] _dm_lx4c_
 * [Demolition Man (PA-2 Prototype)][6aeb4] _dm_pa2_
 * [Demolition Man (PA-3 LED Ghost Fix)][6aeb4] _dm_pa3_
 * [Demolition Man (PX-5 Prototype)][6aeb4] _dm_px5_
@@ -298,9 +298,9 @@
 * [Dirty Harry (LF-2 French)][c9aea] _dh_lf2_
 * [Dirty Harry (LX-2)][c9aea] _dh_lx2_
 * [Disco Fever (L-1)][c2a23] _disco_l1_
-* [Doctor Who (D-1 LED Ghost Fix)][c3535] _dw_d1_
+* [Doctor Who (D-1 LED Ghost Fix)][b8e36] _dw_d1_
 * [Doctor Who (D-2 LED Ghost Fix)][c3535] _dw_d2_
-* [Doctor Who (L-1)][c3535] _dw_l1_
+* [Doctor Who (L-1)][b8e36] _dw_l1_
 * [Doctor Who (L-2)][c3535] _dw_l2_
 * [Doctor Who (P-5 Prototype)][c7840] _dw_p5_
 * [Doctor Who (P-6 LED Ghost Fix)][c7840] _dw_p6_
@@ -675,10 +675,10 @@
 * [Judge Dredd (L-6)][d11a2] _jd_l6_
 * [Judge Dredd (L-7)][361e5] _jd_l7_
 * [Jungle Lord (L-2)][72d1a] _jngld_l2_
-* [Junk Yard (0.3 Prototype)][bfc26] _jy_03_
+* [Junk Yard (0.3 Prototype)][748d8] _jy_03_
 * [Junk Yard (1.1)][bfc26] _jy_11_
 * [Junk Yard (1.2)][bfc26] _jy_12_
-* [Junk Yard (1.2C Competition MOD)][bfc26] _jy_12c_
+* [Junk Yard (1.2C Competition MOD)][7a87a] _jy_12c_
 * [Jurassic Park (3.05)][3ff03] _jupk_305_
 * [Jurassic Park (3.07)][3ff03] _jupk_307_
 * [Jurassic Park (5.01 German)][5fa99] _jupk_g51_
@@ -1013,20 +1013,20 @@
 * [Raven (rev. 1 Free Play)][85b06] _ravenafp_
 * [Ready...Aim...Fire!][aa641] _raimfire_
 * [Red and Ted's Road Show (7.0)][e8803] _rs_70_
-* [Red and Ted's Road Show (DA-4 LED Ghost Fix)][e8803] _rs_da4_
-* [Red and Ted's Road Show (DA-5 LED Ghost Fix)][e8803] _rs_da5_
-* [Red and Ted's Road Show (DX-2 LED Ghost Fix)][e8803] _rs_dx2_
-* [Red and Ted's Road Show (DX-3 LED Ghost Fix)][e8803] _rs_dx3_
-* [Red and Ted's Road Show (DX-4 LED Ghost Fix)][e8803] _rs_dx4_
-* [Red and Ted's Road Show (DX-5 LED Ghost Fix)][e8803] _rs_dx5_
+* [Red and Ted's Road Show (DA-4 LED Ghost Fix)][0a691] _rs_da4_
+* [Red and Ted's Road Show (DA-5 LED Ghost Fix)][0a691] _rs_da5_
+* [Red and Ted's Road Show (DX-2 LED Ghost Fix)][ed6d6] _rs_dx2_
+* [Red and Ted's Road Show (DX-3 LED Ghost Fix)][ed6d6] _rs_dx3_
+* [Red and Ted's Road Show (DX-4 LED Ghost Fix)][0a691] _rs_dx4_
+* [Red and Ted's Road Show (DX-5 LED Ghost Fix)][0a691] _rs_dx5_
 * [Red and Ted's Road Show (L-6)][e8803] _rs_l6_
-* [Red and Ted's Road Show (L-6C Competition MOD)][e8803] _rs_l6c_
-* [Red and Ted's Road Show (LA-4)][e8803] _rs_la4_
-* [Red and Ted's Road Show (LA-5)][e8803] _rs_la5_
-* [Red and Ted's Road Show (LX-2)][e8803] _rs_lx2_
-* [Red and Ted's Road Show (LX-3)][e8803] _rs_lx3_
-* [Red and Ted's Road Show (LX-4)][e8803] _rs_lx4_
-* [Red and Ted's Road Show (LX-5)][e8803] _rs_lx5_
+* [Red and Ted's Road Show (L-6C Competition MOD)][60949] _rs_l6c_
+* [Red and Ted's Road Show (LA-4)][0a691] _rs_la4_
+* [Red and Ted's Road Show (LA-5)][0a691] _rs_la5_
+* [Red and Ted's Road Show (LX-2)][ed6d6] _rs_lx2_
+* [Red and Ted's Road Show (LX-3)][ed6d6] _rs_lx3_
+* [Red and Ted's Road Show (LX-4)][0a691] _rs_lx4_
+* [Red and Ted's Road Show (LX-5)][0a691] _rs_lx5_
 * [Red and Ted's Road Show (PA-2 Prototype)][78ce5] _rs_pa2_
 * [Rescue 911 (rev. 1)][b5673] _rescu911_
 * [Ripley's Believe It or Not! (3.00 French)][72274] _rip300f_
@@ -1110,7 +1110,7 @@
 * [Scared Stiff (1.1)][0592c] _ss_11_
 * [Scared Stiff (1.1, Sound 1.0)][0592c] _ss_11s10_
 * [Scared Stiff (1.2)][0592c] _ss_12_
-* [Scared Stiff (1.4)][c4255] _ss_14_
+* [Scared Stiff (1.4)][e296b] _ss_14_
 * [Scared Stiff (1.5)][c4255] _ss_15_
 * [Scared Stiff (D.01R Prototype Coin Play, Sound 0.25)][93def] _ss_01b_
 * [Scared Stiff (D.01R Prototype, Sound 0.25)][93def] _ss_01_
@@ -1142,8 +1142,8 @@
 * [Shadow, The (LM-6 Mild)][8195d] _ts_lm6_
 * [Shadow, The (LX-4)][8195d] _ts_lx4_
 * [Shadow, The (LX-5)][8195d] _ts_lx5_
-* [Shadow, The (PA-1 Prototype)][8195d] _ts_pa1_
-* [Shadow, The (PA-2 LED Ghost Fix)][8195d] _ts_pa2_
+* [Shadow, The (PA-1 Prototype)][ae314] _ts_pa1_
+* [Shadow, The (PA-2 LED Ghost Fix)][ae314] _ts_pa2_
 * [Shaq Attaq (rev. 2)][8c129] _shaqatt2_
 * [Shaq Attaq (rev. 5)][8c129] _shaqattq_
 * [Shark (Taito)][797e4] _sharkt_
@@ -1269,25 +1269,25 @@
 * [Star Trek 25th Anniversary (2.00)][4ab4c] _trek_200_
 * [Star Trek 25th Anniversary (2.01)][4ab4c] _trek_201_
 * [Star Trek 25th Anniversary (3.00 unofficial MOD)][4ab4c] _trek_300_
-* [Star Trek: The Next Generation (DX-1 LED Ghost Fix)][46f89] _sttng_d1_
-* [Star Trek: The Next Generation (DX-2 LED Ghost Fix)][46f89] _sttng_d2_
+* [Star Trek: The Next Generation (DX-1 LED Ghost Fix)][a1fce] _sttng_d1_
+* [Star Trek: The Next Generation (DX-2 LED Ghost Fix)][da4cd] _sttng_d2_
 * [Star Trek: The Next Generation (DX-7 LED Ghost Fix, Sound L-1)][46f89] _sttng_d7_
 * [Star Trek: The Next Generation (DX-7 LED Ghost Fix, Special Sound L-1)][46f89] _sttng_dx_
 * [Star Trek: The Next Generation (HG-7 LED Ghost Fix)][46f89] _sttng_h7_
 * [Star Trek: The Next Generation (LA-7, Sound L-1)][46f89] _sttng_la7_
 * [Star Trek: The Next Generation (LG-7 German)][46f89] _sttng_g7_
-* [Star Trek: The Next Generation (LX-1)][46f89] _sttng_l1_
-* [Star Trek: The Next Generation (LX-2)][46f89] _sttng_l2_
-* [Star Trek: The Next Generation (LX-3)][46f89] _sttng_l3_
-* [Star Trek: The Next Generation (LX-5)][46f89] _sttng_l5_
+* [Star Trek: The Next Generation (LX-1)][a1fce] _sttng_l1_
+* [Star Trek: The Next Generation (LX-2)][da4cd] _sttng_l2_
+* [Star Trek: The Next Generation (LX-3)][1bfb4] _sttng_l3_
+* [Star Trek: The Next Generation (LX-5)][1bfb4] _sttng_l5_
 * [Star Trek: The Next Generation (LX-7, Sound L-1)][46f89] _sttng_l7_
 * [Star Trek: The Next Generation (LX-7, Special Sound L-1)][46f89] _sttng_x7_
 * [Star Trek: The Next Generation (LX-7C Competition MOD)][46f89] _sttng_l7c_
-* [Star Trek: The Next Generation (LX-8 MOD, Special Sound L-1)][46f89] _sttng_x8_
+* [Star Trek: The Next Generation (LX-8 MOD, Special Sound L-1)][0834d] _sttng_x8_
 * [Star Trek: The Next Generation (P-4 Prototype)][f8286] _sttng_p4_
-* [Star Trek: The Next Generation (P-5 Prototype)][46f89] _sttng_p5_
-* [Star Trek: The Next Generation (P-6 LED Ghost Fix)][46f89] _sttng_p6_
-* [Star Trek: The Next Generation (P-8 Prototype)][46f89] _sttng_p8_
+* [Star Trek: The Next Generation (P-5 Prototype)][de9b8] _sttng_p5_
+* [Star Trek: The Next Generation (P-6 LED Ghost Fix)][de9b8] _sttng_p6_
+* [Star Trek: The Next Generation (P-8 Prototype)][a1fce] _sttng_p8_
 * [Star Wars (1.01 German)][981e1] _stwr_g11_
 * [Star Wars (1.01)][981e1] _stwr_101_
 * [Star Wars (1.02 English)][c51dc] _stwr_e12_
@@ -1364,9 +1364,9 @@
 * [Tales from the Crypt (3.02 Dutch)][d4d1a] _tftc_302_
 * [Tales from the Crypt (3.03)][d4d1a] _tftc_303_
 * [Tales from the Crypt (4.00 unofficial MOD)][d4d1a] _tftc_400_
-* [Tales of the Arabian Nights (0.4 Prototype / S1.0)][693df] _totan_04_
-* [Tales of the Arabian Nights (1.2 / S1.0)][693df] _totan_12_
-* [Tales of the Arabian Nights (1.3 / S1.0)][693df] _totan_13_
+* [Tales of the Arabian Nights (0.4 Prototype / S1.0)][84c1f] _totan_04_
+* [Tales of the Arabian Nights (1.2 / S1.0)][8e398] _totan_12_
+* [Tales of the Arabian Nights (1.3 / S1.0)][8e398] _totan_13_
 * [Tales of the Arabian Nights (1.4 / S1.1)][693df] _totan_14_
 * [Tales of the Arabian Nights (1.5C Competition MOD / S1.1)][693df] _totan_15c_
 * [Taxi (Lola) (L-4)][552ac] _taxi_l4_
@@ -1391,8 +1391,8 @@
 * [Terminator 2: Judgment Day (L-8)][ebb28] _t2_l8_
 * [Terminator 2: Judgment Day (L-81 Attract Sound patch)][ebb28] _t2_l81_
 * [Terminator 2: Judgment Day (L-82 Attract Score patch)][ebb28] _t2_l82_
-* [Terminator 2: Judgment Day (L-83 Profanity, bugfix/MOD, LED Ghost Fix)][ebb28] _t2_l83_
-* [Terminator 2: Judgment Day (L-84 Profanity, bugfix/MOD, LED Ghost Fix)][ebb28] _t2_l84_
+* [Terminator 2: Judgment Day (L-83 Profanity, bugfix/MOD, LED Ghost Fix)][86672] _t2_l83_
+* [Terminator 2: Judgment Day (L-84 Profanity, bugfix/MOD, LED Ghost Fix)][47d0b] _t2_l84_
 * [Terminator 2: Judgment Day (P-2F Profanity)][78b9b] _t2_p2f_
 * [Terminator 2: Judgment Day (P-2G Profanity, LED Ghost Fix)][78b9b] _t2_p2g_
 * [Terminator 3: Rise of the Machines (2.05 French)][94668] _term3f_2_
@@ -1409,8 +1409,8 @@
 * [Terminator 3: Rise of the Machines (4.00 Italian)][77903] _term3i_
 * [Terminator 3: Rise of the Machines (4.00 Spanish)][77903] _term3l_
 * [Terminator 3: Rise of the Machines (4.00)][77903] _term3_
-* [Theatre of Magic (0.61A LED Ghost Fix)][65fa1] _tom_061_
-* [Theatre of Magic (0.6A Prototype)][65fa1] _tom_06_
+* [Theatre of Magic (0.61A LED Ghost Fix)][14b25] _tom_061_
+* [Theatre of Magic (0.6A Prototype)][14b25] _tom_06_
 * [Theatre of Magic (1.0 French)][65fa1] _tom_10f_
 * [Theatre of Magic (1.01 French LED Ghost Fix)][65fa1] _tom_101f_
 * [Theatre of Magic (1.21X LED Ghost Fix)][65fa1] _tom_121_
@@ -1418,7 +1418,7 @@
 * [Theatre of Magic (1.2X)][65fa1] _tom_12_
 * [Theatre of Magic (1.3 French)][65fa1] _tom_13f_
 * [Theatre of Magic (1.3X)][65fa1] _tom_13_
-* [Theatre of Magic (1.3XC Competition MOD)][65fa1] _tom_13c_
+* [Theatre of Magic (1.3XC Competition MOD)][e435a] _tom_13c_
 * [Theatre of Magic (1.4H Coin Play)][65fa1] _tom_14hb_
 * [Theatre of Magic (1.4H)][65fa1] _tom_14h_
 * [Theatre of Magic (2.0 Competition MOD)][65fa1] _tom_20_
@@ -1471,9 +1471,9 @@
 * [Twilight Zone (D-2 LED Ghost Fix)][e725e] _tz_d2_
 * [Twilight Zone (D-3 LED Ghost Fix)][e725e] _tz_d3_
 * [Twilight Zone (D-4 LED Ghost Fix)][e725e] _tz_d4_
-* [Twilight Zone (H-7)][b1841] _tz_h7_
+* [Twilight Zone (H-7)][2d1e1] _tz_h7_
 * [Twilight Zone (H-8)][b1841] _tz_h8_
-* [Twilight Zone (I-7 LED Ghost Fix)][b1841] _tz_i7_
+* [Twilight Zone (I-7 LED Ghost Fix)][2d1e1] _tz_i7_
 * [Twilight Zone (I-8 LED Ghost Fix)][b1841] _tz_i8_
 * [Twilight Zone (IFPA rules LED Ghost Fix)][e725e] _tz_ifpa2_
 * [Twilight Zone (IFPA rules)][e725e] _tz_ifpa_
@@ -1542,11 +1542,11 @@
 * [Waterworld (rev. 3)][10d4d] _waterwld_
 * [Waterworld (rev. 5)][10d4d] _waterwl5_
 * [Whirlwind (LA-3)][f45aa] _whirl_l3_
-* [White Water (D-2 LED Ghost Fix)][337fb] _ww_d2_
+* [White Water (D-2 LED Ghost Fix)][f2c82] _ww_d2_
 * [White Water (D-3 LED Ghost Fix)][337fb] _ww_d3_
 * [White Water (D-4 LED Ghost Fix)][337fb] _ww_d4_
 * [White Water (D-5 LED Ghost Fix)][337fb] _ww_d5_
-* [White Water (L-2)][337fb] _ww_l2_
+* [White Water (L-2)][f2c82] _ww_l2_
 * [White Water (L-3)][337fb] _ww_l3_
 * [White Water (L-4)][337fb] _ww_l4_
 * [White Water (L-5)][337fb] _ww_l5_
@@ -1554,8 +1554,8 @@
 * [White Water (LH-6 Coin Play)][883f7] _ww_lh6c_
 * [White Water (LH-6)][883f7] _ww_lh6_
 * [White Water (P-6 Prototype)][8daf4] _ww_p6_
-* [White Water (P-8 Prototype)][337fb] _ww_p8_
-* [White Water (P-9 Prototype LED Ghost Fix)][337fb] _ww_p9_
+* [White Water (P-8 Prototype)][f2c82] _ww_p8_
+* [White Water (P-9 Prototype LED Ghost Fix)][f2c82] _ww_p9_
 * [Wild Fyre][a1bbc] _wildfyre_
 * [Wild Fyre (Free Play)][a022a] _wildfyfp_
 * [Wipe Out (rev. 2 alternate set)][f627b] _wipeouta_
@@ -1569,8 +1569,8 @@
 * [World Cup Soccer (LX-1)][7f582] _wcs_l1_
 * [World Cup Soccer (LX-2)][7f582] _wcs_l2_
 * [World Cup Soccer (LX-3C Competition MOD)][7f582] _wcs_l3c_
-* [World Cup Soccer (PA-2 Prototype)][7f582] _wcs_p2_
-* [World Cup Soccer (PA-5 LED Ghost Fix)][7f582] _wcs_p5_
+* [World Cup Soccer (PA-2 Prototype)][ba38e] _wcs_p2_
+* [World Cup Soccer (PA-5 LED Ghost Fix)][ba38e] _wcs_p5_
 * [World Cup Soccer (PX-3 Prototype)][7f582] _wcs_p3_
 * [World Cup Soccer (PX-6 LED Ghost Fix)][7f582] _wcs_p6_
 * [X's & O's][913b3] _xsandos_
@@ -1603,7 +1603,9 @@
 [07248]: maps/zaccaria/gen2/pinchamp.map.json
 [07ad3]: maps/bally/as-2518-35/system-rom-53-freeplay.map.json
 [07db4]: maps/atari/aavenger.map.json
+[0834d]: maps/williams/wpc/sttng_x8.map.json
 [098e2]: maps/williams/system11/pool_l7.map.json
+[0a691]: maps/williams/wpc/rs_lx4.map.json
 [0cb63]: maps/sega/whitestar/harl_a40.map.json
 [0d071]: maps/sega/whitestar/godzilla.map.json
 [0d40b]: maps/capcom/bsv102.map.json
@@ -1614,6 +1616,7 @@
 [10d4d]: maps/gottlieb/system3/waterwld.map.json
 [1318a]: maps/capcom/kpb105.map.json
 [145d8]: maps/bally/as-2518-35/rapidfir.map.json
+[14b25]: maps/williams/wpc/tom_06.map.json
 [15594]: maps/capcom/bbb108.map.json
 [17298]: maps/sega/whitestar/viprsega.map.json
 [17a95]: maps/williams/wpc/corv_21.map.json
@@ -1623,6 +1626,7 @@
 [1946d]: maps/dataeast/version3/lah_113.map.json
 [194c6]: maps/williams/wpc/hurr_l2.map.json
 [1a9dc]: maps/williams/system11/eatpm_l4.map.json
+[1bfb4]: maps/williams/wpc/sttng_l5.map.json
 [1cc70]: maps/gottlieb/system80b/victory.map.json
 [1d5c6]: maps/williams/wpc/ij_p2.map.json
 [1d953]: maps/bally/as-2518-35/blakpyra.map.json
@@ -1648,6 +1652,7 @@
 [2bf35]: maps/capcom/bsv103.map.json
 [2c1b6]: maps/gottlieb/system80b/tagteam.map.json
 [2cac3]: maps/williams/wpc/gi_l4.map.json
+[2d1e1]: maps/williams/wpc/tz_h7.map.json
 [2fa8b]: maps/bally/as-2518-35/system-rom-52-freeplay.map.json
 [30a02]: maps/stern/sam/im_186.map.json
 [31f53]: maps/bally/as-2518-35/centaur.map.json
@@ -1672,6 +1677,7 @@
 [3a614]: maps/williams/wpc/cv_14.map.json
 [3a9f4]: maps/williams/wpc/cp_16.map.json
 [3b3c4]: maps/williams/wpc/corv_lx2.map.json
+[3b5ca]: maps/williams/wpc/dm_la1.map.json
 [3b983]: maps/dataeast/version1/lwar_a83.map.json
 [3e2c9]: maps/gottlieb/system1/system1-generic.map.json
 [3e347]: maps/williams/system9/sshtl_l7.map.json
@@ -1694,6 +1700,7 @@
 [473c4]: maps/dataeast/version2/generic.map.json
 [47433]: maps/gottlieb/system3/freddy.map.json
 [47acf]: maps/alving/mystcast.map.json
+[47d0b]: maps/williams/wpc/t2_l84.map.json
 [48462]: maps/williams/system11/jokrz_l6.map.json
 [4862f]: maps/williams/wpc/ft_l5.map.json
 [491d9]: maps/stern/sam/smanve_101.map.json
@@ -1707,6 +1714,7 @@
 [4de0a]: maps/williams/wpc/cv_d52.map.json
 [4e2e1]: maps/williams/wpc/bop_l7.map.json
 [4e79a]: maps/dataeast/version3b/mav_200.map.json
+[4f163]: maps/williams/wpc/taf_l5c.map.json
 [4fa47]: maps/gottlieb/system80b/80b-8digit-C-10KB.map.json
 [4feb4]: maps/stern/whitestar/playboys.map.json
 [5241f]: maps/zaccaria/gen1/hod.map.json
@@ -1715,6 +1723,7 @@
 [54760]: maps/williams/system11/rollr_l2.map.json
 [54f4a]: maps/stern/sam/trn_174h.map.json
 [552ac]: maps/williams/system11/taxi_l4.map.json
+[5554f]: maps/williams/wpc/dm_lx4c.map.json
 [560e6]: maps/dataeast/version3/gnr_300.map.json
 [561af]: maps/bally/as-2518-35/system-rom-30-freeplay.map.json
 [56f3f]: maps/williams/wpc/sc_18.map.json
@@ -1728,11 +1737,13 @@
 [5c3c4]: maps/bally/as-2518-35/skatebll.map.json
 [5ca4d]: maps/atari/midearta.map.json
 [5ca9d]: maps/gottlieb/system3/smb.map.json
+[5cdc7]: maps/williams/wpc/congo_11.map.json
 [5ce8b]: maps/gottlieb/system3/smbmush.map.json
 [5ed37]: maps/bally/as-2518-35/eballdlx-freeplay.map.json
 [5f1db]: maps/williams/wpc/jm_12r.map.json
 [5fa99]: maps/dataeast/version3/jupk_501.map.json
 [60532]: maps/williams/wpc/hd_l3.map.json
+[60949]: maps/williams/wpc/rs_l6c.map.json
 [61982]: maps/dataeast/version3b/baywatch.map.json
 [62631]: maps/williams/wpc/dm_h6.map.json
 [64073]: maps/gottlieb/system3/hoops.map.json
@@ -1753,6 +1764,7 @@
 [6ee5e]: maps/dataeast/version2/poto_a32.map.json
 [6fea2]: maps/williams/system6/flash_l1.map.json
 [7015d]: maps/sega/whitestar/twst_405.map.json
+[708c3]: maps/williams/wpc/cftbl_l2.map.json
 [70e78]: maps/bally/as-2518-35/newwave.map.json
 [71470]: maps/gottlieb/system3/clas1812.map.json
 [71afe]: maps/williams/wpc/gi_l6.map.json
@@ -1760,6 +1772,7 @@
 [72d1a]: maps/williams/system7/generic-10KB.map.json
 [73dbe]: maps/williams/wpc/tafg_h3.map.json
 [7484c]: maps/sega/whitestar/apollo13.map.json
+[748d8]: maps/williams/wpc/jy_03.map.json
 [75bf3]: maps/williams/wpc/sc_091.map.json
 [764f6]: maps/stern/whitestar/hirol210.map.json
 [76d07]: maps/gottlieb/system3/stargate.map.json
@@ -1771,6 +1784,7 @@
 [795ff]: maps/williams/wpc/drac_l1.map.json
 [797e4]: maps/taito/vortex.map.json
 [7a00b]: maps/stern/sam/st_162.map.json
+[7a87a]: maps/williams/wpc/jy_12c.map.json
 [7a8a4]: maps/williams/wpc/cc_13.map.json
 [7ab94]: maps/williams/wpc/gw_pc.map.json
 [7abc6]: maps/williams/wpc/congo_21.map.json
@@ -1785,6 +1799,7 @@
 [7e949]: maps/williams/wpc/fh_l3.map.json
 [7e952]: maps/stern/whitestar/nascar.map.json
 [7eb8b]: maps/stern/whitestar/strikext.map.json
+[7eee5]: maps/williams/wpc/taf_l6.map.json
 [7f20b]: maps/bally/as-2518-35/speakes4.map.json
 [7f582]: maps/williams/wpc/wcs_l2.map.json
 [81356]: maps/williams/wpc/i500_11r.map.json
@@ -1792,9 +1807,11 @@
 [82815]: maps/gottlieb/system3/lca.map.json
 [82f5a]: maps/stern/sam/nba_802.map.json
 [83b43]: maps/zaccaria/gen2/tmachzac.map.json
+[84c1f]: maps/williams/wpc/totan_04.map.json
 [85761]: maps/bally/as-2518-17/system-rom-20.map.json
 [85b06]: maps/gottlieb/system80b/raven.map.json
 [8666c]: maps/stern/sam/mtl_180h.map.json
+[86672]: maps/williams/wpc/t2_l83.map.json
 [876b5]: maps/williams/wpc/wd_12.map.json
 [883f7]: maps/williams/wpc/ww_lh6.map.json
 [88401]: maps/dataeast/version3/rab_130.map.json
@@ -1807,6 +1824,7 @@
 [8c7db]: maps/stern/m200/orbitor1.map.json
 [8daf4]: maps/williams/wpc/ww_p6.map.json
 [8dc3a]: maps/rowamet/heavymtl.map.json
+[8e398]: maps/williams/wpc/totan_12.map.json
 [8e457]: maps/sega/whitestar/id4.map.json
 [8f033]: maps/williams/system11/milln_l3.map.json
 [8f9ea]: maps/williams/wpc/jb_04a.map.json
@@ -1839,6 +1857,7 @@
 [a07f6]: maps/gottlieb/system3/teedoff.map.json
 [a1312]: maps/stern/whitestar/hirolcas.map.json
 [a1bbc]: maps/stern/m100/generic.map.json
+[a1fce]: maps/williams/wpc/sttng_l1.map.json
 [a247f]: maps/sega/whitestar/swtril43.map.json
 [a26fb]: maps/bally/as-2518-35/spectrum.map.json
 [a53d8]: maps/taito/obaoba.map.json
@@ -1861,6 +1880,7 @@
 [ad676]: maps/williams/system3/wldcp_l1.map.json
 [ad967]: maps/dataeast/version3/lw3_208.map.json
 [ae1ac]: maps/stern/whitestar/elvis.map.json
+[ae314]: maps/williams/wpc/ts_pa1.map.json
 [ae91c]: maps/dataeast/version3/bttf_a21.map.json
 [aedf0]: maps/zaccaria/gen2/robot.map.json
 [afdcf]: maps/williams/system11/fire_l3.map.json
@@ -1869,13 +1889,16 @@
 [b3e6e]: maps/gottlieb/system80/generic-2prom-7digit.map.json
 [b40a1]: maps/stern/whitestar/sopranos.map.json
 [b41a1]: maps/williams/wpc/pop_pa4.map.json
+[b4d5a]: maps/williams/wpc/taf_h4.map.json
 [b5673]: maps/gottlieb/system3/rescu911.map.json
 [b5ee5]: maps/williams/wpc/afm_03.map.json
 [b62f3]: maps/bally/as-2518-35/system-rom-30.map.json
 [b695e]: maps/stern/m200/nineball.map.json
 [b788d]: maps/bally/as-2518-35/system-rom-52.map.json
 [b8a76]: maps/gottlieb/system3/ccruise.map.json
+[b8e36]: maps/williams/wpc/dw_l1.map.json
 [ba335]: maps/dataeast/version2/play_a24.map.json
+[ba38e]: maps/williams/wpc/wcs_p2.map.json
 [bc312]: maps/capcom/abv106.map.json
 [be4fd]: maps/gottlieb/system80b/80b-8digit-C-8KB.map.json
 [bf1b7]: maps/williams/system11/grand_l4.map.json
@@ -1925,6 +1948,7 @@
 [d11a2]: maps/williams/wpc/jd_l1.map.json
 [d1254]: maps/bally/as-2518-35/system-rom-35-7digit.map.json
 [d13e8]: maps/williams/system11/hs_l4.map.json
+[d283a]: maps/williams/wpc/cftbl_l4c.map.json
 [d4493]: maps/williams/system11/bguns_l8.map.json
 [d4a97]: maps/williams/wpc/mm_10.map.json
 [d4d1a]: maps/dataeast/version3/tftc_400.map.json
@@ -1937,11 +1961,13 @@
 [d93a7]: maps/stern/sam/avr_200.map.json
 [d9993]: maps/dataeast/version3/lw3_200.map.json
 [d9fa2]: maps/williams/wpc/mb_10.map.json
+[da4cd]: maps/williams/wpc/sttng_l2.map.json
 [daba7]: maps/stern/sam/mtl_180.map.json
 [dbe48]: maps/gottlieb/system80/generic-1prom.map.json
 [dc55e]: maps/dataeast/version3/rab_320.map.json
 [dc5e8]: maps/williams/wpc/ngg_13.map.json
 [de4bc]: maps/williams/wpc/br_p17.map.json
+[de9b8]: maps/williams/wpc/sttng_p5.map.json
 [df01f]: maps/dataeast/version3/ckpt_a17.map.json
 [dfcec]: maps/williams/wpc/jb_10r.map.json
 [e099e]: maps/zaccaria/gen2/socrking.map.json
@@ -1951,8 +1977,10 @@
 [e1335]: maps/bally/as-2518-17/system-rom-20-freeplay1.map.json
 [e25a1]: maps/williams/wpc/taf_l3.map.json
 [e2820]: maps/zaccaria/gen2/mcastle.map.json
+[e296b]: maps/williams/wpc/ss_14.map.json
 [e2a4d]: maps/williams/wpc/gi_l8.map.json
 [e40df]: maps/williams/wpc/t2_l3.map.json
+[e435a]: maps/williams/wpc/tom_13c.map.json
 [e4858]: maps/dataeast/version3/simp_a27.map.json
 [e4dd1]: maps/williams/wpc/tz_94h.map.json
 [e5cbd]: maps/williams/wpc/fs_lx4.map.json
@@ -1965,6 +1993,7 @@
 [eaf57]: maps/williams/system11/spstn_l5.map.json
 [ebb28]: maps/williams/wpc/t2_l8.map.json
 [ed1ba]: maps/williams/wpc/gi_l3.map.json
+[ed6d6]: maps/williams/wpc/rs_lx2.map.json
 [edc1e]: maps/sega/whitestar/lostspc.map.json
 [edcc3]: maps/bally/as-2518-35/skatebll-freeplay.map.json
 [ee0e1]: maps/williams/system11/bk2k_l4.map.json
@@ -1974,6 +2003,7 @@
 [f0711]: maps/stern/whitestar/simp204.map.json
 [f21af]: maps/gottlieb/system80b/80b-8digit-B-10KB.map.json
 [f2a6d]: maps/williams/wpc/nbaf_31.map.json
+[f2c82]: maps/williams/wpc/ww_l2.map.json
 [f3549]: maps/atari/time2000.map.json
 [f3e67]: maps/williams/system11/diner_l4.map.json
 [f45aa]: maps/williams/system11/whirl_l3.map.json
@@ -1986,6 +2016,7 @@
 [f915c]: maps/sega/whitestar/xfiles.map.json
 [f9adc]: maps/gottlieb/system3/cueball.map.json
 [faed6]: maps/williams/wpc/ngg_12.map.json
+[fbd6d]: maps/williams/wpc/cv_13.map.json
 [fbdd7]: maps/williams/wpc/br_l4.map.json
 [fc2d6]: maps/dataeast/version3/bttf_a28.map.json
 [fceff]: maps/williams/wpc/pz_f4.map.json

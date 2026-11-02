@@ -6,7 +6,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 8,
+    "version": 9,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -1632,36 +1632,6 @@
           "Off",
           "On"
         ]
-      },
-      "20": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Def. Speed Champ",
-        "start": 7335,
-        "length": 2,
-        "encoding": "int",
-        "min": 1,
-        "max": 50,
-        "default": 3
-      },
-      "21": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Def. Corner Champ",
-        "start": 7337,
-        "length": 2,
-        "encoding": "int",
-        "min": 1,
-        "max": 50,
-        "default": 3
-      },
-      "22": {
-        "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",
-        "label": "Cred. Loop Champs",
-        "start": 7339,
-        "length": 2,
-        "encoding": "int",
-        "min": 0,
-        "max": 3,
-        "default": 1
       },
       "23": {
         "_notes": [

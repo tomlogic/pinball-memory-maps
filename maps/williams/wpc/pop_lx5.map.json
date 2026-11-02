@@ -2,11 +2,12 @@
   "_notes": [
     "Compiled by Tom Collins using template-wpc.json.",
     "WPC 50022, SYS 3.14 REV 0.5",
-    "2025-07-07 Tom Collins added automated audits"
+    "2025-07-07 Tom Collins added automated audits",
+    "Standard Adjustments on pop_la4, pop_lx4: 13 Replay Boost has the minimum 15."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 9,
+    "version": 10,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",

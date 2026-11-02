@@ -6,7 +6,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 7,
+    "version": 8,
     "copyright": [
       "Copyright (C) 2016 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -1361,6 +1361,18 @@
           "Ticket",
           "Ball",
           "Audit"
+        ],
+        "default": 0
+      },
+      "15": {
+        "label": "Special Award",
+        "start": 7092,
+        "encoding": "enum",
+        "values": [
+          "Credit",
+          "Ticket",
+          "Ball",
+          "Points"
         ],
         "default": 0
       },

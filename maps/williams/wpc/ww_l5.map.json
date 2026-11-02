@@ -1,8 +1,6 @@
 {
   "_notes": [
     "Original map compiled by Mike Metzger.",
-    "WPC 50018, SYS 2.43 REV 13.8 (ww_p8)",
-    "WPC 50018, SYS 2.48 REV 0.2 (ww_l2)",
     "WPC 50018, SYS 2.50 REV 0.3 (ww_l3)",
     "WPC 50018, SYS 2.50 REV 0.4 (ww_l4)",
     "WPC 50018, SYS 2.62 REV 0.5 (ww_l5)",
@@ -10,7 +8,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 10,
+    "version": 11,
     "copyright": [
       "Copyright (C) 2017 by Mike Metzger <mike@flexiblecreations.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -18,16 +16,12 @@
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-8K",
     "roms": [
-      "ww_d2",
       "ww_d3",
       "ww_d4",
       "ww_d5",
-      "ww_l2",
       "ww_l3",
       "ww_l4",
-      "ww_l5",
-      "ww_p8",
-      "ww_p9"
+      "ww_l5"
     ],
     "validation": {
       "checksum": [

@@ -5,11 +5,12 @@
     "WPC 50044, SYS 3.49 REV 1.0 (wd_10f, wd_10g, wd_10r)",
     "WPC 50044, SYS 3.49 REV 1.1 (wd_11)",
     "WPC 50044, SYS 3.49 REV 1.2 (wd_12, wd_12g, wd_12gp, wd_12p)",
-    "2025-07-07 Tom Collins added automated audits"
+    "2025-07-07 Tom Collins added automated audits",
+    "Feature Adjustments on wd_048r: 11 Amode Bong Snds has the factory value Sparse."
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 10,
+    "version": 11,
     "copyright": [
       "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
