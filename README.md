@@ -391,7 +391,8 @@ then `scale`, then `offset`. An entry can only have one of `values`,
   `values` metadata property for the map.
 - **special_values**: A set of key/value pairs for a numeric field where
   some values have special meaning (for example, `{"0": "OFF"}`).  The
-  key is a string representation of the number.
+  key is a string representation of the number.  Note that `units`, `prefix`,
+  and `suffix` aren't applied to values from this lookup.
 - **invert**: Only used for `bool` encoding.  Defaults to `false`.  If
   set to `true`, treat a value of zero as `true` and non-zero as `false`.
 
