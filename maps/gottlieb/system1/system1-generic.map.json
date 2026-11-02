@@ -4,7 +4,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 1,
+    "version": 2,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -76,20 +76,10 @@
       "mask": "0x02"
     },
     "extra_balls": {
-      "label": "Extra Balls",
+      "label": "Extra Ball",
       "start": "0x1081",
-      "encoding": "int",
-      "mask": "0x08",
-      "values": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1
-      ]
+      "encoding": "bool",
+      "mask": "0x08"
     },
     "credits": {
       "_notes": "credits display: 2 big-endian nibbles at 0x1078",
