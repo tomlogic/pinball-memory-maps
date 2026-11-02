@@ -10,7 +10,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 11,
+    "version": 12,
     "copyright": [
       "Copyright (C) 2022 https://github.com/horseyhorsey",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -224,7 +224,7 @@
       "initials": {
         "encoding": "ch",
         "length": 3,
-        "start": 8061
+        "start": 7481
       },
       "score": {
         "encoding": "bcd",
