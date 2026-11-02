@@ -370,6 +370,21 @@
           }
         },
         {
+          "description": "`special_values` property only valid when encoding in [int, bcd]",
+          "if": {
+            "required": [
+              "special_values"
+            ]
+          },
+          "then": {
+            "properties": {
+              "encoding": {
+                "enum": ["bcd", "int"]
+              }
+            }
+          }
+        },
+        {
           "description": "`values` property only valid when encoding in [enum, dipsw, bits]",
           "if": {
             "required": [
