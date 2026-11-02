@@ -379,7 +379,10 @@
           "then": {
             "properties": {
               "encoding": {
-                "enum": ["bcd", "int"]
+                "enum": [
+                  "bcd",
+                  "int"
+                ]
               }
             }
           }
@@ -394,7 +397,11 @@
           "then": {
             "properties": {
               "encoding": {
-                "enum": ["bits", "dipsw", "enum"]
+                "enum": [
+                  "bits",
+                  "dipsw",
+                  "enum"
+                ]
               }
             }
           }
@@ -404,7 +411,11 @@
           "if": {
             "properties": {
               "encoding": {
-                "enum": ["bits", "dipsw", "enum"]
+                "enum": [
+                  "bits",
+                  "dipsw",
+                  "enum"
+                ]
               }
             }
           },
