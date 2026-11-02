@@ -224,7 +224,7 @@ for later entries.
   ASCII table.  See Whirlwind (`whirl_l3.map.json`) as an example.
 
 - **values**: An object of string keys and list values referenced by
-  multiple descriptors later in the file.  The `value` property for
+  multiple descriptors later in the file.  The `values` property for
   descriptors (see below) is either an array of values or a key to this
   object.
 
