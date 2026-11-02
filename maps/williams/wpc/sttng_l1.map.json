@@ -8,7 +8,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 13,
+    "version": 14,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -1730,18 +1730,15 @@
         "scale": 1000000
       },
       "21": {
-        "_notes": [
-          "Display not decoded: stored value -> screen: 0 -> 1,000,000,000, 16 -> 1,010,000,000.",
-          "Address not confirmed by a single change: it follows the spacing of the other items.",
-          "Maximum from the ROM table: not seen on screen."
-        ],
+        "_notes": "Minimum from the ROM table: not seen on screen.",
         "label": "Bckup Aux HSTD 3",
         "start": 7141,
         "length": 2,
-        "encoding": "int",
+        "encoding": "bcd",
         "min": 0,
-        "max": 39312,
-        "default": 4096
+        "max": 9990,
+        "default": 1000,
+        "scale": 1000000
       },
       "22": {
         "_notes": [
