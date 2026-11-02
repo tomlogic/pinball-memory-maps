@@ -1,12 +1,25 @@
 {
   "_notes": [
     "Compiled by Tom Collins using template-wpc.json.",
-    "WPC 50017, SYS 3.03 REV 0.7",
+    "WPC 50017, SYS 2.65 REV 0.3 (ij_d3)",
+    "WPC 50017, SYS 2.66 REV 0.4 (ij_d4)",
+    "WPC 50017, SYS 2.66 REV 0.5 (ij_d5)",
+    "WPC 50017, SYS 3.03 REV 0.6 (ij_d6)",
+    "WPC 50017, SYS 3.03 REV 0.7 (ij_d7)",
+    "WPC 50017, SYS 3.03 REV 0.7 (ij_dg7)",
+    "WPC 50017, SYS 3.03 REV 0.1 (ij_h1)",
+    "WPC 50017, SYS 3.03 REV P-1 (ij_i1)",
+    "WPC 50017, SYS 2.65 REV 0.3 (ij_l3)",
+    "WPC 50017, SYS 2.66 REV 0.4 (ij_l4)",
+    "WPC 50017, SYS 2.66 REV 0.5 (ij_l5)",
+    "WPC 50017, SYS 3.03 REV 0.6 (ij_l6)",
+    "WPC 50017, SYS 3.03 REV 0.7 (ij_l7)",
+    "WPC 50017, SYS 3.03 REV 0.7 (ij_lg7)",
     "2025-07-07 Tom Collins added automated audits"
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 9,
+    "version": 10,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-12K",
@@ -1842,24 +1855,24 @@
         "units": "seconds"
       },
       "18": {
-        "_notes": "The value shows after the prefix \"LEVEL\".",
         "label": "Raven Bar Level",
         "start": 7423,
         "length": 2,
         "encoding": "int",
         "min": 1,
         "max": 4,
-        "default": 1
+        "default": 1,
+        "prefix": "Level "
       },
       "19": {
-        "_notes": "The value shows after the prefix \"LEVEL\".",
         "label": "Choose Wise Lev.",
         "start": 7425,
         "length": 2,
         "encoding": "int",
         "min": 1,
         "max": 2,
-        "default": 1
+        "default": 1,
+        "prefix": "Level "
       },
       "20": {
         "label": "Jackpot Mult. Tmr.",

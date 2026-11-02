@@ -1,12 +1,16 @@
 {
   "_notes": [
     "Compiled by Tom Collins using template-wpc.json.",
-    "WPC 50020, SYS 3.38 REV 9.2",
+    "WPC 50020, SYS 3.36 REV 0.9 (tz_la9)",
+    "WPC 50020, SYS 3.38 REV 9.2 (tz_92)",
+    "WPC 50020, SYS 3.38 REV 9.0 (tz_93)",
+    "WPC 50020, SYS 3.36 REV 0.8 (tz_h8)",
+    "WPC 50020, SYS 3.36 REV 7.6 (tz_i8)",
     "2025-07-07 Tom Collins added automated audits"
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 10,
+    "version": 11,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-8K",
@@ -1765,14 +1769,14 @@
         "default": 3
       },
       "36": {
-        "_notes": "The value shows after the prefix \"BALL\".",
         "label": "Last Free Ride",
         "start": 7371,
         "length": 2,
         "encoding": "int",
         "min": 1,
         "max": 5,
-        "default": 1
+        "default": 1,
+        "prefix": "Ball "
       },
       "37": {
         "_notes": "Not shown in the game menu: label, address, range and values come from the ROM adjustment table only.",

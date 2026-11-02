@@ -1,13 +1,14 @@
 {
   "_notes": [
     "Compiled by Tom Collins for initial development/testing purposes.",
-    "WPC 20006, SYS 2.43 REV 0.2",
+    "WPC 20006, SYS 2.43 REV 0.2 (dw_l2)",
+    "WPC 20006, SYS 2.43 REV 7.6 (dw_d2)",
     "Doctor Who (Bally, 1992, WPC)",
     "2025-07-07 Tom Collins added automated audits (B.4, B.5, B.6)"
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 11,
+    "version": 12,
     "copyright": [
       "Copyright (C) 2018 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -1761,17 +1762,16 @@
         }
       },
       "06": {
-        "_notes": "The value shows after the prefix \"W-H-O\".",
         "label": "1st Ex.B. Lit At",
         "start": 7211,
         "length": 2,
         "encoding": "int",
         "min": 1,
         "max": 50,
-        "default": 2
+        "default": 2,
+        "prefix": "W-H-O "
       },
       "07": {
-        "_notes": "The value shows after the prefix \"+\".",
         "label": "Next Ex.B. Lit At",
         "start": 7213,
         "length": 2,
@@ -1779,6 +1779,7 @@
         "min": 1,
         "max": 50,
         "default": 4,
+        "prefix": "+",
         "suffix": " W-H-O"
       },
       "08": {
@@ -1845,24 +1846,24 @@
         "units": "seconds"
       },
       "14": {
-        "_notes": "The value shows after the prefix \"Jackpot\".",
         "label": "Easy Locks For",
         "start": 7227,
         "length": 2,
         "encoding": "int",
         "min": 0,
         "max": 50,
-        "default": 1
+        "default": 1,
+        "prefix": "Jackpot "
       },
       "15": {
-        "_notes": "The value shows after the prefix \"Jackpot\".",
         "label": "Easy 3X5 For",
         "start": 7229,
         "length": 2,
         "encoding": "int",
         "min": 0,
         "max": 50,
-        "default": 1
+        "default": 1,
+        "prefix": "Jackpot "
       },
       "16": {
         "label": "3b. Jackpt./Davros",
