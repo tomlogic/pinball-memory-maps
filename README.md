@@ -391,7 +391,8 @@ then `scale`, then `offset`. An entry can only have one of `values`,
   `values` metadata property for the map.
 - **special_values**: A set of key/value pairs for a numeric field where
   some values have special meaning (for example, `{"0": "OFF"}`).  The
-  key is a string representation of the number.
+  key is a string representation of the number.  Note that `units`, `prefix`,
+  and `suffix` aren't applied to values from this lookup.
 - **invert**: Only used for `bool` encoding.  Defaults to `false`.  If
   set to `true`, treat a value of zero as `true` and non-zero as `false`.
 
@@ -403,6 +404,7 @@ how it's actually stored in memory.
 - **units**: Used to indicate that a field contains a time value as either a
   number of `"seconds"` or `"minutes"`, and should be displayed as
   `HH:MM:SS`.
+- **prefix**: A string to prepend to the value (e.g., `"Level "`, `"Ball "`).
 - **suffix**: A string to append to the value (e.g., `"M"` if the value
   represents millions).
 
@@ -435,7 +437,7 @@ or `offset`.
 | values         |         |      |  X   |     |  X   |     |         |   X   |
 | offset         |    X    |  X   |  X   |     |      |     |         |       |
 | scale          |    X    |  X   |  X   |     |      |     |         |       |
-| suffix         |    X    |      |  X   |     |      |     |         |       |
+| prefix/suffix  |    X    |      |  X   |     |      |     |         |       |
 | units          |    X    |      |  X   |     |      |     |         |       |
 | invert         |         |  X   |      |     |      |     |         |       |
 
@@ -443,8 +445,8 @@ or `offset`.
 - The `enum` encoding is intended for single-byte values.
 - The `bool` encoding always resolves to either `true` or `false`.
 - The `bcd`, `bits`, `bool`, and `int` encodings convert bytes into a numeric
-  value that is modified by properties such as `offset`, `scale`, `suffix`,
-  and `units`.
+  value that is modified by properties such as `offset`, `scale`, `prefix`,
+  `suffix` and `units`.
 - `dipsw`, `raw`, and `wpc_rtc` are special encodings.
 
 ##### Property Notes
@@ -704,3 +706,4 @@ has a checksum that appears in a non-adjacent address.)
 - Deprecate `checksum8` and `checksum16`.  Use `tools/normalize-map.py` to
   convert those sections to `_metadata.validation.checksum` entries.
 - Add `repeat` property as an option to any descriptor in an array context.
+- Add `prefix` property to descriptors (similar to `suffix`).

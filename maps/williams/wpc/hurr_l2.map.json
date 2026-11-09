@@ -1,12 +1,13 @@
 {
   "_notes": [
     "Compiled by Tom Collins using template-wpc.json.",
-    "WPC 50012, SYS 2.21 REV 0.2",
+    "WPC 50012, SYS 2.21 REV 0.2 (hurr_d2)",
+    "WPC 50012, SYS 2.21 REV 0.2 (hurr_l2)",
     "2025-07-07 Tom Collins added automated audits"
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 8,
+    "version": 9,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-8K",
@@ -1264,7 +1265,6 @@
         "suffix": "%"
       },
       "03": {
-        "_notes": "The value shows after the prefix \"BONUS\".",
         "label": "E.B. Lights At",
         "start": 7095,
         "length": 2,
@@ -1272,6 +1272,7 @@
         "min": 1,
         "max": 6,
         "default": 3,
+        "prefix": "Bonus ",
         "suffix": "X",
         "special_values": {
           "1": "Disabled"

@@ -1,13 +1,15 @@
 {
   "_notes": [
     "Compiled by Tom Collins using template-wpc.json.",
+    "WPC 20013, SYS 2.46 REV 0.3 (br_d3)",
+    "WPC 20013, SYS 2.46 REV 0.4 (br_d4)",
     "WPC 20013, SYS 2.46 REV 0.3 (br_l3)",
     "WPC 20013, SYS 2.46 REV 0.4 (br_l4)",
     "2025-07-07 Tom Collins added automated audits"
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 10,
+    "version": 11,
     "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "williams-wpc-8K",
@@ -1602,31 +1604,31 @@
         "suffix": " Shp Sunk"
       },
       "22": {
-        "_notes": "The value shows after the prefix \"LEVEL\".",
         "label": "Swing Rig. Start",
         "start": 7141,
         "length": 2,
         "encoding": "int",
+        "prefix": "Level ",
         "min": 1,
         "max": 4,
         "default": 1
       },
       "23": {
-        "_notes": "The value shows after the prefix \"LEVEL\".",
         "label": "Walk Plank Start",
         "start": 7143,
         "length": 2,
         "encoding": "int",
+        "prefix": "Level ",
         "min": 1,
         "max": 4,
         "default": 1
       },
       "24": {
-        "_notes": "The value shows after the prefix \"LEVEL\".",
         "label": "Knife Thrw Start",
         "start": 7145,
         "length": 2,
         "encoding": "int",
+        "prefix": "Level ",
         "min": 1,
         "max": 4,
         "default": 1
