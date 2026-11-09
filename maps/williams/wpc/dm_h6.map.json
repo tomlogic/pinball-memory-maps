@@ -5,7 +5,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 7,
+    "version": 8,
     "copyright": [
       "Copyright (C) 2015 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -18,8 +18,7 @@
       "dm_h5",
       "dm_h5b",
       "dm_h6",
-      "dm_h6b",
-      "dm_h6c"
+      "dm_h6b"
     ],
     "free_only": [
       "dm_dh5",

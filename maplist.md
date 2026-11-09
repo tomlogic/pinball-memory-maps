@@ -266,6 +266,8 @@
 * [Dale Jr. (5.00)][7e952] _dalejr_
 * [Deadly Weapon][cef64] _deadweap_
 * [Defender (L-4)][cb385] _dfndr_l4_
+* [Demolition Man (7.0 Competition MOD Vulgar Speech)][11067] _dm_70h_
+* [Demolition Man (7.0 Competition MOD)][5554f] _dm_70_
 * [Demolition Man (DA-1 LED Ghost Fix)][3b5ca] _dm_da1_
 * [Demolition Man (DH-5 LED Ghost Fix)][62631] _dm_dh5_
 * [Demolition Man (DH-5B Coin Play LED Ghost Fix)][62631] _dm_dh5b_
@@ -276,7 +278,7 @@
 * [Demolition Man (H-5B Coin Play)][62631] _dm_h5b_
 * [Demolition Man (H-6)][62631] _dm_h6_
 * [Demolition Man (H-6B Coin Play)][62631] _dm_h6b_
-* [Demolition Man (H-6C Competition MOD)][62631] _dm_h6c_
+* [Demolition Man (H-6C Competition MOD)][11067] _dm_h6c_
 * [Demolition Man (LA-1)][3b5ca] _dm_la1_
 * [Demolition Man (LX-3)][184c0] _dm_lx3_
 * [Demolition Man (LX-4)][184c0] _dm_lx4_
@@ -1384,7 +1386,7 @@
 * [Terminator 2: Judgment Day (D-4 LED Ghost Fix)][25ba6] _t2_d4_
 * [Terminator 2: Judgment Day (D-6 LED Ghost Fix)][78b9b] _t2_d6_
 * [Terminator 2: Judgment Day (D-8 LED Ghost Fix)][ebb28] _t2_d8_
-* [Terminator 2: Judgment Day (L-2)][c2be1] _t2_l2_
+* [Terminator 2: Judgment Day (L-2, L-3 Sound)][c2be1] _t2_l2_
 * [Terminator 2: Judgment Day (L-3)][e40df] _t2_l3_
 * [Terminator 2: Judgment Day (L-4)][25ba6] _t2_l4_
 * [Terminator 2: Judgment Day (L-6)][78b9b] _t2_l6_
@@ -1614,6 +1616,7 @@
 [0e187]: maps/atari/midearth.map.json
 [10b97]: maps/williams/wpc/gw_l5.map.json
 [10d4d]: maps/gottlieb/system3/waterwld.map.json
+[11067]: maps/williams/wpc/dm_h6c.map.json
 [1318a]: maps/capcom/kpb105.map.json
 [145d8]: maps/bally/as-2518-35/rapidfir.map.json
 [14b25]: maps/williams/wpc/tom_06.map.json
