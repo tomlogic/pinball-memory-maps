@@ -17,7 +17,7 @@
     "credits at 0x0211100C, the sixteenth SAM game at that address: rose to 9 with the coins (capped",
     "by the Maximum Credits just set) and fell to 8 at game start.",
     "smanve_100 is not claimed: V1.00 keeps the offset-0 adjustment layout and its records and CPU",
-    "counters elsewhere.",
+    "counters elsewhere; it has its own map, smanve_100.map.json.",
     "2026-11: The A.1 (64) and A.2 (49) adjustments added from the ROM image (README, 'Adjustments",
     "from the ROM').",
     "Confirmed on a cabinet 2026-11-13 (ALP4K; two players, tilt on P1 ball 1): 2,318,440 /",

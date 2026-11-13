@@ -5,8 +5,9 @@
 Stern SAM games (2006–2014: Spider-Man through The Walking Dead) run an ARM AT91 CPU
 with 128 KB of battery-backed NVRAM mapped at `0x02100000`. PinMAME exposes an 80 MB
 CPU image, but everything a map needs sits in two windows: NVRAM, and the working
-RAM around `0x00030000` (`0x00030000`–`0x0003FFFF` on most games; AC/DC Pro keeps
-player and status just below it, at `0x0002EEC0`). The platform file's *Main RAM* entry is 1 MB so that maps may read the working
+RAM around `0x00030000` (`0x00030000`–`0x0003FFFF` on most games; Wheel of Fortune,
+The Rolling Stones and AC/DC Pro keep player and status just below it, at `0x0002C59C`,
+`0x0002F988` and `0x0002EEC0`). The platform file's *Main RAM* entry is 1 MB so that maps may read the working
 RAM; widening it permits reads and changes nothing about how any field decodes.
 
 Everything in these maps that is not attributed to a disassembly was measured live:
@@ -22,7 +23,7 @@ this file holds what the games share.
 
 Two things move between games and must never be copied from one map to another:
 the score slots and the CPU-side counters (player, ball, status). Two things are
-shared by every game measured: the player count at `0x02110900` and the credit
+shared by every pinball game measured: the player count at `0x02110900` and the credit
 counter at `0x0211100C`.
 
 ## Non-Volatile Storage
@@ -36,6 +37,10 @@ From `0x02102008` NVRAM holds an array of 8-byte adjustment records:
 +4  check byte: 0xFF minus the 8-bit sum of the four value bytes
 +5  0xFF 0xFF 0xFF
 ```
+
+The redemption game The Simpsons Kooky Carnival (`scarn200`) keeps the same records from
+`0x02100008` (ID n at `0x02100000 + 8n`, 26 IDs); it has no players, balls or tilt, so its
+map declares only the adjustments and Master Volume.
 
 Every record in every image examined satisfies the check byte. A write that changes
 the value without updating the check byte is silently discarded when the ROM next
@@ -67,7 +72,7 @@ order with the tap running) gave this mapping from menu number to record index:
 Two array layouts exist, and which one a game uses is a property of the ROM revision
 rather than of the game. On the *offset-0* family Free Play is record 33 and the
 mapping above applies directly: avr_200, avs_170, bbh_170, bdk_294, csi_240,
-fg_1200af, nba_802, st_161h, tf_180, trn_174h, twd_156, twenty4_150, xmn_151h. On the
+fg_1200af, nba_802, potc_600as, sman_261, st_161h, tf_180, trn_174h, twd_156, twenty4_150, wpt_140a, xmn_151h. On the
 *+2* family two records are inserted somewhere before record 30 and everything
 measured sits exactly two later -- Free Play 35, Balls Per Game 32, Credit Limit 34,
 Ball Save Time 39: acd_170h, im_185ve, im_186, im_186ve, mtl_170h, mtl_180, mtl_180h,
@@ -105,8 +110,8 @@ A factory reset applies an install preset after the base defaults (Player Langua
 Select becomes YES; Spider-Man's replay levels and high-score defaults rise), so the
 defaults in the maps are a factory-fresh NVRAM's. Game-specific displays are game code
 that the boot copies to RAM at `0x010xxxxx`; their formatters were read from a RAM dump
-of the booted game, which gives the values they print as words (Spider-Man VE's Locks
-From Plunger 0 NONE, 4 UNLIMITED). Values such a formatter prints through SAM's own format strings
+of the booted game, which gives the values they print as words (Locks From Plunger 0
+NONE, 4 UNLIMITED). Values such a formatter prints through SAM's own format strings
 (`%u%P1/ST/ND/RD/TH/% MULTIBALL`) stay plain numbers. Best Combo Champion stores its
 N-way count in the record's high half (`0x00050001` shows 5-WAY), so it is declared as
 the two bytes at +2.
@@ -123,8 +128,8 @@ is a different setting.
 |---|---|
 | `0x02110204` | mtl_180, mtl_180h, twd_160h |
 | `0x02110248` | acd_170, acd_170h, im_185ve, im_186, im_186ve, st_162, st_162h |
-| `0x0211024C` | bdk_294, csi_240, fg_1200af, nba_802, twenty4_150 |
-| `0x02110250` | avr_200, avs_170, bbh_170, mtl_170h, smanve_101, st_161h, tf_180, trn_174h, twd_156, xmn_151h |
+| `0x0211024C` | bdk_294, csi_240, fg_1200af, ij4_210, nba_802, potc_600as, scarn200, shr_141, sman_210–sman_240, twenty4_150, wof_500, wpt_140a |
+| `0x02110250` | avr_200, avs_170, avs_170h, bbh_170, mt_145h, mtl_170h, rsn_110h, sman_261, smanve_100, smanve_101, st_161h, tf_180, trn_174h, twd_156, xmn_151h |
 
 ### Audits
 
@@ -156,11 +161,12 @@ another:
 
 | slot address | spacing | games |
 |---|---|---|
-| `0x021109E4` | 4 | avs_170, im_185ve, im_186, im_186ve, mtl_170h, smanve_101, st_162, tf_180, trn_174h, twd_156, xmn_151h |
-| `0x021109E4` | 8 | avr_200, bbh_170, fg_1200af, nba_802, twenty4_150 |
+| `0x021109E4` | 4 | avs_170, avs_170h, im_185ve, im_186, im_186ve, mtl_170h, smanve_100, smanve_101, st_162, tf_180, trn_174h, twd_156, xmn_151h |
+| `0x021109E4` | 8 | avr_200, bbh_170, fg_1200af, ij4_210, nba_802, potc_600as, rsn_110h, shr_141, sman_210–sman_240, twenty4_150 |
 | `0x021109F0` | 8 | bdk_294, csi_240 |
-| `0x02110A0C` | 4 | st_161h, st_162h |
-| `0x02110A24` | 8 | acd_170, acd_170h, mtl_180, mtl_180h |
+| `0x02110A0C` | 4 | mt_145h, st_161h, st_162h |
+| `0x02110A24` | 8 | acd_170, acd_170h, mtl_180, mtl_180h, sman_261 |
+| `0x02110A2C` | 8 | wof_500, wpt_140a |
 | `0x02110A9C` | 8 | twd_160h |
 
 Eight-byte spacing does not by itself mean an eight-byte score: several of the games
@@ -226,7 +232,7 @@ stored record only. That mismatch is why the extra bytes could not be settled by
 inspection: they read zero in all 163 captured records, because no score had ever
 exceeded 2^32.
 
-Only `acd_170`, `acd_170h`, `mtl_180`, `mtl_180h` and `twd_160h` have 36-byte
+Only `acd_170`, `acd_170h`, `mtl_180`, `mtl_180h`, `sman_261` and `twd_160h` have 36-byte
 records, so only those declare `length` 8; every other game keeps 4. It applies to
 mode champions as well as high scores on those games -- the records are the same
 form, and the checksum validates at +32 in all 50 mode-champion records across the
@@ -264,8 +270,8 @@ the status byte below, and a new game is the ball wrapping down to 1.
 ### Status byte
 
 On every game measured one byte near the ball counter is a status byte: player + 0x32
-on most, + 0x2C on Family Guy, World Poker Tour and Pirates, + 0x18 on Shrek, + 0x34 on
-Spider-Man 2.10-2.40, + 0x48 on Wheel of Fortune. It reads `01` in attract from
+on most, + 0x2C on Family Guy, World Poker Tour and Pirates, + 0x18 on Shrek and Indiana
+Jones, + 0x34 on Spider-Man 2.10 and 2.20, + 0x48 on Wheel of Fortune. It reads `01` in attract from
 power-up; in a game a base value (`12`, `13` or `14` by game) and, while ball serves,
 modes and animations run, other values (`26`, `28`, `40`, `43`, `4C`, `5F`, `61`, `7B`,
 ...); from the tilt to the next ball served the base value plus 2 (`14`, `15` or `16`);
