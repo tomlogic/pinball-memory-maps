@@ -4,16 +4,21 @@
 
 Stern SAM games (2006–2014: Spider-Man through The Walking Dead) run an ARM AT91 CPU
 with 128 KB of battery-backed NVRAM mapped at `0x02100000`. PinMAME exposes an 80 MB
-CPU image, but everything a map needs sits in two windows: NVRAM, and the 64 KB of
-working RAM at `0x00030000`–`0x0003FFFF` (the rest of the image is constant across a
-game). The platform file's *Main RAM* entry is 1 MB so that maps may read the working
+CPU image, but everything a map needs sits in two windows: NVRAM, and the working
+RAM around `0x00030000` (`0x00030000`–`0x0003FFFF` on most games; AC/DC Pro keeps
+player and status just below it, at `0x0002EEC0`). The platform file's *Main RAM* entry is 1 MB so that maps may read the working
 RAM; widening it permits reads and changes nothing about how any field decodes.
 
 Everything in these maps that is not attributed to a disassembly was measured live:
 a 2 Hz tap of CPU RAM and NVRAM recorded on a cabinet across an operator-menu
 session, coins, and at least one full game with a mid-ball tilt, then each
-declaration was checked against every sample of its recording. Per-map `_notes`
-record what is specific to that game; this file holds what the games share.
+declaration was checked against every sample of its recording. Since November 2026
+most of the NVRAM side is read from the ROM image instead (adjustments, high-score and
+champion records, scores), and the working-RAM fields of the games no cabinet recorded
+come from headless libpinmame games of the same ROM (coins, a two-player game, two
+tilts), whose status values every map's `game_over` and `tilted` were also checked
+against. Per-map `_notes` record what is specific to that game and how it was found;
+this file holds what the games share.
 
 Two things move between games and must never be copied from one map to another:
 the score slots and the CPU-side counters (player, ball, status). Two things are
@@ -57,7 +62,7 @@ order with the tap running) gave this mapping from menu number to record index:
 | #25–#30, #36 | 53–59 |
 | #37 HSTD Reset Count | 60 |
 | #62–#64 | 61–63 |
-| system group #43, #41, #61, #54, #42, #60, #40, #59, #47, #39 | 0–9 |
+| system group #43, #41, #61, #54, #42, #60, #39, #59, #47, #40 | 0–9 |
 
 Two array layouts exist, and which one a game uses is a property of the ROM revision
 rather than of the game. On the *offset-0* family Free Play is record 33 and the
@@ -73,16 +78,53 @@ families Balls Per Game is three records below Free Play and Credit Limit one be
 which is how `ball_count` and `max_credits` were placed on games where only Free Play
 was toggled; on every game where the menu was later exercised the rule held.
 
-Multi-option adjustments store an option code, and the display order is not the
-numeric order: Replay Type on Star Trek is NONE=0, FIXED=1, DYNAMIC=2, AUTO=3 while
-the menu lists AUTO first. Only codes that were stepped through with the tap running
-are named in the maps.
+Multi-option adjustments store an option code: Replay Type is NONE=0, FIXED=1,
+DYNAMIC=2, AUTO=3. (The sweep table above had #39 Language and #40 Player Language
+Select swapped; the ROM and a cabinet's menu put Language at record 6, ID 7.)
 
-Master volume is *not* an adjustment record. It is a single byte (0–63, factory 40)
-with a complement check byte immediately after it, at a per-ROM address:
-`0x02110250` on most games, `0x0211024C` on NBA, `0x02110248` on Iron Man,
-`0x02110204` on The Walking Dead LE (`twd_156` uses `0x02110250`). Adjustment #47
-Music Volume (1–15) is a different setting.
+#### Adjustments from the ROM
+
+The ROM describes every adjustment, so `adjustments` can be generated rather than swept.
+Every SAM map has its A.1 and A.2 sections from the ROM:
+
+- A descriptor table, 32 bytes per adjustment ID: record address, base default, min, max,
+  step, a pointer to the name, and a display type. The ID is the entry's position. Most
+  ROMs keep the records from `0x02102008`; early World Poker Tour (before 1.40) and Pirates
+  of the Caribbean (before 3.00) keep them from `0x02100BC4`.
+- A display-type table: per type, the option names (as message IDs) and the formatter
+  that prints the values some settings show as words (Ball Save Time 0 is NO BALL SAVES
+  and 16 AUTO, Match Percentage 11 is OFF, ...). Game Pricing's names are the run of
+  pricing messages from AUSTRALIA 1, with CUSTOM at its maximum.
+- The A.1 menu order as a list of IDs. The newest ROMs leave IDs 11 and 12 (the two
+  records of the *+2* family) out of it.
+- A.2 is not a list in the ROM, and the menu hides some IDs (Star Trek: Fixture On and
+  Off; Spider-Man VE 1.00: IDs 114-117; Pirates: 78-80), so the A.2 items in the maps are
+  the IDs the service menu showed when it was walked in libpinmame.
+
+A factory reset applies an install preset after the base defaults (Player Language
+Select becomes YES; Spider-Man's replay levels and high-score defaults rise), so the
+defaults in the maps are a factory-fresh NVRAM's. Game-specific displays are game code
+that the boot copies to RAM at `0x010xxxxx`; their formatters were read from a RAM dump
+of the booted game, which gives the values they print as words (Spider-Man VE's Locks
+From Plunger 0 NONE, 4 UNLIMITED). Values such a formatter prints through SAM's own format strings
+(`%u%P1/ST/ND/RD/TH/% MULTIBALL`) stay plain numbers. Best Combo Champion stores its
+N-way count in the record's high half (`0x00050001` shows 5-WAY), so it is declared as
+the two bytes at +2.
+
+Master volume is *not* an adjustment record. It is a single byte (0–63, factory 40;
+52 on AC/DC LE) with a complement check byte immediately after it, at a per-ROM
+address. Each address below was measured by pressing volume up in attract (libpinmame)
+and diffing the NVRAM: the byte and its check byte moved and nothing else did. The
+ROM's volume setter (`cmp rN, #63 ; movcs rN, #63`, then the address from the literal
+pool) gives the same address on every one of them. Adjustment #47 Music Volume (1–15)
+is a different setting.
+
+| address | games |
+|---|---|
+| `0x02110204` | mtl_180, mtl_180h, twd_160h |
+| `0x02110248` | acd_170, acd_170h, im_185ve, im_186, im_186ve, st_162, st_162h |
+| `0x0211024C` | bdk_294, csi_240, fg_1200af, nba_802, twenty4_150 |
+| `0x02110250` | avr_200, avs_170, bbh_170, mtl_170h, smanve_101, st_161h, tf_180, trn_174h, twd_156, xmn_151h |
 
 ### Audits
 
@@ -118,15 +160,16 @@ another:
 | `0x021109E4` | 8 | avr_200, bbh_170, fg_1200af, nba_802, twenty4_150 |
 | `0x021109F0` | 8 | bdk_294, csi_240 |
 | `0x02110A0C` | 4 | st_161h, st_162h |
-| `0x02110A24` | 8 | acd_170h, mtl_180, mtl_180h |
+| `0x02110A24` | 8 | acd_170, acd_170h, mtl_180, mtl_180h |
 | `0x02110A9C` | 8 | twd_160h |
 
 Eight-byte spacing does not by itself mean an eight-byte score: several of the games
 above pair it with a 32-byte champion record, whose score cannot be wider than four
 bytes, so the extra four bytes are padding there. The games whose champion records do
 carry a 64-bit score (see below) are all in the 8-byte group, which is suggestive but
-not proof -- a live slot's width has not been measured on any game, and the slots are
-declared as four bytes throughout.
+not proof -- a live slot's width has not been measured on any game. The slots are
+declared as four bytes except on the games with 36-byte champion records (below),
+which declare eight.
 
 A recurring false positive when searching for score slots is a *scaled set* in CPU
 RAM: four values each roughly a quarter of the previous one, which is display scratch,
@@ -218,48 +261,56 @@ The ball never returns to 0 after a game: it parks at the last value through att
 and drops to 1 when the next game starts. Consumers detecting a game's end must use
 the status byte below, and a new game is the ball wrapping down to 1.
 
-### Status bitfield
+### Status byte
 
-On most games the byte 0x31 past the ball counter is a status bitfield: it reads 1
-through attract and other values through a game, and the value while tilted differs
-from the value in play by one bit for exactly the samples between the tilt and the end
-of the tilted ball, during which the player's score is frozen. 17 of the
-23 games with a `game_over` declaration use that byte:
+On every game measured one byte near the ball counter is a status byte: player + 0x32
+on most, + 0x2C on Family Guy, World Poker Tour and Pirates, + 0x18 on Shrek, + 0x34 on
+Spider-Man 2.10-2.40, + 0x48 on Wheel of Fortune. It reads `01` in attract from
+power-up; in a game a base value (`12`, `13` or `14` by game) and, while ball serves,
+modes and animations run, other values (`26`, `28`, `40`, `43`, `4C`, `5F`, `61`, `7B`,
+...); from the tilt to the next ball served the base value plus 2 (`14`, `15` or `16`);
+and `01` again at the moment the game ends. The maps decode it as:
 
-| games | game_over | tilted |
+- `game_over`: no bit above 0x01 set (mask 0xFE, inverted), i.e. the byte is `00` or `01`.
+- `tilted`: the tilt value alone, an enum over mask 0x1F (0x3F on Mustang, whose `B5`
+  equals `15` under 0x1F; 0x7F on X-Men and Rolling Stones, `55`).
+
+A few maps keep a narrower bit test that held on every sample of their recording and
+of a cabinet game (bdk_294, mtl_*, smanve_101, twd_160h: `tilted` bit 0x04 or 0x02;
+bbh_170, bdk_294, csi_240, im_*, mtl_*: `game_over` mask 0x12, 0x14, 0x30 or 0x38).
+Family Guy's `game_over` is a separate byte (`0x00032E04`: 05 in attract, 00 in a game).
+
+Single bits of the status byte misread a full game, because mode values carry them:
+Avatar's `40`/`45`, Avengers' `61`, TRON's `4D` and X-Men's `28` read as game over under
+mask 0x12, and Big Buck Hunter's `34`/`3F`/`56`/`6F`, Iron Man's `72` and TRON's `5F`
+(while tilt warnings come in) as tilted under bit 0x04 or 0x02. Bytes elsewhere did
+worse on a cabinet, and were replaced by the status byte:
+
+| game | old field | on a cabinet |
 |---|---|---|
-| avr_200, avs_170, bbh_170, bdk_294, smanve_101, trn_174h, xmn_151h | mask 0x12 inverted | mask 0x04 |
-| im_185ve, im_186, im_186ve | mask 0x14 inverted | mask 0x02 |
-| mtl_180, mtl_180h | mask 0x30 inverted | enum over mask 0x06 |
-| csi_240 | mask 0x12 inverted | mask 0x02 at 0x000390BC (tilt-warning counter) |
-| mtl_170h | mask 0x38 inverted | mask 0x04 |
-| st_161h | mask 0xFE inverted | enum over mask 0x1F, value 21 only |
-| tf_180 | mask 0xFE inverted | mask 0x04 |
-| twd_160h | mask 0xFE inverted | mask 0x02 |
-
-No single bit is common to every in-play value across games, and the tilt bit is `0x04`
-on some ROMs and `0x02` on others, so each map declares the narrowest expression that
-holds on every sample of its own recording rather than a shared decoding. The values
-actually observed for a game -- what it reads in attract, at game start, at ball start,
-in play and while tilted -- are recorded in that map's `_notes`, along with the size of
-the recording they came from.
-
-The remaining games do not use that byte and keep game over, tilt, or both elsewhere:
-
-| game | game_over | tilted |
-|---|---|---|
-| acd_170h | `0x00034C7E`, whole byte | whole byte, inverted at 0x00038D24 |
-| fg_1200af | `0x00032E04`, whole byte | not present |
-| nba_802 | `0x0003FF83`, whole byte | whole byte at 0x0003FF6B |
-| st_162h | `0x0003BA3E`, whole byte | whole byte at 0x0003310B |
-| twd_156 | `0x00035E48`, whole byte | not present |
-| twenty4_150 | `0x02102A3C`, whole byte, inverted | mask 0x02 at 0x0003893C (tilt-warning counter) |
-
-Contributions that decode the individual bits are welcome; the recordings behind each
-row are described in the maps' notes.
+| acd_170h | `game_over` `0x00034C7E` | flips 64/00 every few seconds in play |
+| acd_170h | `tilted` `0x00038D24` inverted | reads tilted in attract after power-up |
+| nba_802 | `game_over` `0x0003FF83` | game over for 6 s after a tilted ball drained |
+| nba_802 | `tilted` `0x0003FF6B` | set at each ball launch, never at the tilt |
+| st_162 | `game_over` `0x00032652` | stays 02 after the game ends |
+| st_162h | `game_over` `0x0003BA3E` | 0 after power-up until a game has ended |
+| st_162h | `tilted` `0x0003310B` | also set for a moment at each tilt warning |
+| twd_156 | `game_over` `0x00035E48` | 0 after power-up until a game has ended |
+| twenty4_150 | `game_over` `0x02102A3C` (NVRAM) | keeps 1 when a game is cut off by power-off |
 
 ### Tilt warnings
 
-Where mapped, the tilt-warning counter is a CPU RAM byte that counts plumb-bob
-closures within a ball (`0x0003893C` on 24, `0x000390BC` on CSI); with the factory
-setting of two warnings, tilted is that counter reaching 2.
+The tilt-warning counter (`0x0003893C` on 24, `0x000390BC` on CSI, declared as
+`tilt_warnings`) counts warnings within a ball and clears at the next ball. It is not a
+tilt flag: with the factory setting of two warnings the counter reaches 2 at the second
+warning and the third hit tilts, so the ball is still live at 2.
+
+### How the game state was checked
+
+Each `game_over` and `tilted` comes from a headless libpinmame game of the ROM (two
+players, three balls, two tilts, RAM sampled throughout) and, where the map says so, a
+cabinet game: two players, a mechanical tilt on player 1's first ball, flippers until the
+game ends, with the declared fields and any candidate bytes logged at every change and
+the final scores and records compared with the DMD. Headless runs miss values (a game
+that never ends headless never shows the return to `01`), and an NVRAM byte survives a
+game cut off by power-off, so a field is trusted only after a full game on a cabinet.
