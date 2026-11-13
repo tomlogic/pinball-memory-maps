@@ -1,0 +1,401 @@
+{
+  "_notes": [
+    "The Simpsons Kooky Carnival V2.0 (scarn200), a SAM redemption game: coins and tickets, no",
+    "players, balls or records. Upstream had no map for it.",
+    "2026-11: compiled from the ROM image. Its tables are in data the boot copies to RAM, with",
+    "raw-offset pointers (descriptors 0x1CF0C, display types 0x1CC00). A.1 is the nine standard IDs,",
+    "A.2 IDs 13-26 as the Feature Adjustments menu shows them; IDs 10-12 are in neither menu. Award",
+    "Type 0 prints VARIABLE, 1-40 'n TICKET(S) FIXED'.",
+    "No game-state fields: the shared player count and credits read 0 and 0xFFFFFFFF in play, the",
+    "score-rule address 0x02110A58 is a running ticket total, and no RAM byte held a per-play award.",
+    "Checked on a cabinet 2026-11-13 (ALP4K): LiveUI showed Master Volume and A.1/A.2 as the NVRAM",
+    "holds them; the volume buttons moved Master Volume 61 -> 63 -> 61."
+  ],
+  "_fileformat": 0.9,
+  "_metadata": {
+    "version": 1,
+    "license": "Open Data Commons Open Database License (ODbL) v1.0",
+    "copyright": [
+      "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
+    ],
+    "platform": "stern-sam",
+    "roms": [
+      "scarn200"
+    ],
+    "validation": {
+      "checksum": [
+        {
+          "label": "Master Volume",
+          "start": "0x0211024C",
+          "end": "0x0211024D",
+          "complement": true
+        },
+        {
+          "label": "Std Adj #01 Language",
+          "start": "0x02100038",
+          "end": "0x0210003C",
+          "complement": true
+        },
+        {
+          "label": "Std Adj #02 Custom Message",
+          "start": "0x02100010",
+          "end": "0x02100014",
+          "complement": true
+        },
+        {
+          "label": "Std Adj #03 Flash Lamp Power",
+          "start": "0x02100028",
+          "end": "0x0210002C",
+          "complement": true
+        },
+        {
+          "label": "Std Adj #04 Coil Pulse Power",
+          "start": "0x02100008",
+          "end": "0x0210000C",
+          "complement": true
+        },
+        {
+          "label": "Std Adj #05 Music Volume",
+          "start": "0x02100048",
+          "end": "0x0210004C",
+          "complement": true
+        },
+        {
+          "label": "Std Adj #06 Fast Boot",
+          "start": "0x02100020",
+          "end": "0x02100024",
+          "complement": true
+        },
+        {
+          "label": "Std Adj #07 Location ID",
+          "start": "0x02100040",
+          "end": "0x02100044",
+          "complement": true
+        },
+        {
+          "label": "Std Adj #08 Game ID",
+          "start": "0x02100030",
+          "end": "0x02100034",
+          "complement": true
+        },
+        {
+          "label": "Std Adj #09 Time Format",
+          "start": "0x02100018",
+          "end": "0x0210001C",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #01 Ticket Point Payout Percent",
+          "start": "0x02100068",
+          "end": "0x0210006C",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #02 Ticket Point Value",
+          "start": "0x02100070",
+          "end": "0x02100074",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #03 Coin Value",
+          "start": "0x02100078",
+          "end": "0x0210007C",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #04 1 Ticket Minimum",
+          "start": "0x02100080",
+          "end": "0x02100084",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #05 Show Points/Tickets",
+          "start": "0x02100088",
+          "end": "0x0210008C",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #06 Attract Music",
+          "start": "0x02100090",
+          "end": "0x02100094",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #07 Award Type",
+          "start": "0x02100098",
+          "end": "0x0210009C",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #08 Base Awards",
+          "start": "0x021000A0",
+          "end": "0x021000A4",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #09 Ticket Alarm",
+          "start": "0x021000A8",
+          "end": "0x021000AC",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #10 Stuck Coins Before Shake",
+          "start": "0x021000B0",
+          "end": "0x021000B4",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #11 Shaker Motor On Time",
+          "start": "0x021000B8",
+          "end": "0x021000BC",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #12 Maximum Kooky Award",
+          "start": "0x021000C0",
+          "end": "0x021000C4",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #13 Show ??? in Attract",
+          "start": "0x021000C8",
+          "end": "0x021000CC",
+          "complement": true
+        },
+        {
+          "label": "Feature Adj #14 Kooky Award Difficulty",
+          "start": "0x021000D0",
+          "end": "0x021000D4",
+          "complement": true
+        }
+      ]
+    }
+  },
+  "game_state": {
+    "volume": {
+      "label": "Master Volume",
+      "encoding": "int",
+      "start": "0x0211024C",
+      "min": 0,
+      "max": 63,
+      "default": 40
+    }
+  },
+  "adjustments": {
+    "A.1 Standard Adjustments": {
+      "01": {
+        "label": "Language",
+        "start": "0x02100038",
+        "encoding": "enum",
+        "values": [
+          "ENGLISH",
+          "DEUTSCH",
+          "FRANCAIS",
+          "ESPANOL",
+          "ITALIANO"
+        ],
+        "default": 0
+      },
+      "02": {
+        "label": "Custom Message",
+        "start": "0x02100010",
+        "encoding": "enum",
+        "values": [
+          "OFF",
+          "ON",
+          "CHANGE"
+        ],
+        "default": 1
+      },
+      "03": {
+        "label": "Flash Lamp Power",
+        "start": "0x02100028",
+        "encoding": "enum",
+        "values": [
+          "OFF",
+          "DIM",
+          "NORMAL"
+        ],
+        "default": 2
+      },
+      "04": {
+        "label": "Coil Pulse Power",
+        "start": "0x02100008",
+        "encoding": "enum",
+        "values": [
+          "HARD",
+          "SOFT",
+          "NORMAL"
+        ],
+        "default": 2
+      },
+      "05": {
+        "label": "Music Volume",
+        "start": "0x02100048",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 15,
+        "default": 1
+      },
+      "06": {
+        "label": "Fast Boot",
+        "start": "0x02100020",
+        "encoding": "bool",
+        "default": 1
+      },
+      "07": {
+        "label": "Location ID",
+        "start": "0x02100040",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 9999,
+        "default": 0
+      },
+      "08": {
+        "label": "Game ID",
+        "start": "0x02100030",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 9999,
+        "default": 0
+      },
+      "09": {
+        "label": "Time Format",
+        "start": "0x02100018",
+        "encoding": "enum",
+        "values": [
+          "12-HOUR",
+          "24-HOUR"
+        ],
+        "default": 0
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ticket Point Payout Percent",
+        "start": "0x02100068",
+        "encoding": "int",
+        "length": 4,
+        "min": 16,
+        "max": 150,
+        "default": 40
+      },
+      "02": {
+        "label": "Ticket Point Value",
+        "start": "0x02100070",
+        "encoding": "int",
+        "length": 4,
+        "min": 1,
+        "max": 5,
+        "default": 1
+      },
+      "03": {
+        "label": "Coin Value",
+        "start": "0x02100078",
+        "encoding": "int",
+        "length": 4,
+        "min": 5,
+        "max": 200,
+        "default": 25
+      },
+      "04": {
+        "label": "1 Ticket Minimum",
+        "start": "0x02100080",
+        "encoding": "bool",
+        "default": 0
+      },
+      "05": {
+        "label": "Show Points/Tickets",
+        "start": "0x02100088",
+        "encoding": "enum",
+        "values": [
+          "POINTS",
+          "TICKETS"
+        ],
+        "default": 1
+      },
+      "06": {
+        "label": "Attract Music",
+        "start": "0x02100090",
+        "encoding": "bool",
+        "default": 1
+      },
+      "07": {
+        "label": "Award Type",
+        "start": "0x02100098",
+        "encoding": "int",
+        "length": 4,
+        "min": 0,
+        "max": 40,
+        "default": 0,
+        "special_values": {
+          "0": "VARIABLE"
+        },
+        "suffix": " TICKET(S) FIXED"
+      },
+      "08": {
+        "label": "Base Awards",
+        "start": "0x021000A0",
+        "encoding": "enum",
+        "values": [
+          "FIXED",
+          "VARIABLE"
+        ],
+        "default": 1
+      },
+      "09": {
+        "label": "Ticket Alarm",
+        "start": "0x021000A8",
+        "encoding": "bool",
+        "default": 1
+      },
+      "10": {
+        "label": "Stuck Coins Before Shake",
+        "start": "0x021000B0",
+        "encoding": "int",
+        "length": 4,
+        "min": 3,
+        "max": 10,
+        "default": 3
+      },
+      "11": {
+        "label": "Shaker Motor On Time",
+        "start": "0x021000B8",
+        "encoding": "int",
+        "length": 4,
+        "min": 4,
+        "max": 12,
+        "default": 8
+      },
+      "12": {
+        "label": "Maximum Kooky Award",
+        "start": "0x021000C0",
+        "encoding": "int",
+        "length": 4,
+        "min": 15,
+        "max": 1000,
+        "default": 750
+      },
+      "13": {
+        "label": "Show ??? in Attract",
+        "start": "0x021000C8",
+        "encoding": "bool",
+        "default": 0
+      },
+      "14": {
+        "label": "Kooky Award Difficulty",
+        "start": "0x021000D0",
+        "encoding": "enum",
+        "values": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "default": 2
+      }
+    }
+  }
+}
