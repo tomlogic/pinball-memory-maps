@@ -85,6 +85,7 @@
 * [Avatar (V2.0)][d93a7] _avr_200_
 * [Avengers, The (V1.7)][7b5a2] _avs_170_
 * [Avengers, The (V1.7) (Colored MOD)][7b5a2] _avs_170c_
+* [Avengers, The Limited Edition (V1.7)][ee8fd] _avs_170h_
 * [BMX][913b3] _bmx_
 * [BMX (Free Play)][07ad3] _bmxa_
 * [Back to the Future (2.1)][ae91c] _bttf_a21_
@@ -624,6 +625,8 @@
 * [ID4: Independence Day (2.02)][8e457] _id4_
 * [Ice Fever][aa641] _icefever_
 * [Incredible Hulk, The][3e2c9] _hulk_
+* [Indiana Jones (V2.1 French)][c59c4] _ij4_210f_
+* [Indiana Jones (V2.1)][c59c4] _ij4_210_
 * [Indiana Jones: The Pinball Adventure (D-3 LED Ghost Fix)][4488e] _ij_d3_
 * [Indiana Jones: The Pinball Adventure (D-4 LED Ghost Fix)][4488e] _ij_d4_
 * [Indiana Jones: The Pinball Adventure (D-5 LED Ghost Fix)][4488e] _ij_d5_
@@ -871,6 +874,7 @@
 * [Mr. & Mrs. Pac-Man Pinball (alternate version)][913b3] _m_mpacb_
 * [Mr. Black][797e4] _mrblack_
 * [Mr. Black (alternate set)][797e4] _mrblack1_
+* [Mustang Limited Edition (V1.45)][be08d] _mt_145h_
 * [Mystery Castle (R02)][47acf] _mystcast_
 * [Mystic][2a9b7] _mystic_
 * [Mystic (7-digit conversion)][d1254] _mysticb_
@@ -954,6 +958,10 @@
 * [Pink Panther][dbe48] _pnkpnthr_
 * [Pink Panther (7-digit conversion)][5bc8d] _pnkpntr7_
 * [Pink Panther (sound correction fix)][dbe48] _pnkpntrs_
+* [Pirates of the Caribbean (V6.0 English, French)][71a91] _potc_600af_
+* [Pirates of the Caribbean (V6.0 English, Italian)][71a91] _potc_600ai_
+* [Pirates of the Caribbean (V6.0 English, Spanish)][71a91] _potc_600as_
+* [Pirates of the Caribbean (V6.0 German, French)][71a91] _potc_600gf_
 * [Pistol Poker (R02)][c2bf9] _pstlpkr_
 * [Playboy][b62f3] _playboy_
 * [Playboy (/10 Scoring Free Play)][561af] _playboyd_
@@ -1094,6 +1102,7 @@
 * [Rollergames (LA-2)][54760] _rollr_l2_
 * [Rolling Stones (V17)][2a9b7] _rollston_
 * [Rolling Stones (V17, 7-digit conversion)][d1254] _rollstob_
+* [Rolling Stones, The Limited Edition (V1.1)][dbfb1] _rsn_110h_
 * [Royal Flush Deluxe (rev. 1)][aa641] _rflshdlx1_
 * [Royal Flush Deluxe (rev. 2)][aa641] _rflshdlx_
 * [Safe Cracker (0.91 Prototype / S1.0)][75bf3] _sc_091_
@@ -1154,11 +1163,13 @@
 * [Sharkey's Shootout (2.11)][45d36] _shrkysht_
 * [Shock][6b630] _shock_
 * [Shooting the Rapids][aa76b] _strapids_
+* [Shrek (V1.41)][ec52c] _shr_141_
 * [Silver Slugger][22e88] _silvslug_
 * [Silverball Mania][2a9b7] _slbmania_
 * [Silverball Mania (7-digit conversion)][d1254] _slbmanib_
 * [Silverball Mania (Horseshoe No Spotting MOD rev. 13)][2a9b7] _slbmanid_
 * [Silverball Mania (Horseshoe Spot MOD rev. 13)][2a9b7] _slbmanic_
+* [Simpsons Kooky Carnival, The (Redemption) (V2.0)][d777a] _scarn200_
 * [Simpsons Pinball Party, The (2.04 French)][f0711] _simp204f_
 * [Simpsons Pinball Party, The (2.04 Italian)][f0711] _simp204i_
 * [Simpsons Pinball Party, The (2.04 Spanish)][f0711] _simp204l_
@@ -1234,6 +1245,16 @@
 * [Speakeasy (4 Players)][7f20b] _speakes4_
 * [Spectrum (rev. 4)][a26fb] _spectru4_
 * [Speed Test][797e4] _stest_
+* [Spider-Man (V2.1 English, French)][9c7fa] _sman_210af_
+* [Spider-Man (V2.1 English, Italian)][9c7fa] _sman_210ai_
+* [Spider-Man (V2.1 English, Spanish)][9c7fa] _sman_210al_
+* [Spider-Man (V2.1 German, French)][9c7fa] _sman_210gf_
+* [Spider-Man (V2.1)][9c7fa] _sman_210_
+* [Spider-Man (V2.2)][ba1fb] _sman_220_
+* [Spider-Man (V2.3)][57e3b] _sman_230_
+* [Spider-Man (V2.4)][e6bb8] _sman_240_
+* [Spider-Man (V2.61)][0b947] _sman_261_
+* [Spider-Man Vault Edition (V1.0)][6fae7] _smanve_100_
 * [Spider-Man Vault Edition (V1.01)][491d9] _smanve_101_
 * [Spider-Man Vault Edition (V1.01) (Colored MOD)][491d9] _smanve_101c_
 * [Spirit][aa641] _spirit0_
@@ -1540,6 +1561,11 @@
 * [Waterworld (rev. 2)][10d4d] _waterwl2_
 * [Waterworld (rev. 3)][10d4d] _waterwld_
 * [Waterworld (rev. 5)][10d4d] _waterwl5_
+* [Wheel of Fortune (V5.0 French)][d1605] _wof_500f_
+* [Wheel of Fortune (V5.0 German)][d1605] _wof_500g_
+* [Wheel of Fortune (V5.0 Italian)][d1605] _wof_500i_
+* [Wheel of Fortune (V5.0 Spanish)][d1605] _wof_500l_
+* [Wheel of Fortune (V5.0)][d1605] _wof_500_
 * [Whirlwind (LA-3)][f45aa] _whirl_l3_
 * [White Water (D-2 LED Ghost Fix)][f2c82] _ww_d2_
 * [White Water (D-3 LED Ghost Fix)][337fb] _ww_d3_
@@ -1572,6 +1598,15 @@
 * [World Cup Soccer (PA-5 LED Ghost Fix)][ba38e] _wcs_p5_
 * [World Cup Soccer (PX-3 Prototype)][7f582] _wcs_p3_
 * [World Cup Soccer (PX-6 LED Ghost Fix)][7f582] _wcs_p6_
+* [World Poker Tour (V14.0 English, French)][0594c] _wpt_140af_
+* [World Poker Tour (V14.0 English, Italian)][0594c] _wpt_140ai_
+* [World Poker Tour (V14.0 English, Spanish)][0594c] _wpt_140al_
+* [World Poker Tour (V14.0 French)][0594c] _wpt_140f_
+* [World Poker Tour (V14.0 German)][0594c] _wpt_140g_
+* [World Poker Tour (V14.0 German, French)][0594c] _wpt_140gf_
+* [World Poker Tour (V14.0 Italian)][0594c] _wpt_140i_
+* [World Poker Tour (V14.0 Spanish)][0594c] _wpt_140l_
+* [World Poker Tour (V14.0)][0594c] _wpt_140a_
 * [X's & O's][913b3] _xsandos_
 * [X's & O's (Free Play)][07ad3] _xsandosa_
 * [X-Files, The (2.00)][f915c] _xfiles20_
@@ -1596,6 +1631,7 @@
 [05118]: maps/williams/wpc/afm_11.map.json
 [055e6]: maps/williams/wpc/taf_l5.map.json
 [0592c]: maps/williams/wpc/ss_12.map.json
+[0594c]: maps/stern/sam/wpt_140a.map.json
 [0674d]: maps/stern/whitestar/lotr41.map.json
 [07095]: maps/williams/system3/lucky_l1.map.json
 [070ac]: maps/williams/wpc/pop_lx5.map.json
@@ -1605,6 +1641,7 @@
 [0834d]: maps/williams/wpc/sttng_x8.map.json
 [098e2]: maps/williams/system11/pool_l7.map.json
 [0a691]: maps/williams/wpc/rs_lx4.map.json
+[0b947]: maps/stern/sam/sman_261.map.json
 [0cb63]: maps/sega/whitestar/harl_a40.map.json
 [0d071]: maps/sega/whitestar/godzilla.map.json
 [0d40b]: maps/capcom/bsv102.map.json
@@ -1727,6 +1764,7 @@
 [561af]: maps/bally/as-2518-35/system-rom-30-freeplay.map.json
 [56f3f]: maps/williams/wpc/sc_18.map.json
 [57980]: maps/williams/wpc/fh_l9.map.json
+[57e3b]: maps/stern/sam/sman_230.map.json
 [57e8a]: maps/bally/as-2518-35/xenon.map.json
 [585db]: maps/williams/wpc/taf_l7.map.json
 [59b59]: maps/gottlieb/system3/wcsoccer.map.json
@@ -1761,11 +1799,13 @@
 [6b630]: maps/taito/shock.map.json
 [6ed11]: maps/williams/wpc/ft_l4.map.json
 [6ee5e]: maps/dataeast/version2/poto_a32.map.json
+[6fae7]: maps/stern/sam/smanve_100.map.json
 [6fea2]: maps/williams/system6/flash_l1.map.json
 [7015d]: maps/sega/whitestar/twst_405.map.json
 [708c3]: maps/williams/wpc/cftbl_l2.map.json
 [70e78]: maps/bally/as-2518-35/newwave.map.json
 [71470]: maps/gottlieb/system3/clas1812.map.json
+[71a91]: maps/stern/sam/potc_600as.map.json
 [71afe]: maps/williams/wpc/gi_l6.map.json
 [72274]: maps/stern/whitestar/rip300.map.json
 [72d1a]: maps/williams/system7/generic-10KB.map.json
@@ -1849,6 +1889,7 @@
 [9aceb]: maps/stern/sam/tf_180.map.json
 [9b2a2]: maps/williams/wpc/dm_dt101.map.json
 [9b595]: maps/sega/whitestar/apollo2.map.json
+[9c7fa]: maps/stern/sam/sman_210.map.json
 [9cad6]: maps/stern/whitestar/monop233.map.json
 [9cd54]: maps/sega/whitestar/gldneye.map.json
 [9d0a8]: maps/stern/whitestar/monop251.map.json
@@ -1896,9 +1937,11 @@
 [b788d]: maps/bally/as-2518-35/system-rom-52.map.json
 [b8a76]: maps/gottlieb/system3/ccruise.map.json
 [b8e36]: maps/williams/wpc/dw_l1.map.json
+[ba1fb]: maps/stern/sam/sman_220.map.json
 [ba335]: maps/dataeast/version2/play_a24.map.json
 [ba38e]: maps/williams/wpc/wcs_p2.map.json
 [bc312]: maps/capcom/abv106.map.json
+[be08d]: maps/stern/sam/mt_145h.map.json
 [be4fd]: maps/gottlieb/system80b/80b-8digit-C-8KB.map.json
 [bf1b7]: maps/williams/system11/grand_l4.map.json
 [bf59c]: maps/williams/wpc/taf_l1.map.json
@@ -1919,6 +1962,7 @@
 [c4d02]: maps/dataeast/version3/wwfr_106.map.json
 [c5177]: maps/williams/system9/comet_l5.map.json
 [c51dc]: maps/dataeast/version3/stwr_103.map.json
+[c59c4]: maps/stern/sam/ij4_210.map.json
 [c6638]: maps/zaccaria/gen2/dvlrider.map.json
 [c6a8a]: maps/williams/system6/algar.map.json
 [c7811]: maps/capcom/abv105.map.json
@@ -1947,6 +1991,7 @@
 [d11a2]: maps/williams/wpc/jd_l1.map.json
 [d1254]: maps/bally/as-2518-35/system-rom-35-7digit.map.json
 [d13e8]: maps/williams/system11/hs_l4.map.json
+[d1605]: maps/stern/sam/wof_500.map.json
 [d283a]: maps/williams/wpc/cftbl_l4c.map.json
 [d4493]: maps/williams/system11/bguns_l8.map.json
 [d4a97]: maps/williams/wpc/mm_10.map.json
@@ -1954,6 +1999,7 @@
 [d4faf]: maps/bally/as-2518-35/eballdlx.map.json
 [d542c]: maps/williams/wpc/mb_106.map.json
 [d6315]: maps/gottlieb/system3/opthund.map.json
+[d777a]: maps/stern/sam/scarn200.map.json
 [d85e1]: maps/williams/system11/cycln_l5.map.json
 [d87ce]: maps/gottlieb/system3/lca2.map.json
 [d8c0e]: maps/dataeast/version3b/maverick.map.json
@@ -1963,6 +2009,7 @@
 [da4cd]: maps/williams/wpc/sttng_l2.map.json
 [daba7]: maps/stern/sam/mtl_180.map.json
 [dbe48]: maps/gottlieb/system80/generic-1prom.map.json
+[dbfb1]: maps/stern/sam/rsn_110h.map.json
 [dc55e]: maps/dataeast/version3/rab_320.map.json
 [dc5e8]: maps/williams/wpc/ngg_13.map.json
 [de4bc]: maps/williams/wpc/br_p17.map.json
@@ -1983,6 +2030,7 @@
 [e4858]: maps/dataeast/version3/simp_a27.map.json
 [e4dd1]: maps/williams/wpc/tz_94h.map.json
 [e5cbd]: maps/williams/wpc/fs_lx4.map.json
+[e6bb8]: maps/stern/sam/sman_240.map.json
 [e725e]: maps/williams/wpc/tz_l5.map.json
 [e7ab8]: maps/stern/whitestar/play300.map.json
 [e8803]: maps/williams/wpc/rs_l6.map.json
@@ -1991,12 +2039,14 @@
 [ea3a4]: maps/stern/sam/st_162h.map.json
 [eaf57]: maps/williams/system11/spstn_l5.map.json
 [ebb28]: maps/williams/wpc/t2_l8.map.json
+[ec52c]: maps/stern/sam/shr_141.map.json
 [ed1ba]: maps/williams/wpc/gi_l3.map.json
 [ed6d6]: maps/williams/wpc/rs_lx2.map.json
 [edc1e]: maps/sega/whitestar/lostspc.map.json
 [edcc3]: maps/bally/as-2518-35/skatebll-freeplay.map.json
 [ee0e1]: maps/williams/system11/bk2k_l4.map.json
 [ee0e9]: maps/stern/m200/m200-7digit-B.map.json
+[ee8fd]: maps/stern/sam/avs_170h.map.json
 [eeaad]: maps/bally/as-2518-35/smman-freeplay.map.json
 [ef564]: maps/dataeast/version3/jupk_513.map.json
 [f0711]: maps/stern/whitestar/simp204.map.json
