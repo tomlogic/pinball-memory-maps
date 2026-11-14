@@ -1,0 +1,21 @@
+{
+  "_notes": [
+    "Stern SPIKE 1: a static ARMv5TE Linux program on an ARM926-class CPU board. PinMAME runs it",
+    "in its own memory (src/spike1), not as CPU 0, and reads it for a map through the driver",
+    "(core_readMemoryHook). The game's variables are at the program's fixed addresses: its data",
+    "and bss, from 0x8000 below the mmap area at 0x08000000. Settings, audits and high scores",
+    "live there too, loaded from the game's NVRAM files at boot and saved as they change.",
+    "These maps read that live memory. PinMAME's .nv file for a SPIKE 1 set is the machine's",
+    "own NVRAM block (the game's files), not this memory, so an .nv parser cannot use them."
+  ],
+  "cpu": "ARM926",
+  "endian": "little",
+  "memory_layout": [
+    {
+      "label": "Program data",
+      "address": "0x00008000",
+      "size": "0x07FF8000",
+      "type": "ram"
+    }
+  ]
+}
