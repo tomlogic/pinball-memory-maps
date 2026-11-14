@@ -12,7 +12,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -78,9 +78,17 @@
       "encoding": "int"
     },
     "game_over": {
+      "_notes": "0 in play, 1 in attract after power-on, 2 after a game, 0xFF during each end-of-ball bonus count",
       "label": "Game Over",
       "start": "0xC9",
-      "encoding": "bool"
+      "mask": "0x03",
+      "encoding": "enum",
+      "values": [
+        false,
+        true,
+        true,
+        false
+      ]
     },
     "playfield_valid": {
       "_notes": "0 with ball in shooter lane, 4 when valid?",
