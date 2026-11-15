@@ -23,7 +23,7 @@ through complete games:
 | ROM | map | 0xFF between balls | after a game | `bool` rule | masked rule |
 |---|---|---|---|---|---|
 | `fpwr2_l2` | generic-10KB | every ball | 2 | one false rise per ball | one rise per game |
-| `pharo_l2` | generic-10KB | never | 1 | one rise per game | same |
+| `pharo_l2` | generic-10KB | never | 1 (1, then 2 four seconds later on a cabinet) | one rise per game | same |
 | `jngld_l2` | generic-10KB | never | 1 | one rise per game | same |
 | `strlt_l1` | generic-12KB | never | 2 | one rise per game | same |
 | `lsrcu_l2` | lsrcu_l2 | never | 2 | one rise per game | same |
@@ -31,6 +31,11 @@ through complete games:
 The masked rule gives the right answer on all five.  The 12KB generic map
 and `lsrcu_l2` still use `bool`: it was correct on the one ROM measured for
 each.  The other ROMs of both generic maps were not measured.
+
+evilwraith confirmed the `fpwr2_l2`, `pharo_l2` and `jngld_l2` rows on a
+cabinet (see the pull request for this change).  On Pharaoh, 0x58 counts
+down in BCD on the last ball, so "ball in play is 0" is not a substitute
+for this byte there.
 
 A restart (Start pressed during a game) does not raise `game_over` on any
 of the five.  Star Light can show 1 for about four seconds at the end of a
