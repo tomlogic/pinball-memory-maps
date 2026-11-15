@@ -78,7 +78,7 @@
       "encoding": "int"
     },
     "game_over": {
-      "_notes": "0 in play, 1 in attract after power-on, 2 after a game, 0xFF during each end-of-ball bonus count",
+      "_notes": "0 in play, 1 or 2 in attract; fpwr2_l2 also writes 0xFF during each end-of-ball bonus count",
       "label": "Game Over",
       "start": "0xC9",
       "mask": "0x03",
