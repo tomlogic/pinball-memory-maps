@@ -1169,7 +1169,6 @@
 * [Silverball Mania (7-digit conversion)][d1254] _slbmanib_
 * [Silverball Mania (Horseshoe No Spotting MOD rev. 13)][2a9b7] _slbmanid_
 * [Silverball Mania (Horseshoe Spot MOD rev. 13)][2a9b7] _slbmanic_
-* [Simpsons Kooky Carnival, The (Redemption) (V2.0)][d777a] _scarn200_
 * [Simpsons Pinball Party, The (2.04 French)][f0711] _simp204f_
 * [Simpsons Pinball Party, The (2.04 Italian)][f0711] _simp204i_
 * [Simpsons Pinball Party, The (2.04 Spanish)][f0711] _simp204l_
@@ -1999,7 +1998,6 @@
 [d4faf]: maps/bally/as-2518-35/eballdlx.map.json
 [d542c]: maps/williams/wpc/mb_106.map.json
 [d6315]: maps/gottlieb/system3/opthund.map.json
-[d777a]: maps/stern/sam/scarn200.map.json
 [d85e1]: maps/williams/system11/cycln_l5.map.json
 [d87ce]: maps/gottlieb/system3/lca2.map.json
 [d8c0e]: maps/dataeast/version3b/maverick.map.json

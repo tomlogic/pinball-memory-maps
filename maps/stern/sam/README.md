@@ -38,10 +38,6 @@ From `0x02102008` NVRAM holds an array of 8-byte adjustment records:
 +5  0xFF 0xFF 0xFF
 ```
 
-The redemption game The Simpsons Kooky Carnival (`scarn200`) keeps the same records from
-`0x02100008` (ID n at `0x02100000 + 8n`, 26 IDs); it has no players, balls or tilt, so its
-map declares only the adjustments and Master Volume.
-
 Every record in every image examined satisfies the check byte. A write that changes
 the value without updating the check byte is silently discarded when the ROM next
 reads its adjustments, so the maps declare the records as one repeating checksum entry
@@ -139,7 +135,7 @@ is a different setting.
 |---|---|
 | `0x02110204` | mtl_180, mtl_180h, twd_160h |
 | `0x02110248` | acd_170, acd_170h, im_185ve, im_186, im_186ve, st_162, st_162h |
-| `0x0211024C` | bdk_294, csi_240, fg_1200af, ij4_210, nba_802, potc_600as, scarn200, shr_141, sman_210–sman_240, twenty4_150, wof_500, wpt_140a |
+| `0x0211024C` | bdk_294, csi_240, fg_1200af, ij4_210, nba_802, potc_600as, shr_141, sman_210–sman_240, twenty4_150, wof_500, wpt_140a |
 | `0x02110250` | avr_200, avs_170, avs_170h, bbh_170, mt_145h, mtl_170h, rsn_110h, sman_261, smanve_100, smanve_101, st_161h, tf_180, trn_174h, twd_156, xmn_151h |
 
 ### Audits
