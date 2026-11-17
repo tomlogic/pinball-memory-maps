@@ -23,22 +23,15 @@
     "validation": {
       "checksum": [
         {
-          "label": "Free Play adjustment",
-          "start": "0x02102110",
-          "end": "0x02102114",
-          "complement": true
-        },
-        {
-          "label": "Balls Per Game adjustment",
-          "start": "0x021020F8",
-          "end": "0x021020FC",
-          "complement": true
-        },
-        {
-          "label": "Maximum Credits adjustment",
-          "start": "0x02102108",
-          "end": "0x0210210C",
-          "complement": true
+          "_notes": "112 adjustments: 4-byte LE value, 1-byte checksum, 3 bytes 0xFF padding",
+          "label": "Adjustment {#} (checksum)",
+          "start": "0x02102008",
+          "length": 5,
+          "complement": true,
+          "repeat": {
+            "count": 112,
+            "step": 8
+          }
         },
         {
           "label": "Master Volume",
@@ -47,743 +40,32 @@
           "complement": true
         },
         {
-          "label": "Grand Champion",
+          "label": "Champion record {#} (checksum)",
           "start": "0x02102B48",
+          "repeat": {
+            "count": 12,
+            "step": 32
+          },
           "length": 30,
           "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #1",
-          "start": "0x02102B68",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #2",
-          "start": "0x02102B88",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #3",
-          "start": "0x02102BA8",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "High Score #4",
-          "start": "0x02102BC8",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Combo Champion",
-          "start": "0x02102BE8",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Best Combo Champion",
-          "start": "0x02102C08",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Spider Champion",
-          "start": "0x02102C28",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Spider Sense Champion",
-          "start": "0x02102C48",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Battle Royale Champion",
-          "start": "0x02102C68",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Super Hero Champion",
-          "start": "0x02102C88",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Best Bonus Champion",
-          "start": "0x02102CA8",
-          "length": 30,
-          "bits": 16,
-          "complement": true
-        },
-        {
-          "label": "Std Adj #01 Replay Type",
-          "start": "0x02102058",
-          "end": "0x0210205C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #02 Replay Percentage",
-          "start": "0x02102060",
-          "end": "0x02102064",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #03 Replay Award",
-          "start": "0x02102068",
-          "end": "0x0210206C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #04 Replay Levels",
-          "start": "0x02102070",
-          "end": "0x02102074",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #05 Auto Replay Start",
-          "start": "0x02102078",
-          "end": "0x0210207C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #06 Dynamic Replay Start",
-          "start": "0x02102080",
-          "end": "0x02102084",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #07 Replay Level #1",
-          "start": "0x02102088",
-          "end": "0x0210208C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #08 Replay Level #2",
-          "start": "0x02102090",
-          "end": "0x02102094",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #09 Replay Level #3",
-          "start": "0x02102098",
-          "end": "0x0210209C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #10 Replay Level #4",
-          "start": "0x021020A0",
-          "end": "0x021020A4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #11 Replay Boost",
-          "start": "0x021020A8",
-          "end": "0x021020AC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #12 Special Limit",
-          "start": "0x021020B0",
-          "end": "0x021020B4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #13 Special Percentage",
-          "start": "0x021020C0",
-          "end": "0x021020C4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #14 Special Award",
-          "start": "0x021020B8",
-          "end": "0x021020BC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #15 Free Game Limit",
-          "start": "0x021020C8",
-          "end": "0x021020CC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #16 Extra Ball Limit",
-          "start": "0x021020D0",
-          "end": "0x021020D4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #17 Extra Ball Percentage",
-          "start": "0x021020D8",
-          "end": "0x021020DC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #18 Game Pricing",
-          "start": "0x021020E0",
-          "end": "0x021020E4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #19 Match Percentage",
-          "start": "0x021020F0",
-          "end": "0x021020F4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #20 Match Award",
-          "start": "0x021020E8",
-          "end": "0x021020EC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #22 Tilt Warnings",
-          "start": "0x02102100",
-          "end": "0x02102104",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #24 Allow High Scores",
-          "start": "0x02102180",
-          "end": "0x02102184",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #25 High Score Award",
-          "start": "0x021021B0",
-          "end": "0x021021B4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #26 Grand Champion Awards",
-          "start": "0x021021B8",
-          "end": "0x021021BC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #27 High Score #1 Awards",
-          "start": "0x021021C0",
-          "end": "0x021021C4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #28 High Score #2 Awards",
-          "start": "0x021021C8",
-          "end": "0x021021CC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #29 High Score #3 Awards",
-          "start": "0x021021D0",
-          "end": "0x021021D4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #30 High Score #4 Awards",
-          "start": "0x021021D8",
-          "end": "0x021021DC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #31 Grand Champion Score",
-          "start": "0x02102188",
-          "end": "0x0210218C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #32 High Score #1",
-          "start": "0x02102190",
-          "end": "0x02102194",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #33 High Score #2",
-          "start": "0x02102198",
-          "end": "0x0210219C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #34 High Score #3",
-          "start": "0x021021A0",
-          "end": "0x021021A4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #35 High Score #4",
-          "start": "0x021021A8",
-          "end": "0x021021AC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #36 HSTD Initials",
-          "start": "0x021021E0",
-          "end": "0x021021E4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #37 HSTD Reset Count",
-          "start": "0x021021E8",
-          "end": "0x021021EC",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #39 Language",
-          "start": "0x02102038",
-          "end": "0x0210203C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #40 Player Language Select",
-          "start": "0x02102050",
-          "end": "0x02102054",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #41 Custom Message",
-          "start": "0x02102010",
-          "end": "0x02102014",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #42 Flash Lamp Power",
-          "start": "0x02102028",
-          "end": "0x0210202C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #43 Coil Pulse Power",
-          "start": "0x02102008",
-          "end": "0x0210200C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #44 Knocker Volume",
-          "start": "0x02102118",
-          "end": "0x0210211C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #45 Game Restart",
-          "start": "0x02102120",
-          "end": "0x02102124",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #46 Bill Validator",
-          "start": "0x02102128",
-          "end": "0x0210212C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #47 Music Volume",
-          "start": "0x02102048",
-          "end": "0x0210204C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #48 Ball Save Time",
-          "start": "0x02102130",
-          "end": "0x02102134",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #49 Timed Plunger",
-          "start": "0x02102138",
-          "end": "0x0210213C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #50 Flipper Ball Launch",
-          "start": "0x02102140",
-          "end": "0x02102144",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #51 Coindoor Ball Saver",
-          "start": "0x02102148",
-          "end": "0x0210214C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #52 Competition Mode",
-          "start": "0x02102150",
-          "end": "0x02102154",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #53 Consolation Ball",
-          "start": "0x02102158",
-          "end": "0x0210215C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #54 Fast Boot",
-          "start": "0x02102020",
-          "end": "0x02102024",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #55 Q24 Option",
-          "start": "0x02102160",
-          "end": "0x02102164",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #56 Ticket Dispenser",
-          "start": "0x02102168",
-          "end": "0x0210216C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #57 Player Competition",
-          "start": "0x02102170",
-          "end": "0x02102174",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #58 Team Scores",
-          "start": "0x02102178",
-          "end": "0x0210217C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #59 Location ID",
-          "start": "0x02102040",
-          "end": "0x02102044",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #60 Game ID",
-          "start": "0x02102030",
-          "end": "0x02102034",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #61 Time Format",
-          "start": "0x02102018",
-          "end": "0x0210201C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #62 Coin Input Delay",
-          "start": "0x021021F0",
-          "end": "0x021021F4",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #63 Lost Ball Recovery",
-          "start": "0x021021F8",
-          "end": "0x021021FC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #01 Pop Bumper Difficulty",
-          "start": "0x02102200",
-          "end": "0x02102204",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #02 White Arrow Shot Difficulty",
-          "start": "0x02102208",
-          "end": "0x0210220C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #03 Extra Ball Memory",
-          "start": "0x02102210",
-          "end": "0x02102214",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #04 Green Goblin Difficulty",
-          "start": "0x02102218",
-          "end": "0x0210221C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #05 Doc Ock Difficulty",
-          "start": "0x02102220",
-          "end": "0x02102224",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #06 Sandman Difficulty",
-          "start": "0x02102228",
-          "end": "0x0210222C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #07 Venom Difficulty",
-          "start": "0x02102230",
-          "end": "0x02102234",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #08 Battle Royale Difficulty",
-          "start": "0x02102238",
-          "end": "0x0210223C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #09 Reset Villains After",
-          "start": "0x02102240",
-          "end": "0x02102244",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #10 Mode: Bonesaw Timer",
-          "start": "0x02102248",
-          "end": "0x0210224C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #11 Mode: Bugle Timer",
-          "start": "0x02102250",
-          "end": "0x02102254",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #12 Mode: Harry Timer",
-          "start": "0x02102258",
-          "end": "0x0210225C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #13 Mode: MJ Timer",
-          "start": "0x02102260",
-          "end": "0x02102264",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #14 Mode: Spiderman Timer",
-          "start": "0x02102268",
-          "end": "0x0210226C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #15 Black Suit Multiball Difficulty",
-          "start": "0x02102270",
-          "end": "0x02102274",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #16 Locks From Plunger",
-          "start": "0x02102278",
-          "end": "0x0210227C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #17 Insult Level",
-          "start": "0x02102280",
-          "end": "0x02102284",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #18 Combo Champion",
-          "start": "0x02102288",
-          "end": "0x0210228C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #19 Combo Champion Award",
-          "start": "0x02102290",
-          "end": "0x02102294",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #20 Combo Champion Awards",
-          "start": "0x02102298",
-          "end": "0x0210229C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #21 Best Combo Champion",
-          "start": "0x021022A0",
-          "end": "0x021022A4",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #22 Best Combo Champion Award",
-          "start": "0x021022A8",
-          "end": "0x021022AC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #23 Best Combo Champion Awards",
-          "start": "0x021022B0",
-          "end": "0x021022B4",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #24 Spider Champion",
-          "start": "0x021022B8",
-          "end": "0x021022BC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #25 Spider Champion Award",
-          "start": "0x021022C0",
-          "end": "0x021022C4",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #26 Spider Champion Awards",
-          "start": "0x021022C8",
-          "end": "0x021022CC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #27 Spider Sense Champion",
-          "start": "0x021022D0",
-          "end": "0x021022D4",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #28 Spider Sense Champion Award",
-          "start": "0x021022D8",
-          "end": "0x021022DC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #29 Spider Sense Champion Awards",
-          "start": "0x021022E0",
-          "end": "0x021022E4",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #30 Battle Royale Champion",
-          "start": "0x021022E8",
-          "end": "0x021022EC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #31 Battle Royale Champion Award",
-          "start": "0x021022F0",
-          "end": "0x021022F4",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #32 Battle Royale Champion Awards",
-          "start": "0x021022F8",
-          "end": "0x021022FC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #33 Super Hero Champion",
-          "start": "0x02102300",
-          "end": "0x02102304",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #34 Super Hero Champion Award",
-          "start": "0x02102308",
-          "end": "0x0210230C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #35 Super Hero Champion Awards",
-          "start": "0x02102310",
-          "end": "0x02102314",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #36 Best Bonus Champion",
-          "start": "0x02102318",
-          "end": "0x0210231C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #37 Best Bonus Champion Award",
-          "start": "0x02102320",
-          "end": "0x02102324",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #38 Best Bonus Champion Awards",
-          "start": "0x02102328",
-          "end": "0x0210232C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #39 Disable Green Goblin Coil",
-          "start": "0x02102330",
-          "end": "0x02102334",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #40 Disable Doc Ock Motor",
-          "start": "0x02102338",
-          "end": "0x0210233C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #41 Disable Sandman 3-Bank Motor",
-          "start": "0x02102340",
-          "end": "0x02102344",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #42 Disable Sandman Motor",
-          "start": "0x02102348",
-          "end": "0x0210234C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #43 Disable Left Control Gate",
-          "start": "0x02102350",
-          "end": "0x02102354",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #44 Disable Right Control Gate",
-          "start": "0x02102358",
-          "end": "0x0210235C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #45 Disable Loop Diverter",
-          "start": "0x02102360",
-          "end": "0x02102364",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #46 Loop Awards",
-          "start": "0x02102368",
-          "end": "0x0210236C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #47 Shaker Motor (Optional)",
-          "start": "0x02102370",
-          "end": "0x02102374",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #48 Abort Animations",
-          "start": "0x02102378",
-          "end": "0x0210237C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #49 Spider Sense Lane Exit",
-          "start": "0x02102380",
-          "end": "0x02102384",
           "complement": true
         }
+      ]
+    },
+    "values": {
+      "no_yes": [
+        "NO",
+        "YES"
+      ],
+      "credit_ticket_token": [
+        "CREDIT",
+        "TICKET",
+        "TOKEN"
+      ],
+      "easy_medium_hard": [
+        "EASY",
+        "MEDIUM",
+        "HARD"
       ]
     }
   },
@@ -831,44 +113,13 @@
       "invert": true
     },
     "tilted": {
+      "_notes": "tilted when (value & 0x1F) == 0x14",
       "label": "Tilted",
-      "encoding": "enum",
+      "encoding": "bool",
       "start": "0x0003443C",
       "mask": "0x1F",
-      "values": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
+      "offset": -20,
+      "invert": true
     },
     "volume": {
       "label": "Master Volume",
@@ -1134,6 +385,7 @@
         "length": 4,
         "min": 5000000,
         "max": 500000000,
+        "multiple_of": 1000000,
         "default": 30000000
       },
       "06": {
@@ -1143,6 +395,7 @@
         "length": 4,
         "min": 5000000,
         "max": 500000000,
+        "multiple_of": 1000000,
         "default": 70000000
       },
       "07": {
@@ -1152,6 +405,7 @@
         "length": 4,
         "min": 5000000,
         "max": 500000000,
+        "multiple_of": 1000000,
         "default": 30000000
       },
       "08": {
@@ -1161,6 +415,7 @@
         "length": 4,
         "min": 5000000,
         "max": 1000000000,
+        "multiple_of": 1000000,
         "default": 90000000
       },
       "09": {
@@ -1170,6 +425,7 @@
         "length": 4,
         "min": 5000000,
         "max": 1500000000,
+        "multiple_of": 1000000,
         "default": 150000000
       },
       "10": {
@@ -1179,12 +435,14 @@
         "length": 4,
         "min": 5000000,
         "max": 2000000000,
+        "multiple_of": 1000000,
         "default": 210000000
       },
       "11": {
         "label": "Replay Boost",
         "start": "0x021020A8",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "12": {
@@ -1344,11 +602,7 @@
         "label": "Match Award",
         "start": "0x021020E8",
         "encoding": "enum",
-        "values": [
-          "CREDIT",
-          "TICKET",
-          "TOKEN"
-        ],
+        "values": "credit_ticket_token",
         "default": 0
       },
       "21": {
@@ -1381,18 +635,15 @@
       "24": {
         "label": "Allow High Scores",
         "start": "0x02102180",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "25": {
         "label": "High Score Award",
         "start": "0x021021B0",
         "encoding": "enum",
-        "values": [
-          "CREDIT",
-          "TICKET",
-          "TOKEN"
-        ],
+        "values": "credit_ticket_token",
         "default": 0
       },
       "26": {
@@ -1447,6 +698,7 @@
         "length": 4,
         "min": 1000000,
         "max": 1000000000,
+        "multiple_of": 1000000,
         "default": 150000000
       },
       "32": {
@@ -1456,6 +708,7 @@
         "length": 4,
         "min": 1000000,
         "max": 1000000000,
+        "multiple_of": 1000000,
         "default": 120000000
       },
       "33": {
@@ -1465,6 +718,7 @@
         "length": 4,
         "min": 1000000,
         "max": 1000000000,
+        "multiple_of": 1000000,
         "default": 90000000
       },
       "34": {
@@ -1474,6 +728,7 @@
         "length": 4,
         "min": 1000000,
         "max": 1000000000,
+        "multiple_of": 1000000,
         "default": 60000000
       },
       "35": {
@@ -1483,6 +738,7 @@
         "length": 4,
         "min": 1000000,
         "max": 1000000000,
+        "multiple_of": 1000000,
         "default": 30000000
       },
       "36": {
@@ -1502,6 +758,7 @@
         "length": 4,
         "min": 0,
         "max": 9900,
+        "multiple_of": 100,
         "default": 2000,
         "special_values": {
           "0": "OFF"
@@ -1510,7 +767,8 @@
       "38": {
         "label": "Free Play",
         "start": "0x02102110",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "39": {
@@ -1529,7 +787,8 @@
       "40": {
         "label": "Player Language Select",
         "start": "0x02102050",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "41": {
@@ -1538,8 +797,7 @@
         "encoding": "enum",
         "values": [
           "OFF",
-          "ON",
-          "CHANGE"
+          "ON"
         ],
         "default": 1
       },
@@ -1579,13 +837,15 @@
       "45": {
         "label": "Game Restart",
         "start": "0x02102120",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "46": {
         "label": "Bill Validator",
         "start": "0x02102128",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "47": {
@@ -1609,7 +869,7 @@
           "0": "NO BALL SAVES",
           "16": "AUTO"
         },
-        "suffix": " s"
+        "units": "seconds"
       },
       "49": {
         "label": "Timed Plunger",
@@ -1622,7 +882,7 @@
         "special_values": {
           "0": "OFF"
         },
-        "suffix": " s"
+        "units": "seconds"
       },
       "50": {
         "label": "Flipper Ball Launch",
@@ -1640,25 +900,29 @@
       "51": {
         "label": "Coindoor Ball Saver",
         "start": "0x02102148",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "52": {
         "label": "Competition Mode",
         "start": "0x02102150",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "53": {
         "label": "Consolation Ball",
         "start": "0x02102158",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "54": {
         "label": "Fast Boot",
         "start": "0x02102020",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "55": {
@@ -1675,19 +939,22 @@
       "56": {
         "label": "Ticket Dispenser",
         "start": "0x02102168",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "57": {
         "label": "Player Competition",
         "start": "0x02102170",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "58": {
         "label": "Team Scores",
         "start": "0x02102178",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "59": {
@@ -1733,7 +1000,8 @@
       "63": {
         "label": "Lost Ball Recovery",
         "start": "0x021021F8",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       }
     },
@@ -1742,11 +1010,7 @@
         "label": "Pop Bumper Difficulty",
         "start": "0x02102200",
         "encoding": "enum",
-        "values": [
-          "EASY",
-          "MEDIUM",
-          "HARD"
-        ],
+        "values": "easy_medium_hard",
         "default": 1
       },
       "02": {
@@ -1765,51 +1029,36 @@
       "03": {
         "label": "Extra Ball Memory",
         "start": "0x02102210",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "04": {
         "label": "Green Goblin Difficulty",
         "start": "0x02102218",
         "encoding": "enum",
-        "values": [
-          "EASY",
-          "MEDIUM",
-          "HARD"
-        ],
+        "values": "easy_medium_hard",
         "default": 1
       },
       "05": {
         "label": "Doc Ock Difficulty",
         "start": "0x02102220",
         "encoding": "enum",
-        "values": [
-          "EASY",
-          "MEDIUM",
-          "HARD"
-        ],
+        "values": "easy_medium_hard",
         "default": 1
       },
       "06": {
         "label": "Sandman Difficulty",
         "start": "0x02102228",
         "encoding": "enum",
-        "values": [
-          "EASY",
-          "MEDIUM",
-          "HARD"
-        ],
+        "values": "easy_medium_hard",
         "default": 1
       },
       "07": {
         "label": "Venom Difficulty",
         "start": "0x02102230",
         "encoding": "enum",
-        "values": [
-          "EASY",
-          "MEDIUM",
-          "HARD"
-        ],
+        "values": "easy_medium_hard",
         "default": 1
       },
       "08": {
@@ -1884,11 +1133,7 @@
         "label": "Black Suit Multiball Difficulty",
         "start": "0x02102270",
         "encoding": "enum",
-        "values": [
-          "EASY",
-          "MEDIUM",
-          "HARD"
-        ],
+        "values": "easy_medium_hard",
         "default": 1
       },
       "16": {
@@ -1928,11 +1173,7 @@
         "label": "Combo Champion Award",
         "start": "0x02102290",
         "encoding": "enum",
-        "values": [
-          "CREDIT",
-          "TICKET",
-          "TOKEN"
-        ],
+        "values": "credit_ticket_token",
         "default": 0
       },
       "20": {
@@ -1958,11 +1199,7 @@
         "label": "Best Combo Champion Award",
         "start": "0x021022A8",
         "encoding": "enum",
-        "values": [
-          "CREDIT",
-          "TICKET",
-          "TOKEN"
-        ],
+        "values": "credit_ticket_token",
         "default": 0
       },
       "23": {
@@ -1987,11 +1224,7 @@
         "label": "Spider Champion Award",
         "start": "0x021022C0",
         "encoding": "enum",
-        "values": [
-          "CREDIT",
-          "TICKET",
-          "TOKEN"
-        ],
+        "values": "credit_ticket_token",
         "default": 0
       },
       "26": {
@@ -2010,17 +1243,14 @@
         "length": 4,
         "min": 1000000,
         "max": 10000000,
+        "multiple_of": 1000000,
         "default": 5000000
       },
       "28": {
         "label": "Spider Sense Champion Award",
         "start": "0x021022D8",
         "encoding": "enum",
-        "values": [
-          "CREDIT",
-          "TICKET",
-          "TOKEN"
-        ],
+        "values": "credit_ticket_token",
         "default": 0
       },
       "29": {
@@ -2039,17 +1269,14 @@
         "length": 4,
         "min": 10000000,
         "max": 100000000,
+        "multiple_of": 1000000,
         "default": 50000000
       },
       "31": {
         "label": "Battle Royale Champion Award",
         "start": "0x021022F0",
         "encoding": "enum",
-        "values": [
-          "CREDIT",
-          "TICKET",
-          "TOKEN"
-        ],
+        "values": "credit_ticket_token",
         "default": 0
       },
       "32": {
@@ -2068,17 +1295,14 @@
         "length": 4,
         "min": 75000000,
         "max": 300000000,
+        "multiple_of": 1000000,
         "default": 150000000
       },
       "34": {
         "label": "Super Hero Champion Award",
         "start": "0x02102308",
         "encoding": "enum",
-        "values": [
-          "CREDIT",
-          "TICKET",
-          "TOKEN"
-        ],
+        "values": "credit_ticket_token",
         "default": 0
       },
       "35": {
@@ -2097,17 +1321,14 @@
         "length": 4,
         "min": 1000000,
         "max": 20000000,
+        "multiple_of": 1000000,
         "default": 10000000
       },
       "37": {
         "label": "Best Bonus Champion Award",
         "start": "0x02102320",
         "encoding": "enum",
-        "values": [
-          "CREDIT",
-          "TICKET",
-          "TOKEN"
-        ],
+        "values": "credit_ticket_token",
         "default": 0
       },
       "38": {
@@ -2122,43 +1343,50 @@
       "39": {
         "label": "Disable Green Goblin Coil",
         "start": "0x02102330",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "40": {
         "label": "Disable Doc Ock Motor",
         "start": "0x02102338",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "41": {
         "label": "Disable Sandman 3-Bank Motor",
         "start": "0x02102340",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "42": {
         "label": "Disable Sandman Motor",
         "start": "0x02102348",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "43": {
         "label": "Disable Left Control Gate",
         "start": "0x02102350",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "44": {
         "label": "Disable Right Control Gate",
         "start": "0x02102358",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "45": {
         "label": "Disable Loop Diverter",
         "start": "0x02102360",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "46": {

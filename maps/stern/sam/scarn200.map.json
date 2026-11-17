@@ -31,143 +31,22 @@
           "complement": true
         },
         {
-          "label": "Std Adj #01 Language",
-          "start": "0x02100038",
-          "end": "0x0210003C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #02 Custom Message",
-          "start": "0x02100010",
-          "end": "0x02100014",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #03 Flash Lamp Power",
-          "start": "0x02100028",
-          "end": "0x0210002C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #04 Coil Pulse Power",
+          "_notes": "26 adjustments: 4-byte LE value, 1-byte checksum, 3 bytes 0xFF padding",
+          "label": "Adjustment {#} (checksum)",
           "start": "0x02100008",
-          "end": "0x0210000C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #05 Music Volume",
-          "start": "0x02100048",
-          "end": "0x0210004C",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #06 Fast Boot",
-          "start": "0x02100020",
-          "end": "0x02100024",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #07 Location ID",
-          "start": "0x02100040",
-          "end": "0x02100044",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #08 Game ID",
-          "start": "0x02100030",
-          "end": "0x02100034",
-          "complement": true
-        },
-        {
-          "label": "Std Adj #09 Time Format",
-          "start": "0x02100018",
-          "end": "0x0210001C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #01 Ticket Point Payout Percent",
-          "start": "0x02100068",
-          "end": "0x0210006C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #02 Ticket Point Value",
-          "start": "0x02100070",
-          "end": "0x02100074",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #03 Coin Value",
-          "start": "0x02100078",
-          "end": "0x0210007C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #04 1 Ticket Minimum",
-          "start": "0x02100080",
-          "end": "0x02100084",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #05 Show Points/Tickets",
-          "start": "0x02100088",
-          "end": "0x0210008C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #06 Attract Music",
-          "start": "0x02100090",
-          "end": "0x02100094",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #07 Award Type",
-          "start": "0x02100098",
-          "end": "0x0210009C",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #08 Base Awards",
-          "start": "0x021000A0",
-          "end": "0x021000A4",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #09 Ticket Alarm",
-          "start": "0x021000A8",
-          "end": "0x021000AC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #10 Stuck Coins Before Shake",
-          "start": "0x021000B0",
-          "end": "0x021000B4",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #11 Shaker Motor On Time",
-          "start": "0x021000B8",
-          "end": "0x021000BC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #12 Maximum Kooky Award",
-          "start": "0x021000C0",
-          "end": "0x021000C4",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #13 Show ??? in Attract",
-          "start": "0x021000C8",
-          "end": "0x021000CC",
-          "complement": true
-        },
-        {
-          "label": "Feature Adj #14 Kooky Award Difficulty",
-          "start": "0x021000D0",
-          "end": "0x021000D4",
-          "complement": true
+          "length": 5,
+          "complement": true,
+          "repeat": {
+            "count": 26,
+            "step": 8
+          }
         }
+      ]
+    },
+    "values": {
+      "no_yes": [
+        "NO",
+        "YES"
       ]
     }
   },
@@ -202,8 +81,7 @@
         "encoding": "enum",
         "values": [
           "OFF",
-          "ON",
-          "CHANGE"
+          "ON"
         ],
         "default": 1
       },
@@ -241,7 +119,8 @@
       "06": {
         "label": "Fast Boot",
         "start": "0x02100020",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "07": {
@@ -299,12 +178,14 @@
         "length": 4,
         "min": 5,
         "max": 200,
+        "multiple_of": 5,
         "default": 25
       },
       "04": {
         "label": "1 Ticket Minimum",
         "start": "0x02100080",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "05": {
@@ -320,7 +201,8 @@
       "06": {
         "label": "Attract Music",
         "start": "0x02100090",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "07": {
@@ -349,7 +231,8 @@
       "09": {
         "label": "Ticket Alarm",
         "start": "0x021000A8",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 1
       },
       "10": {
@@ -382,7 +265,8 @@
       "13": {
         "label": "Show ??? in Attract",
         "start": "0x021000C8",
-        "encoding": "bool",
+        "encoding": "enum",
+        "values": "no_yes",
         "default": 0
       },
       "14": {
