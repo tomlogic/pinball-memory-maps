@@ -1234,7 +1234,6 @@
 * [Speakeasy (4 Players)][7f20b] _speakes4_
 * [Spectrum (rev. 4)][a26fb] _spectru4_
 * [Speed Test][797e4] _stest_
-* [Spider-Man Vault Edition (V1.0)][491d9] _smanve_100_
 * [Spider-Man Vault Edition (V1.01)][491d9] _smanve_101_
 * [Spider-Man Vault Edition (V1.01) (Colored MOD)][491d9] _smanve_101c_
 * [Spirit][aa641] _spirit0_
