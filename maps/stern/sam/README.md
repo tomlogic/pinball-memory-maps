@@ -291,7 +291,8 @@ and `01` again at the moment the game ends. The maps decode it as:
 
 A few maps keep a narrower bit test that held on every sample of their recording and
 of a cabinet game (bdk_294, mtl_*, smanve_101, twd_160h: `tilted` bit 0x04 or 0x02;
-bbh_170, bdk_294, csi_240, im_*, mtl_*: `game_over` mask 0x12, 0x14, 0x30 or 0x38).
+bbh_170, csi_240, im_*, mtl_*: `game_over` mask 0x12, 0x14, 0x30 or 0x38).
+bdk_294 and smanve_101 read `game_over` from a mode byte instead (see below).
 Family Guy's `game_over` is a separate byte (`0x00032E04`: 05 in attract, 00 in a game).
 
 Single bits of the status byte misread a full game, because mode values carry them:
@@ -311,6 +312,49 @@ worse on a cabinet, and were replaced by the status byte:
 | st_162h | `tilted` `0x0003310B` | also set for a moment at each tilt warning |
 | twd_156 | `game_over` `0x00035E48` | 0 after power-up until a game has ended |
 | twenty4_150 | `game_over` `0x02102A3C` (NVRAM) | keeps 1 when a game is cut off by power-off |
+
+### Mode byte (bdk_294, smanve_101)
+
+On Batman: The Dark Knight 2.94 and Spider-Man Vault Edition 1.01 the status byte holds
+a scene number in play, not a set of flags. `0x000348EA` on bdk_294 took 18, 20, 65, 74,
+83, 90, 97, 107 and 142-145 in play; `0x00032AEA` on smanve_101 took 19, 21, 80-82, 106,
+124-128, 147, 152 and 157. 65 and 97 (bdk_294) and 128 (smanve_101) have neither bit
+0x10 nor 0x02 set, so mask 0x12 inverted reads game over in the middle of a ball. On
+smanve_101 the status byte also keeps an in-play value through high-score entry and
+returns to `01` only when attract starts, 15 to 140 s after the last drain, so a game
+started before then shows no end at all.
+
+Both maps read `game_over` from bit 0x10 of a machine-mode byte (`0x00033B28` on
+bdk_294, `0x00031BC4` on smanve_101):
+
+| value | when |
+|---|---|
+| 0 | in play (multiball, locks, tilt, ball save, hold-Start restart) |
+| 4, 5 | end-of-ball bonus |
+| 88 | high-score entry |
+| 24, 152 | game ending |
+| 16 | attract |
+
+| ROM | games | false ends, status byte mask 0x12 | false ends, mode byte | mode byte rises after the last drain |
+|---|---|---|---|---|
+| bdk_294 | 30 headless (28 decoded with both) | 163, in all 30 games | 0 | 2.7-8.5 s |
+| smanve_101 | 35 headless | 13, in 10 games | 0 | 3.2-24.2 s |
+
+Measured with headless libpinmame on the real ROMs, both fields decoded every two
+frames through 1- to 4-player games with multiball, high-score entry, tilt, hold-Start
+restarts and games killed mid-play. The mode byte rose exactly once per finished game,
+with the final score in place at the rise, and not at all on a restart or a kill.
+
+On a cabinet (VPX standalone with the Legends Unchained launcher), smanve_101 with the
+mode byte recorded one end per game in three games, including one where Start was
+pressed right after GAME OVER. With the status byte the same cabinet recorded no end
+for a game whose next game was started after the match and before attract, and another
+cabinet split games 27 and 34 s into ball 3. The bdk_294 mode byte has not been played
+on a cabinet yet.
+
+The mode byte reads 0 for the first 0.35 s after power-on, so a reader that samples in
+that window sees a game-over rise at launch carrying the previous game's score.
+`tilted` still comes from the status byte on both maps.
 
 ### Tilt warnings
 

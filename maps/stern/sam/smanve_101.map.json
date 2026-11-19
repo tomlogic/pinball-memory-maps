@@ -25,7 +25,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 15,
+    "version": 16,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
@@ -202,11 +202,11 @@
       "start": "0x00032AB9"
     },
     "game_over": {
+      "_notes": "Machine-mode byte: 16 attract, 0 in play, 4-5 end-of-ball bonus, 88 high-score entry, 24/152 game ending. The status byte 0x00032AEA is a scene number in play; its 128 reads as game over under mask 0x12, and it stays in-game until attract starts. See README.",
       "label": "Game Over",
       "encoding": "bool",
-      "start": "0x00032AEA",
-      "mask": "0x12",
-      "invert": true
+      "start": "0x00031BC4",
+      "mask": "0x10"
     },
     "tilted": {
       "label": "Tilted",
