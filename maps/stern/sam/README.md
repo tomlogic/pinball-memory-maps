@@ -282,17 +282,17 @@ Jones, + 0x34 on Spider-Man 2.10 and 2.20, + 0x48 on Wheel of Fortune. It reads 
 power-up; in a game a base value (`12`, `13` or `14` by game) and, while ball serves,
 modes and animations run, other values (`26`, `28`, `40`, `43`, `4C`, `5F`, `61`, `7B`,
 ...); from the tilt to the next ball served the base value plus 2 (`14`, `15` or `16`);
-and `01` again at the moment the game ends. The maps decode it as:
+and `01` again once the game has ended and attract starts. The maps decode `tilted` from it
+(`game_over` is the mode byte, below):
 
-- `game_over`: no bit above 0x01 set (mask 0xFE, inverted), i.e. the byte is `00` or `01`.
 - `tilted`: the tilt value alone under mask 0x1F (0x3F on Mustang, whose `B5`
   equals `15` under 0x1F; 0x7F on X-Men and Rolling Stones, `55`), written as `bool` with
   `offset` minus the tilt value and `invert`, so only that value reads true.
 
 A few maps keep a narrower bit test that held on every sample of their recording and
-of a cabinet game (bdk_294, mtl_*, smanve_101, twd_160h: `tilted` bit 0x04 or 0x02;
-bbh_170, bdk_294, csi_240, im_*, mtl_*: `game_over` mask 0x12, 0x14, 0x30 or 0x38).
-Family Guy's `game_over` is a separate byte (`0x00032E04`: 05 in attract, 00 in a game).
+of a cabinet game (bdk_294, mtl_*, smanve_101, twd_160h: `tilted` bit 0x04 or 0x02).
+ij4_210 still reads `game_over` from the status byte: no game starts headless, so its mode
+byte has not been found.
 
 Single bits of the status byte misread a full game, because mode values carry them:
 Avatar's `40`/`45`, Avengers' `61`, TRON's `4D` and X-Men's `28` read as game over under
@@ -311,6 +311,28 @@ worse on a cabinet, and were replaced by the status byte:
 | st_162h | `tilted` `0x0003310B` | also set for a moment at each tilt warning |
 | twd_156 | `game_over` `0x00035E48` | 0 after power-up until a game has ended |
 | twenty4_150 | `game_over` `0x02102A3C` (NVRAM) | keeps 1 when a game is cut off by power-off |
+
+### Mode byte
+
+`game_over` is read from a second byte, the mode byte (one address per map, not at a fixed
+distance from the player). It reads `10` (16) in attract and `00` in play, `04`/`05` during
+the end-of-ball bonus count, and through the end of a game:
+
+```
+05 -> 04 -> 00 -> 18 (game over) [-> 58 high-score entry -> 18] -> 98 (match) -> 18 -> 10 (attract)
+                                                                   -> B8 -> 20 -> 00 (Start pressed: next game)
+```
+
+Bit `0x10` is game over. It rises 3-18 s after the last drain, with the final scores already in
+place, before high-score entry and match. The status byte above reads `01` only once attract
+starts, 11-45 s later, and never when the next game is started before that.
+
+Start is ignored during the bonus count and taken when the match would begin (`98`). Pressed
+then, the game ends and the next one starts within ~0.1 s: bit `0x10` is up that long and no
+other byte marks the end longer (traced store by store on bdk_294 and acd_170h). A reader that
+samples less often than every ~50 ms can miss it.
+
+At power-up the byte reads `00` for 0.4-0.7 s before `10`, with the scores at `0xFFFFFFFF`.
 
 ### Tilt warnings
 
