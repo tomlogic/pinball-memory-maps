@@ -30,7 +30,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 13,
+    "version": 14,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "platform": "stern-sam",
     "roms": [
@@ -196,11 +196,11 @@
       "start": "0x000348B9"
     },
     "game_over": {
+      "_notes": "Mode byte: 16 attract, 0 in play, 4-5 end-of-ball bonus, 88 high-score entry, 24/152 game ending; bit 0x10 rises a few seconds after the last drain, before high-score entry and match. The status byte 0x000348EA reads 01 only from attract, so a game started before then never ended. See README, Mode byte.",
       "label": "Game Over",
       "encoding": "bool",
-      "start": "0x000348EA",
-      "mask": "0x12",
-      "invert": true
+      "start": "0x00033B28",
+      "mask": "0x10"
     },
     "tilted": {
       "label": "Tilted",

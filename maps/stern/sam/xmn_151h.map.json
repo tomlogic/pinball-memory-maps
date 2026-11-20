@@ -57,7 +57,7 @@
   ],
   "_fileformat": 0.9,
   "_metadata": {
-    "version": 16,
+    "version": 17,
     "license": "Open Data Commons Open Database License (ODbL) v1.0",
     "copyright": [
       "Copyright (C) 2026 by Wes Smith <evilwraith@gmail.com>"
@@ -177,11 +177,11 @@
       "start": "0x00030AE5"
     },
     "game_over": {
+      "_notes": "Mode byte: 16 attract, 0 in play, 4-5 end-of-ball bonus, 88 high-score entry, 24/152 game ending; bit 0x10 rises a few seconds after the last drain, before high-score entry and match. The status byte 0x00030B16 reads 01 only from attract, so a game started before then never ended. See README, Mode byte.",
       "label": "Game Over",
       "encoding": "bool",
-      "start": "0x00030B16",
-      "mask": "0xFE",
-      "invert": true
+      "start": "0x0002FAFC",
+      "mask": "0x10"
     },
     "tilted": {
       "_notes": "tilted when (value & 0x7F) == 0x15",
