@@ -291,8 +291,6 @@ and `01` again once the game has ended and attract starts. The maps decode `tilt
 
 A few maps keep a narrower bit test that held on every sample of their recording and
 of a cabinet game (bdk_294, mtl_*, smanve_101, twd_160h: `tilted` bit 0x04 or 0x02).
-ij4_210 still reads `game_over` from the status byte: no game starts headless, so its mode
-byte has not been found.
 
 Single bits of the status byte misread a full game, because mode values carry them:
 Avatar's `40`/`45`, Avengers' `61`, TRON's `4D` and X-Men's `28` read as game over under
